@@ -1,0 +1,20 @@
+  <nav class="nav-sidebar">
+    <ul class="nav tabs">
+         <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>                    
+    </ul>
+  </nav>
+
+
+<?php /* 
+<div class="block block-faq">
+	<h3>FAQ Topics</h3>
+	<?php
+	echo '<ul>';
+		foreach($this->getTopics() as $topic){
+			echo '<li><a href="/support/'.$topic['url'].'">'.$topic['title'].'</a></li>';
+		}
+	echo '</ul>';
+	?>
+</div>
+
+*/ ?>

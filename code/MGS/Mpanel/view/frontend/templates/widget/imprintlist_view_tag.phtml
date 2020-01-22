@@ -1,0 +1,45 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+
+if ($this->hasData('imprintlist_view_tag')) {
+    $jsonData = base64_decode($this->getData('imprintlist_view_tag'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $imprintdata = json_decode($page_data->imprintView);
+}
+?>
+<div class="container">
+    <div class="chisel-available-section">
+        <h2><?php echo $page_data->title ?></h2>
+        <ul>
+            <?php foreach ($imprintdata as $data): ?>
+                <li>
+                <a href="<?php echo $data->impviewtagtLink ?>">
+                <?php
+                    $ImprintTagUrl = !empty($data->impviewtagtLink) ? $this->getUrl($data->impviewtagtLink) : 'javascript:;';
+                    if (filter_var($ImprintTagUrl, FILTER_VALIDATE_URL)) {
+                        echo '<a href="'.$ImprintTagUrl.'">';
+                    } else {
+                        echo '<a href='.$ImprintTagUrl.'>';
+                    }
+                ?> 
+                <?php echo $data->impviewtagTitle ?> </a>
+                </li>
+            <?php endforeach; ?>  
+        </ul>
+        <div class="chisel-shop-product">
+            <?php
+                $ImpTagUrl = !empty($page_data->imptag_shopprolink) ? $this->getUrl($page_data->imptag_shopprolink) : 'javascript:;';
+                if (filter_var($ImpTagUrl, FILTER_VALIDATE_URL)) {
+                    echo '<a href="'.$ImpTagUrl.'">';
+                } else {
+                    echo '<a href='.$ImpTagUrl.'>';
+                }
+            ?>     
+            <?php echo $page_data->imptag_shopproduct ?></a>
+        </div>
+    </div>
+</div>

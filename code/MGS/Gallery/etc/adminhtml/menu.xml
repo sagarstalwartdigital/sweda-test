@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="MGS_Gallery::gallery" title="Catalog Library" module="MGS_Gallery" sortOrder="80" parent="Magento_Backend::mgs" resource="MGS_Gallery::gallery"/>
+        <add id="MGS_Gallery::manage_post" title="Manage Library" module="MGS_Gallery" sortOrder="10" parent="MGS_Gallery::gallery" action="gallery/post/" resource="MGS_Gallery::manage_post"/>
+       <!--  <add id="MGS_Gallery::manage_comment" title="Manage Comments" module="MGS_Gallery" sortOrder="20" parent="MGS_Gallery::gallery" action="gallery/comment/" resource="MGS_Gallery::manage_comment"/> -->
+        <add id="MGS_Gallery::manage_category" title="Manage Categories" module="MGS_Gallery" sortOrder="30" parent="MGS_Gallery::gallery" action="gallery/category/" resource="MGS_Gallery::manage_category"/>
+        <add id="MGS_Gallery::configuration" title="Configuration" module="MGS_Gallery" sortOrder="40" parent="MGS_Gallery::gallery" action="adminhtml/system_config/edit/section/gallery" resource="MGS_Gallery::configuration"/>
+    </menu>
+</config>

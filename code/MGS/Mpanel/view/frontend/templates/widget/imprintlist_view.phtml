@@ -1,0 +1,126 @@
+<?php 
+error_reporting(0);
+?>
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('imprintlist_view')) {
+  $jsonData = base64_decode($this->getData('imprintlist_view'));
+  $page_data = json_decode($jsonData);
+  $total = (array)$page_data;
+}
+?>
+<?php //echo $page_data->title ?>
+
+<?php
+try {
+
+ ?>
+ <div class="imp-banner-img imprint-detailspage">
+  <?php if($page_data->impbackgroundImagevideopriv) { ?>
+    <video id="myVideoTag" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" src="<?php echo $page_data->impbackgroundImagevideopriv ?>">
+      <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/mp4"> 
+        <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/webm">
+        </video>
+      <?php } 
+      else if($page_data->external_video_url){?>
+        <video id="myVideoTag" class="img-fluid external_video" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" src="<?php echo $page_data->external_video_url; ?>">
+          <source src="<?php echo $page_data->external_video_url; ?>" type="video/mp4"> 
+            <source src="<?php echo $page_data->external_video_url; ?>" type="video/webm">
+        </video>
+          <?php }
+          else { ?>
+            <?php if($page_data->impbackgroundImage) {?>
+             <img src="<?php echo $page_data->impbackgroundImage ?>" class="desktop-only" class="desktop-only">
+             <img src="<?php echo $block->getViewFileUrl('images/sweda/Mobile_ImprintMethod_Banner.jpg'); ?>" class="mobile-only">
+           <?php } ?>
+         <?php } ?>
+
+
+
+         <div class="container">
+           <div class="imprint-method-banner-text">
+            <h2><?php echo $page_data->imptitle_one; ?></h2>
+            <?php //echo $page_data->impdesctiption_one; ?>
+            <?php echo html_entity_decode($page_data->impdesctiption_one) ?>
+
+            <?php if($page_data->link_details_page) { ?>
+              <?php
+                  $ImprintViewUrl = !empty($page_data->link_details_page) ? $this->getUrl($page_data->link_details_page) : 'javascript:;';
+                  if (filter_var($ImprintViewUrl, FILTER_VALIDATE_URL)) {
+                      echo '<a href="'.$ImprintViewUrl.'">';
+                  } else {
+                      echo '<a href='.$ImprintViewUrl.'>';
+                  }
+              ?>  
+              <button class="palyvideo">LEARN MORE</button></a>
+            <?php } else { ?> 
+              <?php if($page_data->impbackgroundImagevideo) { ?>
+                <button class="palyvideo" id="myBtnimp">PLAY VIDEO</button>
+              <?php }   ?>
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="imprint-heading">
+        <?php if($page_data->logobackgroundImage) { ?>
+          <img class="imprint-logo" src="<?php echo $page_data->logobackgroundImage ?>">
+        <?php } ?>
+        <h2><?php echo $page_data->imptitle_two; ?></h2>
+        <?php //echo $page_data->impdesctiption_two; ?>
+        <?php echo html_entity_decode($page_data->impdesctiption_two) ?>
+      </div>
+
+<?php /*
+<div class="see-all-imprintview">
+  <?php if($page_data->link_details_page) { ?>
+    <a href="<?php echo $page_data->link_details_page; ?>">VIEW ALL PRODUCTS</a>
+  <?php } ?>
+</div>
+*/ ?>
+
+<?php if($page_data->impbackgroundImagevideo) { ?>
+  <div id="myModal" class="modalimp">
+    <div class="modalimp-contentimp">
+      <span class="closeimp">&times;</span>
+      <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?php echo $page_data->impbackgroundImagevideo ?>">
+        <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4"> 
+          <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/webm">
+          </video>
+        </div>
+      </div>
+    <?php }
+
+  } catch (Exception $e) {
+    echo "exception : ".$e->getMessage();
+  }
+  ?>
+
+  <script type="text/javascript">
+   require([
+     'jquery',
+     ], function($){
+
+         //var modalimp = document.getElementById("myModal");
+         var btn = document.getElementById("myBtnimp");
+         var span = document.getElementsByClassName("closeimp")[0];
+
+         jQuery(document).ready(function(){
+          $("#myBtnimp").click(function(){
+            var modalimp = document.getElementById("myModal");
+            jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':true})
+            modalimp.style.display = "block";
+          });
+
+          $(".closeimp").click(function(){
+            $('.modalimp').hide();
+            jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':false})
+          });
+        })
+
+       });
+     </script>

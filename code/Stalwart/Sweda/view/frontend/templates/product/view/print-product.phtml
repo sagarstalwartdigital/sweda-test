@@ -1,0 +1,315 @@
+<style type="text/css" media="print">
+    header, footer
+    {
+        display: none;
+    }
+    table { page-break-after:always; }
+    tr    { page-break-inside:avoid; page-break-after:always }
+    td    { page-break-inside:avoid; page-break-after:always }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+</style>
+<style type="text/css">
+    .sweda-printproduct-printproduct header, .sweda-printproduct-printproduct footer, .sweda-printproduct-printproduct .scroll-to-top
+    {
+        display: none;
+    }
+</style>
+<?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+    $request = $objectManager->get('Magento\Framework\App\Request\Http');  
+    $pro_id = $request->getParam('id');
+
+    $_product = $objectManager->create('Magento\Catalog\Model\Product')->load($pro_id);
+
+    $categoryIds = $_product->getCategoryIds();
+
+    $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+    $mediaPath = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+    $productTypeInstance = $objectManager->get('Magento\ConfigurableProduct\Model\Product\Type\Configurable');
+    $productAttributeOptions = $productTypeInstance->getConfigurableAttributesAsArray($_product);
+
+    $swatchHelper = $objectManager->get('Magento\Swatches\Helper\Data');
+
+    $imprintMethodShippingDetails = $objectManager->create('Stalwart\Productmanager\Model\Swedaproductshipping')->getCollection()->addFieldToFilter('pid',$_product->getId());
+
+    $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+
+    $blockOfGroupedPrice = $objectManager->create('Stalwart\Sweda\Block\ProductPricesRegular');
+
+    $regularPriceCollection = $blockOfGroupedPrice->getProductRegularPrices();
+
+    $productImprintMethods = $blockOfGroupedPrice->getProductImprintMethod();
+
+    $productRegularPriceType = $blockOfGroupedPrice->getProductRegularPriceTypes();
+
+    $imprintMethodWiseData = array();
+    $counter = 1;
+    foreach ($productImprintMethods as $productImprintMethod)
+    {
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['name'] = $productImprintMethod->getImprintMethodName();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['matrix'] = $productImprintMethod->getMatrix();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['full_color'] = $productImprintMethod->getFullColor();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['color_included_in_price'] = $productImprintMethod->getColorIncludedInPrice();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_color'] = $productImprintMethod->getMaximumColor();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['location_included_in_price'] = $productImprintMethod->getLocationIncludedInPrice();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_location'] = $productImprintMethod->getMaximumLocation();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['productiont_time'] = $productImprintMethod->getProductiontTime();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['production_unit'] = $productImprintMethod->getProductionUnit();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['rule'] = $productImprintMethod->getRule();
+
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['name'] = $productImprintMethod->getImprintChargeName();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_start'] = $productImprintMethod->getQtyStart();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_end'] = $productImprintMethod->getQtyEnd();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['price'] = $productImprintMethod->getPrice();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['code'] = $productImprintMethod->getCode();
+
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['name'] = $productImprintMethod->getImprintPostionName();
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['area'] = $productImprintMethod->getImprintPostionArea();
+
+
+      $counter++;
+    }
+
+?>
+<section id="maincontent" class="page-main container">
+ <div class="row">
+    <div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    <div class="container">
+    <div class="pdp-print-main-section">
+        <div class="row">
+             <div class="col-sm-6">
+                <div class="pdp-img-section">
+                   <h2><?php echo $_product->getName() ?></h2>
+                   <p><?php echo $_product->getSku()  ?></getSku>
+                   <img src="<?php echo $mediaPath.'catalog/product'.$_product->getImage() ?>">
+                </div>
+             </div>
+             <div class="col-sm-6">
+               <div class="pdp-print-text-section">
+                <div class="specifications-text">
+                  <h4>Specifications</h4>
+                  <?php if($imprintMethodShippingDetails->getSize()) : ?>
+                    <p>
+                      <strong>Category: </strong>
+                      <?php $count = 1 ?>
+                      <?php foreach($categoryIds as $category) : ?>
+                          <?php $cat = $objectManager->create('Magento\Catalog\Model\Category')->load($category); ?>
+                          <?php if($count != 1) : ?><?php echo ', ' ?><?php endif; ?><?php echo $cat->getName() ?>
+                          <?php $count++ ?>
+                      <?php endforeach; ?>
+                    </p>
+                    <?php foreach ($imprintMethodShippingDetails as $shippingDetails) : ?>
+                      <?php if (($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) || ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) || ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) ) : ?>
+                          <p>
+                              <strong>Product size: </strong>
+                              <?php
+                              if ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) {
+                                  echo $shippingDetails->getProductHeight().'" H ';
+                              }
+                              if ($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) {
+                                  echo 'x '.$shippingDetails->getProductWidth().'" W ';
+                              }
+                              if ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) {
+                                  echo 'x '.$shippingDetails->getProductLength().'" L ';
+                              }
+                              ?>
+                          </p>
+                      <?php endif; ?>
+                      <?php if ($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) : ?>
+                          <p>
+                            <strong>Width <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?>: </strong>
+                            <?php echo $shippingDetails->getProductWidth(); ?>
+                          </p>
+                      <?php endif; ?>
+                      <?php if ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) : ?>
+                          <p>
+                            <strong>Height <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?>: </strong>
+                            <?php echo $shippingDetails->getProductHeight(); ?>
+                          </p>
+                      <?php endif; ?>
+                      <?php if ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) : ?>
+                          <p>
+                            <strong>Length <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?>: </strong>
+                            <?php echo $shippingDetails->getProductLength(); ?>
+                          </p>
+                      <?php endif; ?>
+                      <?php if ($shippingDetails->getProductWeight() && !empty($shippingDetails->getProductWeight()) && $shippingDetails->getProductWeight() > 0) : ?>
+                          <p>
+                            <strong>Weight <?php echo $shippingDetails->getProductWeightUnit() ? '('.$shippingDetails->getProductWeightUnit().')' : '' ?>: </strong>
+                            <?php echo $shippingDetails->getProductWeight(); ?>
+                          </p>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </div>
+                <div class="description-text">
+                    <h4>Description</h4>
+                    <?php echo $_product->getDescription(); ?>
+                </div>
+               </div>
+             </div>
+        </div>
+    <div class="pdp-print-color-section">
+          <div class="color-text-section">
+             <h2>Colors</h2>     
+           <div class="row">
+              <div class="col-sm-12">
+                <?php foreach ($productAttributeOptions as $key => $value) : ?>
+                    <?php $tmp_option = $value['values']; ?>
+                    <?php if (count($tmp_option) > 0) : ?>
+                        <?php if (strtolower($value['attribute_code']) == 'color') : ?>
+                            <?php foreach ($tmp_option as $tmp) : ?>
+                                <div class="pdp-print-color-img">
+                                    <?php
+                                        $hashcodeData = $swatchHelper->getSwatchesByOptionsId([$tmp['value_index']]);
+                                        $labelHtml = '';
+                                        if(isset($hashcodeData[$tmp['value_index']]))
+                                        {
+                                          $hashcode = $hashcodeData[$tmp['value_index']]['value'];
+                                          
+                                          $swatchHelperMedia=$objectManager->get("Magento\Swatches\Helper\Media");
+                                          $SwatchImage = $swatchHelperMedia->getSwatchAttributeImage('swatch_image', $hashcode);
+                                          
+                                          if ($SwatchImage) {
+                                              $labelHtml .= "<img src=".$SwatchImage." alt='".$tmp['label']."' />";
+                                          } else {
+                                              $labelHtml .= "<div class='inventory-color-box' style='background-color:".$hashcode."; height:26px; width:26px;'></div>";
+                                          }
+                                        }else{
+                                          $labelHtml .= "<img src='' alt='".$tmp['label']."'/>";
+                                          /*$labelHtml .= "<div class='inventory-color-box' style='background-color:".$tmp['label']."; height:26px; width:26px;'></div>";*/
+                                        }
+                                    ?>
+                                    <?php echo $labelHtml; ?>
+                                    <p><?php echo $tmp['label'].' - '.$_product->getSku() ?></p>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+              </div> 
+          </div>
+       </div>
+    </div>
+
+    <div class="pdp-print-table-section">
+          <div class="print-table-text-section">
+             <h2>Pricing</h2>
+          </div>
+    </div>
+  
+    <div class="pdp-print-pricing-table">
+      <div class="col-sm-10 p-0">
+        <div class="table-responsive">       
+          <?php if(sizeof($regularPriceCollection->getData())) : ?>
+            <?php if ($productRegularPriceType->getPriceType() != 'call_for_price') : ?>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th>Quantity</th>
+                    <?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+                    <td>
+                        <?php if (!empty($regularPriceData->getQtyStart())) : ?>
+                            <?php echo $regularPriceData->getQtyStart() ?>
+                        <?php endif; ?>
+                        <?php if (!empty($regularPriceData->getQtyEnd())) : ?>
+                            <?php echo '-'.$regularPriceData->getQtyEnd() ?>
+                        <?php else : ?>
+                            <?php echo '+' ?>
+                        <?php endif; ?>
+                    </td>
+                    <?php endforeach; ?>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+                      <td>
+                          <?php echo $priceHelper->currency($regularPriceData->getDecorativePrice(), true, false); ?>
+                          <?php 
+                              if ($regularPriceData->getDecorativePriceCode() && !empty($regularPriceData->getDecorativePriceCode())) {
+                                  echo '('.$regularPriceData->getDecorativePriceCode().')';
+                              }
+                          ?>
+                      </td>
+                    <?php endforeach; ?>
+                  </tr>
+                </tbody>
+              </table>
+            <?php endif; ?>
+          <?php endif; ?>
+
+          <?php if(sizeof($imprintMethodWiseData)) : ?>
+            <?php $newChargesArray = array() ?>
+            <?php foreach($imprintMethodWiseData as $imprintId => $proImprintMethodData) : ?>
+                <?php if(isset($proImprintMethodData['charges'][2])) : ?>
+                    <?php $newChargesArray[$proImprintMethodData['name']] = $proImprintMethodData['charges'][2]; ?>
+                <?php endif; ?>
+
+            <?php endforeach; ?> 
+            <?php foreach($newChargesArray as $imprintName => $imprintChargesArray) : ?>
+                <p><strong><?php echo $imprintName  ?></strong></p>
+                <table class="table data grouped" id="super-product-table">
+                    <tbody>
+                        <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                            <tr>
+                                <th><?php echo "Quantity" ?></th>
+                                <?php foreach($charageData as $key => $charageRecord) : ?>
+                                    <td>
+                                        <?php
+                                        if (isset($charageRecord['qty_start']) && !empty($charageRecord['qty_start']))
+                                            echo $charageRecord['qty_start'];
+                                        
+                                        if (isset($charageRecord['qty_end']) && !empty($charageRecord['qty_end']))
+                                            echo '-'.$charageRecord['qty_end'];
+                                        else
+                                            echo "+";
+                                        ?>
+                                    </td>
+                                <?php endforeach; ?>
+                            </tr>
+                            <?php break; ?>
+                        <?php endforeach; ?>
+                        <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                            <tr>
+                                <th><?php echo $charageName ?></th>
+                                <?php foreach($charageData as $key => $charageRecord) : ?>
+                                    <td>
+                                        <?php
+                                            if(isset($charageRecord['price']) && !empty($charageRecord['price']))
+                                                echo $priceHelper->currency($charageRecord['price'], true, false);
+                                            if(isset($charageRecord['code']) && !empty($charageRecord['code']))
+                                                echo '('.$charageRecord['code'].')';
+                                        ?>
+                                    </td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+    <div class="print_btn_footer">
+        <a id='click_to_print' href="javascript:void(0)">Print</a>
+    </div>
+
+    </div>
+
+     </div>
+  </div>
+</section>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+          $('#click_to_print').click(function () {
+            window.print();
+          });
+        });
+    });
+</script>

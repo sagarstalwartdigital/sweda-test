@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd"> 
+<body> 
+	<referenceBlock name="breadcrumbs">
+        <action method="addCrumb">
+            <argument name="crumbName" xsi:type="string">home</argument>
+            <argument name="crumbInfo" xsi:type="array">
+                <item name="title" xsi:type="string" translate="true">Go to Home Page</item>
+                <item name="label" xsi:type="string" translate="true">Home</item>
+                <item name="link" xsi:type="string">/</item>
+            </argument>
+        </action>
+        <action method="addCrumb">
+            <argument name="crumbName" xsi:type="string">smartcart</argument>
+            <argument name="crumbInfo" xsi:type="array">
+                <item name="title" xsi:type="string" translate="true">Your Smart Carts</item>
+                <item name="label" xsi:type="string" translate="true">Your Smart Carts</item>
+                <item name="link" xsi:type="string">/smartcart/cartindex/smartcartfront</item>
+            </argument>
+        </action>
+        <action method="addCrumb">
+            <argument name="crumbName" xsi:type="string">account.moxy.smartcart</argument>
+            <argument name="crumbInfo" xsi:type="array">
+                <item name="title" xsi:type="string" translate="true">Moxy Smart Cart</item>
+                <item name="label" xsi:type="string" translate="true">Moxy Smart Cart</item>
+                <item name="last" xsi:type="boolean">true</item>
+            </argument>
+        </action>
+    </referenceBlock>
+     <referenceContainer name="content"> 
+        <block class="Stalwart\Smartcart\Block\SmartCartDetail" name="smart_cart_detail" template="Stalwart_Smartcart::smartcartdetail.phtml" cacheable="false"> 
+        </block> 
+    </referenceContainer> 
+</body> 
+</page>

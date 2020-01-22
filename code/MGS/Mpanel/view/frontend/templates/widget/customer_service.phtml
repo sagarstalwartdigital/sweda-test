@@ -1,0 +1,51 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('customer_service')) {
+    $jsonData = base64_decode($this->getData('customer_service'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $CustomerService = json_decode($page_data->toolsJson);
+
+}
+?>
+
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+
+<!------Customer-services --------->
+<div class="container">
+    <div class="customer-all-services">
+        <h2><?php echo strtoupper($page_data->title) ?></h2>
+        <p><?php echo strtoupper($page_data->description) ?></p>
+       <div class="row">
+        <?php foreach ($CustomerService as $data): ?>
+          <div class="col-md-3">
+            <?php
+              $CustomerServiceUrl = !empty($data->cuserUrl) ? $this->getUrl($data->cuserUrl) : 'javascript:;';
+              if (filter_var($CustomerServiceUrl, FILTER_VALIDATE_URL)) {
+                  echo '<a href="'.$CustomerServiceUrl.'">';
+              } else {
+                  echo '<a href='.$CustomerServiceUrl.'>';
+              }
+            ?>    
+             <div class="customer-text section-content">
+                <div class="customer-mbl-heading">
+                  <img class="first-image" src="<?php echo $data->cuserImage ?>">
+                  <img class="seconds-image" src="<?php echo $data->cuserImageHover ?>">
+                </div>
+                <div class="customer-mbl-text">
+                <h3><?php echo $data->cuserTitle ?></h3>
+                <p><?php echo $data->cuserDescription ?></p>
+                </div>
+             </div>
+           </a>
+          </div>
+        <?php endforeach; ?>
+       </div>
+    </div>
+</div>
+<!------ Customer-tool-box---------> 

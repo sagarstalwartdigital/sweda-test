@@ -1,0 +1,24 @@
+var config = {
+    // "map": {
+    //     '*': { 
+    //         "simpleParallax":"Magento_Theme/js/simpleParallax",
+    //     }
+    // },
+    // "shim": 
+    // {
+    // 	"simpleParallax": ["jquery"]
+    // }
+
+    
+    "map": {
+        "*": {
+            "simpleParallax": "Magento_Theme/js/simpleParallax"
+        }
+    },
+    "paths": {
+        "simpleParallax": "Magento_Theme/js/simpleParallax"
+    },
+    "shim": {
+        "Magento_Theme/js/simpleParallax": ["jquery"]
+    }
+};

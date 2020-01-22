@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Stalwart_Smartcart::parent" title="Smartcart" module="Stalwart_Smartcart" sortOrder="100" resource="Stalwart_Smartcart::parent"/>
+		<add id="Stalwart_Smartcart::smartcart" title="Smartcart Smartcart" module="Stalwart_Smartcart" sortOrder="20" parent="Stalwart_Smartcart::parent" action="smartcart/smartcart" resource="Stalwart_Smartcart::smartcart"/>
+
+    </menu>
+</config>

@@ -1,0 +1,500 @@
+<home>
+	<section>
+		<name><![CDATA[block73]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section85]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block75]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[50]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block76]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block77]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section85]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[50]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block78]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block81]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[#606da6]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[120]]></padding_top>
+		<padding_bottom><![CDATA[125]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block82]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[50]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[8]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block468]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[50]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block469]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[60]]></padding_top>
+		<padding_bottom><![CDATA[60]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block73-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="owl-home10 owl-carousel">
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_1.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Hebes<br />Wood Chair</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_2.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Lamp<br />New Collection</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_3.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Hebes<br />Yellow Sofa</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_4.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Hebes<br />Wood Table</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_5.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Hebes<br />Wood Decor</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+<div class="item">
+<div class="thumb"><img src="{{media url="wysiwyg/slider10_6.jpg"}}" alt="alt" /></div>
+<div class="content">
+<h3 class="title">Hebes<br />New Collection</h3>
+<div class="text">
+<p>Nam ac elit a ante commodo tristique.<br />Duis lacus urna, condimentum nisi.</p>
+<a href="#">SHOP NOW</a></div>
+</div>
+</div>
+</div>
+<script type="text/javascript" xml="space">
+	require([
+	'jquery',
+	'mgs/owlcarousel'
+	], function ($) {
+        $('.owl-home10').owlCarousel({
+            items: 4,
+            autoplay: true,
+autoplayTimeout: 10000,
+            autoplayHoverPause: false,
+            loop: true,
+            nav: true,
+            rtl: RTL,
+            dots: false,
+            navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
+            responsive:{
+                0:{ 
+                    items:1
+                },
+                480:{ 
+                    items:2               
+				},
+				768:{ 
+                    items:3               
+				},
+                1200: { 
+                    items: 4
+                }
+            }
+        });
+	});
+</script>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block75-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="testimonial-static">
+<blockquote>" Class aptent taciti sociosqu ad litora torquent per "</blockquote>
+<p class="author-info"><span>David Lee</span> - CEO</p>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block76-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="home_store row">
+<div class="item col-md">
+<h2>F</h2>
+<div>
+<div class="sub-title">
+<h6>Free Shipping</h6>
+<span>all oder over $30</span></div>
+</div>
+</div>
+<div class="item col-md">
+<h2>S</h2>
+<div>
+<div class="sub-title">
+<h6>Support Customer</h6>
+<span>Support 24/7</span></div>
+</div>
+</div>
+<div class="item col-md">
+<h2>P</h2>
+<div>
+<div class="sub-title">
+<h6>Payment Security</h6>
+<span>100% SECURE PAYMENT</span></div>
+</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block77-0]]></block_name>
+		<type><![CDATA[category_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"Popular Products","additional_content":"","animation":"","animation_delay":"","limit":"6","perrow":"5","template":"grid.phtml","ratio":"","use_slider":"1","number_row":"1","category_id":["8","9","10","4","6"],"use_tabs":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[banner-v7]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Category" mgs_panel_title="Popular Products" mgs_panel_note="" limit="6" ratio="" category_ids="8,9,10,4,6" use_slider="1" loadmore="0" template="products/category_products/category-tabs.phtml" perrow="5" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block78-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle\" data-text-animate=\"zoomOut\" class=\"item zoomOut\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/banner10_1.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/banner10_1.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"text-center\">\r\n<h6 style=\"color:#f26c4f\">NEW DESIGN 2018<\/h6>\r\n<h2 class=\"text72\" style=\"color:#fff;white-space: nowrap;\">Living Sofas<\/h2>\r\n<h2 class=\"text72\" style=\"color:#fff;white-space: nowrap;\"><span style=\"color:#f26c4f\">Decor<\/span> Collection<\/h2>\r\n<p class=\"h40\"><\/p>\r\n<a class=\"btn btn-secondary\" href=\"#\">EXPLORE NOW<\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/banner10_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/banner10_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"text-center\">\r\n<h6 style=\"color:#f26c4f\">NEW DESIGN 2018<\/h6>\r\n<h2 class=\"text72\" style=\"color:#fff;white-space: nowrap;\">Living Sofas<\/h2>\r\n<h2 class=\"text72\" style=\"color:#fff;white-space: nowrap;\"><span style=\"color:#f26c4f\">Decor<\/span> Collection<\/h2>\r\n<p class=\"h40\"><\/p>\r\n<a class=\"btn btn-secondary\" href=\"#\">EXPLORE NOW<\/a>\r\n<\/div><\/div><\/div><\/div><\/div>","offset":"","effect":"1","speed":"","navtemple":"0","fullscreen":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0,"loop":0,"fullheight":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="0" autoplay="0" stop_auto="0" navigation="0" offset="" fullheight="0" pagination="0" loop="0" speed="" html_slider="&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomOut&quot; class=&quot;item zoomOut&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/banner10_1.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/banner10_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-center&quot;&gt;
+&lt;h6 style=&quot;color:#f26c4f&quot;&gt;NEW DESIGN 2018&lt;/h6&gt;
+&lt;h2 class=&quot;text72&quot; style=&quot;color:#fff;white-space: nowrap;&quot;&gt;Living Sofas&lt;/h2&gt;
+&lt;h2 class=&quot;text72&quot; style=&quot;color:#fff;white-space: nowrap;&quot;&gt;&lt;span style=&quot;color:#f26c4f&quot;&gt;Decor&lt;/span&gt; Collection&lt;/h2&gt;
+&lt;p class=&quot;h40&quot;&gt;&lt;/p&gt;
+&lt;a class=&quot;btn btn-secondary&quot; href=&quot;#&quot;&gt;EXPLORE NOW&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/banner10_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/banner10_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-center&quot;&gt;
+&lt;h6 style=&quot;color:#f26c4f&quot;&gt;NEW DESIGN 2018&lt;/h6&gt;
+&lt;h2 class=&quot;text72&quot; style=&quot;color:#fff;white-space: nowrap;&quot;&gt;Living Sofas&lt;/h2&gt;
+&lt;h2 class=&quot;text72&quot; style=&quot;color:#fff;white-space: nowrap;&quot;&gt;&lt;span style=&quot;color:#f26c4f&quot;&gt;Decor&lt;/span&gt; Collection&lt;/h2&gt;
+&lt;p class=&quot;h40&quot;&gt;&lt;/p&gt;
+&lt;a class=&quot;btn btn-secondary&quot; href=&quot;#&quot;&gt;EXPLORE NOW&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="0" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block82-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="title-v4">
+<div class="content-heading">
+<h6 class="title h1">From Instagram</h6>
+<div class="sub"><i class="fa fa-instagram"></i>@hebestheme.net</div>
+<div class="subtitle">STYLISH, DESIGNER, INTERACTIVE, SIMPLIFIED AND PERSONAL TOUCH TO INTEROR DESIGN</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block82-0]]></block_name>
+		<type><![CDATA[instagram]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"6","perrow":"5","resolution":"low_resolution","link":"1","like":"1","comment":"1","use_slider":"1","number_row":"1","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="" mgs_panel_note="" limit="6" resolution="low_resolution" link="1" perrow="5" use_slider="1" like="1" comment="1" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1" template="widget/instagram.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block81-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="home_subscribe header_subscribe home text-center subscribe_home10">
+<h2 class="text48 margin-bottom45">Get Discount 30% Off</h2>
+<strong>Sign up to our newsletter and save 30% for you next purchase. No spam, we promise !</strong>
+<p class="text-uppercase">Increase more than 300% of email subscribers</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe.phtml"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block468-0]]></block_name>
+		<type><![CDATA[brands]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"10","perrow":"5","brand_by":"all","use_slider":"1","number_row":"1","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Brand\Block\Widget\Home" mgs_panel_title="" mgs_panel_note="" limit="10" perrow="5" use_slider="1" brand_by="all" template="widget/home.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block469-0]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"grid.phtml","show_avatar":"1","use_slider":"1","number_row":"1","navigation":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="" mgs_panel_note="" testimonials_count="3" perrow="1" show_avatar="1" use_slider="1" template="grid.phtml" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block82-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block75-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block75-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block77-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block77-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block469-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block469-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block468-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="space"></div>]]></block_content>
+	</block>
+	
+    <theme_setting>
+		<general>
+			<layout>wide</layout>
+			<sticky_menu>1</sticky_menu>
+			<width>width1200</width>
+		</general>
+        <header>
+            <header>header_4</header>
+            <absolute_header>0</absolute_header>
+            <sticky_menu>1</sticky_menu>
+            <category_sticky>2</category_sticky>
+        </header>
+        <footer><footer>footer_2</footer></footer>
+		<custom_style>
+			<style></style>
+		</custom_style>
+	</theme_setting>
+
+</home>

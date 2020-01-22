@@ -1,0 +1,70 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+
+<div class="edit-static-form">
+
+    <div class="row">
+        <div class="col-md-12 builder-title">
+            <h2><?php echo __('Useful Tools') ?></h2>
+        </div>
+    </div>
+
+    <form id="section-form" enctype="multipart/form-data" method="POST"
+          action="<?php echo $this->getUrl('mpanel/element/save') ?>"
+          data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+
+
+        <input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+        <input id="block_type" type="hidden" name="type" value="usefultools">
+        <input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+
+        <?php if (isset($params['id'])): ?>
+            <?php
+            $child = $this->getModel('MGS\Mpanel\Model\Childs')->load($params['id']);
+            $exist = true;
+            $settings = json_decode($child->getSetting(), true);
+            ?>
+            <input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+        <?php endif ?>
+
+
+        <div class="form-horizontal">
+            <div id="form_tabs" class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-toggle="tab"
+                           href="#general"><?php echo __('General') ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="additional-tab-nav" data-toggle="tab"
+                           href="#additional"><?php echo __('Additional Configurations') ?></a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12 builder-action">
+                            <div class="buttons">
+                                <?php if (!$exist): ?>
+                                    <button type="button" class="bd-action bd-action-secondary btn-back"
+                                            onclick="history.go(-1)"><span><span><?php echo __('Back') ?></span></span>
+                                    </button>
+                                <?php endif ?>
+                                <input type="submit" value="<?php echo __('Submit') ?>"
+                                       class="bd-action bd-action-success<?php if ($exist): ?> bd-action-full<?php endif ?>"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+
+</div>

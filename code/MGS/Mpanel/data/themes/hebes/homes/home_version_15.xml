@@ -1,0 +1,218 @@
+<home>
+	<section>
+		<name><![CDATA[block155]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[row]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block156]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[row]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block157]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[row]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block158]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[row]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block159]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[row]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block155-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="parallax-1" class="lookbook_banner parallax active" style="background: url('pub/media/wysiwyg/h15_1.jpg');">
+<div class="abs-title text-center"><span>NEW DESIGN 2018</span>
+<h2 class="text72">Wood <span class="color-primary">Lamp</span><br />Hebes Decor 2018</h2>
+</div><a class="shop" href="#"> <span>S</span> <span>H</span> <span>O</span> <span>P</span> </a>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block155-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[0]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="control">
+    <div class="page-header-sliders template-2">
+        <div class="index-slider"><span class="current">01</span> <span class="all-index">03</span></div>
+    </div>
+    <ul class="dot">
+        <li><a class="parallax-thumb" href="javascript: void(0)" data-index="1"><img src="pub/media/wysiwyg/thumb15_1.jpg" /></a></li>
+        <li><a class="parallax-thumb" href="javascript: void(0)" data-index="2"><img src="pub/media/wysiwyg/thumb15_2.jpg" /></a></li>
+        <li><a class="parallax-thumb" href="javascript: void(0)" data-index="3"><img src="pub/media/wysiwyg/thumb15_3.jpg" /></a></li>
+        <li><a class="parallax-thumb" href="javascript: void(0)" data-index="4"><img src="pub/media/wysiwyg/thumb15_4.jpg" /></a></li>
+        <li><a class="parallax-thumb" href="javascript: void(0)" data-index="5"><img src="pub/media/wysiwyg/thumb15_5.jpg" /></a></li>
+    </ul>
+    <div class="nav-scroll">
+        <div>
+            <a class="btn-to-prev disable" href="javascript: void(0)"><i class="fa fa-chevron-up"></i></a>
+            <a class="btn-to-next" href="javascript: void(0)"><i class="fa fa-chevron-down"></i></a>
+        </div>
+    </div>
+</div>
+]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block156-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="parallax-2" class="lookbook_banner parallax active" style="background: url('pub/media/wysiwyg/h15_2.jpg');">
+<div class="abs-title text-center"><span>NEW DESIGN 2018</span>
+<h2 class="text72">Black &amp; White<br />Work <span class="color-primary">Chair</span></h2>
+</div><a class="shop" href="#"> <span>S</span> <span>H</span> <span>O</span> <span>P</span> </a>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block157-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="parallax-3" class="lookbook_banner parallax active" style="background: url('pub/media/wysiwyg/h15_3.jpg');">
+<div class="abs-title text-center"><span>TRENDING COLLECTION</span>
+<h2 class="text72"><span class="color-primary">Table &amp; Sofa</span><br />Collection 2018</h2>
+</div><a class="shop" href="#"> <span>S</span> <span>H</span> <span>O</span> <span>P</span> </a>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block158-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="parallax-4" class="lookbook_banner parallax active" style="background: url('pub/media/wysiwyg/h15_4.jpg');">
+<div class="abs-title text-center"><span>NEW DESIGN 2018</span>
+<h2 class="text72">Hebes<span class="color-primary">Sofa</span><br />New Design 2018</h2></div>
+<a class="shop" href="#"> <span>S</span> <span>H</span> <span>O</span> <span>P</span> </a></div>
+]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block159-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div id="parallax-5" class="lookbook_banner parallax active" style="background: url('pub/media/wysiwyg/h15_5.jpg');">
+<div class="abs-title text-center"><span>NEW DESIGN 2018</span>
+<h2 class="text72">Living<span class="color-primary">Sofa</span><br />Collection 2018</h2>
+</div>
+<a class="shop" href="#"> <span>S</span> <span>H</span> <span>O</span> <span>P</span> </a></div>]]></block_content>
+	</block>
+	<theme_setting>
+		<general>
+			<layout>wide</layout>
+			<sticky_menu>1</sticky_menu>
+			<width>width1200</width>
+		</general>
+        <footer>
+            <footer>header_1</footer>
+        </footer>
+        <header>
+            <header>header_10</header>
+            <absolute_header>1</absolute_header>
+            <sticky_menu>1</sticky_menu>
+            <category_sticky>2</category_sticky>
+        </header>
+		<custom_style>
+			<style>.footer{background: #111}
+.footer .middle-footer a, .footer .footer_follow strong,
+.footer .footer_info, .footer .list_block{color: #7b7b7b}
+.footer .header_subscribe h6{color: #fff}
+.footer .block.newsletter .form.subscribe .control > input{background-color: #363636;border-color: #363636}
+.footer .block.newsletter .form.subscribe .action.subscribe{color:#a1a1a1}</style>
+		</custom_style>
+	</theme_setting>
+</home>

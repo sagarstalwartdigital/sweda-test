@@ -1,0 +1,152 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $themeHelper = $this->getThemeHelper(); ?>
+<?php $themeSettings = $themeHelper->getThemeSettings(); ?>
+<?php $_imagehelper = $this->getImageHelper(); ?>
+<?php $quickViewHelper = $this->getQuickViewHelper(); ?>
+<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+<?php $getSlugString = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $_helper = $this->getCatalogHelperOutput(); ?>
+<?php $image = 'category_page_grid'; ?>
+<?php $image_hover = 'product_base_image'; ?>
+<?php $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW; ?>
+<?php $change_img = $this->getHoverChange(); ?>
+<?php $lazyLoad = $this->getLazyLoad(); ?>
+<?php $lazyImg = $this->getLazyLoadBaseImage(); ?>
+<?php $iamges_silder = $themeHelper->getStoreConfig('mpanel/catalog/iamges_silder'); ?>
+
+
+<?php 
+/* Product Data */
+$productUrl = $_product->getProductUrl();
+?>
+
+<?php 
+$tags_strings = '';
+$tags_strings .= '<ul>';
+$tags_styles='';
+$tags_styles .= '<style>';
+$data = explode(',',$_product->getData('tag_list'));
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        $connection = $resource->getConnection();
+        $tableName = $resource->getTableName('amasty_amshopby_option_setting'); //gives table name with prefix
+        foreach($data as $value){ 
+            if(!empty($value)){
+                $attr = $_product->getResource()->getAttribute('tag_list');
+                $option_value = $attr->getSource()->getOptionText($value);      
+                $opt_handle = $getSlugString->slugify($option_value);
+                $sql = "Select * FROM " . $tableName ." WHERE value = ".$value;
+                $results = $connection->fetchAll($sql);
+                foreach ($results as $key => $tag) {
+                    if(!empty($tag['is_featured'])){
+                        $tags_styles .= '.product-hover-showdesign-list ul li .product-tags.'.$opt_handle.':after {border-top: 11px solid '.$tag['meta_description'].';color: '.$tag['meta_description'].' !important;border-bottom: 9px solid '.$tag['meta_description'].' !important;}  ';
+
+                        $tags_strings .= '<li><span class="product-tags '.$opt_handle.'" style="background-color:'.$tag['meta_description'].'">'.$option_value.'</span></li>';
+                    }
+                }
+            }
+        }
+        $tags_strings .= '</ul>';
+        $tags_styles .= '</style>';
+        ?>
+
+
+
+        <div class="product-item-info product-list-view-main" data-container="product-grid">
+            <?php
+            $size = $this->getSize();
+            $productImageFirst = $productImage = $_imagehelper->init($_product, 'product_thumbnail_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300,235)->getUrl();
+            $productImageSmall = $_imagehelper->init($_product, 'product_small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300,235)->getUrl();
+            $productThumbnail = $_imagehelper->init($_product, 'product_thumbnail_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300,235)->getUrl();
+            $productImageBase = $_imagehelper->init($_product, 'product_base_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(300,235)->getUrl();
+            if($change_img){
+                $productImageHoverFirst = $productThumbnail;
+            }
+            if($lazyLoad){
+                $productImageFirst = $productImageHoverFirst = $lazyImg;
+            }
+            ?>
+            <?php // Product Image ?>
+
+            <?php  
+            $images = $_product->getMediaGalleryImages();
+            ?>
+
+            <div class="product-section product-list-view-image">
+                <a href="<?php echo $productUrl ?>">
+                    <?php $imgAlt = $block->stripTags($_product->getName(), null, true); ?>
+                    <img src="<?php echo $productImageSmall ?>" />
+                </a>
+                <span class="product-image-photo"></span>
+                <?php echo $themeHelper->getProductLabel($_product) ?>
+            </div>
+
+            <div class="product details product-item-details">
+                <div class="product-list-view-prodname">
+                    <div class="product-list-view-name">
+                        <a href="<?php /* @escapeNotVerified */ echo $productUrl ?>">
+                            <h3><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></h3>
+                        </a>
+                    </div>
+                    <div class="product-list-view-share">
+                        <div class="share-icon">
+                            <div class="share-social-part">
+                                <a href="javascript:void(0);" tabindex="0"> </a>
+                            </div>
+                            <div class="social-section product-share-icon">
+                                <ul>
+                                    <li>
+                                        <!-- Facebook -->
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&t=
+                                            <?php echo urlencode($_product->getName())?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on facebook">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <!-- TWITTER -->
+                                        <a href="http://twitter.com/home/?status=<?php echo urlencode($_product->getProductUrl());?>
+                                        (<?php echo urlencode($_product->getName())?>)" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on Twitter">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <?php /* <li>
+                                    <!-- Pinterest -->
+                                    <a href="https://pinterest.com/pin/create/button/?url=<?php echo urlencode($_product->getProductUrl()); ?>&media=<?php echo urlencode($_product->getImageUrl());?> &description=<?php echo urlencode($_product->getName()); ?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Pin it">
+                                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                    </a>
+                                    </li> */ ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing_section"><?php echo $this->getPrdPrice() ?></div>
+                <?php if($_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')): ?>
+                    <div class="product std description product-item-description">
+                        <?php $shortdec = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+                        <p><?php echo substr($shortdec, 0, 170); ?></p>
+                    </div>
+                <?php endif ?>
+                <div class="product-list-smartcart">
+                    <button data-title="Product Add To Smart Cart" class="action mgs-quickview" data-quickview-url="<?php echo $this->getBaseUrl(); ?>mgs_quickview/catalog_product/view/id/<?php echo $_product->getId(); ?>/" title="Quick View">
+                        <span class="ico-plus"><i class="fa fa-plus" aria-hidden="true"></i>Add To Smart Cart</span>
+                    </button>
+                </div>
+                <div class="product-hover-showdesign-list">
+                    <?=$tags_styles;?>
+                    <?=$tags_strings;?>
+                </div>
+            </div>
+        </div>

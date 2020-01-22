@@ -1,0 +1,372 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Register $block */
+?>
+<?= $block->getChildHtml('form_fields_before') ?>
+<?php /* Extensions placeholder */ ?>
+<?= $block->getChildHtml('customer.form.register.extra') ?>
+
+<div class="container">
+    <div class="dont-have-account-section">
+        <div class="dont-have-account">
+            <h2>Don’t have an account?</h2>
+            <strong>REQUEST ACCOUNT</strong>
+            <p>Please fill out the form below to request a new customer account.  Once your form is submitted, a Sweda representative will review your request and contact you with further details.</p>
+        </div>
+        <div class="account-form-wrapper">
+            <form class="form create account form-create-account" action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
+                <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
+                <input type="hidden" name="success_url" value="<?= $block->escapeUrl($block->getSuccessUrl()) ?>">
+                <input type="hidden" name="error_url" value="<?= $block->escapeUrl($block->getErrorUrl()) ?>">
+                <h2>PRIMARY INFORMATION</h2>
+                <div class="row">
+                    <?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+
+                    <div class="col-sm-12">
+                        <div class="account-form-design">
+                            <label for="company_name" class="">Company Name*</label>
+                            <input type="text" name="company_name" id="asi_number" name="company_name" id="company_name" title="<?php echo 'Company Name' ?>" class="form-control input-number" data-validate="{required:true}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="account-form-design">
+                            <label for="ASI_nuber" class="">ASI Number*</label>
+                            <input type="number" name="asi_number" id="asi_number" value="<?= $block->escapeHtmlAttr($block->getAsiNumber()) ?>" title="<?= $block->escapeHtmlAttr(__('ASI Number')) ?>" class="form-control input-number" data-validate="{required:true}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="account-form-design">
+                            <label for="tax_id_number" class="">Tex ID Number*</label>
+                            <input type="number" name="tax_id_number" id="tax_id_number" value="" title="<?= $block->escapeHtmlAttr(__('Tex ID Number')) ?>" class="form-control input-number" data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="federal-tax-classification">
+                            <label>Federal Tax Classification*</label>
+                            <ul>
+                                <li>
+                                    <div class="form_chkbx">
+                                        <input type="radio" name="federal_classification" id="federal_classification"  value="Individual/Sole Proprietor" title="" class="form-control input-text" data-validate="{required:true}">
+                                        <label for="federal_classification">Individual/Sole Proprietor</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form_chkbx">
+                                        <input type="radio" name="federal_classification" id="federal_classification_2" value="C Corporation" title="" class="form-control input-text" data-validate="{required:true}">
+                                        <label for="federal_classification_2">C Corporation</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form_chkbx">
+                                        <input type="radio" name="federal_classification" id="federal_classification_3" value="S Corporation" title="" class="form-control input-text" data-validate="{required:true}">
+                                        <label for="federal_classification_3">S Corporation</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form_chkbx">
+                                        <input type="radio" name="federal_classification" id="federal_classification_4" value="Partnership" title="" class="form-control input-text" data-validate="{required:true}">
+                                        <label for="federal_classification_4">Partnership</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form_chkbx">
+                                        <input type="radio" name="federal_classification" id="federal_classification_5" value="LLC" title="" class="form-control input-text" data-validate="{required:true}">
+                                        <label for="federal_classification_5">LLC</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <h2>CONTACT INFORMATION</h2>
+                <div class="row">
+                    <input type="hidden" name="create_address" value="1" />
+
+                    <div class="col-md-6">
+                        <div class="per-infomation">
+                            <label for="mobile" class="">Email Address*</label>
+                            <div class="control">
+                                <input type="text" value="" name="contact_email" id="contact_email" title="<?php echo __('Email') ?>" class="input-text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php $_telephone = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Telephone') ?>
+                    <?php if ($_telephone->isEnabled()): ?>
+                        <?= $_telephone->setTelephone($block->getFormData()->getTelephone())->toHtml() ?>
+                    <?php endif ?>
+
+                    <?php $_streetValidationClass = $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('street'); ?>
+                    <div class="col-md-12">
+                        <div class="per-infomation">
+                            <label for="street_1" class="label">Street Address*</label>
+                            <div class="control">
+                                <input type="text"
+                                name="street[]"
+                                value="<?= $block->escapeHtmlAttr($block->getStreetLine(1)) ?>"
+                                title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('street') ?>"
+                                id="street_1"
+                                class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>"/>
+                                <div class="nested">
+                                    <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+                                    <?php for ($_i = 1, $_n = $this->helper('Magento\Customer\Helper\Address')->getStreetLines(); $_i < $_n; $_i++): ?>
+                                    <div class="field additional">
+                                        <label class="label" for="street_<?= /* @noEscape */ $_i + 1 ?>">
+                                            <span><?= $block->escapeHtml(__('Street Address %1', $_i + 1)) ?></span>
+                                        </label>
+                                        <div class="control">
+                                            <input type="text" name="street[]"
+                                            value="<?= $block->escapeHtmlAttr($block->getStreetLine($_i + 1)) ?>"
+                                            title="<?= $block->escapeHtmlAttr(__('Street Address %1', $_i + 1)) ?>"
+                                            id="street_<?= /* @noEscape */ $_i + 1 ?>"
+                                            class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
+                                        </div>
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="per-infomation">
+                        <label for="city" class="">city*</label>
+                        <div class="control">
+                            <input type="text" name="city" value="<?= $block->escapeHtmlAttr($block->getFormData()->getCity()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('city') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('city')) ?>" id="city">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="region per-infomation">
+                        <label for="tax_id" class="">State*</label>
+                        <div class="control">
+                            <select id="region_id" name="region_id" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select" style="display:none;">
+                                <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
+                            </select>
+                            <input type="text" id="region" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field country">
+                    <label for="country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
+                    <div class="control">
+                        <?= $block->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="per-infomation">
+                      <label for="city" class="">Zip Code*</label>
+                      <div class="control">
+                        <input type="text" name="postcode" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?>" id="zip" class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>" data-validate="{required:true}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="account-form-design">
+                    <label for="tax_id" class="">A/P Contact*</label>
+                    <input type="text" name="ap_contact" id="ap_contact" value="" title="A/P Contact" class="form-control input-text" data-validate="{required:true}">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="account-form-design">
+                    <label for="tax_id" class="">A/P Email Address*</label>
+                    <input type="email" name="ap_email_address" id="ap_email_address" value="" title="A/P Email Address" class="form-control input-text" data-validate="{required:true, 'validate-email':true}">
+                </div>
+            </div>
+
+            <?php $addressAttributes = $block->getChildBlock('customer_form_address_user_attributes');?>
+            <?php if ($addressAttributes): ?>
+                <?php $addressAttributes->setEntityType('customer_address'); ?>
+                <?php $addressAttributes->setFieldIdFormat('address:%1$s')->setFieldNameFormat('address[%1$s]');?>
+                <?php $block->restoreSessionData($addressAttributes->getMetadataForm(), 'address');?>
+                <?= $addressAttributes->setShowContainer(false)->toHtml() ?>
+            <?php endif;?>
+            <input type="hidden" name="default_billing" value="1">
+            <input type="hidden" name="default_shipping" value="1">
+        </div>
+        <h2>WEBSITE  REGISTRATION</h2>
+        <div class="row">
+          <div class="col-sm-12">
+              <div class="account-form-design">
+                <label for="Email_name" class="">Website Login Email* <p>- specify an email for use as website username</p></label>
+                <input type="email" name="email" autocomplete="email" id="email_address" value="<?= $block->escapeHtmlAttr($block->getFormData()->getEmail()) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true, 'validate-email':true}">
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="account-form-design">
+              <label for="password" class="">Password*</label>
+              <input type="password" name="password" id="password"
+              title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
+              class="form-control input-text"
+              data-password-min-length="<?= $block->escapeHtmlAttr($block->getMinimumPasswordLength()) ?>"
+              data-password-min-character-sets="<?= $block->escapeHtmlAttr($block->getRequiredCharacterClassesNumber()) ?>"
+              data-validate="{required:true, 'validate-customer-password':true}"
+              autocomplete="off">
+              <div class="error custom-password-mismatch"></div>
+              <div id="pswd_info">
+                <span>Password must meet the following requirements:</span>
+                <ul>
+                    <li id="length" class="invalid">Minimum 8 Characters in Length</li>
+                    <li id="capital" class="invalid">One Capital Letter</li>
+                    <li id="number" class="invalid">One Number</li>
+                    <li id="specialletter" class="invalid">One Special Character (@,#,$....)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="account-form-design">
+          <label for="password" class="">Confirm Password*</label>
+          <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
+      </div>
+  </div>
+  <?= $block->getChildHtml('form_additional_info') ?>
+
+  <div class="submit-requst-button">
+    <div class="primary">
+        <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Create an Account')) ?>">SUBMIT REQUEST</button>
+    </div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<fieldset class="fieldset create info">
+    <?php $_dob = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Dob') ?>
+    <?php if ($_dob->isEnabled()): ?>
+        <?= $_dob->setDate($block->getFormData()->getDob())->toHtml() ?>
+    <?php endif ?>
+    
+    <?php $_gender = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Gender') ?>
+    <?php if ($_gender->isEnabled()): ?>
+        <?= $_gender->setGender($block->getFormData()->getGender())->toHtml() ?>
+    <?php endif ?>
+</fieldset>
+<script>
+    require([
+        'jquery',
+        'mage/mage'
+        ], function($){
+
+            var dataForm = $('#form-validate');
+            var ignore = <?= /* @noEscape */ $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null' ?>;
+
+            dataForm.mage('validation', {
+                <?php if ($_dob->isEnabled()): ?>
+                    errorPlacement: function(error, element) {
+                        if (element.prop('id').search('full') !== -1) {
+                            var dobElement = $(element).parents('.customer-dob'),
+                            errorClass = error.prop('class');
+                            error.insertAfter(element.parent());
+                            dobElement.find('.validate-custom').addClass(errorClass)
+                            .after('<div class="' + errorClass + '"></div>');
+                        }
+                        else {
+                            error.insertAfter(element);
+                        }
+                    },
+                    ignore: ':hidden:not(' + ignore + ')'
+                    <?php else: ?>
+                        ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+                    <?php endif ?>
+                }).find('input:text').attr('autocomplete', 'off');
+
+
+
+            $('input[type=password]').keyup(function(){
+
+                var pswd = $(this).val();
+                console.log(pswd)
+
+                if ( pswd.length < 8 ) {
+                    $('#length').removeClass('valid').addClass('invalid');
+                } else {
+                    $('#length').removeClass('invalid').addClass('valid');
+                }
+
+                var pattern=/^[a-zA-Z0-9- ]*$/;
+                if (pattern.test(pswd) == false) {
+                    $('#specialletter').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#specialletter').removeClass('valid').addClass('invalid');
+                }
+                if ( pswd.match(/[A-Z]/) ) {
+                    $('#capital').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#capital').removeClass('valid').addClass('invalid');
+                }
+                if ( pswd.match(/\d/) ) {
+                    $('#number').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#number').removeClass('valid').addClass('invalid');
+                }
+            });
+
+            $('input[type=password]').focus(function() {
+                $('#pswd_info').show();
+            });
+            $('input[type=password]').blur(function() {
+                $('#pswd_info').hide();
+                passwordCompare();                
+            });
+            $('input[name=password_confirmation]').blur(function() {
+                $('#pswd_info').hide();
+                passwordCompare();                
+            });
+
+            function passwordCompare(){
+                var errormsg = "Please enter the same password again.";
+                var pass = $('input[name=password]').val();
+                var repass = $('input[name=password_confirmation]').val();
+                if(($('input[name=password]').val().length == 0) || ($('input[name=password_confirmation]').val().length == 0)){
+                    $('.custom-password-mismatch').html(errormsg);
+                }   
+                else if (pass != repass) {
+                    $('.custom-password-mismatch').html(errormsg);
+                }
+                else {
+                    $('.custom-password-mismatch').html('');
+                }
+            }
+
+        });
+    </script>
+    <script type="text/x-magento-init">
+        {
+            "#country": {
+            "regionUpdater": {
+            "optionalRegionAllowed": <?= /* @noEscape */ $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
+            "regionListId": "#region_id",
+            "regionInputId": "#region",
+            "postcodeId": "#zip",
+            "form": "#form-validate",
+            "regionJson": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
+            "defaultRegion": "<?= (int) $block->getFormData()->getRegionId() ?>",
+            "countriesWithOptionalZip": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getCountriesWithOptionalZip(true) ?>
+        }
+    }
+}
+</script>
+<script type="text/x-magento-init">
+    {
+        ".field.password": {
+        "passwordStrengthIndicator": {
+        "formSelector": "form.form-create-account"
+    }
+}
+}
+</script>

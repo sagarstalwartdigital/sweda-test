@@ -1,0 +1,114 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Pager template
+ *
+ * @see \Magento\Theme\Block\Html\Pager
+ */
+?>
+<div class="container">
+    <div class="flt-section">
+        <div class="row">
+            <?php if ($block->getCollection()->getSize()): ?>
+
+                <?php if ($block->getUseContainer()): ?>
+                <?php endif ?>
+
+                    <div class="col-md-3">
+                        <?php if ($block->getShowAmounts()): ?>
+                                <div class="showing-text">
+                                    <p class="toolbar-amount">
+                                        <span class="toolbar-number">
+                                        <?php if ($block->getLastPageNum()>1): ?>
+                                            <?= /* @escapeNotVerified */ __('Showing %1 to %2 of %3', $block->getFirstNum(), $block->getLastNum(), $block->getTotalNum()) ?>
+                                        <?php elseif ($block->getTotalNum() == 1): ?>
+                                            <?= /* @escapeNotVerified */ __('%1 Item', $block->getTotalNum()) ?>
+                                        <?php else: ?>
+                                            <?= /* @escapeNotVerified */ __('%1 Item(s)', $block->getTotalNum()) ?>
+                                        <?php endif; ?>
+                                        </span>
+                                    </p>
+                                </div>
+                        <?php endif ?>
+                    </div>
+
+                    <div class="col-md-3">
+                        <?php if ($block->getLastPageNum()>1): ?>
+                            <div class="tabbing-part">
+                                <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
+                                <a class="<?= /* @escapeNotVerified */ $text ? 'link ' : 'action ' ?> prew" href="<?= /* @escapeNotVerified */ $block->getPreviousPageUrl() ?>" title="<?= /* @escapeNotVerified */ $text ? $text : __('Previous') ?>">
+                                </a>
+
+                                <?php foreach ($block->getFramePages() as $_page): ?>
+                                    <?php if ($block->isPageCurrent($_page)): ?>
+                                        <form action="?" id="pagination-form" method="get">
+                                        <div class="headwear tabbing-part">
+                                            <input type="number" name="number" value="<?= /* @escapeNotVerified */ $_page ?>">
+                                        </div>
+                                        </form>
+                                    <?php endif;?>
+                                <?php endforeach;?>
+
+                                <?php $text = $block->getAnchorTextForNext() ? $block->getAnchorTextForNext() : '';?>
+                                <a class="<?= /* @escapeNotVerified */ $text ? 'link ' : 'action ' ?> next" href="<?= /* @escapeNotVerified */ $block->getNextPageUrl() ?>" title="<?= /* @escapeNotVerified */ $text ? $text : __('Next') ?>">
+                                </a>
+                                <span>of <?php  echo $block->getLastPageNum(); ?></span>
+                                <!-- & Custom Pager-->
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                <div class="col-md-6">
+                    <?php if ($block->isShowPerPage()): ?>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="filter-title">
+                                    <label for="filter-smart-cart limiter-label">Filter</label>
+                                </div>
+                                <select id="limiter" data-mage-init='{"redirectUrl": {"event":"change"}}' class="limiter-options">
+                                    <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                                        <option value="<?= /* @escapeNotVerified */ $block->getLimitUrl($_key) ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                                            selected="selected"<?php endif ?>>
+                                            <?= /* @escapeNotVerified */ $_limit ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                </div>
+
+                <?php if ($block->getUseContainer()): ?>
+                <?php endif ?>
+
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    require([
+        'jquery',
+    ], function($){
+        $(document).ready(function(){
+            $('form#pagination-form input[name="number"]').keypress(function (e) {
+                if (e.which == 13) {
+                    var loc = location.origin + location.pathname;
+                    var pageNo = $(this).val();
+                    // console.log(pageNo)
+                    window.location.href= loc + "?is_ajax=1&p="+pageNo;
+                    return false;    //<---- Add this line
+                }
+            });
+        });
+    });
+</script>

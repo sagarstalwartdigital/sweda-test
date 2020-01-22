@@ -1,0 +1,132 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+/*get newsletter to store config */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$newsletter_form_url = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('newsletter_form_url/general/newsletterFormUrl');
+
+$mediaUrl =$this->getUrl('pub/media')."wysiwyg/newsletter/";
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('newsletter')) {
+    $jsonData = base64_decode($this->getData('newsletter'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+$file = $page_data->parallaxleft;
+$ext = pathinfo($file, PATHINFO_EXTENSION);
+$path = $page_data->parallaxleft;
+$file = basename($path);       
+$file = basename($path, ".".$ext);
+$LeftNewFilename= $mediaUrl.$file.".".$ext;
+
+$file = $page_data->parallaxright;
+$ext = pathinfo($file, PATHINFO_EXTENSION);
+$path = $page_data->parallaxright;
+$file = basename($path);       
+$file = basename($path, ".".$ext);
+$RightNewFilename= $mediaUrl.$file.".".$ext;
+
+?>
+
+<div class="news-letter-section">
+    <div class="news-letter-banner">
+        <img class="desktop-only newsletter-bg-img" src="<?php echo $page_data->backgroundImage ?>">
+        <div class="newsletter-images">
+            <div class="news-left-img">
+                <img src="<?php echo $LeftNewFilename; ?>" class="newsletter-img1" />
+            </div>
+            <div class="news-right-img"> 
+                <img src="<?php echo $RightNewFilename; ?>"  class="newsletter-img2"/>
+            </div>
+        </div>
+        <img class="mobile-only" src="<?php echo $page_data->backgroundImagemo ?>" />
+    </div>
+
+    <div class="news-letter-text">
+
+        <h3><?php echo $page_data->title ?></h3>
+        <p><?php echo $page_data->description ?></p>
+        <?php /*
+            echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('subscribe')
+            ->toHtml();
+        */ ?>
+        <form class="" novalidate="novalidate" action="<?=$newsletter_form_url;?>" method="post" id="newsletter-validate-detail-footer">
+            <div class="Subscribe-section">
+                <input type="email" value="" name="EMAIL" class="email search-query form-control" id="mce-EMAIL" placeholder="Enter Your Email Address" data-validate="{required:true, 'validate-email':true}" required>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_e44c1f194bec93e238615469e_f6f826e769" tabindex="-1" value="">
+                </div>
+                <span class="news-section-btn">
+                    <button title="Subscribe" type="submit" id="mc-embedded-subscribe">
+                        <p>Subscribe</p>
+                    </button>
+                </span>
+                <div id="subscribe-result"></div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+        ], function ($) {
+
+
+            $(document).ready(function () {
+                var $form = $('form#newsletter-validate-detail-footer');
+                if ($form.length > 0) {
+                    $('form#newsletter-validate-detail-footer button[type="submit"]').bind('click', function (event) {
+                        if (event) event.preventDefault();
+                        register($form);
+                    });
+                }
+            });
+
+            function register($form) {
+                jQuery('form#newsletter-validate-detail-footer button[type="submit"] p').html('Sending...');
+                $.ajax({
+                    type: $form.attr('method'),
+                    url: $form.attr('action'),
+                    data: $form.serialize(),
+                    cache: false,
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    error: function (err) {alert('Could not connect to the registration server. Please try again later.');},
+                    success: function (data) {
+                        jQuery('form#newsletter-validate-detail-footer button[type="submit"] p').html('Subscribe');
+                        if (data.result === 'success') {
+
+                            console.log(data.msg);
+                            $('#mce-EMAIL').css('borderColor', '#ffffff');
+                            $('#subscribe-result').css('color', 'rgb(53, 114, 210)');
+                            $('#subscribe-result').html('<p>Thank you for subscribing. We have sent you a confirmation email.</p>');
+                            $('#mce-EMAIL').val('');
+                        } else {
+                            console.log(data.msg);
+                            $('#mce-EMAIL').css('borderColor', '#ff8282');
+                            $('#subscribe-result').css('color', '#ff8282');
+                            $('#subscribe-result').html('<p>' + data.msg+ '</p>');
+                        }
+                    } });
+
+            };
+
+        });
+    </script>
+
+    <style type="text/css">
+        div#subscribe-result p {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        div#subscribe-result a {
+            color: #3fc0c3;
+        }
+    </style>

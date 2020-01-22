@@ -1,0 +1,42 @@
+<?php 
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product_id = $block->getProductId();
+$_product = $_objectManager->get('Magento\Catalog\Model\Product')->load($product_id);
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$file_arr=array();
+foreach ($_product->getMediaGallery('images') as $image) {
+    if(isset($image['file']) && !empty($image['file']))
+        array_push($file_arr,$image['file']);
+}
+$usedProducts = $_product->getTypeInstance()->getUsedProducts($_product);
+
+foreach ($usedProducts as $child) {
+    $_childproducts = $_objectManager->get('\Magento\Catalog\Model\Product')->load($child->getId());
+    foreach ($_childproducts->getMediaGallery('images') as $image) {
+        if(isset($image['file']) && !empty($image['file']))
+            array_push($file_arr,$image['file']);
+    }
+}
+?>
+<div class="download-images-content">    
+    <div class="embed-main-block">  
+        <table>
+            <tbody>
+                <tr>
+                    <?php foreach ($file_arr as $imgPath) : ?>
+                        <td align="center"> 
+                            <img src="<?php echo $mediaUrl."catalog/product".$imgPath; ?>" alt="product-image" title="Mixed" width="122" height="110"><br>
+                            <a href="<?php echo $this->getUrl('sweda/downloadimages/DownloadImage',array('_query'=>array('fileName'=>$imgPath)));?>">Download</a>
+                        </td> 
+                    <?php endforeach; ?>
+                </tr>
+            </tbody>
+        </table>                        
+    </div>
+    <div class="download-all-btn">
+        <a class="download-image" href="<?php echo $this->getUrl('sweda/downloadimages/downloadallimages',array('_query'=>array('id'=>$product_id)));?>">Download All </a>
+    </div>
+    <p class="bottom-info-line">Please click 'Download' to save the images to your computer.</p>
+</div>

@@ -1,0 +1,99 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+
+if ($this->hasData('imprint_list')) {
+    $jsonData = base64_decode($this->getData('imprint_list'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $imprintdata = json_decode($page_data->imprintList);
+}
+?>
+
+<div class="container">
+    <h2 class="main-title"><?php echo strtoupper($page_data->title) ?></h2>
+    <div class="row">
+        <?php foreach ($imprintdata as $data): ?>
+
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="imprint-method-boxs">
+                    <h3>
+                        <?php
+                        $ImpListUrl = !empty($data->implistLearnmorelink) ? $this->getUrl($data->implistLearnmorelink) : 'javascript:;';
+                            if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                echo '<a href="'.$ImpListUrl.'">';
+                            } else {
+                                echo '<a href='.$ImpListUrl.'>';
+                            }
+                        ?>
+                            <?php echo $data->implistTitle ?>
+                        </a>
+                    </h3>
+                    <?php
+                        $ImpListUrl = !empty($data->implistLearnmorelink) ? $this->getUrl($data->implistLearnmorelink) : 'javascript:;';
+                            if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                echo '<a href="'.$ImpListUrl.'">';
+                            } else {
+                                echo '<a href='.$ImpListUrl.'>';
+                            }
+                        ?>
+                        <img src="<?php echo $data->toolImage ?>">
+                    </a>
+                    <p><?php echo $data->implistDescription ?></p>
+                    <div class="imp-method-button">
+                        <div class="imp-button">
+                            <?php if($data->implistLearnmore) { ?>
+                                <?php
+                                $ImpListUrl = !empty($data->implistLearnmorelink) ? $this->getUrl($data->implistLearnmorelink) : 'javascript:;';
+                                    if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                        echo '<a href="'.$ImpListUrl.'">';
+                                    } else {
+                                        echo '<a href='.$ImpListUrl.'>';
+                                    }
+                                ?>
+
+                                <?php echo $data->implistLearnmore ?></a>
+                            <?php } else { ?>
+                                <?php
+                                $ImpListUrl = !empty($data->implistLearnmorelink) ? $this->getUrl($data->implistLearnmorelink) : 'javascript:;';
+                                    if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                        echo '<a href="'.$ImpListUrl.'">';
+                                    } else {
+                                        echo '<a href='.$ImpListUrl.'>';
+                                    }
+                                ?>
+                                LEARN MORE</a>
+                            <?php } ?>    
+                        </div>
+                        <div class="imp-button">
+                            <?php if($data->implistShopnow) { ?>
+                                <?php
+                                    $ImpListloreUrl = !empty($data->implistShopnowlink) ? $this->getUrl($data->implistShopnowlink) : 'javascript:;';
+                                        if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                            echo '<a href="'.$ImpListloreUrl.'">';
+                                        } else {
+                                            echo '<a href='.$ImpListloreUrl.'>';
+                                        }
+                                    ?>    
+                                    <?php echo $data->implistShopnow ?>
+                                </a>
+                            <?php } else { ?>
+                                 <?php
+                                    $ImpListshopeUrl = !empty($data->implistShopnowlink) ? $this->getUrl($data->implistShopnowlink) : 'javascript:;';
+                                        if (filter_var($url, FILTER_VALIDATE_URL)) {
+                                            echo '<a href="'.$ImpListshopeUrl.'">';
+                                        } else {
+                                            echo '<a href='.$ImpListshopeUrl.'>';
+                                        }
+                                    ?>   
+                                 SHOP NOW</a>
+                            <?php } ?>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

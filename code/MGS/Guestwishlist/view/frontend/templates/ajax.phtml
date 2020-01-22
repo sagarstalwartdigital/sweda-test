@@ -1,0 +1,11 @@
+<div id="ajax_wishlist_loading">
+    <div class="ajax_wishlist_loading"></div>
+    <div class="action-close"></div>
+    <div id="ajax_wishlist_success" class="ajax_wishlist_success">
+        <div class="content">
+            <div class="text-content"><span id="ajax_wishlist_product_name"></span><?php echo __(' has been added to your Wish List'); ?></div>
+            <div class="actions"><a class="btn btn-primary" href="<?php echo $this->getUrl('guestwishlist') ?>" data-guest="<?php echo $this->getUrl('guestwishlist') ?>" data-href="<?php echo $this->getUrl('wishlist') ?>"><?php echo __('View Wish List'); ?></a></div>
+        </div>
+    </div>
+    <div class="ajax_wishlist_false"><div class="content" id="ajax_wishlist_false"></div></div>
+</div>

@@ -1,0 +1,317 @@
+<class_setting>
+	<theme_color>
+		<color>
+			<![CDATA[.color-primary, a:hover, a:focus, a:active, .card .card-link, .card .collapsed, button.action.default, button.action.action-edit-address, .btn-default, button.action.default:disabled, button.action.action-edit-address:disabled, .btn-default:disabled, button.action.default:focus, button.action.action-edit-address:focus, .btn-default:focus, .primary-color, .color-theme, .actions-toolbar a.action.back:hover, .btn-readmore, .owl-carousel .owl-nav > div:not(.disabled):hover, .breadcrumbs .items .item strong, .breadcrumbs .items .item a:hover, .toolbar .toolbar-amount .toolbar-number, .toolbar .modes-mode.active, .sidebar .block-wishlist .product-item-name > a:hover, .sidebar .block.filter .filter-content .filter-current .item .action.remove:hover, .sidebar .block.block-compare .block-content .product-items-names .product-item .product-item-link:hover, .sidebar .block.block-compare .actions-toolbar .secondary .action.clear, .sidebar .block.account-nav .items .item strong, .sidebar .block.block-reorder .product-items .product-item .product-item-name a:hover, .sidebar .block.block-reorder .actions-toolbar .secondary .action.view, .sidebar .block.block-blog-categories .block-content > ul > li > a:hover, .sidebar .block.block-blog-tags .tag-cloud li a:hover, .header .switcher .switcher-dropdown .switcher-option a:focus, .header .switcher .switcher-dropdown .switcher-option a:hover, .header .switcher .switcher-trigger.active strong > span, .header .switcher .switcher-trigger:hover, .header .block-search .block-title:hover:after, .header .block-search .block-content form .actions button:hover, .header .my-account-link .toogle-action:hover, .header .my-account-link .toplinks-content li a:hover, .header .mobile-navigation .close-nav-button:hover, .header .mobile-navigation .nav-main-menu .level1 > a:hover .mega-menu-sub-title, .header .nav-megamenu nav.navigation .nav-main-menu li.level0:hover a.level0, .sticky_catalog h3 .ti-close:hover, .promobanner .text .special-text a.h6:hover, .promobanner .text .right_menu .discount, .footer .middle-footer a:hover, .footer .middle-footer a:focus, .footer .social-links li a:hover, .footer .social-links li a:focus, .minicart-wrapper .block-minicart .block-content > .subtotal .price-wrapper .price, .minicart-items .product-item .product > .product-item-details .product-item-name a:hover, .sidebar-cart-type .minicart-wrapper .block-minicart .block-content > .action.close:hover span, .instantsearch-result-index .results .block-title .view-more a, .instantsearch-result-index .results .items .item .details strong > a:hover, .page-header-sliders .shop-now, .page-header-sliders .shop-now-v2:hover, .block.newsletter .form.subscribe .action.subscribe:hover, #newsletter-popup h2 span, .column.main .block.filter .filter-content .filter-current .item .action.remove:hover, .contact_image .abs-title span, body.account .main a.action, body.account .main a.action.back:hover, #registration .action.primary, .btn-print:hover, .catalog-product-compare-index .table-wrapper .table-comparison .product-image .towishlist:hover, .catalog-product-compare-index .table-wrapper .table-comparison .product-item-name:hover, #multiship-addresses-table tbody tr td.product .product-item-name a:hover, [class*="multishipping-checkout-"] table tbody tr td .product-item-name a:hover, #checkout-review-submit .price, .multishipping-checkout-overview table tfoot tr.grand.totals .price, .cart-empty p > a:hover, .opc-progress-bar-item._complete > span, .opc-progress-bar-item._complete > span:after, .opc-estimated-wrapper .estimated-price, .opc-block-shipping-information .shipping-information-title .action-edit:hover, .checkout-index-index .shipping-address-item.selected-item:after, .checkout-index-index .opc-block-summary .table-totals .grand.totals .price, #shopping-cart-table .product-item-name a:hover, #shopping-cart-table .subtotal .cart-price, #shopping-cart-table .actions-toolbar .gift-options-cart-item a:hover, .shopping-cart-bottom .cart-summary .multicheckout:hover, .blog-post-list .blog-list .blog-post .post-images .post-thumbnail .popup-video, .blog-post-list .blog-list .blog-post .post-body .post-header a:hover, .blog-post-view .post-images .post-thumbnail .popup-video, .blog-post-view .post-tags a:hover, .post-comments .title-comment-content, .post-comments .title, .post-comments .blog-load-more-comment a.loading-style, .shop-by-brand .item .brand-name h4.brand-title a:hover, .btn-promo-banner:hover, .promobanner .rotate-left.color-primary, .promobanner .rotate-right.color-primary, .blog-grid-block .title-blog > a:hover, .portfolio-bottom-content h4 > a:hover, .portfolio-bottom-content .title:hover, .portfolio-bottom-content .category-link a:hover, .testimonial-item .testimonial-content .content .author-info .name, .landing-parralax--item .landing-parralax-detail h2 a:hover, .card .card-link, .about-us .abs-title span, .rotate-image-container .close-rotate:hover, .products-grid .product-item-info .product-item-actions .actions-quickview .action:not(.primary), .products-grid .product-item-info .product-item-actions .action-wishlist .action:not(.primary), .products-grid .product-item-info .product-item-actions .actions-primary .action:not(.primary), .products-grid .product-item-info .product-item-actions .actions-compare .action:not(.primary), .products-grid .product-item-info .product-item-details .product-item-name > a:hover, .products-list .product-item .product-item-info .product-item-image .product-item-image-wrapper .mgs-quickview, .products-list .product-item .product-item-info .product-item-details .product-item-name a:hover, .products-list .product-item .product-item-info .product-item-details .product-item-actions .tocompare, .products-list .product-item .product-item-info .product-item-details .product-item-actions .action-wishlist a, .product.media .product.item-image .label-video, .product.media .item-thumb .popup-video-thumb, .product.media .product.item-image .popup-video .ti-video-camera:before, .catalog-product-view .product-info-main .price-box .price, .catalog-product-view .product-info-main .product-info-stock-sku .product-brand .brand-name a:hover, .catalog-product-view .product-info-main .product-addto-links a, .product-info-main .product-add-form .product-options-wrapper .fieldset > .field .field.choice .label a, .product-info-main .product-add-form .product-options-wrapper .swatch-attribute-selected-option, .product-info-main .product-add-form .block-bundle-summary .bundle-info .product-details .stock.unavailable span, .wishlist-index-index .main .product-info .product-item-name a:hover, .deal-products-list-block .product-item-name > a:hover, .nav-scroll > div > a:hover, .right.lookbook_banner .abs-title span, .owl-home10 .item .content .text a:hover, .cate-links .list_block li:hover a:hover, .cate-links .list_block li:hover a:focus, .home_store .item > div .sub-title span, .featured-collection .left-title > h3, .featured-collection .rotate-title, .page-header-sliders .slide-banner .inline + span, .page-header-sliders .slide-banner .shop-now:hover, .slider_text_v5 .shop-now, .slider_text_v4 .bottom > a:hover, .furniture-block .author > span, .contact_block > a:hover, .testimonial-static .author-info span, .title-right .content-heading .title, .title-left .content-heading .title, .header.header3 .switcher .switcher-trigger strong:hover, .header.header3 .my-account-link .toogle-action:hover]]>
+		</color>
+		<border_color>
+			<![CDATA[.border-primary, button.action-update:not(:disabled):hover, button.action-accept:not(:disabled):hover, button.action.secondary:not(:disabled):hover, .btn-secondary:not(:disabled):hover, button.action-update:not(:disabled):not(.disabled).active, button.action-accept:not(:disabled):not(.disabled).active, button.action.secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled).active, button.action-update:not(:disabled):not(.disabled):active, button.action-accept:not(:disabled):not(.disabled):active, button.action.secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled):active, .action.primary, button.action-dismiss, button.action.primary, button.action.action-apply, button.action-select-shipping-item, .btn-primary, .action.primary:disabled, button.action-dismiss:disabled, button.action.primary:disabled, button.action.action-apply:disabled, button.action-select-shipping-item:disabled, .btn-primary:disabled, .action.primary:focus, button.action-dismiss:focus, button.action.primary:focus, button.action.action-apply:focus, button.action-select-shipping-item:focus, .btn-primary:focus, button.action.default, button.action.action-edit-address, .btn-default, button.action.default:disabled, button.action.action-edit-address:disabled, .btn-default:disabled, button.action.default:focus, button.action.action-edit-address:focus, .btn-default:focus, button.action.default:not(:disabled):hover, button.action.action-edit-address:not(:disabled):hover, .btn-default:not(:disabled):hover, button.action.default:not(:disabled):not(.disabled).active, button.action.action-edit-address:not(:disabled):not(.disabled).active, .btn-default:not(:disabled):not(.disabled).active, button.action.default:not(:disabled):not(.disabled):active, button.action.action-edit-address:not(:disabled):not(.disabled):active, .btn-default:not(:disabled):not(.disabled):active, button.action-cancel:not(:disabled):hover, button.action-show-popup:not(:disabled):hover, .btn-third:not(:disabled):hover, button.action-cancel:not(:disabled):not(.disabled).active, button.action-show-popup:not(:disabled):not(.disabled).active, .btn-third:not(:disabled):not(.disabled).active, button.action-cancel:not(:disabled):not(.disabled):active, button.action-show-popup:not(:disabled):not(.disabled):active, .btn-third:not(:disabled):not(.disabled):active, .sidebar .block.filter .filter-content .filter-actions .filter-clear:hover, .sidebar .block.block-compare .actions-toolbar .action.compare:hover, .sidebar .block.block-wishlist .actions-toolbar a.action.details:hover, .sidebar .block.block-reorder .actions-toolbar .action.tocart:hover, .search-full .header .block-search.active .block-content form > .label:hover, .minicart-wrapper .block-minicart .block-content .actions .action.viewcart:hover, .minicart-items .product-item .product > .product-item-details .product-item-pricing .details-qty .update-cart-item:hover, #newsletter-popup .block.newsletter .form.subscribe .action.subscribe, .swatch-option-link-layered .swatch-option.text:not(.disabled):hover, .swatch-option-link-layered .swatch-option.text.disabled, .checkout-index-index .shipping-address-item.selected-item, #shopping-cart-table .actions-toolbar .gift-options-cart-item .actions-toolbar .action-edit, #shopping-cart-table .actions-toolbar .gift-options-cart-item .actions-toolbar .action-delete:hover, .blog-post-list .blog-list .blog-post .post-images .post-thumbnail .popup-video.btn-video, .blog-post-view .post-images .post-thumbnail .popup-video.btn-video, .post-comments .input-text:focus, .post-comments textarea:focus, .product-detail-infomation .block.review-add .input-text:focus, .product-detail-infomation .block.review-add textarea:focus, .portfolio-top-content:hover .image-item:after, .portfolio-top-content:hover .image-item:before, .landing-categories--item:hover .landing-categories--thumb a:before, .landing-categories--item:hover .landing-categories--thumb a:after, .swatch-option.text.selected, .swatch-option.text:not(.disabled):hover, .fotorama .fotorama__nav--dots .fotorama__active .fotorama__dot, .product.media .product.item-image .lb.video-link:before, .product-wishlist-items .product-item-image button.action.remove:hover, .wishlist-index-index .main .actions-toolbar .primary button.action.share:hover, .header_subscribe.home_subscribe .block.newsletter .form.subscribe .action.subscribe, .minicart-wrapper .block-minicart .block-content .actions .action.checkout]]>
+		</border_color>
+		<border_bottom_color>
+			<![CDATA[.border-bt-primary]]>
+		</border_bottom_color>
+		<background_color>
+            <![CDATA[.background-primary, button.action-update:not(:disabled):hover, button.action-accept:not(:disabled):hover, button.action.secondary:not(:disabled):hover, .btn-secondary:not(:disabled):hover, button.action-update:not(:disabled):not(.disabled).active, button.action-accept:not(:disabled):not(.disabled).active, button.action.secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled).active, button.action-update:not(:disabled):not(.disabled):active, button.action-accept:not(:disabled):not(.disabled):active, button.action.secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled):active, .action.primary, button.action-dismiss, button.action.primary, button.action.action-apply, button.action-select-shipping-item, .btn-primary, .action.primary:disabled, button.action-dismiss:disabled, button.action.primary:disabled, button.action.action-apply:disabled, button.action-select-shipping-item:disabled, .btn-primary:disabled, .action.primary:focus, button.action-dismiss:focus, button.action.primary:focus, button.action.action-apply:focus, button.action-select-shipping-item:focus, .btn-primary:focus, button.action.default:not(:disabled):hover, button.action.action-edit-address:not(:disabled):hover, .btn-default:not(:disabled):hover, button.action.default:not(:disabled):not(.disabled).active, button.action.action-edit-address:not(:disabled):not(.disabled).active, .btn-default:not(:disabled):not(.disabled).active, button.action.default:not(:disabled):not(.disabled):active, button.action.action-edit-address:not(:disabled):not(.disabled):active, .btn-default:not(:disabled):not(.disabled):active, button.action-cancel:not(:disabled):hover, button.action-show-popup:not(:disabled):hover, .btn-third:not(:disabled):hover, button.action-cancel:not(:disabled):not(.disabled).active, button.action-show-popup:not(:disabled):not(.disabled).active, .btn-third:not(:disabled):not(.disabled).active, button.action-cancel:not(:disabled):not(.disabled):active, button.action-show-popup:not(:disabled):not(.disabled):active, .btn-third:not(:disabled):not(.disabled):active, .owl-carousel .owl-dots .owl-dot:hover span, .owl-carousel .owl-dots .owl-dot.active span, .filter-options-content .irs-slider, .filter-options-content .irs-bar, .sidebar .block.filter .filter-content .filter-actions .filter-clear:hover, .sidebar .block.block-compare .actions-toolbar .action.compare:hover, .sidebar .block.block-wishlist .actions-toolbar a.action.details:hover, .sidebar .block.block-reorder .actions-toolbar .action.tocart:hover, .header.header6 .middle-header-wrapper .child-content .content-primary, .header.header6 .middle-header-wrapper .child-content .minicart-wrapper .action.showcart, .search-full .header .block-search.active .block-content form > .label:hover, .minicart-wrapper .action.showcart .counter.qty, .minicart-wrapper .block-minicart .block-content .actions .action.viewcart:hover, .minicart-items .product-item .product > .product-item-details .product-item-pricing .details-qty .update-cart-item:hover, .page-header-sliders.template-4 .slider_mgs_carousel.owl-carousel .owl-nav > div:after, #newsletter-popup .block.newsletter .form.subscribe .action.subscribe, .instagram-block .instagram-item:not(.enable-link):after, .instagram-block .instagram-item.enable-link > a:after, .opc-progress-bar-item._complete:before, .opc-progress-bar-item._complete > span:before, .opc-progress-bar-item._active:before, .opc-progress-bar-item._active > span:before, #shopping-cart-table .actions-toolbar .gift-options-cart-item .actions-toolbar .action-edit, #shopping-cart-table .actions-toolbar .gift-options-cart-item .actions-toolbar .action-delete:hover, .characters-filter li a:hover, .promobanner.mist > a:after, .product-label, .products-grid .product-item-info.effect.effect-2:hover .product-item-details, .products-grid .product-item-info.effect .product-item-actions .actions-quickview .action:not(.primary):hover, .products-grid .product-item-info.effect .product-item-actions .action-wishlist .action:not(.primary):hover, .products-grid .product-item-info.effect .product-item-actions .actions-compare .action:not(.primary):hover, .product-wishlist-items .product-item-image button.action.remove:hover, .wishlist-index-index .main .actions-toolbar .primary button.action.update:hover, .wishlist-index-index .main .actions-toolbar .primary button.action.share:hover, .wishlist-index-index .main .actions-toolbar .primary button.action.tocart, .owl-home10 .item:hover:after, .cate-links:before, .home_store .item > div .sub-title:after, .slider_text_v4 .bottom > a span:after, .header_subscribe.home_subscribe .block.newsletter .form.subscribe .action.subscribe, .minicart-wrapper .block-minicart .block-content .actions .action.checkout]]>
+		</background_color>
+		<fill>
+			<![CDATA[.fill-primary, .share-this #st-1 .st-btn:hover > svg]]>
+		</fill>
+	</theme_color>
+	
+	<!-- PRODUCT BACKGROUND -->
+	<product_background>
+        <background_color>
+            <![CDATA[.catalog-product-view.template-2.page-layout-1column .single-image-wrapper, .catalog-product-view.template-1.page-layout-1column .single-image-wrapper, .catalog-product-view.template-2.page-layout-1column.extra-gallery-fullwidth .description_extra, .catalog-product-view.template-1.page-layout-1column.extra-gallery-fullwidth .description_extra, .catalog-product-view.template-2.page-layout-1column .page-title-wrapper, .catalog-product-view.template-1.page-layout-1column .page-title-wrapper, .catalog-product-view.template-2.page-layout-1column .product.media, .catalog-product-view.template-1.page-layout-1column .product.media, .catalog-product-view.template-2.page-layout-1column #placeholder-header, .catalog-product-view.template-1.page-layout-1column #placeholder-header, .catalog-product-view.template-2.page-layout-1column .header:not(.active-sticky), .catalog-product-view.template-1.page-layout-1column .header:not(.active-sticky), .catalog-product-view.template-2.page-layout-1column .row-detail-product, .catalog-product-view.template-1.page-layout-1column .row-detail-product, .catalog-product-view.page-layout-1column.template-3 .row-detail-product:after, .catalog-product-view.page-layout-1column.template-2 .row-detail-product:after, .catalog-product-view.extra-gallery-fullwidth.template-2.page-layout-1column .product.media:after, .catalog-product-view.extra-gallery-fullwidth.template-1.page-layout-1column .product.media:after]]>
+        </background_color>
+    </product_background>
+	
+	<!-- HEADER -->
+	<header>
+		
+		<!-- Header border color -->
+		<header_border_color>
+			<border_color>
+				<![CDATA[.header]]>
+			</border_color>
+		</header_border_color>
+		
+		<!-- Header background color -->
+		<header_background_color>
+			<background_color>
+				<![CDATA[.header]]>
+			</background_color>
+		</header_background_color>
+		
+		
+		<!-- TOP LINKS SECTION -->
+		<!-- Background color -->
+		<background_color>
+			<background_color>
+				<![CDATA[.top-header-content]]>
+			</background_color>
+		</background_color>
+		
+		<!-- Text color -->
+		<text_color>
+			<color>
+				<![CDATA[.top-header-content]]>
+			</color>
+		</text_color>
+		
+		<!-- Link color -->
+		<link_color>
+			<color>
+				<![CDATA[.top-header-content a, .top-header-content .dropdown-switcher .switcher-toggle]]>
+			</color>
+		</link_color>
+		
+		<!-- Link hover color -->
+		<link_hover_color>
+			<color>
+				<![CDATA[.top-header-content a:hover, .top-header-content .dropdown-switcher .switcher-toggle:hover]]>
+			</color>
+		</link_hover_color>
+		
+		<!-- Dropdown link color -->
+		<drd_link_color>
+			<color>
+				<![CDATA[.header .dropdown-switcher .dropdown-menu li > a]]>
+			</color>
+		</drd_link_color>
+		
+		<!-- Dropdown link hover color -->
+		<drd_link_hover_color>
+			<color>
+				<![CDATA[.header .dropdown-switcher .dropdown-menu li > a:hover, .header .dropdown-switcher .dropdown-menu li > a:focus]]>
+			</color>
+		</drd_link_hover_color>
+		
+		
+		<!-- HEADER MIDDLE SECTION -->
+		<!-- Background color -->
+		<middle_background>
+			<background_color>
+				<![CDATA[.middle-header-content]]>
+			</background_color>
+		</middle_background>
+		
+		<!-- Middle link color -->
+		<middle_link>
+			<color>
+				<![CDATA[.middle-header-content a]]>
+			</color>
+		</middle_link>
+		
+		<!-- Middle link color -->
+		<middle_link_hover>
+			<color>
+				<![CDATA[.middle-header-content a:hover]]>
+			</color>
+		</middle_link_hover>
+		
+		<!-- Middle text color -->
+		<middle_text>
+			<color>
+				<![CDATA[.middle-header-content]]>
+			</color>
+		</middle_text>
+		
+		<!-- Icon color -->
+		<cart_icon>
+			<color>
+				<![CDATA[.minicart-wrapper .action.showcart:before, .header .block-search .block-title:after, .header .toogle_menu_mobile, .header .mobile-navigation .close-nav-button, .header .child-content .page-settings .toggle-settings .toogle-action, .header.header7 .my-account-link .toggle-toplinks .toogle-action,.header.header7 .block-search .actions .action.search:after]]>
+			</color>
+		</cart_icon>
+		
+		<!-- Icon color (Hover) -->
+		<cart_icon_hover>
+			<color>
+				<![CDATA[.minicart-wrapper .action.showcart:hover:before,.header .block-search .block-title:hover:after,.header .toogle_menu_mobile:hover,.header .mobile-navigation .close-nav-button:hover,.header .child-content .page-settings .toggle-settings .toogle-action:hover,.header.header7 .my-account-link .toggle-toplinks .toogle-action:hover,.header.header7 .block-search .actions .action.search:hover:after]]>
+			</color>
+		</cart_icon_hover>
+		
+		<!-- Number color -->
+		<cart_number>
+			<color>
+				<![CDATA[.minicart-wrapper .action.showcart > .counter.qty,.header .header-wl .count-wl]]>
+			</color>
+		</cart_number>
+		
+		<!-- Number color -->
+		<cart_number_background>
+			<background_color>
+				<![CDATA[.minicart-wrapper .action.showcart > .counter.qty,.header .header-wl .count-wl]]>
+			</background_color>
+		</cart_number_background>
+		
+		
+		<!-- MENU SECTION -->
+		<!-- Section background color -->
+		<menu_background>
+			<background_color>
+				<![CDATA[.bottom-header-content]]>
+			</background_color>
+		</menu_background>
+		
+		<!-- Level 1 link color -->
+		<lv1_color>
+			<color>
+				<![CDATA[#mainMenu .level0 a.level0]]>
+			</color>
+		</lv1_color>
+		
+		<!-- Level 1 link hover color -->
+		<lv1_color_hover>
+			<color>
+				<![CDATA[#mainMenu .level0:hover a.level0]]>
+			</color>
+		</lv1_color_hover>
+		
+		<!-- Level 1 background color -->
+		<lv1_background>
+			<background_color>
+				<![CDATA[#mainMenu .level0 a.level0]]>
+			</background_color>
+		</lv1_background>
+		
+		<!-- Level 1 hover background color -->
+		<lv1_background_hover>
+			<background_color>
+				<![CDATA[#mainMenu .level0:hover a.level0]]>
+			</background_color>
+		</lv1_background_hover>
+	</header>
+	
+	<!-- FOOTER -->
+	<footer>
+		<!-- TOP SECTION -->
+		<!-- Background color -->
+		<top_background_color>
+			<background_color>
+				<![CDATA[footer .top-footer]]>
+			</background_color>
+		</top_background_color>
+		
+		<!-- Text color -->
+		<top_text_color>
+			<color>
+				<![CDATA[footer .top-footer]]>
+			</color>
+		</top_text_color>
+		
+		<!-- Border top color -->
+		<top_border_color>
+			<border_color>
+				<![CDATA[footer .top-footer]]>
+			</border_color>
+		</top_border_color>
+		
+		<!-- Heading color -->
+		<top_heading_color>
+			<color>
+				<![CDATA[footer .top-footer h1,footer .top-footer h2,footer .top-footer h3,footer .top-footer h4,footer .top-footer h5,footer .top-footer h6,footer .top-footer .h1,footer .top-footer .h2,footer .top-footer .h3,footer .top-footer .h4,footer .top-footer .h5,footer .top-footer .h6]]>
+			</color>
+		</top_heading_color>
+		
+		<!-- Link color -->
+		<top_link_color>
+			<color>
+				<![CDATA[footer .top-footer a]]>
+			</color>
+		</top_link_color>
+		
+		<!-- Link hover color -->
+		<top_link_color_hover>
+			<color>
+				<![CDATA[footer .top-footer a:hover]]>
+			</color>
+		</top_link_color_hover>
+		
+		
+		<!-- MIDDLE SECTION -->
+		<!-- Background color -->
+		<middle_background_color>
+			<background_color>
+				<![CDATA[footer .middle-footer]]>
+			</background_color>
+		</middle_background_color>
+		
+		<!-- Text color -->
+		<middle_text_color>
+			<color>
+				<![CDATA[footer .middle-footer]]>
+			</color>
+		</middle_text_color>
+		
+		<!-- Border color -->
+		<middle_border_color>
+			<border_color>
+				<![CDATA[footer .middle-footer]]>
+			</border_color>
+		</middle_border_color>
+		
+		<!-- Heading color -->
+		<middle_heading_color>
+			<color>
+				<![CDATA[footer .middle-footer h1,footer .middle-footer h2,footer .middle-footer h3,footer .middle-footer h4,footer .middle-footer h5,footer .middle-footer h6,footer .middle-footer .h1,footer .middle-footer .h2,footer .middle-footer .h3,footer .middle-footer .h4,footer .middle-footer .h5,footer .middle-footer .h6]]>
+			</color>
+		</middle_heading_color>
+		
+		<!-- Link color -->
+		<middle_link_color>
+			<color>
+				<![CDATA[footer .middle-footer a]]>
+			</color>
+		</middle_link_color>
+		
+		<!-- Link hover color -->
+		<middle_link_color_hover>
+			<color>
+				<![CDATA[footer .middle-footer a:hover]]>
+			</color>
+		</middle_link_color_hover>
+		
+		
+		<!-- BOTTOM SECTION -->
+		<!-- Background color -->
+		<bottom_background_color>
+			<background_color>
+				<![CDATA[footer .bottom-footer]]>
+			</background_color>
+		</bottom_background_color>
+		
+		<!-- Text color -->
+		<bottom_text_color>
+			<color>
+				<![CDATA[footer .bottom-footer]]>
+			</color>
+		</bottom_text_color>
+		
+		<!-- Border color -->
+		<bottom_border_color>
+			<border_color>
+				<![CDATA[footer .bottom-footer]]>
+			</border_color>
+		</bottom_border_color>
+		
+		<!-- Heading color -->
+		<bottom_heading_color>
+			<color>
+				<![CDATA[footer .bottom-footer h1,footer .bottom-footer h2,footer .bottom-footer h3,footer .bottom-footer h4,footer .bottom-footer h5,footer .bottom-footer h6,footer .bottom-footer .h1,footer .bottom-footer .h2,footer .bottom-footer .h3,footer .bottom-footer .h4,footer .bottom-footer .h5,footer .bottom-footer .h6]]>
+			</color>
+		</bottom_heading_color>
+		
+		<!-- Link color -->
+		<bottom_link_color>
+			<color>
+				<![CDATA[footer .bottom-footer a]]>
+			</color>
+		</bottom_link_color>
+		
+		<!-- Link hover color -->
+		<bottom_link_color_hover>
+			<color>
+				<![CDATA[footer .bottom-footer a:hover]]>
+			</color>
+		</bottom_link_color_hover>
+	</footer>
+</class_setting>

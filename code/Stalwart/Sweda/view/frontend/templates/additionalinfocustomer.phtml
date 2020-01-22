@@ -1,0 +1,161 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Edit $block */
+?>
+
+<?php $_dob = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Dob') ?>
+<?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
+<?php $_gender = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Gender') ?>
+<section id="maincontent" class="page-main container">
+	  <div class="account-overview-title">
+	  	<h2>Hi, Sarah</h2>
+	   </div>
+	    <div class="row">
+	        <div class="tab-content">
+	          <div class="tab-pane active text-style" id="tab1">
+	            <div class="edit-profile">
+	              <strong>ACCOUNT INFORMATION</strong>
+	              <div class="edit-Profile-detail">
+	                <li><strong>Registry ID : </strong><?php echo $block->getCustomer()->getCustomAttribute('registry_id') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('registry_id')->getValue()) : ""; ?></li>
+	                <li><strong>Customer ID : </strong><?php echo $block->getCustomer()->getCustomAttribute('customer_id') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('customer_id')->getValue()) : ""; ?></li>
+	                <li><strong>iStore ID : </strong><?php echo $block->getCustomer()->getCustomAttribute('istore_id') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('istore_id')->getValue()) : ""; ?></li>                
+	                <li><strong>Account # : </strong><?php echo $block->getCustomer()->getCustomAttribute('account_number') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('account_number')->getValue()) : ""; ?></li>
+	              </div>
+	              <?php
+	                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        			$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+        			$customerData = $objectManager->create('Magento\Customer\Model\Customer')->load($customerSession->getCustomer()->getId());
+	              	$customerAddress = array();
+	              		
+	                foreach ($customerData->getAddresses() as $address)
+	                {
+	                    $customerAddress[] = $address->toArray();
+	                }
+	                foreach ($customerAddress as $customerAddres) {
+
+	                    $customerAddressid = $customerAddres['entity_id'];
+	                    break;
+	                }
+	              ?>
+	              <form class="form form-edit-account custom-edit-form" action="<?php echo $this->getUrl('sweda/customeraccount/editPost',array("_query" => array("id"=>$customerSession->getCustomer()->getId()))); ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" autocomplete="off">
+	              	  <input type="hidden" name="entity_id" value="">
+	              	  <?= $block->getBlockHtml('formkey') ?>
+		              <div class="personal-information">
+		                <div class="personal-text">
+		                  <h2>PERSONAL INFORMATION</h2>
+		                </div>
+		                <div class="row">
+							<div class="col-md-6">
+								<div class="per-infomation">
+								    <div class="field firstname required">
+										<label for="firstname" class="label"><span><?php /* @escapeNotVerified */
+										echo __('first name') ?></span></label>
+										<div class="control">
+											<input type="text" value="<?php echo $block->escapeHtml($block->getCustomer()->getFirstname()) ?>" name="firstname" id="firstname" title="<?php /* @escapeNotVerified */
+										echo __('First name') ?>" class="input-text" data-validate="{required:true}">
+										</div>
+									</div>
+								</div>	
+							</div>
+							<div class="col-md-6">
+								<div class="per-infomation">
+									<div class="field lastname required">
+										<label for="lastname" class="label"><span><?php /* @escapeNotVerified */
+										echo __('last name') ?></span></label>
+										<div class="control">
+											<input type="text" value="<?php echo $block->escapeHtml($block->getCustomer()->getLastname()) ?>" name="lastname" id="lastname" title="<?php /* @escapeNotVerified */
+										echo __('last name') ?>" class="input-text" data-validate="{required:true}">
+										</div>
+									</div>  
+								</div>
+							</div>
+		                </div>
+		                <div class="row">
+							<div class="col-md-6">
+								<div class="per-infomation">
+								    <div class="field companyname">
+										<label for="company_name" class="label"><span><?php /* @escapeNotVerified */
+										echo __('Company Name') ?></span></label>
+										<div class="control">
+											<input type="text" value="<?php echo $block->getCustomer()->getCustomAttribute('company_name') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('company_name')->getValue()) : ''; ?>" name="company_name" id="company_name" title="<?php /* @escapeNotVerified */
+										echo __('Company Name') ?>" class="input-text">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="per-infomation">
+								    <div class="field jobtitle">
+										<label for="jobtitle" class="label"><span><?php /* @escapeNotVerified */
+										echo __('Job Title') ?></span></label>
+										<div class="control">
+											<input type="text" value="<?php echo $block->getCustomer()->getCustomAttribute('jobtitle') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('jobtitle')->getValue()) : ""; ?>" name="jobtitle" id="jobtitle" title="<?php /* @escapeNotVerified */
+										echo __('Job Title') ?>" class="input-text">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+		              </div>
+		              <?= $block->getChildHtml('form_additional_info') ?>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	    </div>      
+</section>
+
+
+
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#form-validate');
+        var ignore = <?= /* @noEscape */ $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null' ?>;
+        
+        dataForm.mage('validation', {
+        <?php if ($_dob->isEnabled()): ?>
+            errorPlacement: function(error, element) {
+                if (element.prop('id').search('full') !== -1) {
+                    var dobElement = $(element).parents('.customer-dob'),
+                        errorClass = error.prop('class');
+                    error.insertAfter(element.parent());
+                    dobElement.find('.validate-custom').addClass(errorClass)
+                        .after('<div class="' + errorClass + '"></div>');
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            ignore: ':hidden:not(' + ignore + ')'
+        <?php else: ?>
+            ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+        <?php endif ?>
+        });
+
+    });
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-role=change-email], [data-role=change-password]": {
+            "changeEmailPassword": {
+                "titleChangeEmail": "<?= $block->escapeJs($block->escapeHtml(__('Change Email'))) ?>",
+                "titleChangePassword": "<?= $block->escapeJs($block->escapeHtml(__('Change Password'))) ?>",
+                "titleChangeEmailAndPassword": "<?= $block->escapeJs($block->escapeHtml(__('Change Email and Password'))) ?>"
+            }
+        },
+        "[data-container=new-password]": {
+            "passwordStrengthIndicator": {
+                "formSelector": "form.form-edit-account"
+            }
+        }
+    }
+</script>

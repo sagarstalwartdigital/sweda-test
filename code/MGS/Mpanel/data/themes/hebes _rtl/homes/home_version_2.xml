@@ -1,0 +1,451 @@
+<home>
+	<section>
+		<name><![CDATA[block3]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block13]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[35]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block14]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[xl-no-padding]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block15]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block16]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[xl-no-padding]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block17]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["12","12"]]]></tablet_cols>
+		<large_cols><![CDATA[["6","6"]]]></large_cols>
+		<medium_cols><![CDATA[["12","12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block18]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[20]]></padding_top>
+		<padding_bottom><![CDATA[110]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block19]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[35]]></padding_bottom>
+		<block_position><![CDATA[8]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block3-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle_right\" data-text-animate=\"slideInRight\" class=\"item slideInRight\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_1.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_1.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"slider_text_v2\">\r\n    <span class=\"top-text rotate-text\">Trending<\/span>\r\n    <h2><span>Chair<\/span> Collection<\/h2>\r\n    <p>\r\n        <span>Unique design<br>Chair trending <\/span>\r\n        <span>the best material<br>for the product<\/span>\r\n    <\/p>\r\n    <a href=\"#\" class=\"shop-now\">SHOP NOW<\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"slideInRight\" class=\"item slideInRight\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"slider_text_v2\">\r\n    <span class=\"top-text rotate-text\">Trending<\/span>\r\n    <h2><span>Chair<\/span> Collection<\/h2>\r\n    <p>\r\n        <span>Unique design<br>Chair trending <\/span>\r\n        <span>the best material<br>for the product<\/span>\r\n    <\/p>\r\n    <a href=\"#\" class=\"shop-now\">SHOP NOW<\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"slideInRight\" class=\"item slideInRight\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_3.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_2_3.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"slider_text_v2\">\r\n    <span class=\"top-text rotate-text\">Trending<\/span>\r\n    <h2><span>Chair<\/span> Collection<\/h2>\r\n    <p>\r\n        <span>Unique design<br>Chair trending <\/span>\r\n        <span>the best material<br>for the product<\/span>\r\n    <\/p>\r\n    <a href=\"#\" class=\"shop-now\">SHOP NOW<\/a>\r\n<\/div><\/div><\/div><\/div><\/div>","fullscreen":"1","fullheight":"1","offset":"","effect":"1","speed":"","navigation":"1","navtemple":"1","loop":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="1" autoplay="0" stop_auto="0" navigation="1" offset="" fullheight="1" pagination="0" loop="1" speed="" html_slider="&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;slideInRight&quot; class=&quot;item slideInRight&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_2_1.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_2_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v2&quot;&gt;
+    &lt;span class=&quot;top-text rotate-text&quot;&gt;Trending&lt;/span&gt;
+    &lt;h2&gt;&lt;span&gt;Chair&lt;/span&gt; Collection&lt;/h2&gt;
+    &lt;p&gt;
+        &lt;span&gt;Unique design&lt;br&gt;Chair trending &lt;/span&gt;
+        &lt;span&gt;the best material&lt;br&gt;for the product&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;slideInRight&quot; class=&quot;item slideInRight&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_2_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_2_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v2&quot;&gt;
+    &lt;span class=&quot;top-text rotate-text&quot;&gt;Trending&lt;/span&gt;
+    &lt;h2&gt;&lt;span&gt;Chair&lt;/span&gt; Collection&lt;/h2&gt;
+    &lt;p&gt;
+        &lt;span&gt;Unique design&lt;br&gt;Chair trending &lt;/span&gt;
+        &lt;span&gt;the best material&lt;br&gt;for the product&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;slideInRight&quot; class=&quot;item slideInRight&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_2_3.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_2_3.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v2&quot;&gt;
+    &lt;span class=&quot;top-text rotate-text&quot;&gt;Trending&lt;/span&gt;
+    &lt;h2&gt;&lt;span&gt;Chair&lt;/span&gt; Collection&lt;/h2&gt;
+    &lt;p&gt;
+        &lt;span&gt;Unique design&lt;br&gt;Chair trending &lt;/span&gt;
+        &lt;span&gt;the best material&lt;br&gt;for the product&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="1" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block13-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="furniture-block row">
+<div class="col-md"><span class="sub">HISTORY SINCE 1998</span>
+<h2>Welcome to Hebes Store - Amazing furniture</h2>
+</div>
+<div class="col-md">
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <strong class="color-primary">Suspendisse faucibus</strong> sed dolor eget posuere. Sed id interdum urna faucibus sed dolor eget posuere.<br /><br />Sed id interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet dolor eget posuere.</p>
+<p class="author"><span>JONT HENRRY</span> - CEO</p>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block14-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"SALE UP TO 40% OFF","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_1"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[rotate-left col-lg-7 col-xl-5 padding-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block14-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[3]]></col>
+		<class><![CDATA[visible-xl ]]></class>
+		<block_content><![CDATA[]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block14-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_2"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-lg-5 col-xl-3 top80 padding-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block15-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_3"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[col-xl-5 padding-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_3" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block15-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[3]]></col>
+		<class><![CDATA[visible-xl]]></class>
+		<block_content><![CDATA[]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block15-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_4"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[top130  col-xl-4 padding-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block16-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[1]]></col>
+		<class><![CDATA[visible-xl]]></class>
+		<block_content><![CDATA[]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block16-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_5"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[rotate-right  col-lg-5 col-xl-3  padding-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_5" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block16-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[4]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[3]]></col>
+		<class><![CDATA[visible-xl]]></class>
+		<block_content><![CDATA[<div></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block16-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[5]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home2_6"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[top220  col-lg-7 col-xl-5]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home2_6" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block17-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30]]></class>
+		<block_content><![CDATA[<div class="header_subscribe home right110">
+<h2 class=" margin-bottom45">Get 20% Discount</h2>
+<p>Get 20% discount with notified about the latest news and updates. No spam, we promise!</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe.phtml"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block17-1]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"Testimonials","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"grid.phtml","use_slider":"1","number_row":"1","show_avatar":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[mini-title margin-bottom30]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="Testimonials" mgs_panel_note="" testimonials_count="3" perrow="1" show_avatar="0" use_slider="1" template="grid.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block18-0]]></block_name>
+		<type><![CDATA[brands]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"12","perrow":"6","brand_by":"all","use_slider":"1","number_row":"1","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Brand\Block\Widget\Home" mgs_panel_title="" mgs_panel_note="" limit="12" perrow="6" use_slider="1" brand_by="all" template="widget/home.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block19-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="title-v4"><div class="content-heading">
+<h6 class="title">FROM INSTAGRAM</h6>
+<div class="sub"><i class="fa fa-instagram"></i>@hebestheme.net</div>
+<div class="subtitle">STYLISH, DESIGNER, INTERACTIVE, SIMPLIFIED AND PERSONAL TOUCH TO INTEROR DESIGN</div>
+</div></div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block19-0]]></block_name>
+		<type><![CDATA[instagram]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"10","perrow":"5","resolution":"low_resolution","link":"1","like":"1","comment":"1","use_slider":"1","number_row":"1","autoplay":"1","stop_auto":"1","navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-top70]]></class>
+		<block_content><![CDATA[{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="" mgs_panel_note="" limit="10" resolution="low_resolution" link="1" perrow="5" use_slider="1" like="1" comment="1" autoplay="1" stop_auto="1" navigation="0" pagination="0" number_row="1" template="widget/instagram.phtml"}}]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Home2_1]]></title>
+			<filename><![CDATA[/b/a/banner1.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-right]]></text_align>
+			<content><![CDATA[<h6 class="rotate-left color-primary">SALE UP TO 40% OFF</h6>
+<h3>Hebes Chair Collection</h3>
+<a href="#" class="btn-promo-banner">View Collection</a>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize-xs top66]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home2_2]]></title>
+			<filename><![CDATA[/b/a/banner2_1.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<h6 class="rotate-right top44">NEW ARRIVALS</h6>
+<h3>Hebes Wood Lamp</h3>
+<p>Vestibulum imperdiet nibh vel magna</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home2_3]]></title>
+			<filename><![CDATA[/b/a/banner3_3.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<h6 class="rotate-right top37">NEW ARRIVALS</h6>
+<h3>Hebes Wood Book</h3>
+<p>Vestibulum imperdiet nibh vel magna</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize-xs]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_3]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home2_4]]></title>
+			<filename><![CDATA[/b/a/banner4_4.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[middle-left]]></text_align>
+			<content><![CDATA[<h3>Wood Decor</h3>
+<p>New Collection</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_4]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home2_5]]></title>
+			<filename><![CDATA[/b/a/banner6.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[middle-left]]></text_align>
+			<content><![CDATA[<h6 class="rotate-right  color-primary top">SALE UP TO 40% OFF</h6>
+<h3>Bar Chair</h3>
+<p>New Collection</p>
+<a href="#" class="btn-promo-banner">Shop now</a>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize left]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_5]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home2_6]]></title>
+			<filename><![CDATA[/b/a/banner5.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[View Collection]]></button>
+			<text_align><![CDATA[middle-left]]></text_align>
+			<content><![CDATA[<h3>Hebes Chair Collection</h3>
+]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize-xs]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home2_6]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+	    <header><header>header_2</header></header>
+		<custom_style>
+			<style>.footer.footer2 .middle-footer{border-top: 0}</style>
+		</custom_style>
+	</theme_setting>
+	<color_setting>
+		<general>
+			<theme_color>#f26c4f</theme_color>
+		</general>
+	</color_setting>
+
+</home>

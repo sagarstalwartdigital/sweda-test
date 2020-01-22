@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data');?>
+<?php $width = $themeHelper->getStoreConfig('mpanel/product_details/media_width');?>
+<?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+    $currentCustomerName = $customerSession->getCustomer()->getName();
+?>
+<div class="main-top-title">
+    <div class="breadcrumbs width-<?php echo $width;?>">
+        <div class="<?php if ($themeHelper->getStoreConfig('mpanel/product_details/product_template') != 1){echo __('container');}?>">
+            <ul class="items">
+                <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+                    <li class="item <?php /* @escapeNotVerified */ echo $crumbName ?>">
+                    <?php if ($crumbInfo['link']) : ?>
+                        <a href="<?php /* @escapeNotVerified */ echo $crumbInfo['link'] ?>" title="<?php echo $block->escapeHtml($crumbInfo['title']) ?>">
+                            <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+                        </a>
+                    <?php elseif ($crumbInfo['last']) : ?>
+                        <strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+                    <?php else: ?>
+                        <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+                    <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <div class="page-customer-title-wrapper page-top-title">
+      <h2 class="customer-name-title"><?php echo $currentCustomerName ? "HI, ".$currentCustomerName : ""; ?></h2>
+    </div>
+    <div class="tools-catalog page-top-title">
+      <h2 class="customer-name-title"><?php echo "CATALOG LIBRARY"; ?></h2>
+    </div>
+    <div class="promo-standards page-top-title">
+      <h2 class="customer-name-title"><?php echo "PROMO STANDARDS"; ?></h2>
+    </div>
+    <div class="promo-standards-topic page-top-title">
+      <h2 class="customer-name-title"><?php echo "PROMO STANDARDS"; ?></h2>
+    </div>
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            if ($("body").hasClass("account")) {
+                $('.page-customer-title-wrapper').removeClass('page-top-title');
+            }
+            if ($("body").hasClass("gallery-post-list")) {
+                $('.tools-catalog').removeClass('page-top-title');
+            }
+            if ($("body").hasClass("mppromostandards-post-index")) {
+                $('.promo-standards').removeClass('page-top-title');
+            }
+            if ($("body").hasClass("mppromostandards-topic-view")) {
+                $('.promo-standards-topic').removeClass('page-top-title');
+            }
+        });
+    });
+</script>
+    

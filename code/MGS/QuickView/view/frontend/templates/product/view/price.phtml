@@ -1,0 +1,7 @@
+<?php 
+$_product = $block->getProduct();
+$abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+<div class="pricing_section"><?php echo $abstractProductBlock->getProductPrice($_product) ?></div>

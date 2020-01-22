@@ -1,0 +1,68 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$collection = $block->getCollection();
+$showThumbnail = $this->getConfig('general_settings/show_thumbnail');
+?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank5.png'); ?>
+<?php if (!count($collection)): ?>
+    <div class="message empty">
+        <div><?php echo __('Have no posts.') ?></div>
+    </div>
+<?php else: ?>
+    <div class="blog-list">
+        <?php foreach ($collection as $post): ?>
+            <div class=" blog-post ">
+				<div class="post-images">
+                    <?php if($helper->getImageThumbnailPost($post) != ""): ?>
+						<?php 
+							if(!$lazyLoad){
+								$baseImage = $this->getImageThumbnailPost($post);
+							}
+						?>
+                        <div class="post-thumbnail <?php if($lazyLoad): ?> lazy-img<?php endif ?>">
+							<a class="post-thumbnail--image" title="<?php echo $post->getTitle(); ?>">
+								<img class="img-fluid lazy" src="<?php echo $baseImage; ?>" data-src="<?php echo $helper->getImageThumbnailPost($post); ?>" alt="<?php echo $post->getTitle(); ?>" />
+							</a>
+                            <?php if($post->getThumbType() == "video" && $post->getVideoThumbId() != ""): ?>
+                            <a class="btn-video popup-video" href="<?php echo $helper->getVideoThumbUrl($post); ?>" target="_blank"><span class="ti-control-play"></span></a>
+                            <?php endif ?>
+                        </div>
+                    <?php endif ?>
+				</div>
+				<div class="post-body">
+                    <div class="left-content">
+                        <div class="post-metas">
+                            <div class="meta-date">
+                                <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                            </div>
+                            <div class="entry-author entry-meta">
+                                <?php echo __('BY');?>
+                                <strong><?php echo __('%1', $post->getUser()); ?></strong>
+                            </div>
+                        </div>
+                        <h4 class="post-header">
+                             <a class="post-title-link" title="<?php echo $post->getTitle(); ?>" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"><?php echo $post->getTitle(); ?></a>
+                        </h4>
+					</div>
+					<div class="right-content">
+                        <?php if ($post->getShortContent()): ?>
+                        <div class="post-content">
+                            <div class="post-short-description">
+                                <?php echo $post->getShortContent(); ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <div class="post-aux">
+                            <a class="btn-readmore" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"  ><?php echo __('Read more') ?></a>
+                        </div>
+					</div>
+				</div>
+			</div>
+        <?php endforeach; ?>
+    </div>
+	<div class="bottom-pagination">
+		<div class="toolbar"><?php echo $block->getPagerHtml(); ?></div>
+	</div>
+<?php endif; ?>

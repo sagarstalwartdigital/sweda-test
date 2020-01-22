@@ -1,0 +1,58 @@
+<?php
+/**
+ * @category    Stalwart
+ * @package     Stalwart_SmartCart
+ */
+?>
+<?php /** @var Stalwart\SmartCart\Block\ModalCart $block */ ?>
+<?php $customerSmartCarts = $block->getSmartCart(); ?>
+<div id="smartcart-popup-modal" class="smartcart-form">
+    <form id="add-smartcart-form" action="<?php echo $this->getUrl('smartcart/cartindex/savecart'); ?>" method="post" autocomplete="off" class="<?php echo $block->getOnProView() ? 'is-from-product' : '' ?>">
+        <div class="open_addnew_form">
+        <input type="hidden" name="productdata" id="productdata" />
+        <?php if($block->getIsAddProductPopup()) : ?>
+          <input type="hidden" name="isproview" id="isproview" value="yes" />
+        <?php endif; ?>
+        <input type="hidden" name="productid" id="productid" />
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cart-md-form">
+              <label for="subject" class="">Title</label>
+              <input class="input-text required-entry" data-validate="{required:true}" name="title" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="cart-md-form">
+              <label for="name" class="">Event Name</label>
+              <input  class="input-text" name="event_name" type="text">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cart-md-form">
+              <label for="email" class="">Event Date</label>
+              <input class="input-text" placeholder="mm/dd/yyyy" name="event_date" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cart-md-form">
+              <label for="message">Description</label>
+              <textarea  class="input-text" name="description" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="create-new-smartcart-save-btn">
+            <button type="submit" name="adding_pro_submit" value="start_new_project">
+              SAVE
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>

@@ -1,0 +1,60 @@
+<div id="inventoryModal">
+    <table class="table table-body inventory-table inventory-table-body table-responsive">
+        <thead>
+            <tr>
+                <th>PRODUCT SKU</th>
+                <th>COLOR</th>
+                <th>QTY AVAILABLE</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-table-body">
+            <?php foreach ($this->getRates() as $inventoryRates ) : ?>
+                <tr>
+                    <td><?php echo $inventoryRates['sku'] ?></td>
+                    <?php
+                        $labelHtml = "";
+
+                        if($inventoryRates['color_code']) {
+
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                            $swatchHelperMedia=$objectManager->get("Magento\Swatches\Helper\Media");
+                            $SwatchImage = $swatchHelperMedia->getSwatchAttributeImage('swatch_image', $inventoryRates['color_code']);
+                            
+                            if ($SwatchImage) {
+                                $labelHtml .= "<div class='inventory-color-box' style='background-image:url(".$SwatchImage."); height:26px; width:26px;'></div>";
+                            } else {
+                                $labelHtml .= "<div class='inventory-color-box' style='background-color:".$inventoryRates['color_code']."; height:26px; width:26px;'></div>";
+                            }
+                        }
+
+                        $labelHtml .= $inventoryRates['color_name']
+                    ?>
+                    <td>
+                        <?php echo $labelHtml; ?>
+                    </td>
+                    <td>
+                        <?php if ($this->getIsLogged() == true && $this->getIsBtob() == true) : ?>
+                            <?php if($inventoryRates['qty'] <= 0 || $inventoryRates['qty'] < $this->getRequestedQuantity()) :?>
+                                <span class="outstock">Call for Pricing</span>
+                            <?php else : ?>
+                                <span class="instock"><?php echo $inventoryRates['qty']; ?></span>
+                            <?php endif; ?>
+                        <?php elseif ($this->getIsLogged() == true) : ?>
+                            <?php if($inventoryRates['qty'] <= 0 || $inventoryRates['qty'] < $this->getRequestedQuantity()) :?>
+                                <span class="outstock">Call for Pricing</span>
+                            <?php else : ?>
+                                <span class="instock">In Stock</span>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <?php if($inventoryRates['qty'] <= 0 || $inventoryRates['qty'] < $this->getRequestedQuantity()) :?>
+                                <span class="outstock">Call for Pricing</span>
+                            <?php else : ?>
+                                <span class="instock">In Stock</span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

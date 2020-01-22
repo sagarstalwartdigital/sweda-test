@@ -1,0 +1,592 @@
+<?php
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$canUsePanel = $themeHelper->acceptToUsePanel();
+
+// Get BaseUrl
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$store = $storeManager->getStore();
+?>
+
+<?php
+// Get version header
+$header = $themeHelper->getStoreConfig('mgstheme/header/header');
+if ($header == 'header' || $header == '') {
+    $header = 'header_1';
+}
+?>
+
+<?php
+// Menu
+$mgsMegamenu = $themeHelper->isActiveModule('MGS_Mmegamenu') ? $block->getChildHtml('megamenu') : $block->getChildHtml('catalog.topnav');
+$classMenu = $themeHelper->isActiveModule('MGS_Mmegamenu') ? 'mgs-menu' : 'mgt-menu';
+
+$categorySticky = 0;
+if ($this->getRequest()->getFullActionName() == 'cms_index_index') {
+    $categorySticky = $themeHelper->getStoreConfig('mgstheme/header/category_sticky');
+}
+
+// Top Links
+$topLink = $block->getChildHtml('top.links');
+
+// Top Search
+$topSearch = $block->getChildHtml('top.search');
+
+// Store Setting
+$storeSetting = $block->getChildHtml('store.settings');
+
+//Store
+$storeLanguage = $block->getChildHtml('store_language');
+
+//Currency
+$currency = $block->getChildHtml('currency');
+
+//Mini Cart
+$miniCart = $block->getChildHtml('minicart');
+
+//Check header version
+$deskop = false;
+if ($header == 'header_2' || $header == 'header_3' || $header == 'header_5' || $header == 'header_6' || $header == 'header_7' || $header == 'header_8' || $header == 'header_10') {
+    $deskop = true;
+}
+
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+
+?>
+<div class="mobile-navigation">
+
+    <div class="right-open-navbar">
+<!--        <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left">-->
+<!--            <span class="icon-bar"></span><span class="icon-bar"></span></button>-->
+        <a href="javascript:void(0)" class="close-nav-button"></a>
+    </div>
+
+
+    <div class="wlc-text">
+        <?php $welcome = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('design/header/welcome'); ?>
+        <p><?php echo $welcome; ?></p>
+    </div>
+    <div class="smart-project mobile_link">
+        <a href="<?php echo $store->getBaseUrl().'startProject'; ?>"><img src="<?php echo $this->getViewFileUrl('images/sweda/smart-mobilr.png'); ?>"><?php echo __('Start a Project')?></a>
+    </div>
+
+    <div class="tab-content 1111">
+        <?php if ($deskop): ?>
+            <div id="navigation_menu" class="mobile_navigation_item">
+                <?php echo $mgsMegamenu ?>
+            </div>
+        <?php else: ?>
+            <div id="mobile_navigation_menu" class="mobile_navigation_item"></div>
+        <?php endif; ?>
+
+        <div id="mobile_navigation_account" class="mobile_navigation_item">
+        <!--            <h6 class="tab-title">-->
+        <!--                --><?php //echo __('My account'); ?>
+        <!--            </h6>-->
+        <!--            --><?php //echo $topLink ?>
+            <div class="nav-padding">
+                <div class="mobile-log-in">
+                    <?php
+                    $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+                    if ($customerSession->isLoggedIn()) : ?>
+                        <a href="<?php echo $this->getUrl("customer/account/logout"); ?>">
+                            <img src="<?php echo $this->getViewFileUrl('images/sweda/Log-in.png'); ?>"/><?php echo __('Logout') ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo $this->getUrl("customer/account/login"); ?>">
+                            <img src="<?php echo $this->getViewFileUrl('images/sweda/Log-in.png'); ?>"/>Sign In <strong>or</strong>
+                        </a>
+                    <?php endif; ?>
+                    <?php
+                    if ($customerSession->isLoggedIn()) : ?>
+                        <a href="<?php echo $this->getUrl("customer/account/"); ?>">
+                            <?php echo __('My Account') ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo $this->getUrl("customer/account/create/"); ?>">
+                            <?php echo __('Create an Account') ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                <ul class="bottom-link">
+                    <li><a href="<?php echo $store->getBaseUrl(); ?>customer-service"><?php echo __('Need Help?') ?></a></li>
+                    <li><a href="<?php echo $store->getBaseUrl(); ?>about-us"><?php echo __('About Us')?></a></li>
+                    <li><a href="<?php echo $store->getBaseUrl(); ?>blog"><?php echo __('Blog')?></a></li>
+                    <li><a href="<?php echo $store->getBaseUrl(); ?>careers"><?php echo __('Careers')?></a></li>
+                </ul>
+                <div class="mbl-social-link">
+                    <?php
+                    $instagram = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/instagram');
+                    $facebook = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/facebook');
+                    $twitter = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/twitter');
+                    $google = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/google');
+                    $linkedin = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/linkedin');
+                    ?>
+                    <ul class="social-link">
+                        <li><a href="<?php echo $instagram ;?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $facebook; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $twitter; ?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $linkedin; ?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <?php if ($storeSetting): ?>
+            <div id="mobile_navigation_setting" class="mobile_navigation_item">
+                <h6 class="tab-title">
+                    <?php echo __('Setting'); ?>
+                </h6>
+                <?php echo $storeSetting ?>
+            </div>
+        <?php endif ?>
+        <!-- Static block: header_subscribe -->
+        <?php if (($header != 'header_7') && ($header != 'header_10')) {
+            echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_subscribe')->setCanUsePanel($canUsePanel)->toHtml();
+        } ?>
+    </div>
+</div>
+
+<?php if ($categorySticky != 0): ?>
+    <div class="sticky-catalog-toggle menu-fixed <?php if ($categorySticky == 2) echo __("left"); ?>">
+        <div>
+            <span><?php echo __("Catalog"); ?></span>
+            <i class="fa fa-caret-left"></i>
+            <i class="fa fa-caret-right"></i>
+        </div>
+    </div>
+    <!-- Static block: sticky_catalog -->
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sticky_catalog')->setCanUsePanel($canUsePanel)->toHtml() ?>
+<?php endif; ?>
+
+<?php if ($header == 'header_1'): ?>
+
+    <?php // Header 1 ?>
+    <div class="middle-header-content">
+        <div class="mobile-only">
+            <div class="container-fluide border-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="top-bar">
+                            <div class="col-sm-12">
+                                <div class="login-right-section">
+                                    <ul>
+                                    <ul>
+                                        <li><a href="#"><img src="<?php echo $block->getViewFileUrl('images/sweda/mobile-icon-3.png'); ?>"><?php echo __('Add Your Logo')?></a></li>
+                                        <li class="open-minicart"><a href="#"><img src="<?php echo $block->getViewFileUrl('images/sweda/mobile-icon-2.png'); ?>"><?php echo __('Your Smart Cart') ?></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid top-header">
+            <div class="middle-header-wrapper">
+                <?php if ($categorySticky != 0): ?>
+                    <div class="sticky-catalog-toggle"></div><?php endif; ?>
+                <div class="toogle_menu_mobile action nav-toggle">
+
+                    <img src="<?php echo $block->getViewFileUrl('images/sweda/humburgar-menu.png'); ?>" alt=""/>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="nav-megamenu <?php echo $classMenu ?>">
+                    <?php echo $mgsMegamenu ?>
+                </div>
+
+                <div class="child-content">
+                    <?php echo $topSearch ?>
+                </div>
+                <?php if($customerSession->isLoggedIn()) : ?>
+                    <?php 
+                        $customer = $objectManager->get('\Magento\Customer\Api\CustomerRepositoryInterface')->getById($customerSession->getId());
+                        if ($customer->getCustomAttribute('is_btob')) {
+                            $chekIsBtob = $customer->getCustomAttribute('is_btob')->getValue();
+                        } else {
+                            $chekIsBtob = 0;
+                        }
+
+                    ?>
+                    <?php if($chekIsBtob == 0) : ?>
+                        <div data-block="minicart" class="minicart-wrapper-notbtob mgs-quickview-notbtob">
+                            <a class="action showcart" href="javascript:void(0)">
+                                <img src="<?php echo $this->getViewFileUrl('images/sweda/cart-icon.png'); ?>">
+                                <div class="smart-counter">
+                                    <span>0</span>
+                                </div>
+                                <span class="text">Your Smart Carts</span>
+                            </a>
+                        </div>
+                    <?php else : ?>
+                        <div data-block="minicart" class="minicart-wrapper open-minicart">
+                            <a class="action showcart" href="javascript:void(0)"
+                               data-bind="scope: 'minicart_content'">
+
+                                <img src="<?php echo $this->getViewFileUrl('images/sweda/cart-icon.png'); ?>">
+                                <div class="smart-counter">
+                                    <span id="mini-cart-item-count">0</span>
+                                </div>
+                                <span class="text">Your Smart Carts</span>
+                                <span class="counter qty empty"
+                                      data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+                                      <span class="counter-number"><!-- ko text: getCartParam('summary_count') -->0
+                                          <!-- /ko --></span>
+                                      <span class="counter-label">
+                                        <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+                                      </span>
+                                    </span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <div data-block="minicart" class="minicart-wrapper open-minicart">
+                        <a class="action showcart" href="javascript:void(0)"
+                           data-bind="scope: 'minicart_content'">
+
+                            <img src="<?php echo $this->getViewFileUrl('images/sweda/cart-icon.png'); ?>">
+                            <div class="smart-counter">
+                                <span id="mini-cart-item-count">0</span>
+                            </div>
+                            <span class="text">Your Smart Carts</span>
+                            <span class="counter qty empty"
+                                  data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+                                  <span class="counter-number"><!-- ko text: getCartParam('summary_count') -->0
+                                      <!-- /ko --></span>
+                                  <span class="counter-label">
+                                    <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+                                  </span>
+                                </span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($header == 'header_2'): ?>
+    <?php // Header 2 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="action nav-toggle">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                    <?php echo $topSearch ?>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($header == 'header_3'): ?>
+    <?php // Header 3 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="action nav-toggle"></div>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="action nav-toggle menu-fixed">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $topSearch ?>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <div class="my-account-link">
+                        <div class="actions toggle-toplinks">
+                            <a class="toogle-action" href="javascrpt:void(0);"><?php echo __('My account'); ?></a>
+                        </div>
+                        <div class="toplinks-content">
+                            <?php echo $topLink ?>
+                        </div>
+                    </div>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($header == 'header_4'): ?>
+    <?php // Header 4 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="toogle_menu_mobile action nav-toggle">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                </div>
+                <div class="mobile_logo header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="nav-megamenu <?php echo $classMenu ?>">
+                    <?php echo $mgsMegamenu ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $topSearch ?>
+                    <div class="my-account-link">
+                        <div class="actions toggle-toplinks">
+                            <a class="toogle-action" href="javascrpt:void(0);"><span class="ti-user"></span></a>
+                        </div>
+                        <div class="toplinks-content">
+                            <?php echo $topLink ?>
+                        </div>
+                    </div>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($header == 'header_5'): ?>
+    <?php // Header 5 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="header-logo">
+                        <?php echo $block->getChildHtml('logo') ?>
+                    </div>
+                    <div class="action nav-toggle">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile_logo header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $topSearch ?>
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($header == 'header_6'): ?>
+    <?php // Header 6 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="header-logo">
+                        <?php echo $block->getChildHtml('logo') ?>
+                    </div>
+                    <div class="action nav-toggle">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile_logo header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <div class="content-primary">
+                        <?php echo $topSearch ?>
+                        <?php echo $miniCart ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php elseif ($header == 'header_7'): ?>
+    <?php // Header 7 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="action nav-toggle"></div>
+        <ul class="social-links">
+            <li><a href="#" target="_self"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#" target="_self"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#" target="_self"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#" target="_self"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="action nav-toggle menu-fixed">
+                        <div>
+                            <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                    <?php echo $topSearch ?>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php elseif ($header == 'header_10'): ?>
+    <?php // Header 10 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="left-content">
+                    <div class="action nav-toggle">
+                        <div>
+                            <strong class="dot">. . .</strong>
+                            <span><?php echo __("Menu"); ?></span>
+                        </div>
+                    </div>
+                    <?php echo $topSearch ?>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php elseif ($header == 'header_8'): ?>
+    <?php // Header 8 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container-fluid">
+            <div class="middle-header-wrapper">
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="fix-menu">
+                    <div class="child-content mini-cart">
+                        <?php echo $miniCart ?>
+                    </div>
+                    <div class="left-content">
+                        <div class="action nav-toggle">
+                            <div class="img-deskop">
+                                <img src="<?php echo $block->getViewFileUrl('images/icon-menu.jpg'); ?>" alt=""/>
+                            </div>
+                            <div class="img-mobile">
+                                <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo $topSearch ?>
+                    <div class="child-content right-content language-currency ">
+                        <?php echo $storeLanguage ?>
+                        <?php echo $currency ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php elseif ($header == 'header_9'): ?>
+    <?php // Header 9 ?>
+    <div class="middle-header-content">
+        <?php if ($categorySticky != 0): ?>
+            <div class="sticky-catalog-toggle"></div><?php endif; ?>
+        <div class="container">
+            <div class="row-1 middle-header-wrapper">
+                <?php if ($categorySticky != 0): ?>
+                    <div class="sticky-catalog-toggle"></div><?php endif; ?>
+                <div class="left-content">
+                    <div class="toogle_menu_mobile action nav-toggle">
+                        <img src="<?php echo $block->getViewFileUrl('images/hamburger-black.svg'); ?>" alt=""/>
+                    </div>
+                    <?php echo $storeLanguage ?>
+                    <?php echo $currency ?>
+                    <?php echo $topSearch ?>
+                </div>
+                <div class="header-logo">
+                    <?php echo $block->getChildHtml('logo') ?>
+                </div>
+                <div class="child-content right-content">
+                    <div class="my-account-link">
+                        <div class="actions toggle-toplinks">
+                            <a class="toogle-action" href="javascrpt:void(0);"><?php echo __('My account'); ?></a>
+                        </div>
+                        <div class="toplinks-content">
+                            <?php echo $topLink ?>
+                        </div>
+                    </div>
+                    <?php echo $miniCart ?>
+                </div>
+            </div>
+            <div class="row-2 middle-header-wrapper">
+                <div class="nav-megamenu <?php echo $classMenu ?>">
+                    <?php echo $mgsMegamenu ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $("#mainMenu").clone().appendTo("#mobile_navigation_menu");
+        });
+    });
+    require(['jquery','noframeworkwaypoint'],function($){
+        // var waypoint = new Waypoint({
+        //   element: document.getElementById('waypoint'),
+        //   handler: function() {
+        //     console.log('Basic waypoint triggered');
+        //   }
+        // });
+    });
+</script>
+<style type="text/css">
+#amrelated-block-1 {
+    display: none;
+}
+
+</style>
+

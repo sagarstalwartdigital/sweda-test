@@ -1,0 +1,128 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baurl = $storeManager->getStore()->getBaseUrl();
+?>
+
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+<div class="container">
+    <div class="breadcrumb-section">
+     <h1></h1>
+     <ol class="breadcrumb">
+       <li><a href="<?php echo $baurl; ?>">Home</a></li>
+       <li><a href="<?php echo $baurl; ?>customer-service">Help Center</a></li>
+       <li>Contact Us</li>
+     </ol>  
+   </div>
+ </div>
+
+<div class="container">
+    <div class="account-overview-title">
+        <div class="row">
+            <div class="col-sm-3">
+                <nav class="nav-sidebar">
+                    <ul class="nav tabs">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-9">
+                <div class="artwork-right-part right-side-contact-us">
+                    <?php  echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact_us_top_block')->toHtml(); ?>
+                    <div class="get-in-touch-section">
+                        <h3>GET IN TOUCH</h3>
+                        <form class="form contact"
+                          action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+                          id="contact-form"
+                          method="post"
+                          data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+                          data-mage-init='{"validation":{}}'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="per-infomation get-intouch-form">
+                                        <label for="First_name" class="">Full Name</label>
+                                        <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="form-control" type="text" data-validate="{required:true}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="per-infomation get-intouch-form">
+                                        <label for="First_name" class="">Email Address</label>
+                                        <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="form-control" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="select-Topic get-intouch-form">
+                                        <label for="First_name" class="">Topic</label>
+                                        <!-- <select class="form-control search-slt" name="topic" id="topic" data-validate="{required:true}">
+                                        <option value="">Select…</option>
+                                        <option value="General Information" data-to-mail="stalwartmoxy@gmail.com">General Information</option>
+                                        <option value="My Account" data-to-mail="stalwartmoxy@gmail.com">My Account</option>
+                                        <option value="Smart Cart" data-to-mail="stalwartmoxy@gmail.com">Smart Cart</option>
+                                        <option value="My Orders" data-to-mail="stalwartmoxy@gmail.com">My Orders</option>
+                                        <option value="Shipping and Returns" data-to-mail="stalwartmoxy@gmail.com">Shipping and Returns</option>
+                                        <option value="Website" data-to-mail="stalwartmoxy@gmail.com">Website</option>
+                                        <option value="Promo Standards" data-to-mail="stalwartmoxy@gmail.com">Promo Standards</option>
+                                        </select> -->
+                                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('contact_send_email_list')->toHtml();?>
+                                        
+                                        <input type="hidden" name="to_mail" id="to_mail" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="per-infomation get-intouch-form">
+                                        <label for="First_name" class="">Subject</label>
+                                         <input name="subject" id="subject" title="<?php /* @escapeNotVerified */ echo __('Subject') ?>" value="" class="form-control" type="text" data-validate="{required:true}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="per-infomation get-intouch-form message-box">
+                                        <label for="First_name" class="">Message</label>
+                                        <textarea class="form-control md-textarea" name="comment" id="comment"  title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" cols="5" rows="6" data-validate="{required:true}"><?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('comment')) ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="recaptcha">
+                                    <?php echo $block->getChildHtml('form.additional.info'); ?>
+                                </div>
+                                <div class="artwork-submit">
+                                    <input type="hidden" name="hideit" id="hideit" value="" />
+                                    <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                                        <span><?php /* @escapeNotVerified */ echo __('Send') ?></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>       
+</div>
+<!------ Account-overview-section --------->
+
+<script type="text/javascript">
+require([
+    'jquery',
+], function($){
+    $(document).ready(function() {
+        $('.contactus').addClass('active');
+
+        $('select#topic').change(function() {
+            var capacityValue = $('select#topic').find(':selected').data('to-mail');
+            $('#to_mail').val(capacityValue);
+        });
+
+    });
+});
+</script>
+
+
+
+

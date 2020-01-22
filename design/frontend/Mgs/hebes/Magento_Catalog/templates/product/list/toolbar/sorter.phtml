@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+?>
+<div class="toolbar-sorter sorter">
+    <div class="form-item-select">
+		<select id="sorter" data-role="sorter" class="sorter-options">
+			<option value="position" <?php if ($block->isMyOrderCurrent() == 'position') { echo "selected='selected'"; } ?>>Featured</option>
+			<option value="name_atoz" <?php if ($block->isMyOrderCurrent() == 'name_atoz') { echo "selected='selected'"; } ?>>Product Name A to Z</option>
+			<option value="name_ztoa" <?php if ($block->isMyOrderCurrent() == 'name_ztoa') { echo "selected='selected'"; } ?>>Product Name Z to A</option>
+			<option value="price_hightolow" <?php if ($block->isMyOrderCurrent() == 'price_hightolow') { echo "selected='selected'"; } ?>>Price High to Low</option>
+			<option value="price_lowtohigh" <?php if ($block->isMyOrderCurrent() == 'price_lowtohigh') { echo "selected='selected'"; } ?>>Price Low to High</option>
+			<option value="newtoold" <?php if ($block->isMyOrderCurrent() == 'newtoold') { echo "selected='selected'"; } ?>>New to Old</option>
+			<option value="oldtonew" <?php if ($block->isMyOrderCurrent() == 'oldtonew') { echo "selected='selected'"; } ?>>Old to New</option>
+			<option value="item_atoz" <?php if ($block->isMyOrderCurrent() == 'item_atoz') { echo "selected='selected'"; } ?>>Item A to Z</option>
+			<option value="item_ztoa" <?php if ($block->isMyOrderCurrent() == 'item_ztoa') { echo "selected='selected'"; } ?>>Item Z to A</option>
+		</select>
+	</div>
+    <!-- <?php //if ($block->getCurrentDirection() == 'desc'): ?>
+        <a title="<?php /* @escapeNotVerified */ //echo __('Set Ascending Direction') ?>" href="#" class="action sorter-action sort-desc" data-role="direction-switcher" data-value="asc">
+            <span><?php /* @escapeNotVerified */ //echo __('Set Ascending Direction') ?></span>
+        </a>
+    <?php //else: ?>
+        <a title="<?php /* @escapeNotVerified */ //echo __('Set Descending Direction') ?>" href="#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc">
+            <span><?php /* @escapeNotVerified */ //echo __('Set Descending Direction') ?></span>
+        </a>
+    <?php //endif; ?> -->
+</div>

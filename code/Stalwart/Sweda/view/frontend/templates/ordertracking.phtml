@@ -1,0 +1,58 @@
+<?php $customerSwedaOrdersCollection = $block->getOrdersForTracking(); ?>
+<?php $orderNumberPosted = $this->getRequest()->getPost('order_num',''); ?>
+<?php if ($block->getIsLoggedIn()) : ?>
+	<?php if($block->getIsBtobPending() != 0) : ?>
+		<form id="order_track_form" data-mage-init='{"validation":{}}' method="post" action="<?php echo $this->getUrl('sweda/order/tracking')?>" autocomplete="off">
+			<label>Order Number</label>
+			<input type="text" name="order_num" value="<?php echo $orderNumberPosted ?>" placeholder="Input your order number" data-validate="{required:true}"><br><br>
+			<input type="submit" name="track_for_submit" value="Track">
+		</form>
+		<?php if($orderNumberPosted) : ?>
+			<?php if(count($block->getInvoiceForTracking()->getData())) : ?>
+				<?php foreach ($block->getInvoiceForTracking() as $trackingData) : ?>
+					<table class="table order-tracking-table table-striped">
+						<tr>
+							<th>Shipping Carrier</th>
+							<th>&nbsp;</th>
+						</tr>
+						<tr>
+							<td><?php echo $trackingData->getShipVia() ? $trackingData->getShipVia() : "" ?></td>
+							<?php foreach ($customerSwedaOrdersCollection as $customerSwedaOrder) : ?>
+							<td>
+									<?php $trackingUrls = $customerSwedaOrder->getShipmentTrackingUrls(); ?>
+									<?php if(!empty($trackingUrls)) : ?>
+										<?php foreach($trackingUrls as $trackingUrl) : ?>
+							        		<div class="track-button"><a target="_blank" href="<?php echo $trackingUrl ?>">track</a></div>
+							        	<?php endforeach; ?>
+							       	<?php else: ?>
+							       		<div class="track-button disabled"><a href="javascript:void(0);" title="Tracking Not Available">track</a></div>
+							       	<?php endif; ?>
+							</td>
+							<?php endforeach; ?>	
+						</tr>
+					</table>
+				<?php endforeach; ?>
+			<?php else : ?>
+				<div class="message info empty">
+			        <span><?php echo __('There are no shipments to track for this order.'); ?></span>
+			    </div>
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php else : ?>
+		<?php 
+			$objectManager = \Magento\Framework\App\ObjectManager::getInstance();	
+			$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+			$redirect->setRedirect('/customer/account');
+			return $redirect;
+		?>
+	<?php endif; ?>
+<?php else : ?>
+	<?php $block->redirectIfNotLoggedIn(); ?>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#order_track_form": {
+            "validation": {}
+        }
+    }
+</script>

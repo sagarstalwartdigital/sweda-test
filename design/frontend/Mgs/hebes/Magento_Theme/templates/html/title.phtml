@@ -1,0 +1,106 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Theme\Block\Html\Title
+ */
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
+$title = '';
+if (trim($block->getPageHeading())) {
+    $title = '<span class="base" data-ui-id="page-title-wrapper" ' .  $block->getAddBaseAttribute() . '>'
+        . $block->escapeHtml($block->getPageHeading()) . '</span>';
+}
+?>
+
+<?php if ($title): ?>
+    <?php 
+    $themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+    $page_title = 0;
+    if(($this->getRequest()->getFullActionName() == 'catalog_product_view') || ($this->getRequest()->getFullActionName() == 'checkout_cart_configure')){
+        $page_title = $themeHelper->getStoreConfig('mpanel/product_details/page_title');
+    }
+
+    $img = $themeHelper->getPageTitleBackground();
+    if(($this->getRequest()->getFullActionName() == 'catalog_category_view') && $themeHelper->getStoreConfig('mpanel/catalog/page_title') && $_category->getImageUrl()) {
+        $img = $_category->getImageUrl();
+    }
+        
+    $bgType = $themeHelper->getStoreConfig('mpanel/page_title/background');
+    $style = "";
+    if($this->getRequest()->getFullActionName() != 'blog_post_view') {
+        if($bgType == 3){
+            $color = $themeHelper->getStoreConfig('mpanel/page_title/background_color');
+            if($color){
+                $style = 'background-color: '. $color . ';';
+            }
+        }elseif($page_title == 0) {
+            if($img){
+                $cssClass .= ' background-image';
+                $style= 'background-image: url(' . $img . ');'; 
+            }
+        }
+    }
+    ?>
+    <?php if(!empty($img)){ ?>
+    <?php if ($this->getRequest()->getFullActionName() == 'blog_post_view'): ?>
+        <div class="page-title-wrapper<?php /* @escapeNotVerified */ echo $cssClass; ?>" style="<?php echo $style?>" >
+            <?php echo $block->getChildHtml(); ?>
+            <h1 class="page-title"
+                <?php if ($block->getId()): ?> id="<?php /* @escapeNotVerified */ echo $block->getId();?>" <?php endif; ?>
+                <?php if ($block->getAddBaseAttributeAria()): ?>
+                    aria-labelledby="<?php /* @escapeNotVerified */ echo $block->getAddBaseAttributeAria(); ?>"
+                <?php endif; ?>>
+                <?php /* @escapeNotVerified */ echo $title ?>
+            </h1>
+        </div>
+    <?php else:?>
+        <?php echo $block->getChildHtml(); ?>
+        <div class="page-title-wrapper<?php /* @escapeNotVerified */ echo $cssClass; ?> <?php if($page_title != 0)echo __('hidden-title')?>" style="<?php echo $style?>" >
+            <?php if ($page_title == 0): ?>
+                <h2 class="page-title"
+                    <?php if ($block->getId()): ?> id="<?php /* @escapeNotVerified */ echo $block->getId();?>" <?php endif; ?>
+                    <?php if ($block->getAddBaseAttributeAria()): ?>
+                        aria-labelledby="<?php /* @escapeNotVerified */ echo $block->getAddBaseAttributeAria(); ?>"
+                    <?php endif; ?>>
+                    <?php /* @escapeNotVerified */ echo $title ?>
+                </h2>
+            <?php endif; ?>
+        </div>
+    <?php endif;?>
+<?php }else{ ?>
+<?php if ($this->getRequest()->getFullActionName() == 'blog_post_view'): ?>
+        <div class="no-image page-title-wrapper<?php /* @escapeNotVerified */ echo $cssClass; ?>" style="<?php echo $style?>" >
+            <?php echo $block->getChildHtml(); ?>
+            <h1 class="page-title"
+                <?php if ($block->getId()): ?> id="<?php /* @escapeNotVerified */ echo $block->getId();?>" <?php endif; ?>
+                <?php if ($block->getAddBaseAttributeAria()): ?>
+                    aria-labelledby="<?php /* @escapeNotVerified */ echo $block->getAddBaseAttributeAria(); ?>"
+                <?php endif; ?>>
+                <?php /* @escapeNotVerified */ echo $title ?>
+            </h1>
+        </div>
+    <?php else:?>
+        <?php echo $block->getChildHtml(); ?>
+        <div class="no-image page-title-wrapper<?php /* @escapeNotVerified */ echo $cssClass; ?> <?php if($page_title != 0)echo __('hidden-title')?>" style="<?php echo $style?>" >
+            <?php if ($page_title == 0): ?>
+                <h2 class="page-title"
+                    <?php if ($block->getId()): ?> id="<?php /* @escapeNotVerified */ echo $block->getId();?>" <?php endif; ?>
+                    <?php if ($block->getAddBaseAttributeAria()): ?>
+                        aria-labelledby="<?php /* @escapeNotVerified */ echo $block->getAddBaseAttributeAria(); ?>"
+                    <?php endif; ?>>
+                    <?php /* @escapeNotVerified */ echo $title ?>
+                </h2>
+            <?php endif; ?>
+        </div>
+    <?php endif;?>
+<?php } ?>
+<?php endif; ?>

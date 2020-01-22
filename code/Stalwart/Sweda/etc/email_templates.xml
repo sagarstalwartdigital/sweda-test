@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template area="frontend" file="sendbtobapprovedemail.html" id="btob_email_sender" label="SendBtobApprovedEmail" module="Stalwart_Sweda" type="html"/>
+    <template area="frontend" file="sendhangtightemail.html" id="hangtight_email_sender" label="SendHangTightEmail" module="Stalwart_Sweda" type="html"/>
+    <template area="frontend" file="sendaccountrequestrecievedemail.html" id="account_request_recivied" label="SendAccountRequestRecivied" module="Stalwart_Sweda" type="html"/>
+    <template area="frontend" file="sendtoadmin.html" id="send_to_admin" label="SendMailToAdmin" module="Stalwart_Sweda" type="html"/>
+    <template area="frontend" file="forgotpassword.html" id="forgot-pwd" label="ForgotPassword" module="Stalwart_Sweda" type="html"/>
+</config>

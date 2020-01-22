@@ -1,0 +1,17 @@
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$store = $storeManager->getStore();
+?>
+<div class="headwear-serch-bar vlibrary-search search-mobile mobile-only">
+    <form id="vlibrary-search-query-form" action="<?php echo $store->getBaseUrl(); ?>catalogsearch/result/" method="post" autocomplete="off">
+        <div class="input-group headwear">
+            <input type="text" class="search-query form-control" id="cat_search_q" placeholder="Search For Products & More" name="cat_search_query">
+            <span class="input-group-btn">
+                <button type="submit" class="mobile-search-loding">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>

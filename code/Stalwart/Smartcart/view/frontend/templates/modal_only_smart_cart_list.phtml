@@ -1,0 +1,43 @@
+<?php
+/**
+ * @category    Stalwart
+ * @package     Stalwart_SmartCart
+ */
+?>
+<?php /** @var Stalwart\SmartCart\Block\ModalCart $block */ ?>
+<?php $customerSmartCarts = $block->getSmartCart(); ?>
+<?php $customerSmartSelectedCart = $block->getSmartSelectedSmartCart(); ?>
+<?php 
+    foreach ($customerSmartSelectedCart as $customerSmartSelectedCarts) {
+        $selectedSmartCartId = $customerSmartSelectedCarts->getId();
+    }
+?>
+<div id="smartcart-popup-modal" class="smartcart-form">
+    <div class="moxy-title">
+      <h2>Select a cart to activate</h2>
+    </div>
+    <div class="moxy-cart-section">
+        <form id="add-smartcart-form" action="<?php echo $this->getUrl('smartcart/cartindex/savecart'); ?>" method="post" autocomplete="off" >
+              <?php if(count($customerSmartCarts)) : ?>
+                <input type="hidden" name="productdata" id="productdata" />
+                <input type="hidden" name="productid" id="productid" />
+                <input type="hidden" name="choosediffcart" value="yes" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php foreach ($customerSmartCarts as $key => $customerSmartCart) : ?>
+                            <span class="smart_cart_items_list">
+                                <label>
+                                    <?php if(false) : ?>
+                                    <input class="radio required-entry smart-cart-list" type="radio" name="smart_cart" value="<?php echo $customerSmartCart['id'] ?>" <?php if($selectedSmartCartId == $customerSmartCart['id']) { echo "checked"; } else {} ?> ><?php echo $customerSmartCart['title'] ?>
+                                    <?php endif; ?>
+                                    <a class="choosed-diff-sc" href="<?php echo $this->getUrl('smartcart/cartindex/savecart',array('_query'=>array('smart_cart'=>$customerSmartCart['id'],'choosediffcart'=>'yes'))); ?>"><?php echo $customerSmartCart['title'] ?></a>
+                                </label>
+                            </span>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <!-- <input type="submit" name="submit" value="OK" /> -->
+              <?php endif; ?>
+        </form>
+    </div>
+</div>

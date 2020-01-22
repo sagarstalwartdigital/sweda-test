@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+?>
+<?php 
+   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+   $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
+   if (!empty($category)) {
+      $catId = $category->getId();     
+   } elseif($this->getRequest()->getParam('cat') && !empty($this->getRequest()->getParam('cat'))) {
+      $catId = $this->getRequest()->getParam('cat');
+   } else {
+      $catId = "";
+   }
+?>
+<div class="headwear-serch-bar">
+    <form id="category-search-query-form" onkeyup="myFunction()" action="<?php echo $catId ? $this->getUrl('catalogsearch/result',array('_query'=>array('q'=>'','cat'=>$catId))) : $this->getUrl('catalogsearch/result',array('_query'=>array('q'=>''))) ?>" method="post" autocomplete="off">
+        <div class="input-group headwear">
+            <input type="text" class="search-query form-control" id="cat_search_q" placeholder="Search For Products & More" name="cat_search_query" >
+            <span class="input-group-btn">
+                <button type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+<!-- <div class="field limiter product-filter">
+    <div class="form-item-select">
+        <label for="filter-smart-cart"><?php //echo __('Filter')?></label>
+        <select id="limiter" data-role="limiter" class="limiter-options">
+            <?php //foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                <option value="<?php /* @escapeNotVerified */ //echo $_key ?>"<?php //if ($block->isLimitCurrent($_key)): ?>
+                    selected="selected"<?php //endif ?>>
+                    <?php /* @escapeNotVerified */ //echo __('Show') ?> <?php /* @escapeNotVerified */ //echo $_limit ?> <?php /* @escapeNotVerified */ //echo __('per page') ?>
+                </option>
+            <?php //endforeach; ?>
+        </select>
+    </div>
+</div>
+ -->
+ <script type="text/javascript">
+     function myFunction() {
+      var search_query_val = document.getElementById("cat_search_q").value;
+      document.getElementById("category-search-query-form").action = "<?php echo $catId ? $this->getUrl('catalogsearch/result',array('_query'=>array('cat'=>$catId))) : $this->getUrl('catalogsearch/result') ?><?php echo $catId ? "&q" : "?q" ?>="+search_query_val;
+    }
+ </script>

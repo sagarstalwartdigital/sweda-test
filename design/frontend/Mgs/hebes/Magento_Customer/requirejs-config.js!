@@ -1,0 +1,14 @@
+var config = {
+      
+    "map": {
+        "*": {
+            "SwedaAccountValidation": "Magento_Customer/js/jquery.validate.min"
+        }
+    },
+    "paths": {
+        "SwedaAccountValidation": "Magento_Customer/js/jquery.validate.min"
+    },
+    "shim": {
+        "Magento_Customer/js/jquery.validate.min": ["jquery"]
+    }
+};

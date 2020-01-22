@@ -1,0 +1,100 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('virtual_mock_up_useful_tools')) {
+    $jsonData = base64_decode($this->getData('virtual_mock_up_useful_tools'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $usefulTools = json_decode($page_data->toolsJson);
+}
+$type = 'virtual_mock_up_useful_tools';
+
+
+
+?>
+<div class="container">
+      <div class="usefull-section-page">
+          <h2 class="main-title"><?php echo strtoupper($page_data->title) ?></h2>
+          <div class="row mockup-list">
+              <?php foreach ($usefulTools as $data): ?>
+                <div class="col-sm-3 center  useful-page">
+                    <?php
+                      $VirtualMockupUrl = !empty($data->drinkUrl) ? ($data->drinkUrl) : 'javascript:;';
+                      if (filter_var($VirtualMockupUrl, FILTER_VALIDATE_URL)) {
+                          echo '<a href="'.$VirtualMockupUrl.'">';
+                      } else {
+                          echo '<a href='.$themeHelper->getCurrentBaseUrl().$VirtualMockupUrl.'>';
+                      }
+                      ?> 
+                        <div class="section-page-content section-content">
+                            <?php 
+                                $drinkImage = $themeHelper->getImageName($data->drinkImage);
+                                $drinkImageFinal = $themeHelper->getWysiwygMediaUrl($type,$drinkImage);
+                                $drinkImageHover = $themeHelper->getImageName($data->drinkImageHover);
+                                $drinkImageHoverFinal = $themeHelper->getWysiwygMediaUrl($type,$drinkImageHover);
+                            ?>
+                            <img class="first-image" src="<?php echo $drinkImageFinal; ?>">
+                            <img class="seconds-image" src="<?php echo $drinkImageHoverFinal ?>">
+                            <h3><?php echo $data->drinkTitle ?></h3>
+                            <p><?php echo $data->drinkDescription ?></p>
+                        </div>
+                    </a>
+                </div>
+              <?php endforeach; ?>
+          </div>
+      </div>
+  </div>
+
+
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mustache',
+        'lodash',
+        'mgs/slick'
+    ], function ($, Mustache, _, slick) {
+        $(document).ready(function () {
+                //$('#useful-mobile-section').slick({
+                // $('.virtual_mock_up_useful_tools').slick({
+                $('.virtual_mock_up_useful_tools').not('.slick-initialized').slick({
+                    slidesToShow: 6,
+                    slidesToScroll: 1,
+                    autoplay: false,
+                    autoplaySpeed: 2000,
+                    arrows: true,
+                    dots: false,
+                    
+                    initialSlide:0,
+                    pauseOnHover: false,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    }, {
+                        breakpoint: 520,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    }]
+                });
+        });
+
+        // jQuery('a').each(function() {
+        //    var a = new RegExp('/' + window.location.host + '/');
+        //    if(!a.test(this.href)) {
+        //        jQuery(this).click(function(event) {
+        //            event.preventDefault();
+        //            event.stopPropagation();
+        //            window.open(this.href, '_blank');
+        //        });
+        //    }
+        // });
+    });
+
+</script>

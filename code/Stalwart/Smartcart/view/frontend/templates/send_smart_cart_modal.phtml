@@ -1,0 +1,118 @@
+<?php  /* Stalwart\Smartcart\Block\SmartCartSend */?>
+<?php $smartCartToSend = $block->getSmartCartFront(); ?>
+<?php 
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+?>
+<div class="send-mail-content">
+
+	<?php if($smartCartToSend && !empty($smartCartToSend)) : ?>
+		<div class="smartcarttitle">
+			<h2><?php echo $smartCartToSend->getTitle() ?></h2>
+		</div>
+		<form class="form send-smart-cart-form" action="<?php echo $this->getUrl('smartcart/cartindex/sendsmartcart'); ?>" method="post" enctype="multipart/form-data" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" autocomplete="off">
+			<div class="recipentdata">
+	            <div class="row">
+					<div class="col-md-12">
+						<h3>Add New Recipient</h3>
+						<label>Send To :</label>
+						<input type="hidden" name="add-and-send" value="addandsend">
+						<input type="hidden" name="add-and-send-smartcart-id" value="<?php echo $smartCartToSend->getId() ? $smartCartToSend->getId() : '' ?>">
+						<div class="cart-md-form">
+							<input class="input-text" name="recipientname[]" type="text" autocomplete="off" placeholder="Recipient Name">
+						</div>
+						<div class="cart-md-form">
+							<input class="input-text" name="recipientemail[]" type="email" placeholder="Recipient Email">
+						</div>
+		            	<div class="cart-md-form">
+		            		<div class="send-smart-cart-btn">
+								<button type="submit" id="submit_sent_to_smartcart">
+									SEND
+								</button>
+							</div>
+		            	</div>
+					</div>
+	            </div>
+	        </div>
+	    </form>
+	    <form class="form send-smart-cart-form" action="<?php echo $this->getUrl('smartcart/cartindex/sendsmartcart'); ?>" method="post" enctype="multipart/form-data" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" autocomplete="off">
+	    	<input type="hidden" name="send-multi-smartcart" value="yes">
+	    	<input type="hidden" name="add-and-send-smartcart-id" value="<?php echo $smartCartToSend->getId() ? $smartCartToSend->getId() : '' ?>">
+			<div class="recipentdata">
+	            <?php if(json_decode($smartCartToSend->getRecepientData(), true) && !empty(json_decode($smartCartToSend->getRecepientData(), true)) ) : ?>
+					<div class="row">
+						<div class="col-md-12">
+							<h3>Current Recipients</h3>
+							<div class="cart-md-form">
+								<?php foreach (json_decode($smartCartToSend->getRecepientData(), true) as $key => $customerSmartCartsRecipient) : ?>
+									<?php
+										$faCalass = "unopen";
+										if(isset($customerSmartCartsRecipient['mailopened']) && $customerSmartCartsRecipient['mailopened'] == 1)
+											$faCalass = "open";
+									?>
+									<div class="smartcart-recipient-list">
+										<input type="checkbox" name="recipientemail[]" value="<?php echo $key; ?>">
+										<span class="smartcart-reci-name"><?php echo $customerSmartCartsRecipient['name']; ?>, 
+											<?php if($faCalass == 'open') : ?>
+												<span class="isopen">opened</span>
+											<?php else : ?>
+												<span class="isopen">unopened</span>
+											<?php endif; ?>
+										</span>
+									</div>
+								<?php endforeach; ?>
+							</div>
+			            	<div class="cart-md-form">
+			            		<div class="current-reci-send-btn">
+									<input type="submit" class="link-recend" value="Resend">
+									<input type="submit" class="link-remove" name="link-remove" value="Remove" >
+								</div>
+			            	</div>
+						</div>
+		            </div>
+		        <?php endif; ?>
+	        </div>
+		</form>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Share as a link</h3>
+				<div class="share-smart-cart-link">
+					<span id="myInput"><?php echo $this->getUrl('smartcart/cartindex/sharedsmartcart').'?share='.urlencode(base64_encode('id='.$smartCartToSend->getId().'&name='.$customerSession->getCustomer()->getName())); ?></span>
+				</div>
+				<button id="copy-link">Copy link</button>
+			</div>
+        </div>
+	<?php else : ?>
+		<div class="message info empty">
+            <span><?php echo __('There are no smart carts yet.'); ?></span>
+        </div>
+	<?php endif; ?>
+</div>
+<script type="text/javascript">
+	
+	document.getElementById("copy-link").onclick = function() {
+		copyToClipboard(document.getElementById("myInput"));
+	}
+
+	function copyToClipboard(e) {
+	    var tempItem = document.createElement('input');
+
+	    tempItem.setAttribute('type','text');
+	    tempItem.setAttribute('display','none');
+	    
+	    let content = e;
+	    if (e instanceof HTMLElement) {
+	    		content = e.innerHTML;
+	    }
+	    
+	    tempItem.setAttribute('value',content);
+	    document.body.appendChild(tempItem);
+	    
+	    tempItem.select();
+	    document.execCommand('Copy');
+
+	    tempItem.parentElement.removeChild(tempItem);
+	    alert("Copied the link: " + tempItem.value);
+	}
+
+</script>

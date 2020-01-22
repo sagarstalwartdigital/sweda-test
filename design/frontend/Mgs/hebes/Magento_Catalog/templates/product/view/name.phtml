@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+
+<?php 
+$_product = $block->getProduct();
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+$page_title = $themeHelper->getStoreConfig('mpanel/product_details/page_title');
+$glrTemplate = $themeHelper->getStoreConfig('extragallery/general/glr_type');
+?>
+
+<div class="desktop-only">
+    <div class="product-detail-name">
+        <?php if($page_title):?>
+            <h1 class="name"><?php echo $block->stripTags($_product->getName(), null, true); ?></h1>
+
+        <?php else:?>
+            <?php if($glrTemplate != 2 && $glrTemplate != 6):?>
+                <h2 class="name"><?php echo $block->stripTags($_product->getName(), null, true); ?></h2>
+            <?php endif;?>
+        <?php endif;?>
+    </div>
+
+    <div class="product attribute sku">
+        <div class="value" itemprop="sku"><?php echo $_product->getSku();?></div>
+    </div>
+</div>
+

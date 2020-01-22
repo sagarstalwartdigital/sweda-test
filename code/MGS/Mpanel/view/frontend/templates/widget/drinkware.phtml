@@ -1,0 +1,93 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('drinkware')) {
+    $jsonData = base64_decode($this->getData('drinkware'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $usefulTools = json_decode($page_data->toolsJson);
+
+}
+
+$type = 'drinkware';
+?>
+
+<div class="container">
+  <div class="drinkware-with-style">
+     <a href="<?php echo strtoupper($page_data->button_link) ?>"><h2><?php echo strtoupper($page_data->title) ?></h2></a>
+     <p><?php echo strtoupper($page_data->description) ?></p>
+       <section class="drinkware">
+            <?php foreach ($usefulTools as $data): ?>
+                <?php 
+                    
+                    ?>
+                <div class="slide">
+                  <a href="<?php echo $data->drinkUrl ?>">
+                    <div class="drinkware-style">
+                       <div class="drinkware-images">
+                           <img src="<?php echo $data->drinkImage ?>">
+                       </div>
+                       <div class="drinkware-text">
+                           <p><?php echo $data->drinkTitle ?></p>
+                           <a href="<?php echo $data->drinkUrl ?>">View Now</a>
+                       </div>
+                    </div>
+                  </a> 
+                </div>
+            <?php endforeach; ?>
+       </section>
+       <div class="view-all-drinkware">
+         <a href="<?php echo strtoupper($page_data->button_link) ?>"><?php echo strtoupper($page_data->button_title) ?></a>
+       </div>
+ </div>
+</div>
+
+<style type="text/css">
+section.drinkware .slide {
+    display: inline-block;
+}
+.view-all-drinkware{
+  clear: both;
+}
+</style>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mustache',
+        'lodash',
+        'mgs/slick'
+    ], function ($, Mustache, _, slick) {
+        $(document).ready(function () {
+                //$('#useful-mobile-section').slick({
+                // $('.drinkware').slick({
+                $('.drinkware').not('.slick-initialized').slick({
+                    slidesToShow: 6,
+                    slidesToScroll: 1,
+                    autoplay: false,
+                    autoplaySpeed: 2000,
+                    arrows: true,
+                    dots: false,
+                    
+                    initialSlide:0,
+                    pauseOnHover: false,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    }, {
+                        breakpoint: 520,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    }]
+                });
+        });
+    });
+
+</script>

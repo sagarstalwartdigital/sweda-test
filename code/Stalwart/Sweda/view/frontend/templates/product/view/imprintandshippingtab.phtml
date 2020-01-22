@@ -1,0 +1,278 @@
+<?php 
+  $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+  $_product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+    if ($_product->getCustomAttribute('pro_template_file') !== null ) {
+        $proTemplate = $_product->getCustomAttribute('pro_template_file')->getValue();
+    } else {
+        $proTemplate = '';
+    }
+  $imprintMethodWithChargesCollection = $objectManager->get('Stalwart\Sweda\Block\ProductPricesRegular');
+  $productImprintMethods = $imprintMethodWithChargesCollection->getProductImprintMethod();
+  $productImprintMethodPosition = $block->getProductImprintPosition();
+
+$imprintMethodWiseData = array();
+$counter = 1;
+foreach ($productImprintMethods as $productImprintMethod)
+{
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['name'] = $productImprintMethod->getImprintMethodName();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['matrix'] = $productImprintMethod->getMatrix();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['full_color'] = $productImprintMethod->getFullColor();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['color_included_in_price'] = $productImprintMethod->getColorIncludedInPrice();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_color'] = $productImprintMethod->getMaximumColor();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['location_included_in_price'] = $productImprintMethod->getLocationIncludedInPrice();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_location'] = $productImprintMethod->getMaximumLocation();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['productiont_time'] = $productImprintMethod->getProductiontTime();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['production_unit'] = $productImprintMethod->getProductionUnit();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['rule'] = $productImprintMethod->getRule();
+
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['name'] = $productImprintMethod->getImprintChargeName();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_start'] = $productImprintMethod->getQtyStart();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_end'] = $productImprintMethod->getQtyEnd();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['price'] = $productImprintMethod->getPrice();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['code'] = $productImprintMethod->getCode();
+
+  /*$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['name'] = $productImprintMethod->getImprintPostionName();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['area'] = $productImprintMethod->getImprintPostionArea();*/
+
+
+  $counter++;
+}
+
+$counter = 1;
+foreach ($productImprintMethodPosition as $productImprintMethod)
+{
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion'][$counter]['name'] = $productImprintMethod->getImprintPostionName();
+  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion'][$counter]['area'] = $productImprintMethod->getImprintPostionArea();
+  $counter++;
+}
+
+
+  /*$imprintMethodWiseData = array();
+  foreach ($productImprintMethods as $productImprintMethod) {
+      $imprintMethodWiseData[$productImprintMethod->getImprintMethodName()][$productImprintMethod->getProductiontTime().' '.$productImprintMethod->getProductionUnit()][$productImprintMethod->getImprintChargeName()][] = $productImprintMethod->getData();
+  }*/
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 imprint-tabbing-section">
+      <nav>
+        <div class="nav nav-tabs nav-fill imprint-method" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><span>Imprint Methods & Pricing</span></a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><span>Shipping Details</span></a>
+        </div>
+      </nav>
+    </div>
+    <div class="tab-pane pro-imprint-tab-wrapper fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="row">
+        <div class="col-sm-3 imprint-right-side-tab p-0">
+          <nav class="nav-sidebar imprint-method-section">
+            <ul class="nav tabs">
+              <?php $count = 0; ?>
+              <?php foreach($imprintMethodWiseData as $imprintId => $proImprintMethodData) : ?>
+                <?php $count++; ?>
+                <?php if($count == 1) : ?>
+                  <li class="active"><a href="#<?php echo $imprintId ?>" data-toggle="tab"><?php echo $proImprintMethodData['name']; ?></a></li>
+                <?php else : ?>
+                  <li class=""><a href="#<?php echo $imprintId ?>" data-toggle="tab"><?php echo $proImprintMethodData['name']; ?></a></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-sm-8 imprint-left-side-tab">
+          <div class="tab-content">
+            <?php $count = 0; ?>
+            <?php foreach($imprintMethodWiseData as $imprintId => $proImprintMethodData) : ?>
+              <?php $count++; ?>
+              <div class="tab-pane text-style <?php if($count == 1) { echo 'active'; }  ?>" id="<?php echo $imprintId ?>">
+                <div class="imprint-section">
+                  <div class="print-detail">
+                    <p>Production Time: <strong><?php echo $proImprintMethodData['productiont_time'].' '.$proImprintMethodData['production_unit'] ?></strong></p>
+                    <?php if(isset($proImprintMethodData['postion'])) : ?>
+                      <?php foreach($proImprintMethodData['postion'] as $postionRecord) : ?>
+                        <p>Imprint Area: 
+                          <strong>
+                            <?php if(isset($postionRecord['name']) && !empty($postionRecord['name'])) : ?>
+                              <?php echo $postionRecord['name'].' Position' ?>
+                            <?php endif; ?>
+                            <?php if(isset($postionRecord['area']) && !empty($postionRecord['area'])) : ?>
+                              <?php echo ', '.$postionRecord['area'] ?>
+                            <?php endif; ?>
+                          </strong>
+                        </p>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                      <?php if($proTemplate && !empty($proTemplate)) : ?>
+                        <a href="<?php echo $this->getUrl('sweda/downloadpropdf/DownloadPdf',array('_query'=>array('fileName'=>$proTemplate)));?>">View Product Template</a>
+                      <?php endif; ?>
+                    <div class="pricing">
+                      <?php if(isset($proImprintMethodData['charges'][0]) || isset($proImprintMethodData['charges'][1])) : ?>
+                        <h3>PRICING:</h3>
+                      <?php endif; ?>
+                      <?php $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); ?>
+                      <?php if(isset($proImprintMethodData['charges'][0])) : ?>
+                        <?php foreach($proImprintMethodData['charges'][0] as $chargesDisplayType) : ?>
+                          <?php foreach($chargesDisplayType as $chargesDisplayData) : ?>
+                            <p>
+                              <?php echo $chargesDisplayData['name'] ?>: 
+                              <strong>
+                                <?php echo $priceHelper->currency($chargesDisplayData['price'], true, false); ?>
+                                <?php 
+                                    if (isset($chargesDisplayData['code']) && !empty($chargesDisplayData['code'])) {
+                                        echo '('.$chargesDisplayData['code'].')';
+                                        if ($chargesDisplayData['name'] == 'Setup Charge'){ 
+                                          echo " per logo/position/color";
+                                        }else{ echo "";}
+                                    }
+                                ?>
+                              </strong>
+                            </p>
+                          <?php endforeach; ?>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      <?php if(isset($proImprintMethodData['charges'][1])) : ?>
+                        <?php foreach($proImprintMethodData['charges'][1] as $chrageLabel => $chargesDisplayType) : ?>
+                          <?php foreach($chargesDisplayType as $chargeIndex => $chargesDisplayData) : ?>
+                            <?php if (empty($chargesDisplayData['qty_start']) && empty($chargesDisplayData['qty_end'])) : ?>
+                              <p>
+                                <?php echo $chargesDisplayData['name'] ?>: 
+                                <strong>
+                                  <?php echo $priceHelper->currency($chargesDisplayData['price'], true, false); ?>
+                                  <?php 
+                                      if (isset($chargesDisplayData['code']) && !empty($chargesDisplayData['code'])) {
+                                          echo '('.$chargesDisplayData['code'].')';
+                                      }
+                                  ?>
+                                </strong>
+                              </p>
+
+                              <?php
+                                unset($proImprintMethodData['charges'][1][$chrageLabel][$chargeIndex]);
+                                if(empty($proImprintMethodData['charges'][1][$chrageLabel]))
+                                  unset($proImprintMethodData['charges'][1][$chrageLabel]);
+                                if(empty($proImprintMethodData['charges'][1]))
+                                  unset($proImprintMethodData['charges'][1]);
+                              ?>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                      <?php if(isset($proImprintMethodData['charges'][1])) : ?>
+                        <?php foreach($proImprintMethodData['charges'][1] as $chargesDisplayName => $chargesDisplayType) : ?>
+                          <div class="run-change-qut">
+                            <span><?php echo $chargesDisplayName ?>: </span>
+                              <div class="right-qut-list">
+                                <p>QTY
+                                  <div class="qut">
+                                    <ul>
+                                      <?php foreach($chargesDisplayType as $chargesDisplayData) : ?>
+                                        <li>
+                                          <?php
+                                            if (isset($chargesDisplayData['qty_start']) && !empty($chargesDisplayData['qty_start'])) {
+                                              echo $chargesDisplayData['qty_start'];
+                                            }
+                                            if (isset($chargesDisplayData['qty_end']) && !empty($chargesDisplayData['qty_end'])) {
+                                              echo '-'.$chargesDisplayData['qty_end'];
+                                            } else {
+                                              echo "+";
+                                            }
+                                          ?>
+                                        </li>
+                                        <li>
+                                          <?php
+                                            if (isset($chargesDisplayData['price']) && !empty($chargesDisplayData['price'])) {
+                                              echo $priceHelper->currency($chargesDisplayData['price'], true, false); 
+                                            } 
+                                          ?>
+                                          <?php
+                                            if (isset($chargesDisplayData['code']) && !empty($chargesDisplayData['code'])) {
+                                              echo '('.$chargesDisplayData['code'].')';
+                                            } 
+                                          ?>
+                                        </li>
+                                      <?php endforeach; ?>
+                                    </ul>
+                                  </div>
+                                </p>
+                              </div>
+                          </div>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="imp-method-moredetail">
+          <ul>
+            <li>* Additional Charges may apply for different Imprint Methods.<a> More Details</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <?php if($block->getProductShippingDetails()->getSize()) : ?>
+      <div class="inner-tab-content" id="product-shipping">
+        <table class="table table-product" border="0">
+          <tbody>
+            <?php foreach ($block->getProductShippingDetails() as $shippingDetails) : ?>
+              <?php if ($shippingDetails->getPackagingMethod() && !empty($shippingDetails->getPackagingMethod())) : ?>
+                <tr>
+                  <td valign="top" align="left">Packaging Method</td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getPackagingMethod(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getCartonWidth() && !empty($shippingDetails->getCartonWidth())) : ?>
+                <tr>
+                  <td valign="top" align="left">Carton Width <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getCartonWidth(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getCartonHeight() && !empty($shippingDetails->getCartonHeight())) : ?>
+                <tr>
+                  <td valign="top" align="left">Carton Height <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getCartonHeight(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getCartonLength() && !empty($shippingDetails->getCartonLength())) : ?>
+                <tr>
+                  <td valign="top" align="left">Carton Length <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getCartonLength(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getCartonWeight() && !empty($shippingDetails->getCartonWeight())) : ?>
+                <tr>
+                  <td valign="top" align="left">Shipping Carton Weight <?php echo $shippingDetails->getCartonWeightUnit() ? '('.$shippingDetails->getCartonWeightUnit().')' : '' ?></td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getCartonWeight(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getShippingQtyPerCarton() && !empty($shippingDetails->getShippingQtyPerCarton())) : ?>
+                <tr>
+                  <td valign="top" align="left">Pieces Per Carton</td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getShippingQtyPerCarton(); ?></td>
+                </tr>
+              <?php endif; ?>
+              <?php if ($shippingDetails->getState() && !empty($shippingDetails->getState()) && $shippingDetails->getZip() && !empty($shippingDetails->getZip()) && $shippingDetails->getCountry() && !empty($shippingDetails->getCountry()) ) : ?>
+                <tr>
+                  <td valign="top" align="left">FOB</td>
+                  <td valign="top" align="left"><?php echo $shippingDetails->getState().' '.$shippingDetails->getZip().' '.$shippingDetails->getCountry() ?></td>
+                </tr>
+              <?php else : ?>
+                <tr>
+                  <td valign="top" align="left">FOB</td>
+                  <td valign="top" align="left">N/A</td>
+                </tr>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <div class="note1">* Use the Shipping Estimator to determine approximate shipping cost</div>
+      </div>
+      <?php else : ?>
+
+      <?php endif; ?>
+    </div>
+  </div>
+</div>

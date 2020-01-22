@@ -1,0 +1,95 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $smartCarts = $block->getSmartCartFactory(); ?>
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php $product_price_title = $this->helper('Mgs\Mpanel\Helper\Data')->getStoreConfig('product_price/general/price_title');?>
+<?php $product_price_tag = $this->helper('Mgs\Mpanel\Helper\Data')->getStoreConfig('product_price/general/price_currency_tag');?>
+<?php
+    $productPriceStartingTitle = !empty($product_price_title) ? $product_price_title : 'as low as';
+    $productPriceTag =!empty($product_price_tag) ? $product_price_tag : 'ea';
+ ?>
+<?php if (!empty($smartCarts->getData())) : ?>
+  <div class="minicart-content" id="mini-smartcart-items">
+    <div class="moxy-title">
+      <h2><?php echo $smartCarts->getTitle() ?>
+          <div class="Summary-text">
+              <a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartdetail',array('_query'=>array('id'=>$smartCarts->getId()))); ?>">View Cart Details</a>
+          </div>
+      </h2>
+      <?php if(sizeof($block->getAllSmartCart()) > 1) : ?>
+        <a href="javascript:void(0)" id="choosediffcart">activate a different cart</a>
+      <?php endif; ?>
+        <a href="javascript:void(0)" id="create_new_smart_cart_from_mini"><?php if(sizeof($block->getAllSmartCart()) > 1) : ?>or<?php endif; ?> create new</a>
+    </div>
+    <div class="moxy-cart-section">
+      <?php if($smartCarts->getItems() && $smartCarts->getItems()->getSize()) : ?>
+
+        <?php foreach($smartCarts->getItems() as $item) : ?>
+          <?php 
+            $smartcartsimplepro = json_decode($item->getOptions(), true);
+            $simple_product_id = $smartcartsimplepro['simple_product_id'];
+          ?>
+          <?php $_product = $block->getProductById($simple_product_id); ?>
+          <?php $_productconfigurable = $item->getProduct(); ?>
+          <div class="moxy-cart-structure">
+            <div class="popup-pdp-img">
+              <a href="<?php echo $_productconfigurable->getProductUrl() ?>"><img src="<?php echo $this->getItemImage($simple_product_id); ?>"></a>
+            </div>
+            <div class="popup-pdp-price">
+              <?php
+                $optionsSelected = array();
+                if(isset($smartcartsimplepro['options']))
+                {
+                  foreach($smartcartsimplepro['options'] as $attributeId => $optionId)
+                  {
+                    $_attributeId = $_product->getResource()->getAttribute($attributeId);
+                    if ($_attributeId->usesSource()) {
+                      $optionsSelected[] = $_attributeId->getSource()->getOptionText($optionId);
+                    }
+                  }
+                }
+              ?>
+              <h3>
+                <?php if($optionsSelected) : ?>
+                  <a href="<?php echo $_productconfigurable->getProductUrl() ?>"><?php echo $_productconfigurable->getName(); ?></a>
+                <?php else : ?>
+                  <a href="<?php echo $_productconfigurable->getProductUrl() ?>"><?php echo $_productconfigurable->getName(); ?></a>
+                <?php endif; ?>
+              </h3>
+
+              <?php if($_product->getPrice() && !empty($_product->getPrice())) : ?>
+                <span><?php echo $productPriceStartingTitle ;  ?> </span>
+                <p><?php echo $priceHelper->currency($_product->getPrice(), true, false).' '.$productPriceTag; ?></p>
+              <?php endif; ?>
+              <a class="mini_sc_item_delete" href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$item->getId(),'smartcartitem'=>'smartcartitem'))); ?>">Remove</a>
+            </div>
+          </div>
+        <?php endforeach; ?>
+
+        <div class="view-cart-detail">
+          <a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartdetail',array('_query'=>array('id'=>$smartCarts->getId()))); ?>">View cart Details</a>
+        </div>
+        <div class="view-all-carts">
+          <a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartfront/'); ?>">View All Smart Carts</a>
+        </div>
+      <?php else : ?>
+      <div class="message info empty">
+          <span><?php echo __('There are no products yet.'); ?></span>
+      </div>
+      <div class="view-all-carts">
+        <a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartfront/'); ?>">View All Smart Carts</a>
+      </div>
+      <?php endif; ?>
+
+    </div>
+  </div>
+<?php else : ?>
+  <a href="javascript:void(0)" id="create_new_smart_cart_from_mini">create new</a>
+  <div class="message info empty">
+    <span><?php echo __('There are no smart carts yet.'); ?></span>
+  </div>
+<?php endif; ?>
+
+<div class="back-overlay" style="position: fixed;display: none;width: 100%;height: 100%;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.5);z-index: 9999;"></div>

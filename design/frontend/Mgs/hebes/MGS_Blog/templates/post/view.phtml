@@ -1,0 +1,124 @@
+<?php
+$helper = $this->helper('MGS\Blog\Helper\Data');
+$post = $block->getCurrentPost();
+$showAction = $this->getConfig('general_settings/show_action');
+?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank5.png'); ?>
+<div class="blog-post blog-main-info">
+    <div class="image_content">
+        <div class="container">
+            <div class="post-metas">
+                <div class="meta-date">
+                    <span>
+                        <?php echo __('%1', $block->formatDate($post->getUpdatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                    </span>
+                </div>
+                <div class="meta-author">
+                    <span>By</span>
+                    <strong>
+                        <?php echo __('%1', $post->getUser()); ?>
+                    </strong>
+                </div>
+            </div>
+        </div>
+        <?php if($helper->getImageThumbnailPost($post) != ""): ?>
+            <div class="post-images">
+                <?php if($helper->getImageThumbnailPost($post) != ""): ?>
+                     <?php 
+                        if(!$lazyLoad){
+                            $baseImage = $this->getImageThumbnailPost($post);
+                        }
+                        ?>
+                        <div class="post-thumbnail <?php if($lazyLoad): ?> lazy-img<?php endif ?>">
+                            <img class="img-fluid lazy" src="<?php echo $baseImage; ?>" data-src="<?php echo $helper->getImageThumbnailPost($post); ?>" alt="<?php echo $post->getTitle(); ?>" />
+                            <?php if($post->getThumbType() == "video" && $post->getVideoThumbId() != ""): ?>
+                                 <a class="btn-video popup-video" href="<?php echo $helper->getVideoThumbUrl($post); ?>" target="_blank"><span class="ti-control-play"></span></a>
+                            <?php endif ?>
+                        </div>
+
+                <?php endif ?>
+            </div>
+        <?php endif ?>
+    </div>
+    <?php if ($post->getContent()): ?>
+        <div class="post-description">
+            <?php echo $helper->generateContentFilter($post->getContent()); ?>
+        </div>
+    <?php endif; ?>
+	
+    <?php if ($block->getGalleryImage($post)): ?>
+        <div class="gallery-image-carousel owl-carousel">
+            <?php foreach($block->getGalleryImage($post) as $_img): ?>
+                <a class="gallery_image" href="<?php echo $_img; ?>">
+                    <img src="<?php echo $_img; ?>" alt="" class="img-fluid"/>
+                </a>
+            <?php endforeach ?>
+        </div>
+        <script type="text/javascript">
+            require([
+                'jquery',
+                'mgs/owlcarousel'
+            ], function(jQuery){
+                (function($) {
+                    $(".gallery-image-carousel").owlCarousel({
+                        items: 1,
+                        loop: false,
+                        nav: false,
+                        dots: false,
+                        autoHeight: true,
+                        autoplay: true,
+                        autoplayHoverPause: true,
+                        rtl: RTL,
+                        navText: ["<i class='pe-7s-angle-left'></i>","<i class='pe-7s-angle-right'></i>"]
+                    });
+                })(jQuery);
+            });
+        </script>
+    <?php endif ?>	
+    
+    <?php if ($post->getTags()): ?>
+        <?php $tags = explode(',', $post->getTags()); ?>
+        <div class="post-tags">
+            <?php echo __('Tags: '); ?>
+            <?php foreach ($tags as $tag): ?>
+                <a title="<?php echo trim($tag); ?>" href="<?php echo $helper->getTagUrl(trim($tag)); ?>"><?php echo trim($tag); ?></a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+    <?php if($block->getConfig('general_settings/template') == '1column'):?>
+        <?php if($helper->getStoreConfig('mpanel/share_config/enabel_share') && $helper->getStoreConfig('mpanel/share_config/share_blog_detail')): ?>
+            <div class="share-this">
+                <?php echo $block->getChildHtml('blog.detail.sharethis'); ?>
+            </div>
+        <?php endif ?>
+    <?php endif;?>
+	
+	<?php if($showAction): ?>
+		<div class="post-actions">
+			<?php $prevPost = $this->getPrevPost($post->getId()); ?>
+			<?php if($post->getId() != $prevPost['id']): ?>
+				<div class="prev-action action"><a href="<?php echo $prevPost['url']; ?>"><?php echo __('Previous'); ?></a></div>
+			<?php endif ?>
+			<?php $nextPost = $this->getNextPost($post->getId()); ?>
+				<?php if($post->getId() != $nextPost['id']): ?>
+				<div class="next-action action"><a href="<?php echo $nextPost['url']; ?>"><?php echo __('Next'); ?></a></h4></div>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	
+    <?php echo $block->getChildHtml('post_view_comment'); ?>
+</div>
+<script type="text/javascript">
+    require([
+    'jquery'
+    ], function(jQuery){
+        (function($) {
+            $(document).ready(function(){
+                $('.image_content').insertAfter('.page-title-wrapper');
+            });
+        })(jQuery);
+    });
+</script>

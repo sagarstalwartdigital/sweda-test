@@ -1,0 +1,67 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baurl = $storeManager->getStore()->getBaseUrl();
+?>
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+<div class="container">
+    <div class="breadcrumb-section">
+     <h1></h1>
+     <ol class="breadcrumb">
+       <li><a href="<?php echo $baurl; ?>">Home</a></li>
+       <li><a href="<?php echo $baurl; ?>customer-service">Help Center</a></li>
+       <li>Shipping Policy</li>
+     </ol>  
+   </div>
+ </div>
+<div class="container">
+    <div class="account-overview-title">
+        <h2>Shipping Policy</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <nav class="nav-sidebar">
+                    <ul class="nav tabs">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-9">
+                <div class="artwork-right-part">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_policy')->toHtml(); ?>
+                </div>
+            </div>
+       </div>
+    </div>       
+</div>
+<!------ Account-overview-section --------->
+
+<script type="text/javascript">
+require([
+    'jquery',
+    'mask',
+], function($){
+
+    $(document).ready(function() {
+        $('.shipping').addClass('active');
+    });
+
+});
+</script>
+<style type="text/css">
+    .rtn-account-info .account-information .account-overview-tabing {
+    display: block;
+}
+.wrapperaddfields{width: 100%;}
+
+.textarea-return{
+    min-height: 35px !important;
+    height: 35px;
+    border-radius: 0px;
+}
+.breadcrumbs.width-5 {
+    display: none;
+}
+.banner-img.customer-services {
+    margin: -16px 0 0 0;
+}
+</style>

@@ -1,0 +1,223 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('aboutus')) {
+    $jsonData = base64_decode($this->getData('aboutus'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+//print_r($page_data);
+
+$type = 'aboutus';
+
+$backgroundImage_mobile = $themeHelper->getImageName($page_data->backgroundImagemobile);
+$backgroundImagemobile = $themeHelper->getWysiwygMediaUrl($type,$backgroundImage_mobile);
+
+$background_Image = $themeHelper->getImageName($page_data->backgroundImage);
+$backgroundImage = $themeHelper->getWysiwygMediaUrl($type,$background_Image);
+
+$main_why_customers = $themeHelper->getImageName($page_data->main_why_customers);
+$MainWhyCustomers = $themeHelper->getWysiwygMediaUrl($type,$main_why_customers);
+
+$main_why_customersmobile = $themeHelper->getImageName($page_data->main_why_customersmobile);
+$MainWhyCustomersmobile = $themeHelper->getWysiwygMediaUrl($type,$main_why_customersmobile);
+
+$imgwhy_one = $themeHelper->getImageName($page_data->imgwhy_one);
+$imgwhyOne = $themeHelper->getWysiwygMediaUrl($type,$imgwhy_one);
+
+$imgwhy_two = $themeHelper->getImageName($page_data->imgwhy_two);
+$imgwhyTwo = $themeHelper->getWysiwygMediaUrl($type,$imgwhy_two);
+
+$imgwhy_three = $themeHelper->getImageName($page_data->imgwhy_three);
+$imgwhyThree = $themeHelper->getWysiwygMediaUrl($type,$imgwhy_three);
+
+$imgsave_story_1 = $themeHelper->getImageName($page_data->imgsave_story_1);
+$imgsaveStory1 = $themeHelper->getWysiwygMediaUrl($type,$imgsave_story_1);
+
+$imgsave_storybackground_2 = $themeHelper->getImageName($page_data->imgsave_storybackground_2);
+$imgsaveStorybackground2 = $themeHelper->getWysiwygMediaUrl($type,$imgsave_storybackground_2);
+
+$imgsave_story_2 = $themeHelper->getImageName($page_data->imgsave_story_2);
+$imgsaveStory2 = $themeHelper->getWysiwygMediaUrl($type,$imgsave_story_2);
+
+$imgsave_spirit_2 = $themeHelper->getImageName($page_data->imgsave_spirit_2);
+$imgsaveSpirit2 = $themeHelper->getWysiwygMediaUrl($type,$imgsave_spirit_2);
+
+$imgsave_spirit_3 = $themeHelper->getImageName($page_data->imgsave_spirit_3);
+$imgsaveSpirit3 = $themeHelper->getWysiwygMediaUrl($type,$imgsave_spirit_3);
+
+?>
+
+
+
+<div class="container-fluide">
+  <div class="banner-section">
+    <div class="banner-img">
+      <section class="parallax-container desktop-only">
+          <div class="about-main-top-banner parallax" style="background: url(<?php echo $backgroundImage ?>) center center / cover no-repeat;"></div>
+      </section>
+      <?php if($backgroundImagemobile) { ?>
+        <img class="mobile-only" src="<?php echo $backgroundImagemobile ?>">
+      <?php } ?>
+   </div>
+   <div class="about-banner-text">
+     <h2><?php echo $page_data->title ?></h2>
+   </div>
+  </div>
+</div>
+
+<div class="container-fluide">
+    <div class="customer-section">
+      <div class="costomer-banner">
+        <?php if($MainWhyCustomers) { ?>
+         <img class="desktop-only" src="<?php echo $MainWhyCustomers ?>">
+        <?php } ?> 
+         <?php if($MainWhyCustomersmobile) { ?>
+         <img class="mobile-only" src="<?php echo $MainWhyCustomersmobile ?>">
+        <?php } ?>
+      </div>
+        <div class="costomer-us">
+          <div class="container">
+             <div class="row">
+                 <div class="costomer-title">
+                   <h2><?php echo $page_data->title_why_customers ?></h2>
+                 </div>
+                 <div class="col-sm-4">
+                     <div class="costomer-icon-text">
+                        <div class="costomer-img">
+                          <?php if($imgwhyOne) { ?>
+                         <img src="<?php echo $imgwhyOne ?>">
+                          <?php } ?>
+                        </div>
+                         <h4><?php echo $page_data->title_one ?></h4>
+                         <?php echo html_entity_decode($page_data->desctiption_one) ?>
+                     </div>
+                 </div>
+                  <div class="col-sm-4">
+                     <div class="costomer-icon-text">
+                        <div class="costomer-img">
+                          <?php if($imgwhyTwo) { ?>
+                         <img src="<?php echo $imgwhyTwo ?>">
+                         <?php } ?>
+                        </div>
+                         <h4><?php echo $page_data->title_two ?></h4>
+                         <?php echo html_entity_decode($page_data->desctiption_two) ?>
+                     </div>
+                 </div>
+                  <div class="col-sm-4">
+                     <div class="costomer-icon-text">
+                        <div class="costomer-img">
+                         <?php if($imgwhyThree) { ?>
+                         <img src="<?php echo $imgwhyThree ?>">
+                         <?php } ?>
+                        </div>
+                         <h4><?php echo $page_data->title_three ?></h4>
+                         <?php echo html_entity_decode($page_data->desctiption_three) ?>
+                     </div>
+                 </div>
+             </div>
+          </div>
+        </div> 
+    </div>
+</div>
+<div class="container-fluide">
+  <div class="out-story">
+    <div class="row">
+        <div class="col-md-5 p-0 section-order-2">
+           <div class="story-img-section">
+              <?php if($imgwhyThree) { ?>
+              <img src="<?php echo $imgsaveStory1 ?>" class="our-story-img" >
+              <?php } ?>
+           </div>
+        </div>
+        <div class="col-md-7 section-order-1">
+           <div class="story-text-section">
+              <h2><?php echo $page_data->title_story_1 ?></h2>
+              <?php echo html_entity_decode($page_data->desctiption_story_1) ?>
+           </div>
+        </div>
+     </div>
+   </div>
+   
+    <div class="leadership-section">
+      <div class="out-story-banner">
+          <?php if($imgsaveStorybackground2) { ?>
+          <img src="<?php echo $imgsaveStorybackground2 ?>" class="background-parallax-about">
+          <?php } ?>
+      </div>  
+      <div class="out-story-section">
+<!--         <div class="container"> -->
+               <div class="out-story-leader-ship">
+          <div class="row">
+              <div class="col-md-5 ls-section">
+                 <div class="leader-ship-text">
+                    <h2><?php echo $page_data->title_story_2 ?></h2>
+                    <?php echo html_entity_decode($page_data->desctiption_story_2) ?>
+                 </div>
+              </div>
+              <div class="col-md-6 p-0">
+                 <div class="second-img-section">
+                    <?php if($imgsaveStory2) { ?>
+                    <img src="<?php echo $imgsaveStory2 ?>" class="aboutus-story-img">
+                    <?php } ?>
+                 </div>
+              </div>
+           </div>
+         </div>
+     <!--    </div> -->
+      </div>
+    </div>
+    <div class="sweda-spirit-section">
+        <div class="swedaspirit-bottom-img">
+             <div class="row">
+                <div class="col-md-8">
+                    <div class="col-md-12">
+                         <div class="sweda-spirit-title">
+                            <h2><?php echo $page_data->title_spirit_2 ?></h2>
+                            <?php echo html_entity_decode($page_data->desctiption_spirit_2) ?>
+                         </div>
+                    </div>
+                    <div class="col-md-12 swedaspirit-bottom-img">
+                        <div class="spirit-left-img">
+                              <?php if($imgsaveSpirit2) { ?>
+                              <img src="<?php echo $imgsaveSpirit2 ?>">
+                              <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spirit-right-img">
+                        <?php if($imgsaveSpirit3) { ?>
+                        <img src="<?php echo $imgsaveSpirit3 ?>">
+                        <?php } ?>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    require([
+        'jquery',
+    ], function($){
+        var parallaxElements = $('.parallax'),
+            parallaxQuantity = parallaxElements.length;
+        $(window).on('scroll', function () {
+          window.requestAnimationFrame(function () {
+            for (var i = 0; i < parallaxQuantity; i++) {
+              var currentElement =  parallaxElements.eq(i);
+              var scrolled = $(window).scrollTop();
+                currentElement.css({
+                  'transform': 'translate3d(0,' + scrolled * -0 + 'px, 0) background-attachment:fixed',
+                  'background-attachment': 'fixed'
+                });
+            }
+          });
+        });
+    });
+</script>

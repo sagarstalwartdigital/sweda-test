@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Vlibrary
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageplaza_Core::css/grid-mageplaza.css"/>
+        <css src="Mageplaza_Core::css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceContainer name="sidebar.additional" >
+                    <block class="Mageplaza\Vlibrary\Block\Category\Widget" name="mpvlibrary.sidebar.category" template="category/widget.phtml"/>
+                    <block class="Mageplaza\Vlibrary\Block\MonthlyArchive\Widget" name="mpvlibrary.sidebar.monthly" template="monthly/widget.phtml"/>
+                    <block class="Mageplaza\Vlibrary\Block\Topic\Widget" name="mpvlibrary.sidebar.topic" template="topic/widget.phtml"/>
+                    <block class="Mageplaza\Vlibrary\Block\Tag\Widget" name="mpvlibrary.sidebar.tag" template="tag/widget.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <!-- <block class="Mageplaza\Vlibrary\Block\Sidebar\Search" name="mpvlibrary.sidebar.search" template="sidebar/search.phtml" ifconfig="vlibrary/sidebar/search/enable_search"/> -->
+             <block class="Magento\Framework\View\Element\Template" name="mpvlibrary.search" template="Mageplaza_Vlibrary::search.phtml"/>
+
+             <block class="Magento\Framework\View\Element\Template" name="mpvlibrary.videolibrary-mobileview" template="Mageplaza_Vlibrary::videolibrary-mobileview.phtml"/>
+
+             <block class="Magento\Framework\View\Element\Template" name="mpvlibrary.toolbar.sorter" template="Mageplaza_Vlibrary::toolbar-sorter.phtml"/>
+             <block class="Mageplaza\Vlibrary\Block\Design" name="mpvlibrary.design" template="Mageplaza_Vlibrary::design.phtml"/>
+             <block class="Magento\Framework\View\Element\Template" name="mpvlibrary.video-top-section" template="Mageplaza_Vlibrary::video-top-section.phtml"/>
+            <container name="toptoolbar" htmlTag="div" htmlClass="toolbar" before="-" />
+        </referenceContainer>
+        <move element="mpvlibrary.search" destination="toptoolbar" />
+        <move element="mpvlibrary.toolbar.sorter" destination="toptoolbar" after="mpvlibrary.search"/>
+        <move element="mpvlibrary.video-top-section" destination="main.content" before="-"/>
+
+    </body>
+</page>

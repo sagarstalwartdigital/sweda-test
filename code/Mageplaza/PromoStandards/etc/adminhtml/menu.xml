@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_PromoStandards
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_PromoStandards::promostandards" title="Promo Standards" module="Mageplaza_PromoStandards" sortOrder="110" resource="Mageplaza_PromoStandards::promostandards" parent="Magento_Backend::content"/>
+        <add id="Mageplaza_PromoStandards::post" title="Add Promo Standards" module="Mageplaza_PromoStandards" sortOrder="10" action="mageplaza_promostandards/post" resource="Mageplaza_PromoStandards::post" parent="Mageplaza_PromoStandards::promostandards"/>
+        <!-- <add id="Mageplaza_PromoStandards::tag" title="Manage Tags" module="Mageplaza_PromoStandards" sortOrder="20" action="mageplaza_promostandards/tag" resource="Mageplaza_PromoStandards::tag" parent="Mageplaza_PromoStandards::promostandards"/> -->
+
+        <add id="Mageplaza_PromoStandards::topic" title="Add Category Promo Standards" module="Mageplaza_PromoStandards" sortOrder="30" action="mageplaza_promostandards/topic" resource="Mageplaza_PromoStandards::topic" parent="Mageplaza_PromoStandards::promostandards"/>
+        <!-- <add id="Mageplaza_PromoStandards::category" title="Categories" module="Mageplaza_PromoStandards" sortOrder="40" action="mageplaza_promostandards/category" resource="Mageplaza_PromoStandards::category" parent="Mageplaza_PromoStandards::promostandards"/>
+        <add id="Mageplaza_PromoStandards::author" title="Author Information" module="Mageplaza_PromoStandards" sortOrder="50" action="mageplaza_promostandards/author/edit" resource="Mageplaza_PromoStandards::author" parent="Mageplaza_PromoStandards::promostandards"/>
+        <add id="Mageplaza_PromoStandards::comment" title="Manage Comments" module="Mageplaza_PromoStandards" sortOrder="60" action="mageplaza_promostandards/comment" resource="Mageplaza_PromoStandards::comment" parent="Mageplaza_PromoStandards::promostandards"/>
+        <add id="Mageplaza_PromoStandards::import" title="Import" module="Mageplaza_PromoStandards" sortOrder="65" action="mageplaza_promostandards/import/edit" resource="Mageplaza_PromoStandards::import" parent="Mageplaza_PromoStandards::promostandards"/> -->
+        <add id="Mageplaza_PromoStandards::configuration" title="Configuration" module="Mageplaza_PromoStandards" sortOrder="1000" action="adminhtml/system_config/edit/section/promostandards" resource="Mageplaza_PromoStandards::configuration" parent="Mageplaza_PromoStandards::promostandards"/>
+    </menu>
+</config>

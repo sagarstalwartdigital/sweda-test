@@ -1,0 +1,20 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Blog List</title>
+    </head> 
+
+    <body>
+
+
+        <referenceContainer name="sidebar.main">
+            <block class="Stalwart\Bloglist\Block\Index\Sidebar" name="bloglist_index_sidebar" before="-" template="Stalwart_Bloglist::bloglist_index_sidebar.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Stalwart\Bloglist\Block\Index\Index" name="bloglist_index_index" template="Stalwart_Bloglist::bloglist_index_index.phtml"/>
+        </referenceContainer>
+
+
+    </body>
+</page>

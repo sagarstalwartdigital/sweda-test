@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="head.additional">
+			<block class="Magento\Framework\View\Element\Template" name="script.sharethis" template="MGS_Mpanel::sharethis/sharethis_script.phtml" ifconfig="mpanel/share_config/share_product_detail"/>
+		</referenceBlock>
+
+		<referenceContainer name="content">
+			<container name="product.detail.wrapper" htmlTag="div" htmlClass="row row-detail-product" before="-"/>
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.desc-tab" template="product/view/desc-tab.phtml" />
+			<block class="Stalwart\Sweda\Block\ProductPricesRegular" name="product.info.grouped-price" template="product/view/grouped-price.phtml" />
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.inventory" template="product/view/checkproinventory.phtml" />
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.addtosmartcart" template="product/view/addtosmartcartbtn.phtml" />
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.product-info" template="product/view/product-info.phtml"/>
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.product-name" template="product/view/name_sku.phtml"/>
+			<block class="Stalwart\Sweda\Block\ProductImprintMethod" name="product.imprint.shipping.tab" template="product/view/imprintandshippingtab.phtml"/>
+			<block class="Magento\Catalog\Block\Product\View\Description" name="product.info.details" template="Magento_Catalog::product/view/details.phtml">
+                <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes" as="additional" template="product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Specification</argument>
+                    </arguments>
+                </block>
+                <!-- <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.description" as="description" template="product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getDescription</argument>
+                        <argument name="at_code" xsi:type="string">description</argument>
+                        <argument name="css_class" xsi:type="string">description</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Description</argument>
+                    </arguments>
+                </block> -->
+            </block>
+            <block class="Magento\Catalog\Block\Product\ProductList\Related" name="catalog.product.related" template="Magento_Catalog::product/list/items.phtml">
+	            <arguments>
+	                <argument name="type" xsi:type="string">related</argument>
+	            </arguments>
+	            <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="related.product.addto" as="addto">
+	                <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+	                       name="related.product.addto.compare" as="compare"
+	                       template="Magento_Catalog::product/list/addto/compare.phtml"/>
+	            </block>
+	        </block>
+	        <block class="Magento\Catalog\Block\Product\ProductList\Upsell" name="product.info.upsell" template="Magento_Catalog::product/list/items.phtml">
+                <arguments>
+                    <argument name="type" xsi:type="string">upsell</argument>
+                </arguments>
+                <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="upsell.product.addto" as="addto">
+                    <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                           name="upsell.product.addto.compare" as="compare"
+                           template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                </block>
+            </block>
+            <container name="product.left.container" as="productLeftContainer" htmlTag="div" htmlClass="product-left-container"></container>
+
+            <container name="product.add.btn.view" as="productAddBtnView" htmlTag="div" htmlClass="product-add-btn-view">
+	            <container name="product.add.btn" as="productAddBtn" htmlTag="div" htmlClass="product-add-btn">
+	                <block class="Stalwart\Smartcart\Block\SmartCartDetail" name="mgs.quickview.smart.cart" template="MGS_QuickView::product/view/changesmartcart.phtml" cacheable="false" />
+	            </container>
+            </container>
+
+		</referenceContainer>
+
+		<move element="product.left.container" destination="product.detail.wrapper" />
+		<move element="product.info.media" destination="product.left.container" />
+		<move element="product.info.product-info" destination="product.left.container" before="-"/>
+		<move element="product.info.product-name" destination="product.info.main" before="-"/>
+		<move element="product.info.desc-tab" destination="product.info.main" before="-"/>
+		<move element="product.info.details" destination="product.info.main" before="-"/>
+		<move element="catalog.product.related" destination="content" after="product.imprint.shipping.tab"/>
+		<move element="product.info.upsell" destination="content" after="catalog.product.related"/>
+
+		<move element="product.info.main" destination="product.detail.wrapper" />
+		<!-- <move element="product.info.sku" destination="product.info.main" before="-"/> -->
+		<move element="product.info.overview" destination="product.info.main" after="product.info.price" />
+        <move element="product.info.review" destination="product.info.main" before="-" />
+		<move element="product.info.addto" destination="product.info.addtocart" />
+
+		<move element="product.info.grouped-price" destination="product.info.main" after="product.info.options.wrapper.bottom"/>
+		<move element="product.info.inventory" destination="product.info.main" after="product.info.grouped-price"/>
+		<move element="product.info.addtosmartcart" destination="product.info.main" after="product.info.inventory"/>
+		<move element="product.add.btn.view" destination="product.info.main" after="product.info.addtosmartcart"/>
+        
+		<referenceBlock name="product.info.addtocart.additional">
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.addto.additional" template="product/view/addto.phtml">
+				<block class="Magento\Catalog\Block\Product\View" name="product.info.mailto.additional" template="product/view/mailto.phtml"/>
+			</block>
+		</referenceBlock>
+
+		<move element="product.info.mailto" destination="product.info.addto" />
+
+		<referenceContainer name="product.info.main">
+		    <container name="product.info.list.additional" htmlTag="div" htmlClass="product-info-list-additional" after="-"/>
+		    
+			<block class="Magento\Framework\View\Element\Template" name="product.detail.sharethis" template="MGS_Mpanel::sharethis/sharethis.phtml" ifconfig="mpanel/share_config/share_product_detail" after="-" />
+		</referenceContainer>
+<!--		<move element="product.info.stock.sku" destination="product.info.main" />-->
+<!--		<move element="product.info.name.sku" destination="product.info.main" after="product.info.price"/>-->
+
+		
+
+		<referenceContainer name="sidebar.additional">
+            <block ifconfig="mpanel/product_details/related_sidebar" class="Magento\Catalog\Block\Product\ProductList\Related" after="product.brand.img.sidebar" name="catalog.product.related.sidebar" template="Magento_Catalog::product/list/items.phtml">
+                <arguments>
+                    <argument name="type" xsi:type="string">related</argument>
+                    <argument name="position" xsi:type="string">sidebar</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="product.info.options.wrapper.bottom">
+            <container name="product.info.list.additional" htmlTag="div" htmlClass="product-info-list-additional" before="-"/>
+        </referenceBlock>
+
+
+		<!-- <referenceBlock name="product.info.addtocart.additional" remove="true" /> -->
+		<referenceBlock name="product.info.addtocart" remove="true" />
+		<referenceBlock name="product.info.review" remove="true" />
+		<referenceBlock name="product.info.overview" remove="true"/>
+		<referenceBlock name="product.info.price" remove="true" />
+		
+	</body>
+</page>

@@ -1,0 +1,407 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+<?php $smartCart = $block->getSmartCart(); ?>
+<?php if($block->getIsLoggedIn()) : ?>
+  <?php if($block->getIsBtobPending() != 0) : ?>
+    <?php if($smartCart) : ?>
+    <section id="maincontent" class="page-main container smart_cart_detail_item">
+      <div class="row">
+        <div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="moxy-cart-title">
+                  <h2><?php echo $smartCart->getTitle(); ?></h2>
+                  <p>Created on <?php echo date('m-d-Y',strtotime($smartCart->getCreatedAt())); ?></p>
+                  <p><strong>Event Name : </strong> <?php echo $smartCart->getEventName() ?></p>
+                  <p><strong>Event Date : </strong> <?php echo $smartCart->getEventDate() && $smartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($smartCart->getEventDate())) : '' ; ?></p>
+                  <p class="recipient-data">
+                    <strong>Recipients : </strong> 
+                    <?php if(!empty(json_decode($smartCart->getRecepientData(), true))) : ?>
+                      <?php 
+                          foreach (json_decode($smartCart->getRecepientData(), true) as $recipientsEmail => $recipientsData) {
+                            $faCalass = "fa fa-envelope";
+                            if(isset($recipientsData['mailopened']) && $recipientsData['mailopened'] == 1)
+                              $faCalass = "fa fa-envelope-open";
+                            $recipientDataArray[][$recipientsEmail] = $recipientsData;
+                          }
+                      ?>
+                      <?php foreach ($recipientDataArray as $reciDataKey => $reciDataData) : ?>
+                        <?php if($reciDataKey == "0") : ?>
+                          <?php foreach ($reciDataData as $reciDataEmail => $reciDataName) : ?>
+                            <span class="reci-list"><i class="<?php echo $faCalass ?>" aria-hidden="true"></i> <?php echo $reciDataName['name'] ?> (<?php echo $reciDataEmail ?>)</span>
+                          <?php endforeach; ?>
+                        <?php else : ?>
+                          <?php foreach ($reciDataData as $reciDataEmail => $reciDataName) : ?>
+                              <span class="reci-list"><span class="reci-comma">,</span> <i class="<?php echo $faCalass ?>" aria-hidden="true"></i> <?php echo $reciDataName['name'] ?> (<?php echo $reciDataEmail ?>)</span>
+                            <?php endforeach; ?>
+                          <?php endif; ?>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  </p>
+                  <p><?php echo $smartCart->getDescription(); ?></p>
+                  <a href="javascript:void(0)" id="edit_cart_info" class="<?php echo $smartCart->getId(); ?>">Edit Cart Info</a>
+                  <div class="moxy-cart-top-btn-wrapper">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mox-cart-btn">
+                          <?php if ($smartCart->getItems()->getSize() > 0) : ?>
+                            <div class="cart-button">
+                              <a href="javascript:void();" class="editallsmartcartitem">save</a>
+                            </div>
+                          <?php endif; ?>
+                          <div class="cart-button">
+                            <a href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$smartCart->getId(),'smartcartondetail'=>'smartcartondetail'))); ?>">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="icon-cart-right">
+                          <ul>
+                            <li>
+                              <a href="javascript:void(0)" class="send-mail" id="<?php echo $smartCart->getId()?>"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                              <p>Share<br>Smart Cart</p></a>
+                            </li>
+                            <li>
+                              <a href="<?php echo $block->getUrl('smartcart/cartindex/duplicatecart',array('_query'=>array('id'=>$smartCart->getId()))); ?>"><i class="fa fa-clone" aria-hidden="true"></i>
+                              <p>Duplicate<br>Smart Cart</p></a>
+                            </li>
+                            <li>
+                              <a class="add-more-pro" id="<?php echo $smartCart->getId() ?>" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i>
+                              <p>Add More<br>Products</p></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+          <?php if($smartCart->getItems() && $smartCart->getItems()->getSize()) : ?>
+            <?php
+              $productListObj = $objectManager->create('Magento\CatalogWidget\Block\Product\ProductsList');
+              $imageHelper = $objectManager->get('\Magento\Catalog\Helper\Image');
+            ?>
+            <?php $countitems = 1; ?>
+            <?php foreach($smartCart->getItems() as $item) : ?>
+              <?php 
+                $smartcartsimplepro = json_decode($item->getOptions(), true);
+                $simple_product_id = $smartcartsimplepro['simple_product_id'];
+              ?>
+              <?php $_product = $block->getProductById($simple_product_id); ?>
+              <?php $_productconfigurable = $item->getProduct(); ?>
+              <?php 
+                $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+
+                $regularPriceCollection = $block->getProductRegularPrices($_productconfigurable->getId());
+
+                $productImprintMethods = $block->getProductImprintMethod($_productconfigurable->getId());
+
+                $productRegularPriceType = $block->getProductRegularPriceTypes($_productconfigurable->getId());
+
+                $imprintMethodWiseData = array();
+                $counter = 1;
+                foreach ($productImprintMethods as $productImprintMethod)
+                {
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['name'] = $productImprintMethod->getImprintMethodName();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['matrix'] = $productImprintMethod->getMatrix();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['full_color'] = $productImprintMethod->getFullColor();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['color_included_in_price'] = $productImprintMethod->getColorIncludedInPrice();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_color'] = $productImprintMethod->getMaximumColor();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['location_included_in_price'] = $productImprintMethod->getLocationIncludedInPrice();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_location'] = $productImprintMethod->getMaximumLocation();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['productiont_time'] = $productImprintMethod->getProductiontTime();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['production_unit'] = $productImprintMethod->getProductionUnit();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['rule'] = $productImprintMethod->getRule();
+
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['name'] = $productImprintMethod->getImprintChargeName();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_start'] = $productImprintMethod->getQtyStart();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_end'] = $productImprintMethod->getQtyEnd();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['price'] = $productImprintMethod->getPrice();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['code'] = $productImprintMethod->getCode();
+
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['name'] = $productImprintMethod->getImprintPostionName();
+                  $imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['area'] = $productImprintMethod->getImprintPostionArea();
+
+
+                  $counter++;
+                }
+
+                ?>
+                <div class="moxy-product-section smartcart-product-wrapper product-item sci-<?php echo $item->getId() ?>" id="<?php echo $_productconfigurable->getId() ?>">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="deletitemicon">
+                         <a href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$item->getId(),'smartcartitemoncartedit'=>'smartcartitemoncartedit'))); ?>">×</a>
+                         <p>Delete</p>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="left-img-section">
+                        <?php
+                            $imageUrl = $imageHelper->init($_product, 'image')
+                              ->setImageFile($_product->getImage()) // image,small_image,thumbnail
+                              ->getUrl();
+                            $imageUrl = str_replace("/.jpg", "/image.jpg", $imageUrl);
+                        ?>
+                        <img src="<?php echo $imageUrl; ?>" class="smartcart-item-pimage" id="image-<?php echo $item->getId() ?>">
+                        <?php
+                          if(false)
+                          {
+                            echo $this->getLayout()->createBlock('MGS\ExtraGallery\Block\Product\View\Gallery')
+                                ->setProduct($_productconfigurable)
+                                ->setGalleryId($item->getId())
+                                ->setTemplate('MGS_ExtraGallery::gallery/gallery_4.phtml')
+                                ->toHtml();
+                          }
+                        ?>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="moxy-Products-title">
+                        <h2><?php echo $_productconfigurable->getName(); ?></h2>
+                        <!-- <?php //echo $productListObj->getProductPriceHtml($_productconfigurable); ?> -->
+                        <div class="pro-long-desc-moxy-cart"><p><?php echo $_product->getDescription(); ?></p></div>
+                      </div>
+                      <div class="product-options-wrapper product-options-wrapper<?php echo '-'.$item->getId() ?>" id="product-options-wrapper">
+                        <div class="fieldset" tabindex="0"> 
+                          <?php
+                            echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Configurable')
+                                  ->setProduct($_productconfigurable)
+                                  ->setItemId($item->getId())
+                                  ->setItemOptions($item->getOptions())
+                                  ->setSimpleProductId($simple_product_id)
+                                  ->setNeedPriceBox(true)
+                                  ->setTemplate('Magento_Swatches::product/view/renderer.phtml')
+                                  ->toHtml(); 
+                          ?>
+                        </div>
+                      </div>
+                      <div class="product-add-form moxy-form-section">
+                        <div class="">
+                          <div class="desktop-only">
+                            <?php if(sizeof($regularPriceCollection->getData())) : ?>
+                              <div class class="product-add-form">
+                                  <?php if ($productRegularPriceType->getPriceType() != 'call_for_price') : ?>
+                                      <div class="desktop-only">
+                                          <table class="table data grouped" id="super-product-table">
+                                              <tbody>
+                                                  <tr>
+                                                      <th>Quantity</th>
+                                                      <?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+                                                          <td>
+                                                              <?php if (!empty($regularPriceData->getQtyStart())) : ?>
+                                                                  <?php echo $regularPriceData->getQtyStart() ?>
+                                                              <?php endif; ?>
+                                                              <?php if (!empty($regularPriceData->getQtyEnd())) : ?>
+                                                                  <?php echo '-'.$regularPriceData->getQtyEnd() ?>
+                                                              <?php else : ?>
+                                                                  <?php echo '+' ?>
+                                                              <?php endif; ?>
+                                                          </td>
+                                                      <?php endforeach; ?>
+                                                  </tr>
+                                                  <tr>
+                                                      <th>Price</th>
+                                                      <?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+                                                          <td>
+                                                              <?php echo $priceHelper->currency($regularPriceData->getDecorativePrice(), true, false); ?>
+                                                              <?php 
+                                                                  if ($regularPriceData->getDecorativePriceCode() && !empty($regularPriceData->getDecorativePriceCode())) {
+                                                                      echo '('.$regularPriceData->getDecorativePriceCode().')';
+                                                                  }
+                                                              ?>
+                                                          </td>
+                                                      <?php endforeach; ?>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  <?php endif; ?>
+                              </div>
+                          <?php endif; ?>
+
+                          <div class="product pricing overview">
+                              <div class="value" itemprop="description">
+                                  <div class="product-info-specification">
+                                      <?php if(sizeof($imprintMethodWiseData)) : ?>
+                                          <?php $newChargesArray = array() ?>
+                                          <ul class="nav nav-tabs" role="tablist">
+                                              <?php $counter = 1; ?>
+                                              <?php foreach($imprintMethodWiseData as $imprintId => $proImprintMethodData) : ?>
+                                                  <?php if(isset($proImprintMethodData['charges'][2])) : ?>
+                                                      <?php $newChargesArray[$proImprintMethodData['name']] = $proImprintMethodData['charges'][2]; ?>
+                                                      <?php if ($counter == 1) : ?>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link active" href="#<?php echo str_replace(" ","-",$proImprintMethodData['name']).'-'.$countitems; ?>" role="tab" data-toggle="tab"><?php echo $proImprintMethodData['name'] ?></a>
+                                                          </li>
+                                                      <?php else : ?>
+                                                          <li class="nav-item">
+                                                            <a class="nav-link" href="#<?php echo str_replace(" ","-",$proImprintMethodData['name']).'-'.$countitems; ?>" role="tab" data-toggle="tab"><?php echo $proImprintMethodData['name'] ?></a>
+                                                          </li>
+                                                      <?php endif; ?>
+                                                  <?php endif; ?>
+                                                  <?php $counter++; ?>
+                                              <?php endforeach; ?> 
+                                          </ul>
+                                          <div class="tab-content">
+                                              <?php $counter = 1; ?>
+                                              <?php foreach($newChargesArray as $imprintName => $imprintChargesArray) : ?>
+                                                  <?php if ($counter == 1) : ?>
+                                                      <div role="tabpane<?php echo trim($counter) ?>" class="tab-pane fade in active" id="<?php echo str_replace(" ","-",$imprintName).'-'.$countitems; ?>">
+                                                          <table class="table data grouped" id="super-product-table">
+                                                              <tbody>
+                                                                  <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                                                                      <tr>
+                                                                          <th><?php echo "Quantity" ?></th>
+                                                                          <?php foreach($charageData as $key => $charageRecord) : ?>
+                                                                              <td>
+                                                                                  <?php
+                                                                                  if (isset($charageRecord['qty_start']) && !empty($charageRecord['qty_start']))
+                                                                                      echo $charageRecord['qty_start'];
+                                                                                  
+                                                                                  if (isset($charageRecord['qty_end']) && !empty($charageRecord['qty_end']))
+                                                                                      echo '-'.$charageRecord['qty_end'];
+                                                                                  else
+                                                                                      echo "+";
+                                                                                  ?>
+                                                                              </td>
+                                                                          <?php endforeach; ?>
+                                                                      </tr>
+                                                                      <?php break; ?>
+                                                                  <?php endforeach; ?>
+                                                                  <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                                                                      <tr>
+                                                                          <th><?php echo $charageName ?></th>
+                                                                          <?php foreach($charageData as $key => $charageRecord) : ?>
+                                                                              <td>
+                                                                                  <?php
+                                                                                      if(isset($charageRecord['price']) && !empty($charageRecord['price']))
+                                                                                          echo $priceHelper->currency($charageRecord['price'], true, false);
+                                                                                      if(isset($charageRecord['code']) && !empty($charageRecord['code']))
+                                                                                          echo '('.$charageRecord['code'].')';
+                                                                                  ?>
+                                                                              </td>
+                                                                          <?php endforeach; ?>
+                                                                      </tr>
+                                                                  <?php endforeach; ?>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  <?php else : ?>
+                                                      <div role="tabpane<?php echo trim($counter) ?>" class="tab-pane fade" id="<?php echo str_replace(" ","-",$imprintName).'-'.$countitems; ?>">
+                                                          <table class="table data grouped" id="super-product-table">
+                                                              <tbody>
+                                                                  <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                                                                      <tr>
+                                                                          <th><?php echo "Quantity" ?></th>
+                                                                          <?php foreach($charageData as $key => $charageRecord) : ?>
+                                                                              <td>
+                                                                                  <?php
+                                                                                  if (isset($charageRecord['qty_start']) && !empty($charageRecord['qty_start']))
+                                                                                      echo $charageRecord['qty_start'];
+                                                                                  
+                                                                                  if (isset($charageRecord['qty_end']) && !empty($charageRecord['qty_end']))
+                                                                                      echo '-'.$charageRecord['qty_end'];
+                                                                                  else
+                                                                                      echo "+";
+                                                                                  ?>
+                                                                              </td>
+                                                                          <?php endforeach; ?>
+                                                                      </tr>
+                                                                      <?php break; ?>
+                                                                  <?php endforeach; ?>
+                                                                  <?php foreach($imprintChargesArray as $charageName => $charageData) : ?>
+                                                                      <tr>
+                                                                          <th><?php echo $charageName ?></th>
+                                                                          <?php foreach($charageData as $key => $charageRecord) : ?>
+                                                                              <td>
+                                                                                  <?php
+                                                                                      if(isset($charageRecord['price']) && !empty($charageRecord['price']))
+                                                                                          echo $priceHelper->currency($charageRecord['price'], true, false);
+                                                                                      if(isset($charageRecord['code']) && !empty($charageRecord['code']))
+                                                                                          echo '('.$charageRecord['code'].')';
+                                                                                  ?>
+                                                                              </td>
+                                                                          <?php endforeach; ?>
+                                                                      </tr>
+                                                                  <?php endforeach; ?>
+                                                              </tbody>
+                                                          </table>
+                                                      </div>
+                                                  <?php endif; ?>
+                                                  <?php $counter++; ?>
+                                              <?php endforeach; ?>
+                                          </div>
+                                      <?php endif; ?>
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                          <div class="moxy-pdp-bottom-link">
+                            <a href="<?php echo $_productconfigurable->getProductUrl() ?>">View Details</a>
+                          </div>
+                          <div class="comment-box">
+                            <form class="usecomments" method="post">
+                              <label>Your Comments / Notes</label>
+                              <textarea class="input-text" name="user_comments[<?php echo $item->getId(); ?>]" rows="2"><?php echo $item->getUsercomments() && $item->getUsercomments() !== NULL ? trim($item->getUsercomments()) : '' ; ?></textarea>
+                            </form>
+                          </div>
+                          <div class="smartcartitemsave">
+                            <a class="editsmartcartsubmit" data-id="<?php echo $_productconfigurable->getId(); ?>" href="javascript:void(0)" id="<?php echo $item->getId(); ?>" >Save</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php $countitems++; ?>
+            <?php endforeach; ?>
+            <?php else : ?>
+            <div class="message info empty">
+                <span><?php echo __('There are no products yet.'); ?></span>
+            </div>
+            <?php endif; ?>
+          </div>
+          <?php if ($smartCart->getItems()->getSize() > 0) : ?>
+            <div class="moxy-cart-bottom-btn">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="moxy-cart-title">
+                      <div class="mox-cart-btn">
+                        <div class="cart-button">
+                          <a href="javascript:void();" class="editallsmartcartitem">save</a>
+                        </div>
+                        <div class="cart-button">
+                          <a href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$smartCart->getId(),'smartcartondetail'=>'smartcartondetail'))); ?>">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>            
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    </section>
+    <?php else : ?>
+      <div class="message info empty">
+          <span><?php echo __('There are no Carts yet.'); ?></span>
+      </div>
+    <?php endif; ?>
+  <?php else : ?>
+    <?php  
+      $redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+      $redirect->setRedirect('/customer/account');
+      return $redirect;
+    ?>
+  <?php endif; ?>
+<?php else : ?>
+  <?php $block->redirectIfNotLoggedIn(); ?>
+<?php endif; ?>
+

@@ -1,0 +1,92 @@
+form#product_addtocart_form .field.qty{
+    display : none;
+}
+.recipentdata a.reciepentdata_delete {
+    line-height: 69px;
+}
+.recipentdata a.reciepentdata_delete::after {
+    font-size: 18px;
+    line-height: 38px;
+    display: inline-block;
+    font-family: 'themify';
+    content: "\e646";
+}
+.smart_cart_items_list {
+    display: block;
+    width: 100%;
+    margin-right: 10px;
+    font-size: 16px;
+    color: black;
+}
+.smart_cart_items_list label:hover, .smart_cart_items_list label input:hover {
+    cursor: pointer;
+}
+.smart_cart_items_list input {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"],input[type="date"],textarea, textarea.input-text {
+    background-color: #f6f7fb;
+    border: 1px solid #f6f7fb;
+    box-sizing: border-box;
+    font-size: 15px;
+    box-shadow: none;
+    height: 45px;
+    vertical-align: baseline;
+    width: 100%;
+    padding: 0 25px;
+    color: #a1a1a1;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+textarea, textarea.input-text {
+    min-height: 100px;
+}
+.open_addnew_form.hide-form {
+    display: none;
+}
+#add-more-recipients {
+    color: #1fa6dc;
+}
+.modal-footer {
+    display: none;
+}
+.add_new_smart_cart_btn {
+    color: #1fa6dc;
+    border: 1px solid #e4e4e4 !important;
+    padding: 10px;
+}
+.smart_cart_items_list label {
+    margin: 0px;
+}
+.smart_cart_items_list {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #e4e4e4 !important;
+}
+.add_new_smart_cart_btn input {
+    display: none;
+}
+.recipentdata {
+    margin-bottom: 10px;
+}
+input[type="radio"]:checked ~ label {
+    color: red;
+}
+.smart_cart_items_list.active {
+    border: 1px solid #3fc0c3 !important;
+}
+.smart_cart_items_list.active label {
+    color: #3fc0c3 !important;
+}
+.recipentdata .row.apended {
+    margin-top: 10px;
+}
+.customer-account-edit .main .form-edit-account.custom-edit-form > .fieldset {
+    width: 100%;
+    flex: none;
+    max-width: 100%;
+}

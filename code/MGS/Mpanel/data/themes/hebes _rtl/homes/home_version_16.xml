@@ -1,0 +1,126 @@
+<home>
+	<section>
+		<name><![CDATA[block154]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section-left]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[1]]></background_cover>
+		<parallax><![CDATA[1]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block154-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle_right\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide1_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide1_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"text-style-v16\">\r\n<h2 class=\"title-text\"><span class=\"color-primary\"> Chair<\/span><br><span class=\" color-text\">Collection <\/span><\/h2>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"slideInRight\" class=\"item slideInRight\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide2_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide2_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"text-style-v16\">\r\n<h2 class=\"title-text\"><span class=\"color-primary\"> Sofas<\/span><br><span class=\" color-text\">Collection <\/span><\/h2>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide3_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide3_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"text-style-v16\">\r\n<h2 class=\"title-text\"><span class=\"color-primary\">Chair<\/span><br><span class=\" color-text\">Collection <\/span><\/h2>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"zoomOut\" class=\"item zoomOut\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide4.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide4.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"text-style-v16\">\r\n<h2 class=\"title-text\"><span class=\"color-primary\">Chair<\/span><br><span class=\" color-text\">New 2018 <\/span><\/h2>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_right\" data-text-animate=\"slideInRight\" class=\"item slideInRight\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide5.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide5.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_right\"><div class=\"inner-text\"><div class=\"text-style-v16\">\r\n<h2 class=\"title-text\"><span class=\"color-primary\">Chair<\/span><br><span class=\" color-text\">New 2018 <\/span><\/h2>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div>","fullscreen":"1","fullheight":"1","offset":"","effect":"1","speed":"3000","navtemple":"3","loop":"1","autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="1" autoplay="0" stop_auto="0" navigation="0" offset="" fullheight="1" pagination="0" loop="1" speed="3000" html_slider="&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide1_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide1_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-style-v16&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt; Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot; color-text&quot;&gt;Collection &lt;/span&gt;&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;slideInRight&quot; class=&quot;item slideInRight&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide2_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide2_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-style-v16&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt; Sofas&lt;/span&gt;&lt;br&gt;&lt;span class=&quot; color-text&quot;&gt;Collection &lt;/span&gt;&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide3_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide3_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-style-v16&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot; color-text&quot;&gt;Collection &lt;/span&gt;&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;zoomOut&quot; class=&quot;item zoomOut&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide4.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide4.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-style-v16&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot; color-text&quot;&gt;New 2018 &lt;/span&gt;&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_right&quot; data-text-animate=&quot;slideInRight&quot; class=&quot;item slideInRight&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide5.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide5.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_right&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;text-style-v16&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot; color-text&quot;&gt;New 2018 &lt;/span&gt;&lt;/h2&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="3" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block154-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="follow-us">
+<ul class="social-links">
+<li><a href="#" target="_self"><i class="ti-twitter"></i></a></li>
+<li><a href="#" target="_self"> <i class="ti-facebook"></i></a></li>
+<li><a href="#" target="_self"><i class="ti-google"></i></a></li>
+<li><a href="#" target="_self"><i class="ti-linkedin"></i></a></li>
+</ul>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block154-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="list-category">
+<ul class="list-item">
+<li><a href="#">Chair</a></li>
+<li><a href="#">Sofas</a></li>
+<li><a href="#">Tables</a></li>
+<li><a href="#">Bed</a></li>
+<li><a href="#">Wardrobe</a></li>
+</ul>
+<ul class="list-item">
+<li><a href="#">Bathrooms</a></li>
+<li><a href="#">Lamps</a></li>
+<li><a href="#">Bookshelf</a></li>
+<li><a href="#">Accessories</a></li>
+</ul>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block154-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[4]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<address>© 2018 Hebes - All Rights Reserved</address>]]></block_content>
+	</block>
+	<theme_setting>
+		<custom_style>
+			<style>.cms-index-index .footer {
+display:none;
+}
+.sticky-catalog-toggle.menu-fixed.left {
+margin-left: 18%;
+top: 16%;
+}
+.sticky-catalog-toggle.menu-fixed.left .fa {
+display:none;
+}
+.sticky-catalog-toggle span {
+font-size:30px;
+}
+.sticky-catalog-toggle span::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    top: 27px;
+    left: 138px;
+}
+@media (min-width: 1200px) {
+.header.header8 .block-search {
+	margin-left: 10px;
+}
+}</style>
+		</custom_style>
+	</theme_setting>
+
+</home>

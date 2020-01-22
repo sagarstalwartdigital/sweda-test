@@ -1,0 +1,187 @@
+<?php /** @var Stalwart\Sweda\Block\orderhistory $block */ ?>
+<?php $customerSwedaOrdersCollection = $block->getSwedaOrders(); ?>
+<?php $sortingParams = $block->getSortingParams(); ?>
+<?php 
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+
+	$customerPoNum = $customerSession->getCustomerPoNum();
+	$customerOrderNum = $customerSession->getCustomerOrderNum();
+	$flowStatusCode = $customerSession->getFlowStatusCode();
+	$dateRange = $customerSession->getDateRange();
+
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+?>
+<?php if($block->getCustomer()->getId()) : ?>
+	<?php if($block->getIsBtobPending() != 0) : ?>
+		<section id="maincontent" class="page-main container">
+		<h2 class="page-main-title">HI, <?php echo strtoupper($block->getCustomerName()) ?></h2>
+		<div class="row">
+		<div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+			<div class="container">
+				<div class="row">
+					<div class="refine-section">
+		                <div class="result-section">
+		                    <div class="refinr-title">
+		                        <h2>REFINE YOUR RESULTS</h2>
+		                	</div>
+				            <form id="refine-search-form" method="post" action="<?php echo $this->getUrl('sweda/order/orderhistory')?>" autocomplete="off">
+				                <div class="refine-input-box">
+									<div class="refine-box">
+										<label>Order Number</label>
+										<input type="text" value="<?php echo $customerOrderNum ?>" name="order_number" placeholder="Enter Order Number"> 
+									</div>
+									<div class="refine-box">
+										<label>PO Number</label>
+										<input type="text" value="<?php echo $customerPoNum ?>" name="customer_po_number" placeholder="Enter PO Number"> 
+									</div>
+									<div class="refine-box">
+										<div class="date-section">
+										   <label>Orders Between </label>
+										   <input value="<?php echo $dateRange ?>" type="text" id="startDate" placeholder="mm-dd-yyyy" name="startDate" value="" />
+										</div>
+									</div>
+									<div class="refine-box">
+										<div class="ord-number">
+										   <label>Order Status</label>
+										</div>
+										<select id="order-status" name="flow_status_code">
+										   <option value="ALL" <?php if ($flowStatusCode == 'ALL') { echo "selected='selected'"; } ?>>Show all</option>
+										   <option value="BOOKED" <?php if ($flowStatusCode == 'BOOKED') { echo "selected='selected'"; } ?>>Booked</option>
+										   <option value="CANCELLED" <?php if ($flowStatusCode == 'CANCELLED') { echo "selected='selected'"; } ?>>Cancelled</option>
+										   <option value="CLOSED" <?php if ($flowStatusCode == 'CLOSED') { echo "selected='selected'"; } ?>>Closed</option>
+										   <option value="ENTERED" <?php if ($flowStatusCode == 'ENTERED') { echo "selected='selected'"; } ?>>Entered</option>
+										</select>
+									</div>
+									<div class="refine-box">
+										<div class="apply-btn">
+											<input type="submit" value="Apply">
+										</div>
+										<div class="clear">
+											<a href="javascript:void(0)">clear All</a>
+										</div>
+									</div>
+								</div>
+				            </form>
+		               </div>
+		          	</div>
+		          	<?php if($block->getPagerHtml()): ?>
+						<div class="orderhistory top-pager"><?php echo $block->getPagerHtml(); ?></div>
+					<?php endif; ?>
+					<div class="smart-carts-table order-history-page">
+						<?php if($customerSwedaOrdersCollection && $customerSwedaOrdersCollection->getSize()): ?>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "order_number")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('order_number') ?>">Order Number</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "customer_po_number")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('customer_po_number') ?>">Po Number</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "flow_status_code")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('flow_status_code') ?>">Status</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "ordered_date")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('ordered_date') ?>">Order Date</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "booked_date")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('booked_date') ?>">Booked Date</a>
+										</th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($customerSwedaOrdersCollection as $customerSwedaOrder) : ?>
+										<tr>
+											<?php $customerSwedaOrder->getInvoices();?>
+											<td><a class="order-number-frame" data-url="/en_us/xml-order-details" data-toggle="tooltip" data-placement="top" title="View" data-original-title="View" data-ordernumber="<?php echo $customerSwedaOrder->getOrderNumber(); ?>" href="javascript:void(0)"><?php echo $customerSwedaOrder->getOrderNumber(); ?></a></td>
+											<td><?php echo $customerSwedaOrder->getCustomerPoNumber(); ?></td>
+											<td>
+												<?php echo $customerSwedaOrder->getFlowStatusCode(); ?>
+											</td>
+											<td><?php echo date('m-d-Y',strtotime($customerSwedaOrder->getOrderedDate())); ?></td>
+											<td><?php echo date('m-d-Y',strtotime($customerSwedaOrder->getBookedDate())); ?></td>
+											<td>
+												<ul>
+													<?php 
+														$swedaInvoice = $customerSwedaOrder->getInvoices();
+													?>
+													<?php if (!empty($swedaInvoice)) : ?>
+														<?php foreach($swedaInvoice as $invoices) : ?>
+															<li class="invoice-button"><a href="https://invoices.swedausa.com/apex/f?p=205:1:11736418875661:PRINT_REPORT=Invoice:YES:1:P1_TRX_NUM:<?php echo $invoices['invoice_number']; ?>#view=fit%22%20height=%22900px%22%20width=%22100%">invoice</a></li>
+														<?php endforeach; ?>
+													<?php endif; ?>
+													<?php $trackingUrls = $customerSwedaOrder->getShipmentTrackingUrls(); ?>
+													<?php if(!empty($trackingUrls)) : ?>
+														<?php foreach($trackingUrls as $trackingUrl) : ?>
+			                                        		<li class="track-button"><a target="_blank" href="<?php echo $trackingUrl ?>">track</a></li>
+			                                        	<?php endforeach; ?>
+			                                       	<?php else: ?>
+			                                       		<!-- <li class="track-button disabled"><a href="javascript:void(0);" title="Tracking Not Available">track</a></li> -->
+			                                       	<?php endif; ?>
+												</ul>
+											</td>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						<?php else: ?>
+							<div class="message info empty">
+					            <span><?php echo __('There are no orders yet.'); ?></span>
+					        </div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+			<?php if($block->getPagerHtml()): ?>
+				<div class="orderhistory bottom-pager"><?php echo $block->getPagerHtml(); ?></div>
+			<?php endif; ?>
+		</div>
+
+		</section>
+	<?php else : ?>
+		<?php 	
+			$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+			$redirect->setRedirect('/customer/account');
+			return $redirect;
+		?>
+	<?php endif; ?>
+<?php else : ?>
+	<?php 
+		$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+		$redirect->setRedirect('/customer/account/login');
+		return $redirect;
+	?>
+<?php endif; ?>
+
+

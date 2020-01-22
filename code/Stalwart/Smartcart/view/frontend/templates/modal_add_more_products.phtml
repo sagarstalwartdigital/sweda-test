@@ -1,0 +1,48 @@
+<?php ?>
+<div class="add-more-product-menu">
+<div class="nav-megamenu mgs-menu">
+<?php $helperGenerator = $this->helper('MGS\Mmegamenu\Helper\Generator') ?>
+<?php $html = $helperGenerator->getMenuCacheHtml(1); ?>
+
+<?php echo $helperGenerator->filter($html); ?>
+</div>
+<div class="shopall-btn"><a href="/#start_new_project">SHOP ALL</a></div>
+</div>
+
+<script type="text/javascript">
+  function toggleEl(el, elId){
+    require([
+      'jquery',
+      ], function($){
+
+        $(el).toggleClass('active');
+        if(elId != ''){
+          $('#'+elId).toggleClass('active').slideToggle();
+        }else{
+          $(el).parent().parent().find('> ul').toggleClass('active').slideToggle();
+        }
+
+
+      });
+  }
+
+  require([
+    'jquery',
+    ], function($){
+      if(jQuery(window).width() > 798){
+        jQuery('span.toggle-menu a span.icon-plus').unbind('click').bind('click',function(e){
+        var submenu =jQuery(this).parents('span.toggle-menu').siblings('ul.sub-menu');
+        submenu.slideToggle();
+      })
+      }
+      jQuery(window).resize(function(){
+        if(jQuery(window).width() > 798){
+          jQuery('span.toggle-menu a span.icon-plus').unbind('click').bind('click',function(e){
+        var submenu =jQuery(this).parents('span.toggle-menu').siblings('ul.sub-menu');
+        submenu.slideToggle();
+      })
+        }
+      })
+      
+    })
+</script>

@@ -1,0 +1,25 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$searchtitle = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('helpcenter/general/helpcentersearchtitle');
+?>
+
+<div class="container-fluide">
+    <div class="banner-img customer-services">
+      <img src="<?php echo $block->getViewFileUrl('images/sweda/costomer-banner-search.jpg'); ?>">
+    </div>
+    <div class="customer-help-section">
+       <div class="cuostomer-banner-text">
+           <h2><?php echo $searchtitle; ?></h2>
+	       <div class="input-group cuostomer-search-part">
+	       		<form accept-charset="UTF-8" action="/support/search" class="search-form" method="post">
+					<input id="search_input" name="q" placeholder="What are you looking for?" autocomplete="off" type="text">
+					<span class="input-group-btn">
+		              <button type="submit" id="search_submit">
+		                <i class="fa fa-search" aria-hidden="true"></i>
+		              </button>
+		            </span>
+				</form>
+	      </div>
+      </div>
+    </div>
+</div>

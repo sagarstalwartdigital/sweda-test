@@ -1,0 +1,123 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('edit_page_drinkware')) {
+    $jsonData = base64_decode($this->getData('edit_page_drinkware'));
+    $page_data = json_decode($jsonData);
+    $total = (array) $page_data;
+    $i = 1;
+    $usefulTools = json_decode($page_data->toolsJson);
+}
+$type = 'drinkware';
+
+?>
+
+<div class="container">
+    <div class="drinkware-with-style">
+        <?php
+        $DrinkwarMainUrl = !empty($page_data->button_link) ? ($page_data->button_link) : 'javascript:;';
+        if (filter_var($DrinkwarMainUrl, FILTER_VALIDATE_URL)) {
+            echo '<a href="' . $DrinkwarMainUrl . '">';
+        } else {
+            echo '<a href=' . $themeHelper->getCurrentBaseUrl(). $DrinkwarMainUrl . '>';
+        }
+        ?>
+        <h2><?php echo strtoupper($page_data->title) ?></h2></a>
+        <p><?php echo strtoupper($page_data->description) ?></p>
+        <section class="drinkware">
+            <?php foreach ($usefulTools as $data) : ?>
+                <div class="slide">
+                    <?php
+                    $drinkImage = $themeHelper->getImageName($data->drinkImage);
+                    $drinkImageFinal = $themeHelper->getWysiwygMediaUrl($type, $drinkImage);
+
+                    $DrinkwarUrl = !empty($data->drinkUrl) ? ($data->drinkUrl) : 'javascript:;';
+                    if (filter_var($DrinkwarUrl, FILTER_VALIDATE_URL)) {
+                        echo '<a href="' . $DrinkwarUrl . '">';
+                    } else {
+                        echo '<a href=' . $themeHelper->getCurrentBaseUrl().$DrinkwarUrl . '>';
+                    }
+                    ?>
+                    <div class="drinkware-style">
+                        <div class="drinkware-images">
+                            <img src="<?php echo $drinkImageFinal; ?>">
+                        </div>
+                        <div class="drinkware-text">
+                            <p><?php echo $data->drinkTitle ?></p>
+                            <?php
+                            $DrinkViewUrl = !empty($data->drinkUrl) ? ($data->drinkUrl) : 'javascript:;';
+                            if (filter_var($DrinkViewUrl, FILTER_VALIDATE_URL)) {
+                                echo '<a href=' . $DrinkViewUrl . '>';
+                            } else {
+                                echo '<a href=' . $themeHelper->getCurrentBaseUrl(). $DrinkViewUrl . '>';
+                            }
+                            ?>
+                            View Now</a>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </section>
+        <div class="view-all-drinkware">
+            <?php
+            $DrinkButtonUrl = !empty($page_data->button_link) ? $page_data->button_link : 'javascript:;';
+            if (filter_var($DrinkButtonUrl, FILTER_VALIDATE_URL)) {
+                echo '<a href=' . $DrinkButtonUrl . '>';
+            } else {
+                echo '<a href=' . $themeHelper->getCurrentBaseUrl() . $DrinkButtonUrl . '>';
+            }
+            ?>
+            <?php echo strtoupper($page_data->button_title) ?></a>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    section.drinkware .slide {
+        display: inline-block;
+    }
+
+    .view-all-drinkware {
+        clear: both;
+    }
+</style>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mustache',
+        'lodash',
+        'mgs/slick'
+    ], function($, Mustache, _, slick) {
+        $(document).ready(function() {
+            //$('#useful-mobile-section').slick({
+            // $('.drinkware').slick({
+            $('.drinkware').not('.slick-initialized').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 2000,
+                arrows: true,
+                dots: false,
+
+                initialSlide: 0,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }]
+            });
+        });
+    });
+</script>

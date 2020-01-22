@@ -1,0 +1,266 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $smartCart = $block->getSmartCart(); ?>
+<?php if($smartCart) : ?>
+  <table align="center" style="text-align: center;background-color: #fff;  width: 100%; max-width: 750px; margin: 50px auto 50px;padding: 20px 0 70px; display: block; border-bottom: 6px solid #606c77;">
+   <tr>
+    <td style="font-size: 25px; font-family: verdana,geneva,sans-serif; text-transform: uppercase; padding-bottom: 0px; padding-top: 10px; padding-left: 0px; margin: 0px;font-weight: bold;padding-right: 0px" cellpadding="0" cellspacing="0"><?php echo $smartCart->getTitle(); ?></td>
+  </tr>
+  <tr>
+    <td cellpadding="0" cellspacing="0">
+     <p class=htmlmerger_d30a35f3482a4e8c8891de5ec6fb8f76 style="font-size: 12px; font-family: verdana,geneva,sans-serif; color: #606c77; padding-bottom: 0px; padding-top: 0px; padding-left: 15px; margin: 0px; padding-right: 15px"><?php echo $block->getSenderName() ?> has shared a smart cart with you!</p>
+   </td>
+ </tr>
+
+<!--[if (gte mso 9)|(IE)]>
+                                 <tr>
+                                    <td>
+                                       <table align="left">
+                                          <tr>                                              
+                                       <td cellspacing="0" cellpadding="0" style="padding: 0;">
+                                       <table cellspacing="0" cellpadding="0" style="padding-bottom: 30px; padding-top: 20px;padding-left: 40px;text-align: left; display: table; vertical-align:middle;font-size: 15px; font-family: verdana,geneva,sans-serif; color: #606c77; text-align: left; margin: 0px;line-height: normal;" align="left">
+                                       <tr style="padding: 0">
+                                      <td align="left"  style="padding: 0;" cellpadding="0" cellspacing="0">
+                                       <strong>Event name:</strong>
+                                     </td>
+                                     <td align="left" cellpadding="0" cellspacing="0"><?php echo $smartCart->getEventName() ?></td>
+                                   </tr>
+                                   <tr style="padding: 0">
+                                    <td align="left"style="padding: 0;" cellpadding="0" cellspacing="0">
+                                     <strong>Event Date:</strong>
+                                   </td>
+                                   <td align="left" cellpadding="0" cellspacing="0"><?php echo $smartCart->getEventDate() && $smartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($smartCart->getEventDate())) : '' ; ?></td>
+                                 </tr>
+                                 <tr style="padding: 0">
+                                  <td align="left"style="padding: 0;" cellpadding="0" cellspacing="0"  colspan="2">
+                                    <?php echo $smartCart->getDescription(); ?>
+                                  </td>
+                                </tr>
+                                </table>
+                                    </td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                               <![endif]-->
+                               <!--[if !IE]><!-->
+                               <tr>
+                                <td>
+                                 <table align="left">
+                                  <tr>
+                                   <td cellspacing="0" cellpadding="0" style="padding: 0;">
+                                    <table cellspacing="0" cellpadding="0" style="padding-bottom: 30px; padding-top: 20px;padding-left: 20px;text-align: left; display: table; vertical-align:middle;font-size: 15px; font-family: verdana,geneva,sans-serif; color: #606c77; text-align: left; margin: 0px;line-height: normal;" align="left">
+                                     <tr style="padding: 0">
+                                      <td align="left"  style="padding: 0;" cellpadding="0" cellspacing="0">
+                                       <strong>Event name:</strong>
+                                     </td>
+                                     <td align="left" cellpadding="0" cellspacing="0"><?php echo $smartCart->getEventName() ?></td>
+                                   </tr>
+                                   <tr style="padding: 0">
+                                    <td align="left"style="padding: 0;" cellpadding="0" cellspacing="0">
+                                     <strong>Event Date:</strong>
+                                   </td>
+                                   <td align="left" cellpadding="0" cellspacing="0"><?php echo $smartCart->getEventDate() && $smartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($smartCart->getEventDate())) : '' ; ?></td>
+                                 </tr>
+                                 <tr style="padding: 0">
+                                  <td align="left"style="padding: 0;" cellpadding="0" cellspacing="0"  colspan="2">
+                                    <?php echo $smartCart->getDescription(); ?>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <!--<![endif]-->
+                    
+                    <?php if($smartCart->getItems() && $smartCart->getItems()->getSize()) : ?>
+                    <?php
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $productListObj = $objectManager->create('Magento\CatalogWidget\Block\Product\ProductsList');
+                    $imageHelper = $objectManager->get('\Magento\Catalog\Helper\Image');
+                    ?>
+                    <?php foreach($smartCart->getItems() as $item) : ?>
+                     <?php 
+                     $smartcartsimplepro = json_decode($item->getOptions(), true);
+                     $simple_product_id = $smartcartsimplepro['simple_product_id'];
+                     ?>
+                     <?php $_product = $block->getProductById($simple_product_id); ?>
+                     <?php $_productconfigurable = $item->getProduct(); ?>
+                     <?php
+                     $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+                     $mediaPath = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+                     $productTypeInstance = $objectManager->get('Magento\ConfigurableProduct\Model\Product\Type\Configurable');
+                     $productAttributeOptions = $productTypeInstance->getConfigurableAttributesAsArray($_productconfigurable);
+
+                     $swatchHelper = $objectManager->get('Magento\Swatches\Helper\Data');
+                     ?>
+                     <tr>
+                      <td style="padding: 0 15px;" align="center">
+                        <table align="center">
+                          <tr>
+                            <td style="border-top: #e7e9f1 2px solid; border-right: #e7e9f1 2px solid; border-bottom: #e7e9f1 2px solid; padding-bottom: 10px; text-align: left; padding-top: 10px; padding-left: 10px; margin: 0px 0px 30px; border-left: #e7e9f1 2px solid; display: block; padding-right: 10px">
+                             <table>
+                              <tr>
+                               <td>
+                                <?php
+                                $imageUrl = $imageHelper->init($_product, 'image')
+                     ->setImageFile($_product->getImage()) // image,small_image,thumbnail
+                     ->getUrl();
+                     $imageUrl = str_replace("/.jpg", "/image.jpg", $imageUrl);
+                     ?>
+                     <p style="margin: 0; line-height: 0;">
+                      <img src="<?php echo $imageUrl; ?>" alt="" style="width: 180px;" width="180" id="image-<?php echo $item->getId() ?>" />
+                    </p>
+                  </td>
+                  <td style="padding-left: 25px; display: inline-block;">
+                    <h2 style="font-size: 24px; margin-bottom: 0; font-family: Verdana,Geneva,sans-serif; text-transform: capitalize;font-weight: bold;"><?php echo $_productconfigurable->getName(); ?></h2>
+                    <p style="font-family: Verdana,Geneva,sans-serif; margin-top: 0; color: #606c77; font-size: 15px;"><?php echo $_productconfigurable->getSku(); ?></p>
+                    <p style="font-family: Verdana,Geneva,sans-serif; color: #606c77; font-size: 14px;"><?php echo $_product->getDescription(); ?></p>
+                    <?php
+                    $eavModel = $objectManager->create('Magento\Catalog\Model\ResourceModel\Eav\Attribute');
+                    $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+
+                    foreach (json_decode($item->getOptions(), true) as $optionsLabel => $options) {
+                     if ($optionsLabel == 'simple_product_id') {
+                       $product = $objectManager->create('Magento\Catalog\Model\Product')->load($options);
+                     }
+                   }
+                   $paroductSku = $product->getSku();
+                   ?>
+                   <?php foreach (json_decode($item->getOptions(), true) as $optionsLabel => $options) : ?>
+                    <?php if ($optionsLabel == 'options') : ?>
+                      <?php foreach ($options as $key => $value) : ?>
+                        <?php 
+                        $swatchAttribs = $objectManager->get('Magento\Swatches\Helper\Data')->getSwatchesByOptionsId(array($value));
+                        $attr = $eavModel->load($key);
+                        $attrCode = $attr->getAttributeCode();
+                        $attribute_label = $product->getResource()->getAttribute($attrCode)->getFrontend()->getValue($product);
+                        ?>
+
+                        <table style="font-family: verdana,geneva,sans-serif; float: left; color: #606c77; padding-bottom: 10px; padding-top: 15px; padding-left: 0px; margin-top: 0px; display: inline-table; vertical-align: middle;padding-right: 0px" cellpadding="0">
+                          <?php if ($attrCode == 'size') : ?>
+                            <tr>
+                              <td>
+                                <strong>Size</strong>
+                              </td>
+                              <td><?php echo $attribute_label ?></td>
+                            </tr>
+                          <?php endif; ?>
+                          <?php if ($attrCode == 'color') : ?>
+                            <?php $color_code= ''; ?>
+                            <tr align="left">
+                             <td><strong>Color</strong></td>
+                             <td>
+                               <?php foreach ($swatchAttribs as $swatchesvalues) : ?>
+                                 <?php if(strpos($swatchesvalues['value'], '/') !== false) : ?>
+                                   <?php
+                                   $imagePath=$objectManager->create('Magento\Swatches\Helper\Media')->getSwatchMediaUrl();
+                                   ?>
+                                   <img src="<?php echo $imagePath.'/swatch_image/30x20'.$swatchesvalues['value'] ?>" alt="" style='width: 18px; height: 18px; margin-right: 10px;'>
+                                   <?php else : ?>
+                                     <span style="display: inline-block;width: 20px;height: 20px;background-color:<?php echo $swatchesvalues['value']; ?> " class="color-swatch"></span>
+                                   <?php endif; ?>
+                                   <?php $color_code= $attribute_label.'-'.$paroductSku; ?>
+                                 <?php endforeach; ?>
+                           </td>
+                           <td><?php echo $color_code; ?></td>
+                         </tr>
+                       <?php endif; ?>
+                     </table>
+                   <?php endforeach; ?>
+                 <?php endif; ?>
+               <?php endforeach; ?>
+
+               <br/>
+                <p style="font-size: 15px; font-family: verdana,geneva,sans-serif; color: #606c77; clear: both;margin: 0;">More Colors Available:</p>
+                <table><tr>
+               <?php foreach ($productAttributeOptions as $key => $value) : ?>
+                 <?php $tmp_option = $value['values']; ?>
+                 <?php if (count($tmp_option) > 0) : ?>
+                   <?php if (strtolower($value['attribute_code']) == 'color') : ?>
+                     <?php foreach ($tmp_option as $tmp) : ?>
+                       <?php
+                       $hashcodeData = $swatchHelper->getSwatchesByOptionsId([$tmp['value_index']]);
+                       $labelHtml = '';
+                       if(isset($hashcodeData[$tmp['value_index']]))
+                       {
+                        $hashcode = $hashcodeData[$tmp['value_index']]['value'];
+
+                        $swatchHelperMedia=$objectManager->get("Magento\Swatches\Helper\Media");
+                        $SwatchImage = $swatchHelperMedia->getSwatchAttributeImage('swatch_image', $hashcode);
+                        
+                        if ($SwatchImage) {
+                          $labelHtml .= "<td><img src=".$SwatchImage." alt='' style='width: 18px; height: 18px; margin-right: 8px; margin-top: 10px;' /></td>";
+                        } else {
+                          $labelHtml .= "<td><div class='inventory-color-box' style='background-color:".$hashcode."; height:18px; width:18px; margin-right: 8px; margin-top: 10px;'></div></td>";
+                        }
+                      }else{
+                        $labelHtml .= "<td><img src='' alt='' style='width: 18px; height: 18px; margin-right: 8px; margin-top: 10px;'/></td>";
+                      }
+                      echo  $labelHtml;
+                      ?>
+                      
+                    <?php endforeach; ?>
+                    </tr></table>
+                  <?php endif; ?>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            
+          </td>
+        </tr>
+      </table>
+      <?php 
+      echo $this->getLayout()
+      ->createBlock('Stalwart\Sweda\Block\ProductPricesRegular')
+      ->setTemplate('Stalwart_Sweda::product/view/grouped-price-mail.phtml')
+      ->setBlockProductId($_productconfigurable->getId())
+      ->toHtml();
+      ?>
+      <table>
+        <tbody>
+         <tr>
+          <td>
+           <strong style="color: #606c77; font-family: Verdana,Geneva,sans-serif;padding-top: 20px; display: inline-block;">Comments / Notes:</strong>
+           <p style="font-size: 14px; color:#606c77; line-height: 18px;"><?php echo $item->getUsercomments() && $item->getUsercomments() !== NULL ? trim($item->getUsercomments()) : '' ; ?></p>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+ </td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+
+
+<?php endforeach; ?>
+<?php else : ?>
+ <div class="message info empty">
+  <span><?php echo __('There are no products yet.'); ?></span>
+</div>
+<?php endif; ?>
+</table>
+<?php else : ?>
+  <div class="message info empty">
+   <span><?php echo __('Shared cart does not exist.'); ?></span>
+ </div>
+<?php endif; ?>
+<style>
+ p {
+   color:#606c77;
+ }
+ ul{padding: 0;}
+ ul li{color: #606c77;}
+ @media screen and (max-width:600px){
+   .size-text{
+     float: left !important;
+   }
+   .img-width{
+     width: 120px;
+   }
+ } 
+</style>

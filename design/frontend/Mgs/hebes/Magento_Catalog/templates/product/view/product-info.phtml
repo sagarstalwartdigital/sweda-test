@@ -1,0 +1,322 @@
+<?php
+$_product = $block->getProduct();
+if ($_product->getCustomAttribute('pro_template_file') !== null ) {
+    $proTemplate = $_product->getCustomAttribute('pro_template_file')->getValue();
+} else {
+    $proTemplate = '';
+}
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStore = $storeManager->getStore();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$file_arr=array();
+foreach ($_product->getMediaGalleryImages() as $image) {
+    array_push($file_arr,$image->getFile());
+}
+$usedProducts = $_product->getTypeInstance()->getUsedProducts($_product);
+
+foreach ($usedProducts as $child) {
+    $_childproducts = $_objectManager->get('\Magento\Catalog\Model\Product')->load($child->getId());
+    foreach ($_childproducts->getMediaGallery('images') as $image) {
+        if(isset($image['file']) && !empty($image['file']))
+            array_push($file_arr,$image['file']);
+    }
+}
+$currentStoreId = $_objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore()->getId(); 
+$buttonLabel=$this->helper('Biztech\Productdesigner\Helper\Data')->getConfig('productdesigner/dynamic_message/designit_label', $currentStoreId);
+$isPdEnable = $this->helper('Biztech\Productdesigner\Helper\Info')->isPdEnable($_product->getId());
+$isEnable = $this->helper('Biztech\Productdesigner\Helper\Info')->isEnable($currentStoreId);
+$productDesignClass = $isPdEnable && $isEnable ? 'product-designer-button' : '';
+
+$customerSession = $_objectManager->get('Magento\Customer\Model\Session');
+?>
+
+<div class="mobile-only">
+    <div class="mobile-pdp-heading">
+        <div class="left-pdp-title">
+            <div class="product-detail-name">
+                <h1 class="name"><?php echo $block->stripTags($_product->getName(), null, true); ?></h1>
+            </div>
+            <div class="product attribute sku">
+                <div class="value" itemprop="sku"><?php echo $_product->getSku(); ?></div>
+            </div>
+        </div>
+    
+        <div class="right-usefull-section">
+            <div id="UsefulSidenav" class="sidenav">
+                <div class="mbl-main-heading">
+                    <h3><?php echo __('USEFUL TOOLS')?></h3>
+                </div>
+                <div class="use-full-mbl">
+                    <ul>
+                        <?php if($customerSession->isLoggedIn()) : ?>
+                            <?php 
+                                $customer = $_objectManager->get('\Magento\Customer\Api\CustomerRepositoryInterface')->getById($customerSession->getId()); 
+                                $chekIsBtob = $customer->getCustomAttribute('is_btob')->getValue();
+                            ?>
+                            <?php if($chekIsBtob == 0) : ?>
+                                <li>
+                                    <?php if($productDesignClass) : ?>
+                                    <a href="javascript:void(0);">
+                                        <div class="product-pagehead-action">
+                                            <div class="product-add-logo mgs-quickview-notbtob">
+                                                <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-add-your-logo-product.png'); ?>">
+                                                <div class="mbl-usefull-tools">
+                                                    <h3><?php echo __('ADD Your LOGO')?></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <?php if($productDesignClass) : ?>
+                                    <a href="javascript:void(0);">
+                                        <div class="product-pagehead-action">
+                                            <div class="product-add-logo <?php echo $productDesignClass; ?>">
+                                                <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-add-your-logo-product.png'); ?>">
+                                                <div class="mbl-usefull-tools">
+                                                    <h3><?php echo __('ADD Your LOGO')?></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
+                                </li>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="product-pagehead-action">
+                                        <div class="product-add-logo customer-login-link">
+                                            <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-add-your-logo-product.png'); ?>">
+                                            <div class="mbl-usefull-tools">
+                                                <h3><?php echo __('ADD Your LOGO')?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <li>
+                            <div class="product-pagehead-action">
+                                <div class="product-add-logo">
+                                    <div class="mbl-usefull-tools sharelink-wrapper">
+                                        <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-share.png'); ?>">
+                                        <h3><?php echo __('Share')?></h3>
+                                    </div>
+
+                                    <div class="share-social-tab">
+
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&t=
+                                            <?php echo urlencode($_product->getName())?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on facebook">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+
+                                        <a href="http://twitter.com/home/?status=<?php echo urlencode($_product->getProductUrl());?>
+                                        (<?php echo urlencode($_product->getName())?>)" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on Twitter">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="download-img" data-id="<?php echo $_product->getId() ?>">
+                            <div class="product-pagehead-action">
+                                <div class="product-add-logo">
+                                    <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-download.png'); ?>">
+                                    <div class="mbl-usefull-tools">
+                                        <h3><?php echo __('Download Product images')?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <?php if($proTemplate && !empty($proTemplate)) : ?>
+                        <li>
+                            <a href="<?php echo $this->getUrl('sweda/downloadpropdf/DownloadPdf',array('_query'=>array('fileName'=>$proTemplate)));?>" target="_blank">
+                            <div class="product-pagehead-action">
+                                <div class="product-add-logo">
+                                    <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-download.png'); ?>">
+                                    <div class="mbl-usefull-tools">
+                                        <h3><?php echo __('Download Product Template')?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <?php endif;?>
+                    </ul>
+                    <div class="qty-box">
+                    <p><?php echo __('Check Inventory')?></p>
+                    <div class="mbl-qty-pr">
+                        <form method="POST" id="stock-lookup-form">
+                            <input type="number" name="qty_available" onkeypress='validate(event)' id="qty" placeholder="Enter Qty" title="Qty" class="input-text qty" data-validate="{required:true}">
+                            <input type="hidden" name="product_id" value="<?php echo $_product->getId(); ?>">
+                            <button type="submit" class="inventory_check"><?php echo __('Look up')?></button>
+                        </form>
+                    </div>
+                    <div class="stock-purchase">
+                        <i class="fa fa-check"></i><p>In stock</p>
+                    </div>
+                </div>
+                    <div class="mbl-shiping">
+                        <img src="<?php echo $block->getViewFileUrl('images/sweda/mbl-shipping.png'); ?>">
+                        <p><?php echo __('Estimate Shipping')?></p>
+                    </div>
+
+                </div>
+            </div>
+            <span style="cursor:pointer" class="useful-tool-sidenav" ><h4>...</h4> <p><?php echo __('Useful Tools')?></p></span>
+        </div>
+</div>
+
+</div>
+
+<div class="desktop-only">
+    <div class="product-top">
+        <div class="product-pagehead-wrapper">
+            <div class="product-pagehead-action page-share-action">
+                <ul>
+                    <li>
+                        <div class="pdp-share-icon">
+                          <div class="share-link">
+                            <a href="">
+                             <img src="<?php echo $block->getViewFileUrl('images/sweda/share.png'); ?>"/>
+                             <p>Share </p>
+                            </a>
+                          </div>
+                          <div class="share-social-icon">
+                             <ul>
+                                <li>
+                                    <!-- Facebook -->
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&t=
+                                        <?php echo urlencode($_product->getName())?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on facebook">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <!-- TWITTER -->
+                                    <a href="http://twitter.com/home/?status=<?php echo urlencode($_product->getProductUrl());?>
+                                        (<?php echo urlencode($_product->getName())?>)" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on Twitter">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <!-- Pinterest -->
+                                    <a href="https://pinterest.com/pin/create/button/?url=<?php echo urlencode($_product->getProductUrl()); ?>&media=<?php echo urlencode($_product->getImageUrl());?> &description=<?php echo urlencode($_product->getName()); ?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Pin it">
+                                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                             </ul>
+                          </div>
+                       </div>
+                    </li>
+                    <?php if($file_arr && !empty($file_arr)) : ?>
+                        <li>
+                            <a href="javascript:void(0)" id="download-img" data-id="<?php echo $_product->getId() ?>">
+                                <img src="<?php echo $block->getViewFileUrl('images/sweda/download.png'); ?>">
+                                <p><?php echo __('Download')?></p>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <li>
+                        <a class="pro-print-btn" href="<?php echo $this->getUrl('sweda/printproduct/printproduct',array('_query'=>array('id'=>$_product->getId())));?>">
+                            <img src="<?php echo $block->getViewFileUrl('images/sweda/print.png'); ?>">
+                            <p><?php echo __('Print')?></p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <?php if($proTemplate && !empty($proTemplate)) : ?>
+                <div class="product-pagehead-action page-download-action">
+                    <div class="product-pagehead-action-download">
+                        <a href="<?php echo $this->getUrl('sweda/downloadpropdf/DownloadPdf',array('_query'=>array('fileName'=>$proTemplate)));?>" class="download-action"><?php echo __('Download')?> <br><?php echo __('Product Template')?> </a>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if($customerSession->isLoggedIn()) : ?>
+                <?php 
+                    $customer = $_objectManager->get('\Magento\Customer\Api\CustomerRepositoryInterface')->getById($customerSession->getId()); 
+                    $chekIsBtob = $customer->getCustomAttribute('is_btob')->getValue();
+                ?>
+                <?php if($chekIsBtob == 0) : ?>
+                    <?php if($productDesignClass) : ?>
+                    <div class="product-pagehead-action">
+                        <div class="product-add-logo mgs-quickview-notbtob">
+                            <img src="<?php echo $block->getViewFileUrl('images/sweda/add-your-logo-product.png'); ?>">
+                            <div class="product-add-logo-content">
+                                <h3><?php echo __('ADD Your LOGO')?></h3>
+                                <p><?php echo __('Get a Preview of your final product')?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <?php if($productDesignClass) : ?>
+                    <div class="product-pagehead-action">
+                        <div class="product-add-logo <?php echo $productDesignClass; ?>">
+                            <img src="<?php echo $block->getViewFileUrl('images/sweda/add-your-logo-product.png'); ?>">
+                            <div class="product-add-logo-content">
+                                <h3><?php echo __('ADD Your LOGO')?></h3>
+                                <p><?php echo __('Get a Preview of your final product')?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php else : ?>
+                <div class="product-pagehead-action">
+                    <div class="product-add-logo customer-login-link">
+                        <img src="<?php echo $block->getViewFileUrl('images/sweda/add-your-logo-product.png'); ?>">
+                        <div class="product-add-logo-content">
+                            <h3><?php echo __('ADD Your LOGO')?></h3>
+                            <p><?php echo __('Get a Preview of your final product')?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+    ], function($){
+
+        jQuery('.useful-tool-sidenav').on('click',function(e){
+                e.preventDefault();
+                jQuery("#UsefulSidenav").toggleClass('open-sidenav');
+                jQuery("body, html").toggleClass('block-scroll');
+                if(jQuery("body").hasClass('product-useful-tool')){
+                    jQuery("body, html").removeClass('product-useful-tool');
+                }else{
+                    jQuery("body, html").addClass('product-useful-tool');
+                }
+
+        });
+        $('.product-designer-button').click(function () {
+            var designerURL = "<?php echo $this->getUrl('productdesigner', array('_secure' => $this->getRequest()->isSecure(), 'id' => $_product->getId())); ?>";
+            var productdata = jQuery("#product_addtocart_form").serializeArray();
+            //create a custom form
+            var form = document.createElement("form");
+            form.setAttribute('method', "post");
+            form.setAttribute('action', designerURL);
+            // Create field based on add to cart form field and add in custom form
+            jQuery(productdata).each(function (i, data) {
+                var field = document.createElement("input");
+                field.type = "hidden";
+                field.name = data.name;
+                field.value = data.value;
+                form.appendChild(field);
+            });
+            jQuery("body").append(form);
+            jQuery(form).submit();
+        });
+        
+    });
+</script>

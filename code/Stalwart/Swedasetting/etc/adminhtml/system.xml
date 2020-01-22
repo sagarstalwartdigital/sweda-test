@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="swedasetting" translate="label" sortOrder="10">
+            <label>Sweda Setting</label>
+        </tab>
+        <section id="socialmedia" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Social Media</label>
+            <tab>swedasetting</tab>
+            <resource>Sweda_Swedasetting::swedasetting_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Social Media Configuration</label>
+                <field id="instagram" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Instagram Link</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+                <field id="facebook" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Facebook Link</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+                <field id="twitter" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Twitter Link</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+                <field id="google" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Google+ Link</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+                <field id="linkedin" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Linkedin Link</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+            </group>
+        </section>
+
+        <section id="promomess" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Promo Message</label>
+            <tab>swedasetting</tab>
+            <resource>Sweda_Swedasetting::swedasetting_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Promo Message</label>
+                <field id="promomessage" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Promo Message</label>
+                    <comment>This text will display on the frontend Header Top.</comment>
+                </field>
+            </group>
+        </section>
+
+        <section id="copyright" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Copy Right</label>
+            <tab>swedasetting</tab>
+            <resource>Sweda_Swedasetting::swedasetting_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Copy Right</label>
+                <field id="copyright" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Copy Right</label>
+                </field>
+            </group>
+        </section>
+
+        <section id="ftpsetting" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>FTP Setting</label>
+            <tab>swedasetting</tab>
+            <resource>Sweda_Swedasetting::swedasetting_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>FTP Configuration</label>
+
+                <field id="serveraddress" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Server Address</label>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>User Name</label>
+                </field>
+                <field id="password" translate="label" type="password" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Password</label>
+                </field>
+                <field id="forderpath" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Forder Path</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+            </group>
+        </section>
+
+
+    </system>
+</config>

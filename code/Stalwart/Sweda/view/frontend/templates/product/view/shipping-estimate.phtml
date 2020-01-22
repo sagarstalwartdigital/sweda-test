@@ -1,0 +1,23 @@
+<?php $_product = $block->getProductById($block->getProductId()); ?>
+
+<div class="shipping-main">
+    <form method="POST" data-mage-init='{"validation":{}}' id="shipping_estimator" class="shipping_estimator_form">
+        <input type="hidden" name="shipping_sku" value="<?php echo $_product->getSku(); ?>">
+        <input type="hidden" name="shipping_id" value="<?php echo $_product->getId(); ?>">
+        <label for="fname">Quantity</label>
+        <input type="text"  name="shipping_qty" placeholder="Enter Qty" data-validate="{required:true}">
+        <label for="lname">Zip Code/Postal Code</label>
+        <input type="text"  name="shipping_postcode" placeholder="Zip Code" data-validate="{required:true}">
+        <button type="submit" id="estimator"><?php echo __('Submit')?></button>
+    </form>
+    <div class="shipping-estimate-data">
+        
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#shipping_estimator": {
+            "validation": {}
+        }
+    }
+</script>

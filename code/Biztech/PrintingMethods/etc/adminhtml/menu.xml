@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="biztech_printingmethods::core" title="Printing Methods" module="Biztech_PrintingMethods" sortOrder="90" parent="biztech_productdesigner::base" resource="Biztech_PrintingMethods::core" />
+        
+        <add id="biztech_printingmethods::printingmethod" title="Manage Printing Methods" module="Biztech_PrintingMethods" sortOrder="10" parent="biztech_printingmethods::core" action="productdesigner/printingmethod/" resource="Biztech_PrintingMethods::printingmethod"/>
+        <add id="biztech_printingmethods::colors" title="Manage Color Counter" module="Biztech_PrintingMethods" sortOrder="11" parent="biztech_printingmethods::core" action="productdesigner/colors/" resource="Biztech_PrintingMethods::colors"/>
+        <add id="biztech_printingmethods::areasize" title="Manage Area Size" module="Biztech_PrintingMethods" sortOrder="12" parent="biztech_printingmethods::core" action="productdesigner/areasize/" resource="Biztech_PrintingMethods::areasize"/>
+    </menu>
+</config>

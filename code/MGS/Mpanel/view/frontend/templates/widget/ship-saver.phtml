@@ -1,0 +1,88 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('ship-saver')) {
+
+    $jsonData = base64_decode($this->getData('ship-saver'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+?>
+
+
+<div class="desktop-only">
+    <div class="solution-section">
+        <div class="ship-saver-banner">
+            <?php if($page_data->backgroundImage) { ?>
+                <img src="<?php echo $page_data->backgroundImage ?>">
+            <?php } ?>
+        </div>
+        <div class="ship-section">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="solution-content">
+                        <?php echo html_entity_decode($page_data->title) ?>
+                        <p><?php echo html_entity_decode($page_data->description) ?></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <?php if(!$page_data->buttonText == '') { ?>
+                    <div class="solution-btn">
+                        <!-- <a href="<?php //echo $page_data->buttonLink ?>"><?php //echo $page_data->buttonText ?></a> -->
+                        <a href="javascript:void(0);" id="myBtnimpvideo"><?php echo $page_data->buttonText ?></a>
+                    </div>
+                   <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalVideo" class="modalimp">
+  <div class="modalimp-contentimp shipsaver-imagespopup">
+    <span class="closeimp close" data-dismiss="modal">&times;</span>
+      <?php if($page_data->imagespopup) { ?>  
+      <img src="<?php echo $page_data->imagespopup ?>">
+      <?php } ?>  
+  </div>
+</div>
+
+<div class="container-fluide">
+    <div class="mobile-only">
+        <div class="solution-section">
+            <?php if($page_data->backgroundImagemo) { ?>
+                <img src="<?php echo $page_data->backgroundImagemo ?>">
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    require(['jquery'], function ($) {
+        var btn = document.getElementById("myBtnimpvideo");
+        var span = document.getElementsByClassName("closeimp")[0];
+        jQuery(document).ready(function(){
+            $("#myBtnimpvideo, .solution-section").click(function(){
+                var modalimp = document.getElementById("myModalVideo");
+                modalimp.style.display = "block";
+            });
+            $(".closeimp").click(function(){
+                $('.modalimp').hide();
+            });
+        })
+    });
+</script>
+
+<!-- 
+<div class="container-fluid">
+    <div class="mobile-only">
+        <div class="solution-section">
+            <img src="<?php //echo $page_data->backgroundImage ?>">
+        </div>
+    </div>
+</div> -->

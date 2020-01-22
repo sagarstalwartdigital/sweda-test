@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Stalwart_Bloglist::parent" title="Menu Bloglist" module="Stalwart_Bloglist" sortOrder="100" resource="Stalwart_Bloglist::parent"/>
+        <!-- <add id="Stalwart_Bloglist::index" title="Stalwart Bloglist Index 222" module="Stalwart_Bloglist" sortOrder="10" action="bloglist/index" resource="Stalwart_Bloglist::index" parent="Stalwart_Bloglist::parent"/> -->
+		<add id="Stalwart_Bloglist::bloglist" title="Menu Bloglist" module="Stalwart_Bloglist" sortOrder="20" parent="Stalwart_Bloglist::parent" action="bloglist/bloglist" resource="Stalwart_Bloglist::bloglist"/>
+
+    </menu>
+</config>

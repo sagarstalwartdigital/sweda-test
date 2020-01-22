@@ -1,0 +1,84 @@
+<?php
+$_product = $block->getProduct();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$imprintMethodShippingDetails = $objectManager->get('Stalwart\Sweda\Block\ProductImprintMethod');
+$categoryIds = $_product->getCategoryIds();
+?>
+<div class="product attribute overview">
+    <div class="value" itemprop="description">
+        <div class="product-info-specification">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#description" role="tab"
+                       data-toggle="tab"><?php echo __('Description') ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#specification" role="tab"
+                       data-toggle="tab"><?php echo __('Specification') ?></a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="description">
+                    <?php echo $_product->getDescription(); ?>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="specification">
+                    <?php if($imprintMethodShippingDetails->getProductShippingDetails()->getSize()) : ?>
+                    <table class="table table-product" border="0">
+                        <tbody>
+                        </tbody>
+                            <?php foreach ($imprintMethodShippingDetails->getProductShippingDetails() as $shippingDetails) : ?>
+                                <?php if (($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) || ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) || ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) ) : ?>
+                                    <?php ?>
+                                    <tr>
+                                        <td valign="top" align="left">Product size</td>
+                                        <td valign="top" align="left">
+                                            <?php
+                                            if ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) {
+                                                echo $shippingDetails->getProductHeight().'" H ';
+                                            }
+                                            if ($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) {
+                                                echo 'x '.$shippingDetails->getProductWidth().'" W ';
+                                            }
+                                            if ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) {
+                                                echo 'x '.$shippingDetails->getProductLength().'" L ';
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                                <?php if ($shippingDetails->getProductWidth() && !empty($shippingDetails->getProductWidth()) && $shippingDetails->getProductWidth() > 0) : ?>
+                                    <tr>
+                                      <td valign="top" align="left">Width <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                                      <td valign="top" align="left"><?php echo $shippingDetails->getProductWidth(); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                                <?php if ($shippingDetails->getProductHeight() && !empty($shippingDetails->getProductHeight()) && $shippingDetails->getProductHeight() > 0) : ?>
+                                    <tr>
+                                      <td valign="top" align="left">Height <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                                      <td valign="top" align="left"><?php echo $shippingDetails->getProductHeight(); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                                <?php if ($shippingDetails->getProductLength() && !empty($shippingDetails->getProductLength()) && $shippingDetails->getProductLength() > 0) : ?>
+                                    <tr>
+                                      <td valign="top" align="left">Length <?php echo $shippingDetails->getCartonSizeUnit() ? '('.$shippingDetails->getCartonSizeUnit().')' : '' ?></td>
+                                      <td valign="top" align="left"><?php echo $shippingDetails->getProductLength(); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                                <?php if ($shippingDetails->getProductWeight() && !empty($shippingDetails->getProductWeight()) && $shippingDetails->getProductWeight() > 0) : ?>
+                                    <tr>
+                                      <td valign="top" align="left">Weight <?php echo $shippingDetails->getProductWeightUnit() ? '('.$shippingDetails->getProductWeightUnit().')' : '' ?></td>
+                                      <td valign="top" align="left"><?php echo $shippingDetails->getProductWeight(); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php else : ?>
+
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

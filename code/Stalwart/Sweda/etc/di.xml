@@ -1,0 +1,41 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sweda_order_index_data_source" xsi:type="string">
+                    Stalwart\Sweda\Model\ResourceModel\Order\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Stalwart\Sweda\Model\ResourceModel\Order\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sweda_orders</argument>
+            <argument name="resourceModel" xsi:type="string">Stalwart\Sweda\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Stalwart\Sweda\Model\ResourceModel\Order\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sweda_Invoice</argument>
+            <argument name="resourceModel" xsi:type="string">Stalwart\Sweda\Model\ResourceModel\Invoice</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Stalwart\Sweda\Api\OrderRepositoryInterface" type="Stalwart\Sweda\Model\OrderRepository"/>
+    <preference for="Stalwart\Sweda\Api\Data\OrderInterface" type="Stalwart\Sweda\Model\Order"/>
+    <preference for="Stalwart\Sweda\Api\Data\OrderSearchResultInterface" type="Stalwart\Sweda\Model\OrderSearchResult"/>
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Stalwart\Sweda\Api\Data\OrderInterface" xsi:type="string">
+                    Stalwart\Sweda\Api\OrderRepositoryInterface
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Catalog\Block\Product\ProductList\Toolbar" type="Stalwart\Sweda\Block\Product\ProductList\Toolbar"/>
+    <preference for="Magento\Contact\Model\Mail" type="Stalwart\Sweda\Model\Mailoverride"/>
+    <preference for="Magento\ImportExport\Block\Adminhtml\Export\Filter" type="Stalwart\Sweda\Block\Adminhtml\Export\Filter"/>
+</config>

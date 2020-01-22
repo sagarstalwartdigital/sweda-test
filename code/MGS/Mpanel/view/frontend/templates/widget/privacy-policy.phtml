@@ -1,0 +1,25 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('privacy-policy')) {
+
+    $jsonData = base64_decode($this->getData('privacy-policy'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+?>
+
+<?php echo html_entity_decode($page_data->title) ?>
+
+
+<?php echo html_entity_decode($page_data->description) ?>
+
+<style type="text/css">
+.breadcrumbs.width-5 {
+    display: none;
+} 
+</style>

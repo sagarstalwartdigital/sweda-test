@@ -1,0 +1,111 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+/** @var $helper \Magento\Search\Helper\Data */
+$helper = $this->helper('Magento\Search\Helper\Data');
+$themeHelper = $this->helper('MGS\Mpanel\Helper\Data');
+
+if(($themeHelper->getStoreConfig('instantsearch/general/enabled') == 1) && ($themeHelper->getStoreConfig('instantsearch/general/result') == 1)){
+    $action = $block->getBaseUrl().'/instantsearch/result/';
+}else{
+    $action = $helper->getResultUrl();
+}
+?>
+
+
+    <div class="desktop-only">
+        <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $action ?>" method="get">
+            <div class="serch-bar">
+                <div id="custom-search-input">
+                    <div class="input-group">
+
+                        <input id="search"
+                               data-mage-init='{"quickSearch":{
+                                            "formSelector":"#search_mini_form",
+                                            "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]); ?>",
+                                            "destinationSelector":"#search_autocomplete"}
+                                       }'
+                               type="text"
+                               name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+                               value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+                               placeholder="<?php /* @escapeNotVerified */ echo __('Search for Products and More!'); ?>"
+                               class="search-query form-control"
+                               maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+                               role="combobox"
+                               aria-haspopup="false"
+                               aria-autocomplete="both"
+                               aria-expanded="false"
+                               autocomplete="off" />
+
+                        <div id="search_autocomplete" class="search-autocomplete"></div>
+                        <?php echo $block->getChildHtml() ?>
+                        <!-- <span class="input-group-btn ">
+                            <button type="submit">
+                                <img src="<?php //echo $block->getViewFileUrl('images/sweda/search-icon.png'); ?>"><?php //echo __('search')?>
+                            </button>
+                        </span> -->
+                        <div class="actions">
+                          <button type="submit"
+                                  title="<?php echo $block->escapeHtml(__('Search')) ?>"
+                                  class="action search">
+                              <span><img src="<?php echo $block->getViewFileUrl('images/sweda/search-icon.png'); ?>"></span>
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="mobile-only">
+        <div class="block block-search ">
+            <div class="block block-title"><strong><?php /* @escapeNotVerified */ echo __('Search'); ?></strong></div>
+            <div class="block block-content">
+                <form class="form minisearch" id="search_mini_form_mobile" action="<?php /* @escapeNotVerified */ echo $action ?>" method="get">
+                    <label class="label" for="search" data-role="minisearch-label">
+                        <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
+                    </label>
+                    <div class="field search">
+                        <h2><?php echo __('Search'); ?></h2>
+                        <div class="control">
+                            <input id="search"
+                                   data-mage-init='{"quickSearch":{
+                                        "formSelector":"#search_mini_form_mobile",
+                                        "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]); ?>",
+                                        "destinationSelector":"#search_autocomplete"}
+                                   }'
+                                   type="text"
+                                   name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+                                   value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+                                   placeholder="<?php /* @escapeNotVerified */ echo __('Search here...'); ?>"
+                                   class="input-text"
+                                   maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+                                   role="combobox"
+                                   aria-haspopup="false"
+                                   aria-autocomplete="both"
+                                   aria-expanded="false"
+                                   autocomplete="off" />
+                            <div id="search_autocomplete" class="search-autocomplete"></div>
+                            <?php echo $block->getChildHtml() ?>
+                        </div>
+                        <div class="actions">
+                          <button type="submit"
+                                  title="<?php echo $block->escapeHtml(__('Search')) ?>"
+                                  class="action search mobile-search-btn">
+                              <span><img src="<?php echo $block->getViewFileUrl('images/sweda/search-icon.png'); ?>"></span>
+                          </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+

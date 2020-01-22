@@ -1,0 +1,84 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('imprint_section_one')) {
+    $jsonData = base64_decode($this->getData('imprint_section_one'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+?>
+<?php //echo $page_data->title ?>
+<!-- <div class="container"> -->
+  <div class="chisel-top-section">
+  	<div class="imp-banner-img">
+          <?php if($page_data->impbackgroundImagevideopriv) { ?>
+              <video id="myVideoTag" class="img-fluid" width="100%" loop="true" autoplay="autoplay" playsinline="" webkit-playsinline="" muted="true" poster="" controls src="<?php echo $page_data->impbackgroundImagevideopriv ?>">
+                  <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/mp4"> 
+                  <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/webm">
+              </video>
+          <?php } else { ?>
+              <img class="" src="<?php echo $page_data->impbackgroundImage ?>">
+          <?php } ?>
+
+      <div class="container">
+    		<div class="imprint-method-banner-text">
+    			<h2><?php echo $page_data->imptitle_one; ?></h2>
+    			<p><?php echo $page_data->impdesctiption_one; ?></p>
+                <?php if($page_data->impbackgroundImagevideo) { ?>
+                    <img class="video-images" id="myBtnimp" src="<?php echo $block->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                <?php } ?>
+    		</div>
+      </div>
+
+  		<div class="imprint-heading">
+          <img class="" src="<?php //echo $page_data->logobackgroundImage ?>">
+  	       <h2><?php echo $page_data->imptitle_two; ?></h2>
+  	       <p><?php echo $page_data->impdesctiption_two; ?></p>
+  	  </div>
+  	</div>
+  </div>
+<!-- </div> -->
+
+<?php if($page_data->impbackgroundImagevideo) { ?>
+<div id="myModal" class="modalimp">
+  <div class="modalimp-contentimp">
+    <span class="closeimp">&times;</span>
+    <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?php echo $page_data->impbackgroundImagevideo ?>">
+        <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4"> 
+        <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/webm">
+    </video>
+  </div>
+</div>
+<?php } ?>
+
+
+<script type="text/javascript">
+     require([
+         'jquery',
+     ], function($){
+
+         var modalimp = document.getElementById("myModal");
+         var btn = document.getElementById("myBtnimp");
+         var span = document.getElementsByClassName("closeimp")[0];
+
+         btn.onclick = function() {
+           modalimp.style.display = "block";
+           jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':true})
+         }
+         span.onclick = function() {
+           modalimp.style.display = "none";
+           jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':false})
+         }
+         window.onclick = function(event) {
+           if (event.target == modalimp) {
+             modalimp.style.display = "none";
+           }
+         }
+
+     });
+</script>
+

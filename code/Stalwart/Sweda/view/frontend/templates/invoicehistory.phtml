@@ -1,0 +1,164 @@
+<?php /** @var Stalwart\Sweda\Block\invoicehistory $block */ ?>
+<?php $customerSwedaOrdersCollection = $block->getSwedaInvoices(); ?>
+<?php $sortingParams = $block->getSortingParams(); ?>
+<?php 
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+
+	$customerInvoiceNum = $customerSession->getCustomerInvoiceNum();
+	$customerPurchaseOrder = $customerSession->getCustomerPurchaseOrder();
+	$customerOrderNumber = $customerSession->getCustomerOrderNumber();
+	$dateRangeInvoice = $customerSession->getDateRangeInvoice();
+
+?>
+<?php if($block->getCustomer()->getId()) : ?>
+	<?php if($block->getIsBtobPending() != 0) : ?>
+		<section id="maincontent" class="page-main container">
+		<div class="row">
+		<div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+			<div class="container">
+				<div class="row">
+					<div class="refine-section">
+		               <div class="result-section">
+		                 <div class="refinr-title">
+		                  <h2>REFINE YOUR RESULTS</h2>
+		               </div>
+			                <form id="refine-search-form" method="post" action="<?php echo $this->getUrl('sweda/order/invoicehistory')?>" autocomplete="off">
+			                	<div class="refine-input-box">
+			                      <div class="refine-box">
+			                        <label>Invoice Number</label>
+			                        <input type="text" value="<?php echo $customerInvoiceNum ?>" name="invoice_number" placeholder="Enter Invoice Number"> 
+			                      </div>
+			                      <div class="refine-box">
+			                        <label>Order Number</label>
+			                        <input type="text" value="<?php echo $customerOrderNumber ?>" name="order_number" placeholder="Enter Order Number"> 
+			                      </div>
+			                      <div class="refine-box">
+			                        <label>PO Number</label>
+			                        <input type="text" value="<?php echo $customerPurchaseOrder ?>" name="purchase_order" placeholder="Enter PO Number"> 
+			                      </div>
+			                      <div class="refine-box">
+			                        <div class="date-section">
+			                           <label>Invoiced between: </label>
+			                           <!-- <input id="startDate" width="276" name="startDate" value="" type="text" placeholder="mm-dd-yyyy"> -->
+			                           <input value="<?php echo $dateRangeInvoice ?>" type="text" id="startDate" placeholder="mm-dd-yyyy" name="startDate"/>
+			                        </div>
+			                      </div>
+			                      <div class="refine-box">
+			                         <div class="apply-btn">
+			                           <input type="submit" value="Apply">
+			                         </div>
+			                          <div class="clear">
+			                           <a href="javascript:void(0)">clear All</a>
+			                         </div>
+			                      </div>
+			                	</div>
+			                </form>
+		               </div>
+		          	</div>
+		          	<?php if($block->getPagerHtml()): ?>
+						<div class="invoicehistory top-pager"><?php echo $block->getPagerHtml(); ?></div>
+					<?php endif; ?>
+					<div class="smart-carts-table">
+						<?php if($customerSwedaOrdersCollection && $customerSwedaOrdersCollection->getSize()): ?>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "order_number")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('order_number') ?>">Order Number</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "purchase_order")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('purchase_order') ?>">Purchase Order</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "invoice_number")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('invoice_number') ?>">Invoice Number</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "trx_date")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('trx_date') ?>">Invoice Date</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "total_amount")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('total_amount') ?>">Total Amount</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "due_date")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('due_date') ?>">Due Date</a>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($customerSwedaOrdersCollection as $customerSwedaOrder) : ?>
+										<tr>
+											<td><?php echo $customerSwedaOrder->getOrderNumber(); ?></a></td>
+											<td><?php echo $customerSwedaOrder->getPurchaseOrder(); ?></td>
+											<td><a class="invoice-number-frame" href="https://invoices.swedausa.com/apex/f?p=205:1:11736418875661:PRINT_REPORT=Invoice:YES:1:P1_TRX_NUM:<?php echo $customerSwedaOrder->getInvoiceNumber(); ?>#view=fit%22%20height=%22900px%22%20width=%22100%"><?php echo $customerSwedaOrder->getInvoiceNumber(); ?></a></td>
+											<td><?php echo date('m-d-Y',strtotime($customerSwedaOrder->getTrxDate())); ?></td>
+											<td><?php echo "$ ".$customerSwedaOrder->getTotalAmount(); ?></td>
+											<td><?php echo date('m-d-Y',strtotime($customerSwedaOrder->getDueDate())); ?></td>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						<?php else: ?>
+							<div class="message info empty"> 
+					            <span><?php echo __('There are no invoice yet.'); ?></span>
+					        </div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+			<?php if($block->getPagerHtml()): ?>
+				<div class="invoicehistory bottom-pager"><?php echo $block->getPagerHtml(); ?></div>
+			<?php endif; ?>
+		</div>
+
+		</section>
+	<?php else : ?>
+		<?php 
+			$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+			$redirect->setRedirect('/customer/account');
+			return $redirect;
+		?>
+	<?php endif; ?>
+<?php else : ?>
+	<?php 
+		$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+		$redirect->setRedirect('/customer/account/login');
+		return $redirect;
+	?>
+<?php endif; ?>
+

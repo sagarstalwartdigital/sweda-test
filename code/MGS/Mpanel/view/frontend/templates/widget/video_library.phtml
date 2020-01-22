@@ -1,0 +1,240 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+error_reporting(0);
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('video_library')) {
+    $jsonData = base64_decode($this->getData('video_library'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+?>
+
+<div class="panel-block-row col-md-12  video-library-top p-0">
+<?php 
+try {
+?>
+
+    <div class="breadcrumbs width-5 content mobile-only">
+        <div class="container">
+            <ul class="items">
+                <li class="item home">
+                    <a href="<?php echo $this->getUrl();?>" title="Go to Home Page">Home</a>
+                </li>
+                <li class="item ">
+                    <a href="<?php echo $this->getUrl();?>tools-landing" title="Tools">Tools</a>
+                </li>
+                <li class="item video-library">
+                    <strong>Video Library</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+    <div class="chisel-top-section p-0">
+            <div class="video-library-top-title">
+              <h2><?php echo $page_data->imptitle_one; ?></h2>
+            </div>
+        <div class="imp-banner-img">
+            <?php if($page_data->preview_video_link) { ?>
+             <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" autoplay="autoplay" playsinline="" webkit-playsinline="" muted="true" poster="" src="<?php echo $page_data->preview_video_link ?>">
+                    <source src="<?php echo $page_data->preview_video_link ?>" type="video/mp4"> 
+                    <source src="<?php echo $page_data->preview_video_link ?>" type="video/webm">
+             </video>
+          <?php } elseif($page_data->impbackgroundImagevideopriv) { ?>
+              <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" autoplay="autoplay" playsinline="" webkit-playsinline="" muted="true" poster="" src="<?php echo $page_data->impbackgroundImagevideopriv ?>">
+                    <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/mp4"> 
+                    <source src="<?php echo $page_data->impbackgroundImagevideopriv ?>" type="video/webm">
+              </video>
+          <?php } else { ?>
+            <?php if($page_data->impbackgroundImage) {?>
+              <img class="video-library-banner" src="<?php echo $page_data->impbackgroundImage ?>">
+            <?php } ?>
+          <?php } ?>  
+
+            <div class="container">
+                <div class="imprint-method-banner-text">
+                <h2><?php echo $page_data->imptitle_two; ?></h2>
+                <?php echo html_entity_decode($page_data->impdesctiption_one) ?>
+                    <?php if($page_data->full_video_link || $page_data->impbackgroundImagevideo) { ?>
+                    <img class="video-images" id="myBtnimp" src="<?php echo $this->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs width-5 content desktop-only">
+        <div class="container">
+            <ul class="items">
+                <li class="item home">
+                    <a href="<?php echo $this->getUrl();?>" title="Go to Home Page">Home</a>
+                </li>
+                <li class="item ">
+                    <a href="<?php echo $this->getUrl();?>tools-landing" title="Tools">Tools</a>
+                </li>
+                <li class="item video-library">
+                    <strong>Video Library</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <?php if($page_data->full_video_link) { ?>
+        <div id="myModal" class="modalimp">
+            <div class="modalimp-contentimp">
+              <span class="closeimp">&times;</span>
+              <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?php echo $page_data->full_video_link ?>">
+                  <source src="<?php echo $page_data->full_video_link ?>" type="video/mp4"> 
+                  <source src="<?php echo $page_data->full_video_link ?>" type="video/webm">
+              </video>
+            </div>
+        </div>
+        <?php } else { ?>
+        <?php if($page_data->impbackgroundImagevideo) { ?>
+        <div id="myModal" class="modalimp">
+            <div class="modalimp-contentimp">
+              <span class="closeimp">&times;</span>
+              <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?php echo $page_data->impbackgroundImagevideo ?>">
+                  <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4"> 
+                  <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/webm">
+              </video>
+            </div>
+        </div>
+        <?php } ?>
+    <?php } ?>
+
+<?php }
+catch(Exception $ex){
+  echo('Exception: '.$ex->getMessage());
+}
+?> 
+</div>
+
+<div class="container">
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$apiKey = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('youtubesetting/general/apikey');
+$channelId = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('youtubesetting/general/channelid');
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId='.$channelId.'&key='.$apiKey.'',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "Accept: */*",
+        "Accept-Encoding: gzip, deflate",
+        "Cache-Control: no-cache",
+        "Connection: keep-alive",
+        "Host: www.googleapis.com",
+        "Postman-Token: 2f16032a-f86a-46dc-975f-2cd1f6ac91a8,d8637988-9e9c-421c-8d1f-fcf2380013a8",
+        "User-Agent: PostmanRuntime/7.20.1",
+        "cache-control: no-cache"
+    ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
+
+if ($err) {
+    echo "cURL Error #:" . $err;
+} else {
+    $playlist = json_decode($response);
+    echo '<div class="video-library-main-section">';
+    foreach($playlist->items AS $item){
+
+        $curl2 = curl_init();
+
+        curl_setopt_array($curl2, array(
+            CURLOPT_URL => "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=".$item->id."&key=".$apiKey."&maxResults=50",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate",
+                "Cache-Control: no-cache",
+                "Connection: keep-alive",
+                "Host: www.googleapis.com",
+                "Postman-Token: accc74af-4313-494d-87cd-999ee75166b7,fdf172d5-41fd-4552-b97f-aaa837876ab5",
+                "User-Agent: PostmanRuntime/7.20.1",
+                "cache-control: no-cache"
+            ),
+        ));
+
+        $response2 = curl_exec($curl2);
+        $err2 = curl_error($curl2);
+
+        curl_close($curl2);
+
+        if ($err2) {
+            echo "cURL Error #:" . $err2;
+        } else {
+            $videos = json_decode($response2);
+            
+            echo "<div class='youtube-video-list' data-playlist-name='".$item->snippet->title."'><h2 class='channelname'>".$item->snippet->title."</h2><div class='row'>";
+            foreach($videos->items AS $item){
+                echo "<div class='col-sm-4 youtube-list'>";
+                
+                echo '<iframe id="ytplayer" type="text/html" width="640" height="360"
+    src="https://www.youtube.com/embed/'.$item->snippet->resourceId->videoId.'?autoplay=0&rel=0"
+    frameborder="0" allowfullscreen></iframe>
+                <h4>'.$item->snippet->title.'<h4>';
+
+                echo "</div>";
+            }
+            echo "</div></div>";
+        }
+    }
+    echo '</div>';
+}
+
+?>
+</div>
+<script type="text/javascript">
+     require([
+         'jquery',
+     ], function($){
+
+         var modalimp = document.getElementById("myModal");
+         var btn = document.getElementById("myBtnimp");
+         var span = document.getElementsByClassName("closeimp")[0];
+
+         btn.onclick = function() {
+           modalimp.style.display = "block";
+           jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':true})
+         }
+
+         jQuery(document).ready(function(){
+            $(".closeimp").click(function(){
+                $('.modalimp').hide();
+                jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':false})
+                
+            });
+        })
+
+     });
+</script>
+
+<style type="text/css">
+.main-top-title {
+    display: none;
+    position: relative;
+}
+
+</style>
+
+

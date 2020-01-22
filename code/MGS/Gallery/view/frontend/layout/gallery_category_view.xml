@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceContainer name="sidebar.additional">
+            <block class="MGS\Gallery\Block\Sidebar" name="gallery.sidebar" template="MGS_Gallery::sidebar.phtml" after="-"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="MGS\Gallery\Block\Category\Posts" name="category_post_list" template="MGS_Gallery::category/posts.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

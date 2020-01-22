@@ -1,0 +1,72 @@
+{{template config_path="design/email/header_template"}}
+<table style="text-align: center;background-color: #fff;  width: 100%; max-width: 650px; margin:  auto;" align="center">
+    <tr>
+        <td align="center">
+            <br>
+            <strong style="font-size: 28px; font-family: verdana,geneva,sans-serif; text-transform: uppercase; padding-bottom: 5px; padding-top: 29px; padding-left: 0px; margin: 0px; padding-right: 0px;display: block;text-align: center;width: 100%;vertical-align: middle;">WELCOME TO SWEDA!</strong>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table align="center" style="font-size: 12px; font-family: verdana,geneva,sans-serif; width: 91%; color: #606c77; padding-bottom: 0px; padding-top: 0px; padding-left: 15px; line-height: 22px; padding-right: 15px;text-align: center;">
+                <tr>
+                    <td>Your account application has been approved!<br><br></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table align="center" style="margin-bottom: 0px; font-size: 12px; font-family: verdana,geneva,sans-serif; color: #606c77; padding-bottom: 0px; padding-top: 0px; padding-left: 15px; padding-right: 15px;text-align: center;width: 91%;">
+                <tr>
+                    <td style="padding-bottom: 55px; padding-top: 24px; padding-left: 0px; padding-right: 0px" align="center">
+                        <table width="275" align="center" bgcolor="#3ac0c4" style="height: 50px;">
+                            <tr>
+                                <td align="center">
+                                    {{trans
+                                        '<a href="%customer_url" style="color: #fff;background-color: #3ac0c4; padding: 9px 44px;font-size: 22px;text-decoration: none;text-transform: uppercase; font-family: Verdana,Geneva,sans-serif;">Log in</a>'
+                                        customer_url=$this.getUrl($store,'customer/account/login/',[_nosid:1])
+                                        |raw}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" style="margin-bottom: 0px; font-size: 12px; font-family: verdana,geneva,sans-serif; color: #606c77; padding-bottom: 0px; padding-top: 0px; padding-left: 15px; padding-right: 15px;text-align: center;width: 91%;">
+                    <tr>
+                        <td>As a registered Sweda customer,you will have unlimited access to the following helpful features on our website:
+                            <br><br></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="font-size: 12px; font-family: verdana,geneva,sans-serif; font-weight: bold; color: #606c77;text-align: center;" align="center">
+                        <tr>
+                            <td style="padding-bottom: 10px;">Create, edit, save and share multiple Smart Carts</td>
+                        </tr>
+                        <tr><td style="padding-bottom: 10px;">Acess inventory data</td></tr>
+                        <tr><td style="padding-bottom: 10px;">View your order & invoice history</td></tr>
+                        <tr><td style="padding-bottom: 10px;">Track your orders</td></tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table align="center" style="font-size: 12px; width: 65%; margin: 0 auto; color: #606c77; font-family: Verdana,Geneva,sans-serif; padding: 18px 0 50px;">
+                        <tr>
+                            <td>We look forward to welcoming you as a valued customer!<br><br><br></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+        {{template config_path="design/email/footer_template"}}

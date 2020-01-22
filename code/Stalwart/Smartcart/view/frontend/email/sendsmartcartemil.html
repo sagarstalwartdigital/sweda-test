@@ -1,0 +1,28 @@
+<!--@subject {{var subject }}@-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        {{var template_styles|raw}}
+
+        {{css file="css/email.css"}}
+    </style>
+</head>
+<body style="width: 100%; min-width: 100%; padding: 0px 15px 10px;">
+{{inlinecss file="css/email-inline.css"}}
+
+<!-- Begin wrapper table -->
+<table class="wrapper" width="100%">
+    <tr>
+        <td class="wrapper-inner" align="center">
+            <table class="main" align="center" style="background-color: #f5f5f5;margin: 30px 0 0; width: 100%;
+    max-width: 850px;">
+                <tr>
+                    <td class="main-content">
+<img src="{{var data.trackurl}}" style="display: none;" />
+{{block class='Stalwart\Smartcart\Block\SmartCartMail' area='frontend' sender_namee=$sender_name smartcart_id=$smartcart_id template='Stalwart_Smartcart::smart_cart_email_template.phtml'}}
+

@@ -1,0 +1,61 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Vlibrary
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+$tree = $block->getTree();
+if ($tree) :
+    ?>
+    <div class="mp-sidebar mpcss">
+        <div class="row" id="myListCat">
+            <div class="parent-video-categories-text parent-list">
+                <h4><?= __('Categories') ?></h4>
+                <?= $block->getCategoryTreeHtml($tree) ?>
+            </div>
+        </div>
+        <div id="loadMoreCat">See More</div>
+    </div>
+    <script type="text/javascript">
+        require(['Mageplaza_Vlibrary/js/categorytree'], function () {
+        });
+    </script>
+<?php endif; ?>
+
+
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+        size_li = $(".parent-list .video-categories-text").size();
+        x=5;
+        $('.parent-list .video-categories-text:lt('+x+')').show();
+        $('#loadMoreCat').click(function () {
+            x= (x+5 <= size_li) ? x+5 : size_li;
+            $('.parent-list .video-categories-text:lt('+x+')').show();
+            if(x>=size_li){
+                $('#loadMoreCat').hide();
+            }
+        });
+        });
+    });
+</script>
+<style type="text/css">
+.parent-list .video-categories-text{
+    display: none;
+}
+</style>

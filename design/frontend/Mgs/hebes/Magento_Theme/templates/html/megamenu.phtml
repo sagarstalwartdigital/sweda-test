@@ -1,0 +1,55 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$title1 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusection/title');
+$url1 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusection/url');
+$description1 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusection/description');
+$background_images1 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusection/background_images');
+
+$title2 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusectiontwo/title');
+$url2 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusectiontwo/url');
+$description2 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusectiontwo/description');
+$background_images2 = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('megamenublok/menusectiontwo/background_images');
+?>
+
+<div class="block widget block-new-products grid">
+    <div class="block-content">
+        <div class="products-grid grid">
+            <ol class="product-items widget-new-grid">
+                <?php //foreach ($datacollection as $data) { ?>
+                    <li class="product-item">
+                        <div class="product-item-info">
+                            <a href="<?php echo $url1; ?>" class="product-item-photo">
+                                <img class="product-image-photo img-fluid" src="<?php echo $this->getUrl('pub/media/mageplaza/vlibrary/logo/').$background_images1; ?>" alt="Napa Stemless Wine Tumbler Set">
+                                <div class="product-item-details">
+                                <strong class="product-item-name">
+                                       <?php echo $title1; ?>
+                                </strong>
+                                <?php if($description1) { ?>
+                                <p class="menu-pro-descri"><?php echo $description1; ?></p>
+                                <?php } ?>
+
+                            </div>
+                        </a>                            
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item-info">
+                            <a href="<?php echo $url2; ?>" class="product-item-photo">
+                                <img class="product-image-photo img-fluid" src="<?php echo $this->getUrl('pub/media/mageplaza/vlibrary/logo/').$background_images2; ?>" alt="Napa Stemless Wine Tumbler Set">
+                                <div class="product-item-details">
+                                <strong class="product-item-name">
+                                       <?php echo $title2; ?>
+                                </strong>
+                                <?php if($description2) { ?>
+                               <p class="menu-pro-descri"><?php echo $description2; ?></p>
+                                <?php } ?>
+                            </div>
+                        </a>                            
+                        </div>
+                    </li>
+                <?php //} ?>
+            </ol>
+        </div>
+    </div>
+</div>

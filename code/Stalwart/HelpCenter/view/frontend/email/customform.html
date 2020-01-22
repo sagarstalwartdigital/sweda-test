@@ -1,0 +1,65 @@
+<!--@subject Custom form {{var store.getFrontendName()}} @-->
+
+<body style="width: 100%; min-width: 100%; padding: 0px 15px 10px;">
+{{inlinecss file="css/email-inline.css"}}
+<!-- Begin wrapper table -->
+<table class="wrapper" width="100%">
+    <tr>
+        <td class="wrapper-inner" align="center">
+            <table class="main" align="center" style="background-color: #f5f5f5;margin: 30px 0 0; width: 100%; max-width: 850px;">
+                <tr>
+                    <td class="header" style="text-align: center; padding: 27px 0 25px;">
+                         <a class="logo"  href="{{store url=""}}">
+                            <img src="https://sweda.realmoxy.com/media/email/logo/default/sweda-logo.png">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main-content">
+                    <!-- Begin Content -->
+                        <table style="text-align:center; background-color:#fff; width: 88%; margin: 0 auto;">
+                        <tr>
+                            <td class="header" style="text-align: center;">
+                                <h3 style="margin-bottom: 15px; font-size: 25px; font-family:Verdana,Geneva,sans-serif; text-transform: uppercase;">NEW ARTWORK UPLOAD FROM <a href="#" style="color:#222; text-decoration: none;">SWEDAUSA.COM</a></h3>
+                                <P style="color: #606c77; font-size: 13px; margin: 0;">{{var data.name}} has uploaded artwork through <a href="#" style="color:#606c77; text-decoration: none;">swedausa.com.</a></P>
+                            </td>
+                        </tr>
+                        </table>
+                        <table style="text-align:left; background-color:#fff; width:88%; max-width:850px; padding:0 30px 50px;margin:0 auto; border-bottom:6px solid #606c77; margin-bottom:50px;">
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="color: #606c77; margin: 0; font-size: 13px;font-family: Verdana,Geneva,sans-serif;">
+                                    <strong style=" ">Name: </strong>{{var data.name}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="color: #606c77; margin: 0; font-size: 13px;font-family: Verdana,Geneva,sans-serif;">
+                                    <strong style=" ">Po Number: </strong>{{var data.po_number}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="margin: 0; color: #606c77;font-size: 13px;font-family: Verdana,Geneva,sans-serif;">
+                                    <strong style=" ">Phone Number: </strong>{{var data.phone_number}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="margin: 0; color: #606c77;font-size: 13px;font-family: Verdana,Geneva,sans-serif;">
+                                    <strong style=" ">Email Address: </strong>{{var data.email_address}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="margin: 0; color: #606c77;font-size: 13px;font-family: Verdana,Geneva,sans-serif;">
+                                    <strong style=" ">Notes: </strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family:Verdana,Geneva,sans-serif;font-size:12px; width:100%;"><p style="margin: 0; color: #606c77;font-size: 13px;font-family: Verdana,Geneva,sans-serif;">{{var data.notes}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </td>
+        </tr>
+    </table>
+<!-- End wrapper table -->
+</body>

@@ -1,0 +1,6 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $smartCartFactory = $block->getSmartCartFactory(); ?>
+<?php foreach($smartCartFactory as $smartCarts) : ?>
+  <?php $smartCart = $block->getSmartCart()->load($smartCarts->getId()); ?>
+  <span><?php echo $smartCart->getItems()->getSize(); ?></span>
+<?php endforeach; ?>

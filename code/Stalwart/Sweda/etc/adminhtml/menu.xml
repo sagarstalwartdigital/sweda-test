@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Stalwart_Sweda::parent" title="SWEDA" module="Stalwart_Sweda" sortOrder="100"
+             resource="Stalwart_Sweda::parent"/>
+        <add id="Stalwart_Sweda::orders" title="Orders" module="Stalwart_Sweda" sortOrder="10" action="sweda/order/index"
+             resource="Stalwart_Sweda::orders" parent="Stalwart_Sweda::parent"/>
+    </menu>
+</config>

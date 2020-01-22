@@ -1,0 +1,81 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baurl = $storeManager->getStore()->getBaseUrl();
+?>
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+<!------Account-overview-section --------->
+<div class="container">
+    <div class="breadcrumb-section">
+     <h1></h1>
+     <ol class="breadcrumb">
+       <li><a href="<?php echo $baurl; ?>">Home</a></li>
+       <li><a href="<?php echo $baurl; ?>customer-service">Help Center</a></li>
+       <li>FAQs</li>
+     </ol>	
+   </div>
+ </div>
+
+<div class="container">
+    <div class="account-overview-title">
+	    <h2>Frequently Asked Questions</h2>
+	    <div class="row">
+		    <div class="col-sm-3">
+				<nav class="nav-sidebar">
+					<ul class="nav tabs">
+						<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>
+					</ul>
+				</nav>
+			</div>
+
+			<div class="col-sm-9">
+				<?php
+				$i=1;
+				$numberOfTopics = count($this->getTopics());
+				$ii = 0;
+				foreach($this->getTopics() as $topic){
+					if ($i % 2 != 0) { ?>
+					<?php } ?>
+						<div class="panel-group faqs-section faqs-page-section" id="accordion">
+							<h2><?php echo $topic['title']; ?></h2>
+							<?php foreach($this->getQasByTopicIdLimited($topic['id']) as $qa){  ?>
+								<?php $ii++; ?>
+								<div class="panel panel-default">
+					                <div class="panel-heading">
+					                    <h4 class="panel-title">
+					                        <a class="accordion-toggle <?php echo ($ii==1)?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#accordion" href="#collapseOne-<?php echo $ii; ?>" aria-expanded="<?php echo ($ii==1)?'true':'false'; ?>">
+					                            <?php echo $qa['question']; ?>
+					                        </a>
+					                    </h4>
+					                </div>
+					                <div id="collapseOne-<?php echo $ii; ?>" class="panel-collapse collapse <?php echo ($ii==1)?'show':''; ?>">
+					                    <div class="panel-body">
+					                        <?php echo $qa['answer_summary']; ?>
+					                    </div>
+					                </div>
+				            	</div>
+							<?php } ?>
+							<?php //echo '<a class="btn btn-blue" href="/support/'.$topic['url'].'">View all</a>'; ?>
+						</div>
+						<?php if (($i % 2 == 0) || $i == $numberOfTopics) {
+					    }
+					$i++;
+				}
+				?>
+			</div>
+	   </div>
+	</div>       
+</div>
+<!------ Account-overview-section --------->
+
+<script type="text/javascript">
+require([
+    'jquery',
+], function($){
+	$(document).ready(function() {
+		$('.faqs').addClass('active');
+	});
+});
+</script>
+
+

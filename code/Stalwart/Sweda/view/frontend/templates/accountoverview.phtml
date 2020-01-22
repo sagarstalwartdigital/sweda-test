@@ -1,0 +1,179 @@
+<?php $customerSmartCartsCollection = $block->getSmartCartFactory(); ?>
+<?php $sortingParams = $block->getSortingParams(); ?>
+<?php $customerSwedaOrdersCollection = $block->getSwedaOrders(); ?>
+<section id="maincontent" class="page-main container">
+    <div class="container">
+        <div class="account-overview-title">
+            <div class="tab-content">
+                <div class="tab-pane active text-style" id="tab1">
+                    <div class="your-profile-section">
+                        <a href="javascript:;"><h2>YOUR PROFILE</h2></a>
+                        <div class="Profile-detail">
+                            <?php 
+                                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                               
+                                $billingAddress = $objectManager->create('Magento\Customer\Model\Address')->load($block->getCustomer()->getDefaultBilling())->getData();
+                                if ($billingAddress > 0) {
+                                    
+                                    if (isset($billingAddress['telephone']) && !empty($billingAddress['telephone'])) {
+                                        $tel = $billingAddress['telephone'];
+                                    } else {
+                                        $tel = '';
+                                    }
+
+                                    if (isset($billingAddress['street']) && !empty($billingAddress['street'])) {
+                                        $street = $billingAddress['street'];
+                                    } else {
+                                        $street = '';
+                                    }
+                                }
+                                
+                            ?>
+                            <p><?php echo $block->escapeHtml($block->getCustomer()->getFirstname()).' '.$block->escapeHtml($block->getCustomer()->getLastname()) ?></p>
+                            <p><strong>Customer ID : </strong><?php echo $block->getCustomer()->getCustomAttribute('customer_id') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('customer_id')->getValue()) : ""; ?></p>
+                            <p><strong>Registry ID : </strong><?php echo $block->getCustomer()->getCustomAttribute('registry_id') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('registry_id')->getValue()) : ""; ?></p>
+                            <p><strong>Account # : </strong><?php echo $block->getCustomer()->getCustomAttribute('account_number') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('account_number')->getValue()) : ""; ?></p>
+                            <p><strong>Email : </strong><?= $block->escapeHtml($block->getCustomer()->getEmail()) ?></p>
+                            <p><strong>Company Name : </strong><?php echo $block->getCustomer()->getCustomAttribute('company_name') ? $block->escapeHtml($block->getCustomer()->getCustomAttribute('company_name')->getValue()) : ''; ?></p>
+                            <p><strong>Phone : </strong><?php echo $tel; ?></p>
+                            <p><strong>Address : </strong><?php echo $street; ?></p>
+                            <div class="edits-btn">
+                                <span class="profile-detail-edit-btn"><a href="<?php echo $block->getUrl('customer/account/edit'); ?>">Edit</a></span>
+                                <span class="profile-detail-updatepwd-btn"><a href="<?php echo $block->getUrl('sweda/customer/updatepassword'); ?>">Update Password</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if($block->getIsBtob() != 0) : ?>
+                    <div class="recent-orders-section">
+                        <h2>RECENT ORDERS</h2>
+                        <div class="recent-detail">
+                            <?php if(sizeof($customerSwedaOrdersCollection) > 0 ) : ?>
+                                <?php foreach ($customerSwedaOrdersCollection as $recentSwedaOrders) : ?>
+                                    <div class="recent-orders-structure">
+                                        <div class="recent-pdp-price">
+                                            <p><strong>Order # : </strong><?php echo $recentSwedaOrders->getOrderNumber() ? $recentSwedaOrders->getOrderNumber() : ""; ?></p>
+                                            <p><strong>Order Placed: </strong><?php echo $recentSwedaOrders->getOrderedDate() ? date('m-d-Y',strtotime($recentSwedaOrders->getOrderedDate())) : ""; ?></p>
+                                            <p><strong>Status : </strong><?php echo $recentSwedaOrders->getFlowStatusCode() ? $recentSwedaOrders->getFlowStatusCode() : ""; ?></p>
+                                            <a class="order-number-frame" data-url="/en_us/xml-order-details" data-toggle="tooltip" data-placement="top" title="View" data-original-title="View" data-ordernumber="<?php echo $recentSwedaOrders->getOrderNumber(); ?>" href="javascript:void(0)">View Details</a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                <div class="edits-btn">
+                                    <a href="<?php echo $block->getUrl('sweda/order/orderhistory'); ?>">VIEW ORDER HISTORY</a>
+                                </div>
+                            <?php else : ?>
+                                <div class="message info empty">
+                                    <span><?php echo __('There are no orders yet.'); ?></span>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if($block->getIsBtob() != 0) : ?>      
+    <div class="smart-carts-table account-overview-section">
+        <h2>YOUR RECENT SMART CARTS</h2>
+        <?php if($customerSmartCartsCollection && $customerSmartCartsCollection->getSize()): ?>
+            <div class="account-overview-smartcart-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <?php
+                                $ascDescClass = "";
+                                if((!empty($sortingParams)) && $sortingParams["sortby"] == "title")
+                                    $ascDescClass = strtolower($sortingParams["dir"]);
+                            ?>
+                            <th scope="col" class="<?php echo $ascDescClass ?>">
+                                <a href="<?php echo $block->getSortUrl('title') ?>">Smart Cart Title</a>
+                            </th>
+
+                            <?php
+                                $ascDescClass = "";
+                                if((!empty($sortingParams)) && $sortingParams["sortby"] == "created_at")
+                                    $ascDescClass = strtolower($sortingParams["dir"]);
+                            ?>
+                            <th scope="col" class="<?php echo $ascDescClass ?>">
+                                <a href="<?php echo $block->getSortUrl('created_at') ?>">Date Created</a>
+                            </th>
+
+                            <th scope="col">
+                                <a href="javascript:void(0);">
+                                    Recipients
+                                </a>
+                            </th>
+
+                            <?php
+                                $ascDescClass = "";
+                                if((!empty($sortingParams)) && $sortingParams["sortby"] == "event_name")
+                                    $ascDescClass = strtolower($sortingParams["dir"]);
+                            ?>
+                            <th scope="col" class="<?php echo $ascDescClass ?>">
+                                <a href="<?php echo $block->getSortUrl('event_name') ?>">Event Name</a>
+                            </th>
+
+                            <?php
+                                $ascDescClass = "";
+                                if((!empty($sortingParams)) && $sortingParams["sortby"] == "event_date")
+                                    $ascDescClass = strtolower($sortingParams["dir"]);
+                            ?>
+                            <th scope="col" class="<?php echo $ascDescClass ?>">
+                                <a href="<?php echo $block->getSortUrl('event_date') ?>">Event Date</a>
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($customerSmartCartsCollection as $customerSmartCart) : ?>
+                            <tr>
+                                <td><a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartdetail',array('_query'=>array('id'=>$customerSmartCart->getId()))); ?>"><?php echo $customerSmartCart->getTitle(); ?> <?php if($customerSmartCart->load($customerSmartCart->getId())->getItems()->getSize()) : ?>(<?php echo $customerSmartCart->load($customerSmartCart->getId())->getItems()->getSize().' Products'; ?>) <?php endif; ?></a></td>
+                                <td><?php echo date('m-d-Y',strtotime($customerSmartCart->getCreatedAt())); ?></td>
+                                <td class="left">
+                                    <?php foreach (json_decode($customerSmartCart->getRecepientData(), true) as $key => $customerSmartCartsRecipient) : ?>
+                                        <?php
+                                            $faCalass = "fa fa-envelope";
+                                            if(isset($customerSmartCartsRecipient['mailopened']) && $customerSmartCartsRecipient['mailopened'] == 1)
+                                                $faCalass = "fa fa-envelope-open";
+                                        ?>
+                                        <p><i class="<?php echo $faCalass ?>" aria-hidden="true"></i><?php echo $customerSmartCartsRecipient['name']; ?>,</p>
+                                        <p><i class="<?php echo $faCalass ?>" aria-hidden="true"></i><?php echo $key; ?><br></p>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td><?php echo $customerSmartCart->getEventName(); ?></td>
+                                <td><?php echo $customerSmartCart->getEventDate() && $customerSmartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($customerSmartCart->getEventDate())) : '' ; ?></td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)" class="send-mail" id="<?php echo $customerSmartCart->getId()?>" title="Share Smart Cart"><i class="fa fa-paper-plane" aria-hidden="true"></a></i>
+                                        </li>
+                                        <li>
+                                            <a class="add-more-pro" id="<?php echo $customerSmartCart->getId() ?>" href="javascript:void(0)" title="Start Adding Product"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="sc_delete ac-overview-page" href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$customerSmartCart->getId(),'smartcart'=>'smartcart'))); ?>" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <div class="view-all-resent-card">
+                    <a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartfront'); ?>">VIEW ALL SMART CARTS</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="message info empty">
+                <span><?php echo __('There are no smart carts yet.'); ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    <div class="recent-bottom-section">
+        <div class="hepl-center-section">
+            <p><strong>Need Help? Go to our </strong><a href="<?php echo $this->getUrl();?>customer-service">HELP CENTER</a></p>
+        </div>
+    </div>
+</section>

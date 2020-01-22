@@ -1,0 +1,120 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('useful-tools')) {
+    $jsonData = base64_decode($this->getData('useful-tools'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $usefulTools = json_decode($page_data->toolsJson);
+    //echo '<bre>'; print_r($usefulTools); echo '</bre>';
+    //print_r($usefulTools); exit;
+}
+$type = 'useful-tools';
+?>
+
+<div class="container">
+    <div class="usefull-section desktop-only">
+        <h2 class="main-title"><?php echo strtoupper($page_data->title) ?></h2>
+        <div class="row">
+            <?php foreach ($usefulTools as $data): ?>
+                <div class="col-sm-3 center  useful-one">
+                    <?php
+                        $url = !empty($data->toolUrl) ? ($data->toolUrl) : 'javascript:;';
+                        if (filter_var($url, FILTER_VALIDATE_URL)) {
+                            echo '<a href="'.$url.'">';
+                        } else {
+                            echo '<a href='.$themeHelper->getCurrentBaseUrl().$url.'>';
+                        }
+                    ?>
+                        <div class="section-content">
+                        <?php  
+                            $toolImage1 = $themeHelper->getImageName($data->toolImage);
+                            $toolImage1Final = $themeHelper->getWysiwygMediaUrl($type,$toolImage1);
+                            $toolImageHover = $themeHelper->getImageName($data->toolImageHover);
+                            $toolImageHoverFinal = $themeHelper->getWysiwygMediaUrl($type,$toolImageHover);
+                        ?>
+                            <img class="first-image" src="<?php echo $toolImage1Final; ?>">
+                            <?php if($data->toolImageHover) { ?>
+                                <img class="seconds-image" src="<?php echo $toolImageHoverFinal; ?>">
+                            <?php } ?>
+                            <h3><?php echo $data->toolTitle ?></h3>
+                            <p><?php echo $data->toolDescription ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<!------ mobile-use-full-section --------->
+<div class="container">
+    <div class="mobile-only">
+        <h2 class="main-title">Useful Tools</h2>
+        <section class="usefull-part slider" id="useful-mobile-section">
+            <?php foreach ($usefulTools as $data): ?>
+                <div class="slide">
+                    <?php
+                        $url = !empty($data->toolUrl) ? $this->getUrl($data->toolUrl) : 'javascript:;';
+                        if (filter_var($url, FILTER_VALIDATE_URL)) {
+                            echo '<a href="'.$url.'">';
+                        } else {
+                            echo '<a href='.$url.'>';
+                        }
+                    ?>
+                        <div class="section-content">
+                            <img class="first-image" src="<?php echo $data->toolImage ?>">
+                            <?php if($data->toolImageHover) { ?>
+                                <img class="seconds-image" src="<?php echo $data->toolImageHover ?>">
+                            <?php } ?>
+                            <h3><?php echo $data->toolTitle ?></h3>
+                            <p><?php echo $data->toolDescription ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </section>
+    </div>
+</div>
+<!------ mobile-use-full-section --------->
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mustache',
+        'lodash',
+        'mgs/slick'
+    ], function ($, Mustache, _, slick) {
+
+        $(document).ready(function () {
+            //$('#useful-mobile-section').slick({
+                $('#useful-mobile-section').not('.slick-initialized').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }]
+            });
+        });
+
+        
+        
+    });
+
+</script>

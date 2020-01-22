@@ -1,0 +1,72 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('yourtoolbox')) {
+    $jsonData = base64_decode($this->getData('yourtoolbox'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $Yourtoolbox = json_decode($page_data->toolsJson);
+
+}
+?>
+
+<!------ Customer-tool-box---------> 
+<div class="container-fluide toolbox-section">
+    <div class="container">
+       <div class="tool-box-section">
+        <h2><?php echo strtoupper($page_data->title) ?></h2>
+        <p><?php echo strtoupper($page_data->description) ?></p>
+         <div class="row mockup-list">
+        <?php foreach ($Yourtoolbox as $data): ?>
+           <div class="col-lg-3 col-sm-4 col-md-4 customer-tool-box">
+            <?php
+            $YourtoolUrl = !empty($data->yourtoolUrl) ? $this->getUrl($data->yourtoolUrl) : 'javascript:;';
+            if (filter_var($YourtoolUrl, FILTER_VALIDATE_URL)) {
+                echo '<a href="'.$YourtoolUrl.'">';
+            } else {
+                echo '<a href='.$YourtoolUrl.'>';
+            }
+            ?>
+              <div class="tool-box-content section-content">
+                  <img class="first-image" src="<?php echo $data->yourtoolImage ?>">
+                  <img class="seconds-image" src="<?php echo $data->yourtoolImageHover ?>">
+                  <h3><?php echo $data->yourtoolTitle ?></h3>
+                  <p><?php echo $data->yourtoolDescription ?></p>
+              </div>
+            </a>  
+           </div>
+        <?php endforeach; ?> 
+         </div>
+       </div>
+    </div>
+</div>
+
+<div class="container">
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::overview_one.phtml")->toHtml();?>
+</div>
+<!------ over-Customer-tool-box---------> 
+
+
+
+<!-- <script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+      
+        jQuery('a').each(function() {
+           var a = new RegExp('/' + window.location.host + '/');
+           if(!a.test(this.href)) {
+               jQuery(this).click(function(event) {
+                   event.preventDefault();
+                   event.stopPropagation();
+                   window.open(this.href, '_blank');
+               });
+           }
+        });
+        
+    });
+</script> -->

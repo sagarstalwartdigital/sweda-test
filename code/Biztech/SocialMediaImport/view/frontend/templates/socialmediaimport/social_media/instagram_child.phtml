@@ -1,0 +1,35 @@
+
+<?php
+$insta_code = $this->getInstaCode();
+$user_id = $this->getUserId();
+$baseUrl = $this->getBaseUrl();
+?>
+<script src="<?php echo $this->getViewFileUrl('Biztech_SocialMediaImport/js/bundlejs/jquery.js'); ?>"></script>
+<script type="text/javascript">
+    var insta_code = '<?php echo $insta_code ?>';
+    var user_id = '<?php echo $user_id ?>';
+    var aurl = 'https://api.instagram.com/v1/users/' + user_id + '/media/recent?access_token=' + insta_code;
+    var downloadInstagram = "<?php echo $baseUrl;?>socialmediaimport/index/downloadInstagram";
+    jQuery.ajax({
+        type: "GET",
+        dataType: "jsonp",
+        cache: false,
+        url: aurl,
+        success: function (data) {
+           jQuery.ajax({
+            type: 'post',
+            data: data,
+            url: downloadInstagram,
+            success: function (data) {
+                var data = JSON.parse(data);
+                if(data.status){
+                    window.opener.SocialMediaImportComponent.zone.run(function () {
+                        window.opener.SocialMediaImportComponent.setInstaMediaData(data)
+                    });
+                }
+            }
+        });
+       }
+       });
+
+</script>

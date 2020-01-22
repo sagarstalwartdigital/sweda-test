@@ -1,0 +1,452 @@
+<home>
+	<section>
+		<name><![CDATA[block2]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section85]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block20]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[35]]></padding_top>
+		<padding_bottom><![CDATA[90]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block21]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block22]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["12","12"]]]></tablet_cols>
+		<large_cols><![CDATA[["6","6"]]]></large_cols>
+		<medium_cols><![CDATA[["6","6"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[86]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block23]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[/b/g/bg_deal_1.jpg]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[1]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[80]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block24]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section85]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[80]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block25]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[section100]]></class>
+		<background><![CDATA[#f0f5f9]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[68]]></padding_top>
+		<padding_bottom><![CDATA[68]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block26]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[86]]></padding_bottom>
+		<block_position><![CDATA[8]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block27]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["12","12"]]]></tablet_cols>
+		<large_cols><![CDATA[["6","6"]]]></large_cols>
+		<medium_cols><![CDATA[["6","6"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["margin-bottom30","margin-bottom30"]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[35]]></padding_bottom>
+		<block_position><![CDATA[9]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block2-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","","","","","","","","","","","","","","","","","","",""],"html_slider":"<div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_1.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_1.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"slider_text_v3\">\r\n    <div class=\"left-text\">\r\n        <h2 class=\"text72\"><span class=\"color-primary\">Great Chair<\/span><br>Collection<\/h2>\r\n        <a href=\"#\" class=\"shop-now-v2\">SHOP NOW<\/a>\r\n    <\/div>\r\n    <div class=\"right-text\">\r\n        <p><span>.01<\/span><br>unique design<br>chair trending <\/p>\r\n        <p><span>.02<\/span><br>the best material<br>for the product<\/p>\r\n    <\/div>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomOut\" class=\"item zoomOut\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"slider_text_v3\">\r\n    <div class=\"left-text\">\r\n        <h2 class=\"text72\"><span class=\"color-primary\">Great Chair<\/span><br>Collection<\/h2>\r\n        <a href=\"#\" class=\"shop-now-v2\">SHOP NOW<\/a>\r\n    <\/div>\r\n    <div class=\"right-text\">\r\n        <p><span>.01<\/span><br>unique design<br>chair trending <\/p>\r\n        <p><span>.02<\/span><br>the best material<br>for the product<\/p>\r\n    <\/div>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle\" data-text-animate=\"zoomIn\" class=\"item zoomIn\"><a class=\"item-image\" href=\"#\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_3.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slider_home_3_3.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle\"><div class=\"inner-text\"><div class=\"slider_text_v3\">\r\n    <div class=\"left-text\">\r\n        <h2 class=\"text72\"><span class=\"color-primary\">Great Chair<\/span><br>Collection<\/h2>\r\n        <a href=\"#\" class=\"shop-now-v2\">SHOP NOW<\/a>\r\n    <\/div>\r\n    <div class=\"right-text\">\r\n        <p><span>.01<\/span><br>unique design<br>chair trending <\/p>\r\n        <p><span>.02<\/span><br>the best material<br>for the product<\/p>\r\n    <\/div>\r\n<\/div><\/div><\/div><\/div><\/div>","offset":"","effect":"1","speed":"","navigation":"1","pagination":"1","navtemple":"2","loop":"1","fullscreen":0,"autoplay":0,"stop_auto":0,"fullheight":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[text-full-width]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="0" autoplay="0" stop_auto="0" navigation="1" offset="" fullheight="0" pagination="1" loop="1" speed="" html_slider="&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_3_1.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_3_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v3&quot;&gt;
+    &lt;div class=&quot;left-text&quot;&gt;
+        &lt;h2 class=&quot;text72&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Great Chair&lt;/span&gt;&lt;br&gt;Collection&lt;/h2&gt;
+        &lt;a href=&quot;#&quot; class=&quot;shop-now-v2&quot;&gt;SHOP NOW&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;right-text&quot;&gt;
+        &lt;p&gt;&lt;span&gt;.01&lt;/span&gt;&lt;br&gt;unique design&lt;br&gt;chair trending &lt;/p&gt;
+        &lt;p&gt;&lt;span&gt;.02&lt;/span&gt;&lt;br&gt;the best material&lt;br&gt;for the product&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomOut&quot; class=&quot;item zoomOut&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_3_2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_3_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v3&quot;&gt;
+    &lt;div class=&quot;left-text&quot;&gt;
+        &lt;h2 class=&quot;text72&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Great Chair&lt;/span&gt;&lt;br&gt;Collection&lt;/h2&gt;
+        &lt;a href=&quot;#&quot; class=&quot;shop-now-v2&quot;&gt;SHOP NOW&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;right-text&quot;&gt;
+        &lt;p&gt;&lt;span&gt;.01&lt;/span&gt;&lt;br&gt;unique design&lt;br&gt;chair trending &lt;/p&gt;
+        &lt;p&gt;&lt;span&gt;.02&lt;/span&gt;&lt;br&gt;the best material&lt;br&gt;for the product&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle&quot; data-text-animate=&quot;zoomIn&quot; class=&quot;item zoomIn&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;#&quot; style=&quot;background-image:url(./pub/media/wysiwyg/slider/slider_home_3_3.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;./pub/media/wysiwyg/slider/slider_home_3_3.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;slider_text_v3&quot;&gt;
+    &lt;div class=&quot;left-text&quot;&gt;
+        &lt;h2 class=&quot;text72&quot;&gt;&lt;span class=&quot;color-primary&quot;&gt;Great Chair&lt;/span&gt;&lt;br&gt;Collection&lt;/h2&gt;
+        &lt;a href=&quot;#&quot; class=&quot;shop-now-v2&quot;&gt;SHOP NOW&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;right-text&quot;&gt;
+        &lt;p&gt;&lt;span&gt;.01&lt;/span&gt;&lt;br&gt;unique design&lt;br&gt;chair trending &lt;/p&gt;
+        &lt;p&gt;&lt;span&gt;.02&lt;/span&gt;&lt;br&gt;the best material&lt;br&gt;for the product&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="2" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block20-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="contact_block"><a href="tel:+0012233456"><i class="fa fa-phone"></i> Phone: (034) 334 55634</a> <a href="mailto:contact@company.com"><i class="fa fa-envelope"></i> Get in touch</a>
+<div class="_follow"><span>Follow us</span>
+<ul class="social-links">
+<li><a href="#" target="_self"> <i class="fa fa-facebook"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-instagram"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-google-plus"></i></a></li>
+</ul>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block21-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="testimonial-static">
+<blockquote style="font-family: Lato">" Class aptent taciti sociosqu ad litora torquent per "</blockquote>
+<p class="author-info"><span>David Lee</span> - CEO</p>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home3_1"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[right150]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home3_1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block23-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="deal-title">
+    <span class="sub">HEBES STORE</span>
+    <p class="h1 color-primary">Deal of the day</p>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block23-0]]></block_name>
+		<type><![CDATA[deals]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"list.phtml","ratio":"","use_slider":"1","number_row":"1","pagination":"1","category_id":["3","4","5","6","7"],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"navigation":0,"use_tabs":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Deals" mgs_panel_title="" mgs_panel_note="" limit="3" perrow="1" ratio="" category_ids="3,4,5,6,7" use_slider="1" loadmore="0" template="products/deals/list.phtml" autoplay="0" stop_auto="0" navigation="0" pagination="1" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block24-0]]></block_name>
+		<type><![CDATA[category_products]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"Popular Products","additional_content":"","animation":"","animation_delay":"","limit":"10","perrow":"5","template":"grid.phtml","ratio":"","use_slider":"1","number_row":"1","navigation":"1","category_id":["8","9","10","6","7"],"use_tabs":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","autoplay":0,"stop_auto":0,"pagination":0,"loadmore":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[title-v2]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Products\Category" mgs_panel_title="Popular Products" mgs_panel_note="" limit="10" ratio="" category_ids="8,9,10,6,7" use_slider="1" loadmore="0" template="products/category_products/category-tabs.phtml" perrow="5" autoplay="0" stop_auto="0" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block25-0]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"grid.phtml","show_avatar":"1","use_slider":"1","number_row":"1","autoplay":"1","stop_auto":"1","navigation":"1","pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[text24]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="" mgs_panel_note="" testimonials_count="3" perrow="1" show_avatar="1" use_slider="1" template="grid.phtml" autoplay="1" stop_auto="1" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block26-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="row services">
+<div class="col col-sm-6 col-lg-3 item"><i class="pe-7s-light"></i>
+<div class="content">
+<h6>Creative &amp; Unique</h6>
+<p>GREAT FROM HEBES</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3 item"><i class="pe-7s-paper-plane"></i>
+<div class="content">
+<h6>Free Shipping</h6>
+<p>ALL ORDER OVER $30</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3 item"><i class="pe-7s-call"></i>
+<div class="content">
+<h6>Support Customer</h6>
+<p>SUPPORT 24/7</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3 item"><i class="pe-7s-credit"></i>
+<div class="content">
+<h6>Secure Payment</h6>
+<p>100% security</p>
+</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block27-0]]></block_name>
+		<type><![CDATA[latest_posts]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"Blog & News from Hebes","additional_content":"","animation":"","animation_delay":"","post_category":["1"],"number_of_posts":"2","items":"1","template":"list.phtml","limit_characters_short_content":"120","number_row":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","show_short_content":0,"view_as":0,"show_thumbnail":0,"autoplay":0,"stop_auto":0,"navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[mini-title margin-bottom30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Blog\Block\Widget\Latest" mgs_panel_title="Blog & News from Hebes" post_category="1" number_of_posts="2" items="1" show_thumbnail="0" mgs_panel_note="" template="widget/list.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block27-1]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[margin-bottom30]]></class>
+		<block_content><![CDATA[<div class="header_subscribe home_subscribe">
+<h2>Get Discount 30% Off</h2>
+<p>Get 20% discount with notified about the latest news and updates.<br />No spam, we promise!</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_header.phtml"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home3_2"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[left110 right110 top115]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home3_2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home3_3"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[left210 top200]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home3_3" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"home3_4"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[left85 right85 top60]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="home3_4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block22-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="view_all">
+<a href="#"><h2>View All Products<i class="fa fa-caret-right"></i></h2></a>
+</div>]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Home3_1]]></title>
+			<filename><![CDATA[/b/a/banner7.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<h6 class="rotate-right color-primary top40">SALE UP TO 40% OFF</h6>
+<h3>Hebes Wood Book</h3>
+<p>Vestibulum imperdiet nibh vel magna</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home3_1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home3_2]]></title>
+			<filename><![CDATA[/b/a/banner6_1.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[middle-left]]></text_align>
+			<content><![CDATA[<h3>Wood Chair</h3>
+<p>New Collection</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize top68]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home3_2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home3_3]]></title>
+			<filename><![CDATA[/b/a/banner34.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[middle-left]]></text_align>
+			<content><![CDATA[<h3>Wood Decor</h3>
+<p>FEATURED COLLECTION</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize top55]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home3_3]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Home3_4]]></title>
+			<filename><![CDATA[/b/a/banner8.jpg]]></filename>
+			<url><![CDATA[#]]></url>
+			<button><![CDATA[Shop Now]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<h6 class="rotate-right top37">New Arrivals</h6>
+<h3>Hebes Wood Book</h3>
+<p>Nam ac elit a ante commodo</p>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[oversize]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[home3_4]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+	    <header><header>header_3</header></header>
+		<custom_style>
+			<style></style>
+		</custom_style>
+	</theme_setting>
+
+</home>

@@ -1,0 +1,68 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$title_main = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('vlibrary/videotopsection/title_main');
+$title = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('vlibrary/videotopsection/title');
+$description = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('vlibrary/videotopsection/description');
+$background_images = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('vlibrary/videotopsection/background_images');
+$videoupload = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('vlibrary/videotopsection/videoupload');
+?>
+<?php echo $block->getMediaUrl(); ?>
+<div class="panel-block-row col-md-12  video-library-top p-0">
+    <div class="breadcrumbs width-5 content mobile-only">
+        <div class="container">
+            <ul class="items">
+                <li class="item home">
+                    <a href="<?php echo $this->getUrl();?>" title="Go to Home Page">Home</a>
+                </li>
+                <li class="item ">
+                    <a href="<?php echo $this->getUrl();?>tools" title="Tools">Tools</a>
+                </li>
+                <li class="item video-library">
+                    <strong>Video Library</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+    <div class="chisel-top-section p-0">
+            <div class="video-library-top-title">
+              <h2><?php echo $title_main; ?></h2>
+            </div>
+        <div class="imp-banner-img">
+            <img class="video-library-banner" src="https://sweda.realmoxy.com/media/wysiwyg/imprint_section_one/second-imprint-method-banner.jpg">
+            <div class="container">
+                <div class="imprint-method-banner-text">
+                <h2><?php echo $title; ?></h2>
+                <p><?php echo $description; ?></p>
+                    <img class="video-images" id="myBtnimp" src="<?php echo $this->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <div id="myModal" class="modalimp" style="display: none;">
+        <div class="modalimp-contentimp">
+            <span class="closeimp">×</span>
+            <video id="#myVideoTag" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="">
+                <source src="<?php echo $this->getUrl('pub/media/mageplaza/vlibrary/logo/').$videoupload; ?>" type="video/mp4">
+                <source src="<?php echo $this->getUrl('pub/media/mageplaza/vlibrary/logo/').$videoupload; ?>" type="video/webm">
+            </video>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+     require([
+         'jquery',
+     ], function($){
+
+         var modalimp = document.getElementById("myModal");
+         var btn = document.getElementById("myBtnimp");
+         var span = document.getElementsByClassName("closeimp")[0];
+
+         btn.onclick = function() {
+           modalimp.style.display = "block";
+         }
+
+     });
+</script>

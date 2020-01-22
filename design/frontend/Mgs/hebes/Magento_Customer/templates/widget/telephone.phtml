@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Widget\Telephone $block */
+?>
+
+
+
+<?php
+    $_validationClass = $block->escapeHtmlAttr(
+        $this->helper('Magento\Customer\Helper\Address')
+             ->getAttributeValidationClass('fax')
+    );
+?>
+<div class="col-sm-6">
+    <div class="account-form-design">
+        <label for="Last_name" class="">Phone Number*</label>
+        <input type="text"
+         name="telephone"
+         id="telephone"
+         value="<?= $block->escapeHtmlAttr($block->getTelephone()) ?>"
+         title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+         class="form-control input-text <?= $_validationClass ?: '' ?>"
+         data-validate="{required:true}"
+        >
+    </div>
+</div>

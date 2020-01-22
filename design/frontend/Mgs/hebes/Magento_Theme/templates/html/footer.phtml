@@ -1,0 +1,160 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data') ?>
+<?php $canUsePanel = $themeHelper->acceptToUsePanel() ?>
+
+<?php
+// Copy Right
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$copyright = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('copyright/general/copyright');
+
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$instagram = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/instagram');
+$facebook = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/facebook');
+$twitter = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/twitter');
+$google = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/google');
+$linkedin = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('socialmedia/general/linkedin');
+
+?>
+
+<?php // Get footer version ?>
+<?php $footer = $themeHelper->getStoreConfig('mgstheme/footer/footer'); ?>
+<?php if($footer == 'footer' || $footer == ""): ?><?php $footer = 'footer_1'; ?><?php endif ?>
+<?php // Footer content ?>
+<div class="footer-container">
+    <?php // Footer 1 ?>
+    <?php if($footer == 'footer_1'): ?>
+
+        <!------ Custom Footer--------->
+        <!------ footer-section --------->  
+        <div class="container">
+            <div class="desktop-only">
+                <div class="footer-section">
+                    <h3><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('experincesweda')->setCanUsePanel($canUsePanel)->toHtml() ?></h3>
+                    <div class="footer-social">
+                        <ul class="social-link">
+                            <li><a href="<?php echo $instagram;?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $facebook;?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $twitter;?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $linkedin;?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="footer-text">
+                                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('explore')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="footer-text ft-second">
+                                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('your_sweda')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="footer-text ft-second">
+                                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('legal')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="footer-text ft-second">
+                                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('support')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-only">
+                <div class="footer-section">
+                    <h3><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('experincesweda')->setCanUsePanel($canUsePanel)->toHtml() ?></h3>
+                    <div class="footer-social">
+                        <ul class="social-link">
+                            <li><a href="<?php echo $instagram;?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $facebook;?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $twitter;?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $linkedin;?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mbl-footer-link">
+                                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('mobile_view_footer_link')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------ overfooter-section --------->
+        <!------ copy-right-section --------->
+        <div class="container-fluide copy-right-color">
+            <div class="container">
+                <div class="copy-right-text">
+                    <p>© <?php echo date("Y").' '.$copyright; ?></p>
+                </div>
+            </div>
+        </div>
+        <!------ over-copyright-section --------->
+        <!------ & Custom Footer --------->
+
+        <?php /*
+        <div class="middle-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl col-lg-12 col-md-12 col-sm-12">
+                        <!-- Static block: footer_logo -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_logo')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                        <address><?php echo $themeHelper->getStoreConfig('mgstheme/footer/footer_copyright') ?></address>
+                    </div>
+                    <div class="col-xl col-lg-6 col-md-6 col-sm-12">
+                        <!-- Static block: footer_info -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_info')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                    <div class="col-xl col-lg-6 col-md-6 col-sm-12">
+                        <!-- Static block: footer_links -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                    <div class="col-xl col-lg-12 col-md-12 col-sm-12">
+                        <!-- Static block: footer_subscribe -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_subscribe')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                    <div class="col-xl col-lg-12 col-md-12 col-sm-12 text-right-lg">
+                        <!-- Static block: footer_follow -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_follow')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        */ ?>
+
+
+    <?php // Footer 2 ?>
+    <?php elseif($footer == 'footer_2'): ?>
+        <div class="middle-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg col-md-12 col-sm-12">
+                        <!-- Static block: footer_links_2 -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_links_2')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                    <div class="text-center custom-col-md-12">
+                        <!-- Static block: footer_logo -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_logo')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                        <address><?php echo $themeHelper->getStoreConfig('mgstheme/footer/footer_copyright') ?></address>
+                    </div>
+                    <div class="col-lg col-md-12 col-sm-12 text-right">
+                        <!-- Static block: footer_follow -->
+                        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_follow')->setCanUsePanel($canUsePanel)->toHtml() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+    <div id="mySidenav" class="sidenav minicart">
+        <div class="smart-card-title">
+            <a href="javascript:void(0)" class="closebtn" id="minicartclose">&times;</a>
+            <img src="<?php echo $this->getViewFileUrl('images/sweda/cart-icon.png'); ?>">
+            <h2>Your Smart Cart</h2>
+        </div>
+    </div>
+    <div class="w3-overlay w3-animate-opacity" style="cursor: pointer;" id="myOverlay"></div>
+</div>

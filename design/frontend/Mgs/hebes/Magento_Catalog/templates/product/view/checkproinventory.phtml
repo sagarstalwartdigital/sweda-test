@@ -1,0 +1,251 @@
+<?php
+$_product = $block->getProduct();
+?>
+<div class="desktop-only">
+<div class="product-options-bottom">
+    <div class="box-tocart box-to-cart-custom">
+        <div class="fieldset">
+
+            <div class="inventory"><p><?php echo __('Check Inventory')?></p></div>
+            <div class="field qty">
+                <div class="qty-pr">
+                    <form method="POST" id="stock-lookup-form">
+                        <input type="number" onkeypress='validate(event)' name="qty_available" placeholder="Enter Qty" data-validate="{required:true}">
+                        <input type="hidden" name="product_id" value="<?php echo $_product->getId(); ?>">
+                        <button type="submit" class="inventory_check">Look up</button>
+                    </form>
+                    <?php echo $_product->getQty(); ?>
+                    <ul>
+                        <div class="catalogdropdown"></div>
+                    </ul>
+                </div>
+
+                <div class="stock-purchase">
+                    <?php if ($block->displayProductStockStatus()): ?>
+                        <?php if ($_product->isAvailable()): ?>
+                            <i class="fa fa-check"></i><p><?php  echo __('In stock') ?></p>
+                        <?php else: ?>
+                            <i class="fa fa-times" aria-hidden="true"></i></i><p><?php  echo __('Out of stock') ?></p>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+
+                <div class="free-shipping-wrapper" id="shipping_estimator_btn" data="<?php echo $_product->getId() ?>">
+                    <img src="<?php echo $block->getViewFileUrl('images/sweda/shipping.png'); ?>">
+                    <span>Estimate Shipping</span>
+                </div>
+
+                <div class="shipping-main" style="display: none;">
+                    <form method="POST" data-mage-init='{"validation":{}}' id="shipping_estimator">
+                        <input type="hidden" name="shipping_sku" value="<?php echo $_product->getSku(); ?>">
+                        <input type="hidden" name="shipping_id" value="<?php echo $_product->getId(); ?>">
+                        <label for="fname">Quantity</label>
+                        <input type="text"  name="shipping_qty" placeholder="Enter Qty" data-validate="{required:true}">
+                        <label for="lname">Zip Code/Postal Code</label>
+                        <input type="text"  name="shipping_postcode" placeholder="Zip Code" data-validate="{required:true}">
+                        <button type="submit" id="estimator"><?php echo __('Submit')?></button>
+                    </form>
+                    <div class="shipping-estimate-data">
+                        
+                    </div>
+                </div>
+                <script type="text/x-magento-init">
+                    {
+                        "#shipping_estimator": {
+                            "validation": {}
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+        require(
+            [
+                'jquery',
+                'mage/mage',
+                'Magento_Ui/js/modal/modal'
+            ], 
+            function (
+                $,
+                modal
+            ) {
+
+            jQuery(document).ready(function() {
+
+            /* ========= Inventory Check ======== */
+            jQuery(".inventory_check").click(function(){
+
+                if (!jQuery('#stock-lookup-form').valid()) return false;
+
+                var image = "<?php echo $block->getBaseUrl(). 'pub/media/loading/preloader.gif'; ?>";
+                jQuery('body').append("<div class='ajax-loader'><img src='"+image+"' /></div>");
+
+                var modaloption = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    clickableOverlay: true,
+                    title: '<p class="check-inventory-top-title">Check Inventory</p>',
+                    buttons: [{
+                        text: jQuery.mage.__('Close'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }],
+                };
+
+                var qty_available = jQuery(this).parent('form#stock-lookup-form').find("input[name='qty_available']").val();
+                var product_id = jQuery(this).parent('form#stock-lookup-form').find("input[name='product_id']").val();
+
+                var url = "<?php echo $block->getBaseUrl().'sweda/checkinventory/index/' ?>";
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {qty_available:qty_available,product_id:product_id},
+                    dataType: 'json',
+                    success: function(response){
+
+                        var prodData = response.data;
+                        if(response.status == 'success') {
+                            
+                            jQuery('.ajax-loader').remove();
+
+                            jQuery("#inventoryModal .swatch-attribute.color").remove();
+
+                            jQuery("#inventoryModal").remove();
+                            
+                            // jQuery(".stock-purchase").remove();
+                            
+                        // console.log(response.popuphtml)
+                            if (response.logged == false) {
+                                if (response.outstock == true) {
+                                    jQuery("body").append(response.popuphtml);
+                                    var inventoryModal = jQuery("#inventoryModal").modal(modaloption)
+                                    inventoryModal.modal('openModal');
+                                } else {
+                                    jQuery(".stock-purchase").show();
+                                }
+                            } else {
+                                console.log(jQuery("#inventoryModal"))
+                                jQuery("body").append(response.popuphtml);
+                                var inventoryModal = jQuery("#inventoryModal").modal(modaloption)
+                                inventoryModal.modal('openModal');  
+                            }
+                        
+                        } else {
+                            
+                        }                    
+                    },
+                    error:function(er){
+                        console.log(er)   
+                    }
+                });
+                return false;
+            });
+            /* ========= End Inventory Check ======== */
+
+            /* ========= Shiping  Estimator ======== */ 
+            jQuery("#shipping_estimator_btn, .mbl-shiping").click(function(){
+                var modaloption = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    clickableOverlay: true,
+                    title: '<p class="check-inventory-top-title">Estimate Shipping</p>',
+                    buttons: [{
+                        text: jQuery.mage.__('Close'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }],
+                };
+                          
+                jQuery(".shipping-main").show();
+                var inventoryModal = jQuery(".shipping-main").modal(modaloption)
+                inventoryModal.modal('openModal');
+                bindShippingEstimatorSubmit();
+            });
+
+            function bindShippingEstimatorSubmit()
+            {
+                jQuery("#shipping_estimator").submit(function(e){
+
+                    if (!jQuery('#shipping_estimator').valid()) return false;
+
+                    var image = "<?php echo $block->getBaseUrl(). 'pub/media/loading/preloader.gif'; ?>";
+                    jQuery('body').append("<div class='ajax-loader'><img src='"+image+"' /></div>");
+
+                    e.preventDefault();
+
+                    var shippingQty = jQuery("input[name='shipping_qty']").val();
+                    var shippingPostcode = jQuery("input[name='shipping_postcode']").val();
+                    var shippingSku = jQuery("input[name='shipping_sku']").val();
+                    var shippingId = jQuery("input[name='shipping_id']").val();
+
+                    var url = "<?php echo $block->getBaseUrl().'sweda/estimateshipping/index/' ?>";
+                    jQuery.ajax({
+                        url: url,
+                        type: "POST",
+                        data: {qty:shippingQty,postcode:shippingPostcode,sku:shippingSku,id:shippingId,estimator:true},
+                        dataType: 'json',
+                        success: function(response){
+
+                            jQuery('.ajax-loader').remove();
+
+                            var prodData = response.data;
+                            
+                            if(response.status == 'success') {
+                              
+                                jQuery(".shipping_rate").remove();
+
+                                jQuery(".shipping-estimate-data").append(response.popuphtml);
+                            
+                            } else {
+                                
+                            }                    
+                        },
+                        error:function(er){
+                            
+                        }
+                    });
+                    return false;
+                });
+            }
+            
+            /* ========= End Shiping  Estimator ======== */ 
+
+        });
+
+        });
+            function validate(evt) {
+              var theEvent = evt || window.event;
+
+              // Handle paste
+              if (theEvent.type === 'paste') {
+                  key = event.clipboardData.getData('text/plain');
+              } else {
+              // Handle key press
+                  var key = theEvent.keyCode || theEvent.which;
+                  key = String.fromCharCode(key);
+              }
+              var regex = /[0-9]|\./;
+              if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+              }
+            }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "#stock-lookup-form": {
+            "validation": {}
+        }
+    }
+</script>

@@ -1,0 +1,36 @@
+
+<div class="mobile-only">
+
+<div class="library-top-search">
+<?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Mageplaza_Vlibrary::search-mobile.phtml")->toHtml();?>
+</div>
+
+<div id="library-menu"><h3>REFINE YOUR SEARCH</h3></div> 
+
+<div id="library-menu-open">
+   <?php echo $this->getLayout()->createBlock("Mageplaza\Vlibrary\Block\Category\Widget")->setTemplate("Mageplaza_Vlibrary::category/categorymobile.phtml")->toHtml();?>
+   <?php echo $this->getLayout()->createBlock("Mageplaza\Vlibrary\Block\Topic\Widget")->setTemplate("Mageplaza_Vlibrary::topic/imprintmobile.phtml")->toHtml();?>
+</div>
+
+</div>
+
+
+<style type="text/css">
+    #library-menu-open {
+    display: none;
+}
+</style>
+
+<script type="text/javascript">
+     require([
+         'jquery',
+     ], function($){
+
+        $(document).ready(function() {
+            $("#library-menu").click(function() {
+                $("#library-menu-open").toggle();
+            });
+        });
+
+     });
+</script>

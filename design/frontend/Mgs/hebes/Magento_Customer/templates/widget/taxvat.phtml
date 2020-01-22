@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Widget\Taxvat $block */
+?>
+
+
+<div class="col-sm-6">
+    <div class="account-form-design">
+        <label for="tax_id" class="">Tax ID Number*</label>
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('taxvat')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('taxvat')) ?>" value="<?= $block->escapeHtmlAttr($block->getTaxvat()) ?>" title="<?= $block->escapeHtmlAttr(__('Tax/VAT number')) ?>" class="form-control input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('taxvat')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<?php
+/**
+ * @category    Stalwart
+ * @package     Stalwart_SmartCart
+ */
+?>
+<?php /** @var Stalwart\SmartCart\Block\ModalCart $block */ ?>
+<?php $customerSmartCarts = $block->getSmartCart(); ?>
+<?php $customerSmartSelectedCart = $block->getSmartSelectedSmartCart(); ?>
+<?php 
+    foreach ($customerSmartSelectedCart as $customerSmartSelectedCarts) {
+        $selectedSmartCartId = $customerSmartSelectedCarts->getId();
+    }
+?>
+<div id="smartcart-popup-modal" class="smartcart-form">
+    <form id="add-smartcart-form" action="<?php echo $this->getUrl('smartcart/cartindex/savecart'); ?>" method="post" autocomplete="off" >
+      <?php if(count($customerSmartCarts)) : ?>
+        <input type="hidden" name="productdata" id="productdata" />
+        <input type="hidden" name="productid" id="productid" />
+        <div class="row">
+            <div class="col-md-12">
+                <?php foreach ($customerSmartCarts as $key => $customerSmartCart) : ?>
+                    <span class="smart_cart_items_list">
+                        <label>
+                            <input class="smart-cart-list" type="radio" data-validate="{'validate-one-required-by-name':true}" name="smart_cart" value="<?php echo $customerSmartCart['id'] ?>" <?php if($selectedSmartCartId == $customerSmartCart['id']) { echo "checked"; } else {} ?> ><?php echo $customerSmartCart['title'] ?>
+                        </label>
+                    </span>
+                <?php endforeach; ?>
+                <span class="smart_cart_items_list add_new_smart_cart_btn">
+                    <label>
+                        <input class="radio required-entry smart-cart-list add-new" type="radio" data-validate="{'validate-one-required-by-name':true}" name="smart_cart" value="0"><i class="fa fa-plus" aria-hidden="true"></i> Add New Smart Cart
+                    </label>
+                </span>
+            </div>
+        </div>
+      <?php endif; ?>
+      <div class="open_addnew_form" <?php if(count($customerSmartCarts)) : ?> style="display:none;" <?php endif; ?> >
+        <input type="hidden" name="productdata" id="productdata" />
+        <input type="hidden" name="productid" id="productid" />
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cart-md-form">
+              <label for="subject" class="">Title</label>
+              <input class="input-text required-entry" data-validate="{required:true}" name="title" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="recipentdata">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="cart-md-form">
+                  <label for="name" class="">Recipient Name</label>
+                  <input class="input-text" name="recipientname[]" type="text">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="cart-md-form">
+                  <label for="email" class="">Recipient Email</label>
+                  <input class="input-text" name="recipientemail[]" type="email">
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><a href="javascript:void(0);" id="add-more-recipients"><i class="fa fa-plus" aria-hidden="true"></i> Add Recipient</a></div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="cart-md-form">
+              <label for="name" class="">Event Name</label>
+              <input class="input-text" name="event_name" type="text">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cart-md-form">
+              <label for="email" class="">Event Date</label>
+              <input class="input-text" placeholder="mm/dd/yyyy" name="event_date" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cart-md-form">
+              <label for="message">Description</label>
+              <textarea class="input-text" name="description" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12"><input type="submit" value="Add Product" class="submit"></div>
+      </div>
+    </form>
+</div>

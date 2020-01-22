@@ -1,0 +1,31 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$model=$objectManager->create('Stalwart\Bloglist\Model\Bloglist');
+$datacollection=$model->getCollection();
+?>
+
+
+<div class="block widget block-new-products grid">
+    <div class="block-content">
+        <div class="products-grid grid">
+            <ol class="product-items widget-new-grid">
+                <?php foreach ($datacollection as $data) { ?>
+                    <li class="product-item">
+                        <div class="product-item-info">
+                            <a href="<?php echo $data->getBloglistUrl(); ?>" class="product-item-photo">
+                                <img class="product-image-photo img-fluid" src="<?php echo $this->getUrl('pub/media');?>/<?php echo $data->getBloglistImages(); ?>" alt="Napa Stemless Wine Tumbler Set">
+                                <div class="product-item-details">
+                                <strong class="product-item-name">
+                                       <?php echo $data->getBloglistName(); ?>
+                                    <!-- <a title="Napa Stemless Wine Tumbler Set" href="<?php echo $data->getBloglistUrl(); ?>" class="product-item-link"> </a>-->
+                                </strong>
+                                <p class="menu-pro-descri"><?php echo $data->getBloglistDescription(); ?></p>
+                            </div>
+                        </a>                            
+                        </div>
+                    </li>
+                <?php } ?>
+            </ol>
+        </div>
+    </div>
+</div>

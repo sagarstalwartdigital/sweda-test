@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Widget\Company $block */
+?>
+
+<?php
+    $_validationClass = $block->escapeHtmlAttr(
+        $this->helper('Magento\Customer\Helper\Address')
+             ->getAttributeValidationClass('company')
+    );
+?>
+
+<div class="col-sm-12">
+    <div class="account-form-design">
+        <label for="company_name" class="">Company Name*</label>
+        <input type="text"
+        name="company"
+        id="company"
+        value="<?= $block->escapeHtmlAttr($block->getCompany()) ?>"
+        title="<?= $block->escapeHtmlAttr(__('Company')) ?>"
+        class="form-control input-text <?= $_validationClass ?: '' ?>"
+        >
+    </div>
+</div>

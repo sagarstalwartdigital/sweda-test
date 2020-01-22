@@ -1,0 +1,67 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_PromoStandards
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+$current_page =  $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$topics = $block->getTopicList();
+if ($topics && $topics->getSize()) :
+    ?>
+
+    <?php /* <div class="mp-sidebar mpcss">
+        <div class="row">
+            <div class="block-title col-xs-12 sidebar-categories">
+                <p class="block-mp-sidebar-heading" role="heading" aria-level="2"><?= __('Topics') ?></p>
+            </div>
+            <div class="col-xs-12">
+                <ul class="block-content menu-categories">
+                    <?php foreach ($topics as $topic) : ?>
+                        <li class="category-item">
+                            <a class="list-categories" href="<?= $block->getTopicUrl($topic) ?>">
+                                <i class="fa fa-folder-o" aria-hidden="true">&nbsp;</i>
+                                <?= ucfirst($topic->getName()) ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div> */?>
+
+    <nav class="nav-sidebar">
+    <ul class="nav tabs">
+            <?php $i=1; foreach ($topics as $topic) { ?>
+                  <li class="<?php echo ($current_page == $block->getTopicUrl($topic))?'active':'' ; ?>">
+                    <a href="<?= $block->getTopicUrl($topic) ?>"><?= ucfirst($topic->getName()) ?></a>
+                  </li>
+            <?php $i= $i+ 1; } ?> 
+            <li class="">
+                <a href="https://promostandards.org/endpoint/overview/company/65/" target="_blank">Sweda Promo Standards Endpoints</a>
+            </li> 
+            <li class="">
+                <a href="https://promostandards.org/company/request/65/" target="_blank">Request Credentials Now</a>
+            </li> 
+
+        </ul>
+    </nav>
+
+<?php endif; ?>
+
+
+

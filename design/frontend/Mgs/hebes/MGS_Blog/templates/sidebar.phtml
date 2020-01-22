@@ -1,0 +1,95 @@
+<?php $helper = $this->helper('MGS\Blog\Helper\Data'); ?>
+
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<?php $baseImage = $this->getViewFileUrl('MGS_Mpanel::images/blank5.png'); ?>
+
+<?php if ($block->getConfig('general_settings/enabled')): ?>
+    <?php if ($block->getConfig('sidebar_settings/enabled')): ?>
+        
+        <?php if($block->getConfig('general_settings/template') != '1column'):?>
+            <?php if($helper->getStoreConfig('mpanel/share_config/enabel_share') && $helper->getStoreConfig('mpanel/share_config/share_blog_detail')): ?>
+                <div class="share-this">
+                    <?php echo $block->getChildHtml('blog.detail.sharethis'); ?>
+                </div>
+            <?php endif ?>
+        <?php endif;?>
+
+        <?php if ($block->getConfig('sidebar_settings/show_recent_posts')): ?>
+            <?php $collection = $block->getCollection(); ?>
+            <?php if ($collection->count()): ?>
+                <div class="block block-blog-posts">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Recent Posts') ?></span>
+                    </div>
+                    <div class="block-content">
+                        <ul class="post-list">
+                            <?php foreach ($collection as $post): ?>
+                                <li class="item">
+                                    <?php if($helper->getImagePost($post) != ""): ?>
+                                        <?php if(!$lazyLoad){$baseImage = $this->getImagePost($post);} ?>
+                                        <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>">
+                                            <img class="img-fluid lazy" src="<?php echo $baseImage; ?>" data-src="<?php echo $helper->getImagePost($post); ?>" alt="<?php echo $post->getTitle(); ?>" />
+                                        </a>
+                                    <?php endif;?>
+									<div class="short-detail">
+										<div class="title">
+											<a class="h6" href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?> </a>
+										</div>
+										<div class="meta-date">
+                                            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                        </div>
+									</div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+		<?php if ($block->getConfig('sidebar_settings/show_categories')): ?>
+            <?php $categories = $block->getCategories(); ?>
+            <?php if (count($categories)): ?>
+                <div class="block block-blog-categories">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Categories') ?></span>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <?php foreach ($categories as $category): ?>
+                                <li>
+									<a title="<?php echo $category->getTitle(); ?>"
+									   href="<?php echo $category->getCategoryUrl(); ?>">
+										<?php echo $category->getTitle(); ?>
+									</a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+        <?php if ($block->getConfig('sidebar_settings/show_tags')): ?>
+            <?php $tags = $block->getTags(); ?>
+            <?php if (count($tags)): ?>
+                <div class="block block-blog-tags">
+                    <div class="block-title">
+                        <span class="title"><?php echo __('Tags') ?></span>
+                    </div>
+                    <div class="block-content">
+						<ul class="tag-cloud">
+							<?php foreach ($tags as $tag => $count): ?>
+								<li>
+									<a title="<?php echo $tag; ?>" href="<?php echo $helper->getTagUrl($tag); ?>"><?php echo $tag; ?></a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+		
+    <?php endif; ?>
+<?php endif; ?>

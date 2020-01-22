@@ -1,0 +1,273 @@
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $lazyLoad = $themeHelper->getStoreConfig('mgstheme/general/lazy_load'); ?>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function(jQuery){
+        (function($) {
+            $(document).ready(function(){
+                var height_placeholder = $('.header:not(.header8)').height();
+                var check_height = $(window).height();
+                var body_height = $('body').height() - 250 -  height_placeholder;
+                //$('#placeholder-header').height(height_placeholder);
+                <?php if($themeHelper->getStoreConfig('mgstheme/header/sticky_menu')): ?>
+                    if(body_height > check_height){
+                        $(window).scroll(function(){
+                            if($(this).scrollTop() > 0.5){
+                                $('.header').addClass('active-sticky');
+                            }else {
+                                $('.header').removeClass('active-sticky');
+                            }
+                        });
+                    }
+                <?php endif ?>
+            });
+        })(jQuery);
+    });
+</script>
+
+<?php if($themeHelper->getStoreConfig('mgstheme/general/back_to_top')): ?>
+	<a href="#" class="scroll-to-top"><i class="ti-arrow-up"></i></a>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 1) {
+						$('.scroll-to-top').css({bottom:"25px"});
+					} else {
+						$('.scroll-to-top').css({bottom:"-100px"});
+					}
+				});
+
+				$('.scroll-to-top').click(function(){
+					$('html, body').animate({scrollTop: '0px'}, 800);
+					return false;
+				});
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>
+
+<?php if (!$themeHelper->getStoreConfig('checkout/cart/redirect_to_cart')) : ?>
+	<script type="text/x-magento-init">
+	{
+		"[data-role=tocart-form], .form.map.checkout": {
+			"catalogAddToCart": {}
+		}
+	}
+	</script>
+<?php endif; ?>	
+
+<?php if($this->getRequest()->getFullActionName() == 'cms_index_index') :?>
+   <!--Home Static Slider-->
+   <script type="text/javascript">
+        require([
+            'jquery', 'mgs/owlcarousel'
+        ], function(jQuery){
+            (function($) {
+                $('.owl-featured-collection').owlCarousel({
+                    items: 1,
+                    autoplay: false,
+                    lazyLoad: false,
+                    nav: true,
+                    dots: false,
+                    rtl: true,
+                    loop: true,
+                    animateOut: 'slideOutDown',
+                    animateIn: 'slideInDown',
+                    touchDrag: false,
+                    mouseDrag: false,
+                    navText: ["<span class='fa fa-caret-up'></span>","<span class='fa fa-caret-down'></span>"],
+                });
+            })(jQuery);
+        });
+    </script>
+    
+    <!--Toggle sticky catalog-->
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ], function(jQuery){
+            (function($) {
+                $('.sticky-catalog-toggle').click(function(){
+                    if ($('body').hasClass('catalog-open')) {
+                        $('body').removeClass('catalog-open');
+                    } else {
+                        $('body').addClass('catalog-open');
+                    }
+                });
+                $('.sticky-catalog-close').click(function(){
+                    $('body').removeClass('catalog-open');
+                });
+            })(jQuery);
+        });
+    </script>
+
+<?php endif;?>
+<!--Toggle sidebar-->
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function(jQuery){
+        (function($) {
+            $('.sidebar-responsive-btn').click(function(){
+                if ($('body').hasClass('sidebar-open')) {
+                    $('body').removeClass('sidebar-open');
+                } else {
+                    $('body').addClass('sidebar-open');
+                }
+            });
+            $('.sidebar-close').click(function(){
+                $('body').removeClass('sidebar-open');
+            });
+        })(jQuery);
+    });
+</script>
+<button class="sidebar-responsive-btn hidden" type="button"><span class="icon pe-7s-edit"></span></button>
+
+<script type="text/javascript">
+    require([ 'jquery', 'mgs/owlcarousel' ], function ($) {
+        $('.list_gallery').owlCarousel({
+            items: 1,
+            autoplay: false,
+            nav: false,
+            dots: true,
+            rtl: true,
+            <?php if($lazyLoad): ?>lazyLoad: true,<?php endif ?>
+            touchDrag: false,
+            mouseDrag: false,
+            loop:false,
+            navText: ["<span></span>","<span></span>"],
+        });
+    });
+</script>
+
+
+<?php if($this->getRequest()->getFullActionName() == 'cms_index_index') :?>
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function($){
+		$(window).load(function(){
+            var sss = 1;
+            var numItems = $('.lookbook_banner.parallax').length;
+            var panel = $('.top-panel').length;
+            if(numItems > 0){
+                function smoothScroll(target) {
+                    if(!$('body,html').hasClass('nav-open')){
+                        $('body,html').stop().animate(
+                            {'scrollTop': target.offset().top + 1},
+                            600
+                        );
+                    }
+                }
+                function next() {
+                    if(!$('body,html').hasClass('nav-open')){
+                        if(sss < numItems){
+                            sss = sss + 1;
+                            smoothScroll($('#parallax-' + sss));
+                            $('.control .page-header-sliders .index-slider .current').html('0' + sss);
+                            thumb();
+                            if(sss == numItems){
+                                $('.btn-to-next').addClass('disable');
+                            }else if(sss == 1){
+                                $('.btn-to-prev').addClass('disable');
+                            }else{
+                                $('.btn-to-next').removeClass('disable');
+                                $('.btn-to-prev').removeClass('disable');
+                            }
+                        }else{
+                            smoothScroll($('.footer'));
+                        }
+                    }
+                }
+                function prev() {
+                    if(!$('body,html').hasClass('nav-open')){
+                        if(sss > 1){
+                            sss = sss - 1;
+                            smoothScroll($('#parallax-' + sss));
+                            $('.control .page-header-sliders .index-slider .current').html('0' + sss);
+                            thumb();
+                            if(sss == numItems){
+                                $('.btn-to-next').addClass('disable');
+                            }else if(sss == 1){
+                                $('.btn-to-prev').addClass('disable');
+                            }else{
+                                $('.btn-to-next').removeClass('disable');
+                                $('.btn-to-prev').removeClass('disable');
+                            }
+                        }else{
+                            smoothScroll($('html'));
+                        }
+                    }
+                }
+                function thumb() {
+                    var elem = $('.parallax-thumb');
+                    $(elem).each(function(e,v){
+                         if($(this).data('index')===sss){
+                            $('.parallax-thumb').removeClass('active');
+                            $(this).addClass('active');
+                         }
+                    });
+                }
+
+                $('.parallax-thumb').click(function () {
+                    sss = $(this).data('index');
+                    smoothScroll($('#parallax-' + sss));
+                    $('.control .page-header-sliders .index-slider .current').html('0' + sss);
+                    thumb();
+                    if(sss == numItems){
+                        $('.btn-to-next').addClass('disable');
+                        $('.btn-to-prev').removeClass('disable');
+                    }else if(sss == 1){
+                        $('.btn-to-prev').addClass('disable');
+                        $('.btn-to-next').removeClass('disable');
+                    }else{
+                        $('.btn-to-next').removeClass('disable');
+                        $('.btn-to-prev').removeClass('disable');
+                    }
+                });
+                
+                $('.scroll-to-top').click(function () {
+                    sss = 1;
+                    $('.control .page-header-sliders .index-slider .current').html('01');
+                    thumb();
+                    $('.btn-to-next').removeClass('disable');
+                    $('.btn-to-prev').addClass('disable');
+                });
+                $('.btn-to-next').click(function () {
+                    next();
+                });
+                $('.btn-to-prev').click(function () {
+                    prev();
+                });
+                $('.control .page-header-sliders .index-slider .all-index').html('0'+numItems);
+                smoothScroll($('html'));
+                thumb();
+                $('.btn-to-prev').addClass('disable');
+                if((numItems > 0) && (panel < 1) ){
+                    $("html").css("overflow", "hidden");
+                }
+                $(window).bind('mousewheel DOMMouseScroll', function(event){
+                    clearTimeout($.data(this, 'timer'));
+                    $.data(this, 'timer', setTimeout(function() {
+                        if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+                            setTimeout(function() {
+                                prev();
+                            }, 150);
+                        }
+                        else {
+                            setTimeout(function() {
+                                next();
+                            }, 150);
+                        }
+                    }, 300));
+                });
+            }
+		});
+    });
+</script>
+<?php endif;?>
+

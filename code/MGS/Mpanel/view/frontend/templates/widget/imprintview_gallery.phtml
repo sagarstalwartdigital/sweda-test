@@ -1,0 +1,210 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('imprintview_gallery')) {
+    $jsonData = base64_decode($this->getData('imprintview_gallery'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $usefulTools = json_decode($page_data->toolsJson);
+    //echo '<bre>'; print_r($usefulTools); echo '</bre>';
+    //print_r($usefulTools); exit;
+}
+?>
+
+
+<div class="container-fluid">
+      <div class="gets-inspired-title">
+          <h2><?php echo strtoupper($page_data->title) ?></h2>
+      </div>
+      <div class="row">
+
+        <ul class="tttt"></ul>
+
+          <?php foreach ($usefulTools as $data): ?>
+              <div class="col-lg-3 col-md-4 col-xs-6 p-0 gets-inspired">
+                  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
+                     data-image="<?php echo $data->toolImageHover ?>"
+                     data-target="#image-gallery">
+                      <img src="<?php echo $data->toolImage ?>" alt="Another alt text">
+                      <div class="img-hover-effact">
+                         <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                      </div>
+                  </a>
+              </div>
+          <?php endforeach; ?>
+
+          <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered chisel-Fancybox-section">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title" id="image-gallery-title"></h4>
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <img id="image-gallery-image" class="img-responsive col-md-12" src="">
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-angle-left" aria-hidden="true"></i>
+                          </button>
+
+                          <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div id="insta-feed"></div>
+          
+    </div>
+</div>
+
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+
+
+  // var token = '8192787853.1677ed0.4d722621c46e48a0b711647dc2ee5319',
+  //   num_photos = 10;
+ 
+    // $.ajax({
+    //   url: 'https://api.instagram.com/v1/users/self/media/recent',
+    //   dataType: 'jsonp',
+    //   type: 'GET',
+    //   data: {access_token: token, count: num_photos},
+    //   success: function(data){
+    //     console.log(data);
+    //     for( x in data.data ){
+    //       $('.tttt').append('<li><img src="'+data.data[x].images.low_resolution.url+'"></li>');
+    //     }
+    //   },
+    //   error: function(data){
+    //     console.log(data);
+    //   }
+    // });
+
+
+
+    // //var end = "https://api.instagram.com/v1/users/8192787853.1677ed0.4d722621c46e48a0b711647dc2ee5319/media/recent/?client_id=8192787853";
+    // $.ajax({
+    //     type: "GET",
+    //     url: 'https://api.instagram.com/v1/users/8192787853.1677ed0.4d722621c46e48a0b711647dc2ee5319/media/recent/?client_id=8192787853',
+    //     dataType: "jsonp",
+    //     // data: parms,
+    //     beforeSend: function(){
+
+    //     },
+    //     complete: function(){
+
+    //     },
+    //     success: function(res){
+    //       console.log(res)
+    //       // var links = res.data;
+    //     // for(i=1;i<links.length;i++) {
+    //     //     var lead = links[i];
+    //     //     var src = lead.images.thumbnail.url;
+    //     //     var tag = lead.tags;
+    //     //     var image = lead.images.standard_resolution.url;
+
+    //     //         $("#insta-feed").append("<div class='insta-image-con'><img class='insta-image-img' src='" + src + "'/></div>");
+    //     }
+    //   })
+
+    
+});
+</script>
+
+
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) 
+{
+  let modalId = $('#image-gallery');
+  $(document).ready(function () {
+
+      loadGallery(true, 'a.thumbnail');
+
+      //This function disables buttons when needed
+      function disableButtons(counter_max, counter_current) {
+        $('#show-previous-image, #show-next-image')
+          .show();
+        if (counter_max === counter_current) {
+          $('#show-next-image')
+            .hide();
+        } else if (counter_current === 1) {
+          $('#show-previous-image')
+            .hide();
+        }
+      }
+
+      function loadGallery(setIDs, setClickAttr) {
+        let current_image,
+          selector,
+          counter = 0;
+
+        $('#show-next-image, #show-previous-image')
+          .click(function () {
+            if ($(this)
+              .attr('id') === 'show-previous-image') {
+              current_image--;
+            } else {
+              current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+          });
+
+        function updateGallery(selector) {
+          let $sel = selector;
+          current_image = $sel.data('image-id');
+          $('#image-gallery-title')
+            .text($sel.data('title'));
+          $('#image-gallery-image')
+            .attr('src', $sel.data('image'));
+          disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if (setIDs == true) {
+          $('[data-image-id]')
+            .each(function () {
+              counter++;
+              $(this)
+                .attr('data-image-id', counter);
+            });
+        }
+        $(setClickAttr)
+          .on('click', function () {
+            updateGallery($(this));
+          });
+      }
+  });
+
+  $(document).keydown(function (e) {
+    switch (e.which) {
+      case 37: // left
+        if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
+          $('#show-previous-image')
+            .click();
+        }
+        break;
+      case 39: // right
+        if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
+          $('#show-next-image')
+            .click();
+        }
+        break;
+      default:
+        return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+  
+});
+
+</script>

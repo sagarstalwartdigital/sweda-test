@@ -1,0 +1,25 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $smartCart = $block->getSmartCartFactory(); ?>
+<div class="chnage-smart-cart-btn">
+	<div class="display-active-smart-cart">
+		<?php if ($smartCart->getId() && !empty($smartCart->getId())) :  ?>
+			<p id="<?php echo $smartCart->getId() ? $smartCart->getId() : ""?>"><span class="activecart-label">Active Cart</span>: <?php echo $smartCart->getTitle() ? $smartCart->getTitle() : ""; ?>
+            <a target="_parent" class="pdp-viewcart" href="<?php echo $block->getUrl('smartcart/cartindex/smartcartdetail',array('_query'=>array('id'=>$smartCart->getId()))); ?>">View cart Details</a>
+            </p>
+            <div class="pdp-activecart">
+            <?php if(sizeof($block->getAllSmartCart()) > 1) : ?>
+                <a href="javascript:void(0)" id="choosediffcartquickview" class="changecartinquickview">activate a different cart</a>
+            <?php endif; ?>
+            </div>
+            <div class="pdp-newcart">
+            <a href="javascript:void(0)" id="create_new_smart_cart_from_mini_pdp"><?php if(sizeof($block->getAllSmartCart()) > 1) : ?>or<?php endif; ?> create new</a>
+            </div>
+
+		<?php else : ?>
+			<p id="<?php echo $smartCart->getId() ? $smartCart->getId() : ""?>"></p>
+			<div class="message info empty">
+			    <span><?php echo __('There are no Smart Carts yet.'); ?></span>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>

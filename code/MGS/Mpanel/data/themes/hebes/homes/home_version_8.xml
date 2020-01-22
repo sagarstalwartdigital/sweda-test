@@ -1,0 +1,564 @@
+<home>
+	<section>
+		<name><![CDATA[block62]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[style-v8]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[100]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[0]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block66]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[120]]></padding_top>
+		<padding_bottom><![CDATA[100]]></padding_bottom>
+		<block_position><![CDATA[5]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block67]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[100]]></padding_bottom>
+		<block_position><![CDATA[6]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block68]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[7]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block69]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[["12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12"]]]></large_cols>
+		<medium_cols><![CDATA[["12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12"]]]></mobile_cols>
+		<block_class><![CDATA[[""]]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[0]]></fullwidth>
+		<padding_top><![CDATA[130]]></padding_top>
+		<padding_bottom><![CDATA[150]]></padding_bottom>
+		<block_position><![CDATA[1]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block70]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,3,3]]></block_cols>
+		<tablet_cols><![CDATA[["12","12","12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12","12","12"]]]></large_cols>
+		<medium_cols><![CDATA[["12","12","12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12","12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["","",""]]]></block_class>
+		<class><![CDATA[promobanner-v8]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[80]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[3]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block71]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[12]]></block_cols>
+		<tablet_cols><![CDATA[]]></tablet_cols>
+		<large_cols><![CDATA[]]></large_cols>
+		<medium_cols><![CDATA[]]></medium_cols>
+		<mobile_cols><![CDATA[]]></mobile_cols>
+		<block_class><![CDATA[]]></block_class>
+		<class><![CDATA[]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[]]></background_repeat>
+		<background_cover><![CDATA[]]></background_cover>
+		<parallax><![CDATA[]]></parallax>
+		<fullwidth><![CDATA[]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[2]]></block_position>
+	</section>
+	<section>
+		<name><![CDATA[block72]]></name>
+		<theme_name><![CDATA[]]></theme_name>
+		<block_cols><![CDATA[6,6]]></block_cols>
+		<tablet_cols><![CDATA[["12","12"]]]></tablet_cols>
+		<large_cols><![CDATA[["12","12"]]]></large_cols>
+		<medium_cols><![CDATA[["12","12"]]]></medium_cols>
+		<mobile_cols><![CDATA[["12","12"]]]></mobile_cols>
+		<block_class><![CDATA[["",""]]]></block_class>
+		<class><![CDATA[promobanner-v8]]></class>
+		<background><![CDATA[]]></background>
+		<background_image><![CDATA[]]></background_image>
+		<background_repeat><![CDATA[0]]></background_repeat>
+		<background_cover><![CDATA[0]]></background_cover>
+		<parallax><![CDATA[0]]></parallax>
+		<fullwidth><![CDATA[1]]></fullwidth>
+		<padding_top><![CDATA[]]></padding_top>
+		<padding_bottom><![CDATA[]]></padding_bottom>
+		<block_position><![CDATA[4]]></block_position>
+	</section>
+	<block>
+		<block_name><![CDATA[block62-0]]></block_name>
+		<type><![CDATA[owl_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"block_link":"","animation":"","animation_delay":"","removeimg":["","",""],"html_slider":"<div data-text-position=\"middle_left\" data-text-animate=\"slideInLeft\" class=\"item slideInLeft\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide1.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide1.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_left\"><div class=\"inner-text\"><div class=\"top-text\">TRENDING <br> COLLECTION <br> 2018<\/div>\r\n<div class=\"bottom-text\">\r\n<h2 class=\"title-text\"><span class=\"color-text\">Hebes Chair<\/span><br><span class=\"color-primary\"> Decor <\/span><\/h2>\r\n<div class=\"sub-title\">Sed id interdum urna.  Nam ac elit a ante commodo tristique.<br> Duis lacus urna, condimentum nisi. <\/div>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div><div data-text-position=\"middle_left\" data-text-animate=\"slideInLeft\" class=\"item slideInLeft\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide2.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide2.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_left\"><div class=\"inner-text\"><div class=\"top-text\">TRENDING <br> COLLECTION <br> 2018<\/div>\r\n<div class=\"bottom-text\">\r\n<h2 class=\"title-text\"><span class=\"color-text\">Hebes Lamps<\/span><br><span class=\"color-primary\"> Decor <\/span><\/h2>\r\n<div class=\"sub-title\">Sed id interdum urna.  Nam ac elit a ante commodo tristique.<br> Duis lacus urna, condimentum nisi. <\/div>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div>\r\n<\/div><\/div><\/div><\/div><div data-text-position=\"middle_left\" data-text-animate=\"slideInLeft\" class=\"item slideInLeft\"><a class=\"item-image\" href=\"\" style=\"background-image:url(http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide3.jpg)\"><img class=\"img-fluid\" src=\"http:\/\/mgs.arrowhitech.net\/hebes2\/pub\/media\/wysiwyg\/slider\/slide3.jpg\" alt=\"\"><\/a><div class=\"container\"><div class=\"slide-text middle_left\"><div class=\"inner-text\"><div class=\"top-text\">TRENDING <br> COLLECTION <br> 2018<\/div>\r\n<div class=\"bottom-text\">\r\n<h2 class=\"title-text\"><span class=\"color-text\">Wood Chair<\/span><br><span class=\"color-primary\"> Decor <\/span><\/h2>\r\n<div class=\"sub-title\">Sed id interdum urna.  Nam ac elit a ante commodo tristique.<br> Duis lacus urna, condimentum nisi. <\/div>\r\n<a href=\"#\" class=\"shop-now\">SHOP NOW <i class=\"fa fa-long-arrow-right\"><\/i><\/a>\r\n<\/div><\/div><\/div><\/div><\/div>","fullscreen":"1","fullheight":"1","offset":"","effect":"1","speed":"","navigation":"1","navtemple":"3","loop":"1","autoplay":0,"stop_auto":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Mpanel\Block\Widget\OwlCarousel" fullscreen="1" autoplay="0" stop_auto="0" navigation="1" offset="" fullheight="1" pagination="0" loop="1" speed="" html_slider="&lt;div data-text-position=&quot;middle_left&quot; data-text-animate=&quot;slideInLeft&quot; class=&quot;item slideInLeft&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide1.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide1.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_left&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;top-text&quot;&gt;TRENDING &lt;br&gt; COLLECTION &lt;br&gt; 2018&lt;/div&gt;
+&lt;div class=&quot;bottom-text&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-text&quot;&gt;Hebes Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;color-primary&quot;&gt; Decor &lt;/span&gt;&lt;/h2&gt;
+&lt;div class=&quot;sub-title&quot;&gt;Sed id interdum urna.  Nam ac elit a ante commodo tristique.&lt;br&gt; Duis lacus urna, condimentum nisi. &lt;/div&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_left&quot; data-text-animate=&quot;slideInLeft&quot; class=&quot;item slideInLeft&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide2.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide2.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_left&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;top-text&quot;&gt;TRENDING &lt;br&gt; COLLECTION &lt;br&gt; 2018&lt;/div&gt;
+&lt;div class=&quot;bottom-text&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-text&quot;&gt;Hebes Lamps&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;color-primary&quot;&gt; Decor &lt;/span&gt;&lt;/h2&gt;
+&lt;div class=&quot;sub-title&quot;&gt;Sed id interdum urna.  Nam ac elit a ante commodo tristique.&lt;br&gt; Duis lacus urna, condimentum nisi. &lt;/div&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-text-position=&quot;middle_left&quot; data-text-animate=&quot;slideInLeft&quot; class=&quot;item slideInLeft&quot;&gt;&lt;a class=&quot;item-image&quot; href=&quot;&quot; style=&quot;background-image:url(http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide3.jpg)&quot;&gt;&lt;img class=&quot;img-fluid&quot; src=&quot;http://mgs.arrowhitech.net/hebes2/pub/media/wysiwyg/slider/slide3.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;div class=&quot;container&quot;&gt;&lt;div class=&quot;slide-text middle_left&quot;&gt;&lt;div class=&quot;inner-text&quot;&gt;&lt;div class=&quot;top-text&quot;&gt;TRENDING &lt;br&gt; COLLECTION &lt;br&gt; 2018&lt;/div&gt;
+&lt;div class=&quot;bottom-text&quot;&gt;
+&lt;h2 class=&quot;title-text&quot;&gt;&lt;span class=&quot;color-text&quot;&gt;Wood Chair&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;color-primary&quot;&gt; Decor &lt;/span&gt;&lt;/h2&gt;
+&lt;div class=&quot;sub-title&quot;&gt;Sed id interdum urna.  Nam ac elit a ante commodo tristique.&lt;br&gt; Duis lacus urna, condimentum nisi. &lt;/div&gt;
+&lt;a href=&quot;#&quot; class=&quot;shop-now&quot;&gt;SHOP NOW &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" navtemple="3" effect="1" template="widget/owl_slider.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block66-0]]></block_name>
+		<type><![CDATA[brands]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"12","perrow":"6","brand_by":"all","use_slider":"1","number_row":"1","autoplay":"1","stop_auto":"1","navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Brand\Block\Widget\Home" mgs_panel_title="" mgs_panel_note="" limit="12" perrow="6" use_slider="1" brand_by="all" template="widget/home.phtml" autoplay="1" stop_auto="1" navigation="0" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block67-0]]></block_name>
+		<type><![CDATA[testimonial]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"3","perrow":"1","template":"grid.phtml","show_avatar":"1","use_slider":"1","number_row":"1","stop_auto":"1","navigation":"1","autoplay":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Testimonial\Block\Testimonial" mgs_panel_title="" mgs_panel_note="" testimonials_count="3" perrow="1" show_avatar="1" use_slider="1" template="grid.phtml" autoplay="0" stop_auto="1" navigation="1" pagination="0" number_row="1"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block69-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[
+<div class="home_store row">
+<div class="item col-md">
+<h2>F</h2>
+<div>
+<div class="sub-title">
+<h6>Free shipping</h6>
+<span>all oder over $30</span></div>
+<p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+</div>
+</div>
+<div class="item col-md">
+<h2>S</h2>
+<div>
+<div class="sub-title">
+<h6>Support Customer</h6>
+<span>Support 24/7</span></div>
+<p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+</div>
+</div>
+<div class="item col-md">
+<h2>P</h2>
+<div>
+<div class="sub-title">
+<h6>Payment security</h6>
+<span>100% SECURE PAYMENT</span></div>
+<p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block68-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="title-v3 ins-v8">
+<div class="content-heading">
+<h6 class="title">From Instagram</h6>
+<div class="sub"><i class="fa fa-instagram"></i>@hebestheme.net</div>
+<div class="subtitle">STYLISH, DESIGNER, INTERACTIVE, SIMPLIFIED AND PERSONAL TOUCH TO INTEROR DESIGN</div>
+</div>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block68-0]]></block_name>
+		<type><![CDATA[instagram]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","limit":"10","perrow":"4","resolution":"low_resolution","link":"1","like":"1","comment":"1","use_slider":"1","number_row":"1","autoplay":"1","stop_auto":"1","navigation":0,"pagination":0}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{block class="MGS\Social\Block\Panel\Widget" mgs_panel_title="" mgs_panel_note="" limit="10" resolution="low_resolution" link="1" perrow="4" use_slider="1" like="1" comment="1" autoplay="1" stop_auto="1" navigation="0" pagination="0" number_row="1" template="widget/instagram.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block71-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[title-banner-v8]]></class>
+		<block_content><![CDATA[<div class="content-heading">
+<h3 class="title">Hebes Furniture Store</h3>
+<p class="sub-title">Unique Design, Great Products. The perfect choice for you.</br>Please choose a category product than you love here</p>
+</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner1"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[ pd-bottom-30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner1" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner2"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner2" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner4"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner5"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[pd-top-30 pd-bottom-30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner5" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block72-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner8"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[dis-hover]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner8" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block72-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="header_subscribe home_subscribe  subscribe-v8">
+<h2>Get Discount 30% Off</h2>
+<p>Get 30% discount with notified about the latest news and updates.No spam, we promise!</p>
+<p class="subtitle">Increase more than 300% of email subscribers</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_header.phtml"}}</div>]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block72-1]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"banner9"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="banner9" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-2]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[1]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"b4"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="b4" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-2]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"b5"}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[pd-top-30]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="b5" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block70-0]]></block_name>
+		<type><![CDATA[promo_banner]]></type>
+		<position><![CDATA[3]]></position>
+		<setting><![CDATA[{"title":"","additional_content":"","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"hebes-sale"}]]></setting>
+		<col><![CDATA[6]]></col>
+		<class><![CDATA[dis-hover hebes-sale]]></class>
+		<block_content><![CDATA[{{widget type="MGS\Promobanners\Block\Widget\Banner" banner_id="hebes-sale" template="banner.phtml"}}]]></block_content>
+	</block>
+	<block>
+		<block_name><![CDATA[block62-0]]></block_name>
+		<type><![CDATA[static]]></type>
+		<position><![CDATA[2]]></position>
+		<setting><![CDATA[{"animation":"","animation_delay":""}]]></setting>
+		<col><![CDATA[12]]></col>
+		<class><![CDATA[]]></class>
+		<block_content><![CDATA[<div class="follow-us">
+<h5 class="follow-title">Follow Us:</h5>
+<ul class="social-links">
+<li><a href="#" target="_self"><i class="ti-twitter"></i></a></li>
+<li><a href="#" target="_self"> <i class="ti-facebook"></i></a></li>
+<li><a href="#" target="_self"><i class="ti-google"></i></a></li>
+<li><a href="#" target="_self"><i class="ti-linkedin"></i></a></li>
+</ul>
+</div>]]></block_content>
+	</block>
+	<promo_banner>
+		<item>
+			<title><![CDATA[Hebes Sofas]]></title>
+			<filename><![CDATA[/p/r/promo1_11.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Hebes Sofas</h2>
+<div class="subtitle">145 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a class="explore"  href="http://themes.magesolution.com/hebes/m2/accessories/sofa.html" >Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>
+]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner1]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Hebes Tables]]></title>
+			<filename><![CDATA[/p/r/promo4_3.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Hebes Tables</h2>
+<div class="subtitle">48 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/furniture/table.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner2]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Hebes Lamps]]></title>
+			<filename><![CDATA[/p/r/promo2_4.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Lamps Decor</h2>
+<div class="subtitle">43 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/accessories/light.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner4]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Accessories]]></title>
+			<filename><![CDATA[/p/r/promo6_3.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Accessories</h2>
+<div class="subtitle">122 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/lighting/floor-lamps.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner5]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Collection]]></title>
+			<filename><![CDATA[/p/r/promo8_3.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="bg-collection">NEW COLLECTION</div>
+<h2 class="text-title color-primary">Living Room </br>
+Collection</h2>
+<a href="http://themes.magesolution.com/hebes/m2/lighting/recessed.html" class="shop-now">SHOP NOW <i class="fa fa-long-arrow-right"></i></a>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner8]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Hebes Beds]]></title>
+			<filename><![CDATA[/p/r/promo9_2.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Hebes Beds</h2>
+<div class="subtitle">25 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/accessories/sofa.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[banner9]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Hebes Chairs]]></title>
+			<filename><![CDATA[/p/r/promo3_5.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Hebes Chairs</h2>
+<div class="subtitle">212 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/accessories/chair.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[b4]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Bookself]]></title>
+			<filename><![CDATA[/p/r/promo7_4.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-title">
+<h2>Bookshelf</h2>
+<div class="subtitle">22 Great Products</div>
+</div>
+<div class="furniture-detail">
+<a href="http://themes.magesolution.com/hebes/m2/accessories/bookshelf.html" class="explore">Explore <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[b5]]></identifier>
+		</item>
+		<item>
+			<title><![CDATA[Sale]]></title>
+			<filename><![CDATA[/p/r/promo5_7.jpg]]></filename>
+			<url><![CDATA[]]></url>
+			<button><![CDATA[]]></button>
+			<text_align><![CDATA[bottom-left]]></text_align>
+			<content><![CDATA[<div class="promo-sale">
+<div class="color-primary">OFF EVERYTHING</div>
+<a href="http://themes.magesolution.com/hebes/m2/lighting/wall-lights.html" class="shop-now">SHOP NOW <i class="fa fa-long-arrow-right"></i></a>
+</div>]]></content>
+			<effect><![CDATA[]]></effect>
+			<custom_class><![CDATA[]]></custom_class>
+			<status><![CDATA[1]]></status>
+			<identifier><![CDATA[hebes-sale]]></identifier>
+		</item>
+	</promo_banner>
+	<theme_setting>
+		<general>
+			<width>width1200</width>
+		</general>
+		<custom_style>
+			<style>.footer{background: #252525}
+.footer .middle-footer a, .footer .footer_follow strong,
+.footer .footer_info, .footer .list_block{color: #7b7b7b}
+.footer .header_subscribe h6{color: #fff}
+.footer .block.newsletter .form.subscribe .control > input{background-color: #363636;border-color: #363636}
+@media (min-width: 1200px){.cms-index-index .header:not(.active-sticky){padding-top: 30px}}
+.block.newsletter .form.subscribe .action.subscribe{color: #a1a1a1}</style>
+		</custom_style>
+	</theme_setting>
+
+</home>

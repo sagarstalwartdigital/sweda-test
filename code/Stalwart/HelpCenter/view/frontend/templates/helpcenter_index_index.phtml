@@ -1,0 +1,152 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baurl = $storeManager->getStore()->getBaseUrl();
+?>
+
+<?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+<div class="container">
+    <div class="breadcrumb-section">
+     <h1></h1>
+     <ol class="breadcrumb">
+       <li><a href="<?php echo $baurl; ?>">Home</a></li>
+       <li><a href="<?php echo $baurl; ?>customer-service">Help Center</a></li>
+       <li>Artwork Upload</li>
+     </ol>  
+   </div>
+ </div>
+
+<div class="container">
+    <div class="account-overview-title">
+        <h2>Artwork Upload</h2>
+        <div class="row">
+            <div class="col-sm-3">
+                <nav class="nav-sidebar">
+                    <ul class="nav tabs">
+                        <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-9">
+                <div class="artwork-right-part">
+                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('artwork_upload')->toHtml(); ?>
+                </div>
+                <div class="submit-your-artwork">
+                    <h3>Submit your artwork</h3>
+                    <div class="artwork-form-section">
+
+                        <form action="<?php echo $block->getBaseUrl().'helpcenter/index/post';?>" enctype='multipart/form-data' name="customemaildata" method="post" id="my_captcha_form" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="artwork-form">
+                                        <label>Name</label>
+                                        <input class="" type="text" id="" name="name" placeholder="" data-validate="{required:true}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="artwork-form">
+                                        <label>PO Number</label>
+                                        <input class="" type="number" id="" name="po_number" placeholder="" data-validate="{required:true}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="artwork-form">
+                                        <label>Phone Number</label>
+                                        <input class="" type="number" id="" name="phone_number" placeholder="" data-validate="{required:true}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="artwork-form">
+                                        <label>Email Address</label>
+                                        <input class="" type="email" id="email" name="email_address" placeholder="" data-validate="{required:true, 'validate-email':true}">
+                                    </div>
+                                </div>
+                                <div class="choose-button-section">
+                                    <p>Artwork Upload</p>
+                                    <div class="choose-button">
+                                         <input type="file" name="my_custom_file" id="my_custom_file" title="Custom File" class="input-text" data-validate="{required:true}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="artwork-form Nots-section">
+                                        <label>Notes</label>
+                                        <textarea class="" rows="3" name="notes" placeholder=""></textarea>
+                                    </div>
+                                </div>
+
+
+                                <!-- <script src='https://www.google.com/recaptcha/api.js'></script>
+                               <div class="col-lg-12">
+                                    <div class="artwork-form recaptcha">
+                                        <label></label>
+                                        <div class="g-recaptcha" data-sitekey="6Lc4ZbcUAAAAAKlP1zUiLZAivevmWiamq-UMy7e5" data-callback="recaptchaCallback"></div>
+                                    </div>
+                                </div> -->
+
+                                <div class="art-submit-button">
+                                    <div class="artwork-submit">
+                                        <button id="btnSubmit" type="submit" title="<?php /* @escapeNotVerified */ echo __('Send') ?>" class="action submit primary">
+                                            <span><?php /* @escapeNotVerified */ echo __('Send') ?></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>       
+</div>
+<!------ Account-overview-section --------->
+
+<script type="text/javascript">
+require([
+    'jquery',
+], function($){
+
+    $(document).ready(function() {
+        $('.artworkuplo').addClass('active');
+    });
+
+    document.getElementById("my_captcha_form").addEventListener("submit",function(evt)
+    {
+      var response = grecaptcha.getResponse();
+      if(response.length == 0) 
+    { 
+        //reCaptcha not verified
+        alert("please verify you are humann!"); 
+        evt.preventDefault();
+        return false;
+     }
+      //captcha verified
+      //do the rest of your validations here  
+    });
+
+});
+
+
+</script>
+
+
+
+
+<style type="text/css">
+.cms-artwork-upload #maincontent{
+    padding: 0;
+    width: 100%;
+    max-width: unset;
+}
+#my_custom_file-error {
+    padding-top: 52px;
+}
+</style>

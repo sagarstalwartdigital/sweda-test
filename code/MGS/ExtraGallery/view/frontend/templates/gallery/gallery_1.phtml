@@ -1,0 +1,95 @@
+<?php $galleryImages = $this->getGalleryImages(); ?>
+<?php $zoom_image = $this->getEnableZoom(); ?>
+<?php $lbox_image = $this->getLbox(); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $lbImage = $block->getProduct()->getName(); ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<div class="gallery-list">
+    <?php foreach($galleryImages as $image): ?>
+		<?php $isVideo = $image->getMediaType() == 'external-video' ? true : false; ?>
+		<?php $href = $isVideo ? $image->getVideoUrl() : $image->getImageZoom(); ?>
+			
+        <div class="product item-image imgzoom<?php if($isVideo): ?> item-image-video<?php endif ?>" data-zoom="<?php echo $image->getImageZoom(); ?>">
+			
+			<?php if($isVideo): ?><div class="label-video"><?php echo __('Video') ?></div><?php endif ?>
+			
+			<?php if($lbox_image): ?>
+				<a class="lb<?php if($isVideo): ?> video-link<?php endif ?>" href="<?php echo $href; ?>">
+					<img class="img-fluid" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+				</a>
+			<?php else: ?>
+				<img class="img-fluid" src="<?php echo $image->getLargeImageUrl(); ?>" alt="<?php echo $lbImage ?>"/>
+				<?php if($isVideo): ?>
+					<a target="_blank" class="popup-video" href="<?php echo $image->getVideoUrl(); ?>">
+						<span class="ti-video-camera"></span>
+					</a>
+				<?php endif ?>
+			<?php endif ?>
+		</div>
+    <?php endforeach ?>
+    <?php // Product Label ?>
+    <div class="detail-label"><?php echo $themeHelper->getProductLabel($_product) ?></div>
+</div>
+<script type="text/javascript">
+    <?php if($zoom_image): ?>
+        require([ 'jquery', 'zoom-images' ],function($) { 
+            $(".imgzoom").each(function( index ) {
+                zoomElement(this);
+            });
+        });
+    <?php endif ?>
+</script>
+
+<script type="text/javascript">
+    require([
+    'jquery'
+    ], function(jQuery){
+        (function($) {
+            $(document).ready(function(){
+                if($(window).width() > 991){
+                    $(window).scroll(function(){
+                        var node = $('.row-detail-product');
+                        var isTop = node.offset().top;
+                        if($(this).scrollTop() > isTop){
+                            $(".product-info-main").addClass('sticky');
+                            var isBottom = node.offset().top + node.height() - $(".product-info-main.sticky").height();
+                            if($(this).scrollTop() > isBottom){
+                                $(".product-info-main").addClass('bottom');
+                            }else{
+                                $(".product-info-main").removeClass('bottom');
+                            }
+                        }else{
+                             $(".product-info-main").removeClass('sticky');
+                        }
+                    });
+                }else{
+                    $(".product-info-main").removeClass('sticky');
+                    $(".product-info-main").removeClass('bottom');
+                }
+                $(window).resize(function() {
+                    if($(this).width() > 991){
+                        $(window).scroll(function(){
+                            var node = $('.row-detail-product');
+                            var isTop = node.offset().top;
+                            if($(this).scrollTop() > isTop){
+                                $(".product-info-main").addClass('sticky');
+                                var isBottom = node.offset().top + node.height() - $(".product-info-main.sticky").height();
+                                if($(this).scrollTop() > isBottom){
+                                    $(".product-info-main").addClass('bottom');
+                                }else{
+                                    $(".product-info-main").removeClass('bottom');
+                                }
+                            }else{
+                                 $(".product-info-main").removeClass('sticky');
+                            }
+                        });
+                    }else{
+                        $(".product-info-main").removeClass('sticky');
+                        $(".product-info-main").removeClass('bottom');
+                    }
+                });
+            });
+        })(jQuery);
+    });
+</script>

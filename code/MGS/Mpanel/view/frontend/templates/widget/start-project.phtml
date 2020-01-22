@@ -1,0 +1,186 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php $blockObj = $block->getLayout()->createBlock('Stalwart\Sweda\Block\Startproject');?>
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('start-project')) {
+    $jsonData = base64_decode($this->getData('start-project'));   
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+?>
+
+<div class="back-img" id="start_new_project">
+    <div class="container">
+        <div class="smart-project-section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="project-title">
+                        <h2><?php echo strtoupper($page_data->title) ?></h2>
+                        <?php echo html_entity_decode($page_data->description) ?>
+                    </div>
+                </div>
+            </div>
+            <div class="option-section">
+                <div class="row mockup-list" id="parameters" data-ajax-url="">
+                    <div class="col-lg-4 col-md-6 col-sm-12  project-option">
+                        <select class="form-control search-slt" id="selectCategory" name="selectCategory">
+                            <option>Type Of Product</option>
+                            <?php
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                            $categoryFactory = $objectManager->create('Magento\Catalog\Model\ResourceModel\Category\CollectionFactory');
+                            $categories = $categoryFactory->create()->addAttributeToSelect('*')->setOrder('name','ASC');
+                            ?>
+                            <?php foreach ($categories as $category){ 
+                                $cat_name = $category->getName();
+                                if($cat_name != 'Default Category' && $cat_name != 'Root Catalog'){ ?>
+                                    <option value="cat=<?php  echo $category->getId(); ?>"><?php  echo $category->getName(); ?></option>
+                                <?php } } ?>
+                            </select>
+                        </div>                       
+                        <div class="col-lg-4 col-md-6 col-sm-12  project-option">
+                            <select class="form-control search-slt" id="selectPrice" name="selectPrice"><option>What’s Your Budget?</option></select>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12  project-option">
+                            <select class="form-control search-slt" id="selectTime" name="selectTime">
+                                <option>When Do You Need It?</option>
+                                <option value="tag_list-24_hour_service">24 Hour Service</option>
+                                <option value="imprint_methods-sublimation-screen_print-heat_transfer-laser_engraving">3 To 5 Days</option>
+                                <option value="imprint_methods-graphtec-photo_epoxy">5 To 7 Days</option>
+                                <option value="imprint_methods-embroidery-debossing">7 To 10 Days</option>
+                                <option value="imprint_methods-chisel_it-chisel_it_360-chisel_it_jumbo">10 To 12 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-btn">
+                    <button href="javascript:;" id="submitFilter">
+                        <?php echo $page_data->buttonText ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        require([
+            'jquery'
+            ], function ($) {
+                var pageName = 'startProject';
+
+                function parammeterize() {
+                    let url ='<?=$this->getBaseUrl(); ?>'+pageName+'/';
+                    let params = {};
+                    document.querySelectorAll('#parameters .search-slt').forEach((element) => {
+                        if (element.value.length > 0)
+                        {
+                            params[element.id] = element.value;
+                    // console.log(element.id)
+                }
+            });
+                    let esc = encodeURIComponent;
+                    let query = Object.keys(params);
+                    var selecedTime = jQuery("select#selectTime option:selected").index();
+                    if(selecedTime>0){
+                        url += jQuery("select#selectTime option:selected").val()+'?';
+                    }else{
+                        url += '?';
+                    }
+                    $.each(params, function(key,value) {
+                        if(key=="selectCategory"){
+                            url += params[key]; 
+                        }
+                        else if(key=="selectTime"){
+                            url += '&selectTime=' + params[key];
+                        }
+                        else{
+                            url += '&' + params[key];
+                        }
+                    });
+                   // console.log(url)
+                   window.location.href=url;
+               }
+               function showLoading(target){
+                  $(target).empty();
+                  $(target).attr("disabled","disabled");
+                  $(target).append($('<option></option>').attr("value","").html("Loading..."))
+              }
+
+              function initProjectFilter(url,dataPass, PriceDrpdown,selectedPrice=''){
+                showLoading(PriceDrpdown);
+                jQuery.ajax({
+                    url: url,
+                    data: dataPass,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, status, xhr) {
+
+                        PriceDrpdown.find("option:first").html("What’s Your Budget?");
+                        PriceDrpdown.removeAttr("disabled");
+
+                        PriceDrpdown.empty();
+                        var option = $('<option/>');
+                        option.attr({ 'value':""}).text('What’s Your Budget?');
+                        PriceDrpdown.append(option);
+                        option = $('<option/>');
+                        var pricerange = data.pricerange;
+                        console.log(pricerange)
+                        jQuery.each(pricerange,function(indx, val){
+                            PriceDrpdown.append(new Option(val.val,val.id));
+                        });
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        PriceDrpdown.find("option:first").html("What’s Your Budget?");
+                        PriceDrpdown.removeAttr("disabled");
+                        console.log(errorThrown);
+                        alert("Something went wrong, Please try later.");
+                    },
+                    complete:function(res){
+                        PriceDrpdown.find("option:first").html("What’s Your Budget?");
+                        PriceDrpdown.removeAttr("disabled");
+                        if(selectedPrice != ''){
+                                // console.log(selectedPrice)
+                                jQuery("#selectPrice option").removeAttr('selected');
+                                jQuery("#selectPrice option[value='price="+selectedPrice+"']").attr('selected','selected');
+                            }
+
+                        }
+                    });
+            }
+
+            $(document).ready(function () {
+                var Filterurl = BASE_URL+'sweda/startproject/index';
+                var PriceDrpdown = $('select#selectPrice');
+                PriceDrpdown.empty();
+                var option = $('<option/>');
+                option.attr({ 'value':""}).text('What’s Your Budget?');
+                PriceDrpdown.append(option);
+                jQuery("select#selectCategory").on('change',function(e){
+
+                    var currentCateId = String(jQuery("option:selected", jQuery(this)).val());
+                    var finalCateId = currentCateId.replace('cat=','');
+                    var dataPass = {
+                        "catid": finalCateId
+                    };
+                    initProjectFilter(Filterurl,dataPass,PriceDrpdown);
+
+                })
+                $("#submitFilter").on('click',function(e){
+                    $('.select-category-price-error').remove();
+                    if(jQuery("select#selectCategory option:selected").index() != 0 && jQuery("select#selectPrice option:selected").index() != 0){
+                        $('.select-category-price-error').remove();
+                        parammeterize();
+                        e.preventDefault();
+                        return false;
+                    }
+                    else{
+                        $('<p class="select-category-price-error error text-center">Please select Type of Product and What’s Your Budget</p>').insertAfter('.row.mockup-list');
+                    }
+                    
+                })
+            });
+
+        });
+    </script>

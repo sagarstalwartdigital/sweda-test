@@ -1,0 +1,120 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('price_table')) {
+    $jsonData = base64_decode($this->getData('price_table'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$viewall = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('pricetable/general/viewallproduct');
+$pricetitle = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('pricetable/general/pricetitle');
+?>
+
+<div class="see-all-imprintview test">
+  <?php if($page_data->title) { ?>
+
+    <?php if($viewall) { ?>
+    <?php
+        $AllProUrl = !empty($page_data->title) ? ($page_data->title) : 'javascript:;';
+        if (filter_var($AllProUrl, FILTER_VALIDATE_URL)) {
+            echo '<a href="'.$AllProUrl.'">';
+        } else {
+            echo '<a href='.$themeHelper->getCurrentBaseUrl().$AllProUrl.'>';
+        }
+    ?>
+    <?php echo $viewall; ?></a>
+    <?php } else { ?>
+    <?php
+        $AllProUrl = !empty($page_data->title) ? ($page_data->title) : 'javascript:;';
+        if (filter_var($AllProUrl, FILTER_VALIDATE_URL)) {
+            echo '<a href="'.$AllProUrl.'">';
+        } else {
+            echo '<a href='.$themeHelper->getCurrentBaseUrl().$AllProUrl.'>';
+        }
+    ?>VIEW ALL PRODUCTS</a>
+    <?php } ?>   
+  <?php } ?>
+</div>
+
+<?php if($viewall) { ?>
+<h2 style="text-align: center;" class="price-table-tital"><?php echo $pricetitle; ?></h2>
+<?php } else { ?>
+<h2 style="text-align: center;" class="price-table-tital">Pricing</h2>
+<?php } ?> 
+
+<?php echo html_entity_decode($page_data->description) ?>
+
+
+
+<script type="text/javascript">
+	require([
+            'jquery',
+        ], function ($) {
+		$(".nav.tabs li").click(function () {
+	        $(".nav.tabs li").removeClass("active");
+	        $(this).addClass("active");        
+	    });
+	});  
+</script>
+
+
+
+<style type="text/css">
+.breadcrumbs.width-5 {
+    display: none;
+}    
+
+.fade.show {
+    display: block;
+}
+.fade {
+    display: none;
+}
+.imprint-detail-page {
+    background-color: transparent;
+}
+.imprint-detail-page ul.nav.tabs li.active {
+    border-left: none !important;
+}
+.imprint-detail-page ul.nav.tabs li{
+    border-left: none !important;
+}
+.imprint-detail-page ul.nav.tabs li.active:before {
+    content: '\f105';
+    font-family: fontawesome;
+    font-size: 30px;
+    float: right;
+    position: absolute;
+    right: 0px;
+    color: #009ad7;
+    font-weight: bold;
+    line-height: 20px;
+    margin-top: 8px;
+}
+.imprint-detail-page ul.nav.tabs li.active a {
+    color: #009ad7 !important;
+}
+.imprint-detail-page ul li a {
+    font-size: 15px;
+    color: #606c77 !important;
+    padding: 7px 0;
+}
+.imprint-detail{
+    margin: 0 0px 13px 0 !important;
+}
+.right-qut-list ul li {
+    font-size: 15px;
+    color: #606c77;
+}
+.imprint-section {
+    padding-left: 30px;
+}
+.imp-detail-moredetail ul li {
+    color: #606c77;
+}
+</style>

@@ -1,0 +1,162 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartFrontend $block */ ?>
+<?php $customerSmartCartsCollection = $block->getSmartCartFront(); ?>
+<?php $sortingParams = $block->getSortingParams(); ?>
+<?php if($block->getIsLoggedIn()) : ?>
+	<?php if($block->getIsBtobPending() != 0) : ?>
+		<section id="maincontent" class="page-main container smartcarts-listing-grid">
+		<div class="row">
+		<div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="smart-cart-title">
+							<h2>Your Smart Carts</h2>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="container">
+							<div class="smart-cart-btn">
+								<button type="button" id="create_new_smart_cart">
+									Create New
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="smart-carts-serch-bar">
+							<div class="input-group smart-carts">
+								<form action="<?php echo $this->getUrl('smartcart/cartindex/smartcartfront'); ?>" method="post" autocomplete="off">
+									<input value="<?php echo $this->getRequest()->getParam('smart-cart-search-query') ? $this->getRequest()->getParam('smart-cart-search-query') : '' ?>" type="text" name="smart-cart-search-query" class="search-query form-control" placeholder="Search Your Smart Carts">
+									<span class="input-group-btn">
+										<button type="submit">
+											<img src="<?php echo $this->getViewFileUrl('images/search-icon.png'); ?>"> 
+										</button>
+									</span>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php if($block->getPagerHtml()): ?>
+				<div class="top-pager"><?php echo $block->getPagerHtml(); ?></div>
+			<?php endif; ?>
+			<div class="container">
+				<div class="row">
+					<div class="smart-carts-table">
+						<?php if($customerSmartCartsCollection && $customerSmartCartsCollection->getSize()): ?>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "title")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('title') ?>">Smart Cart Title</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "created_at")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('created_at') ?>">Date Created</a>
+										</th>
+
+										<th scope="col">
+											<a href="javascript:void(0);">
+												Recipients
+											</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "event_name")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('event_name') ?>">Event Name</a>
+										</th>
+
+										<?php
+											$ascDescClass = "";
+											if((!empty($sortingParams)) && $sortingParams["sortby"] == "event_date")
+												$ascDescClass = strtolower($sortingParams["dir"]);
+										?>
+										<th scope="col" class="<?php echo $ascDescClass ?>">
+											<a href="<?php echo $block->getSortUrl('event_date') ?>">Event Date</a>
+										</th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($customerSmartCartsCollection as $customerSmartCart) : ?>
+										<tr>
+											<td><a href="<?php echo $block->getUrl('smartcart/cartindex/smartcartdetail',array('_query'=>array('id'=>$customerSmartCart->getId()))); ?>"><?php echo $customerSmartCart->getTitle(); ?> <?php if($customerSmartCart->load($customerSmartCart->getId())->getItems()->getSize()) : ?>(<?php echo $customerSmartCart->load($customerSmartCart->getId())->getItems()->getSize().' Products'; ?>) <?php endif; ?></a></td>
+											<td><?php echo date('m-d-Y',strtotime($customerSmartCart->getCreatedAt())); ?></td>
+											<td class="left">
+												<?php if(!empty(json_decode($customerSmartCart->getRecepientData(), true))) : ?>
+													<?php foreach (json_decode($customerSmartCart->getRecepientData(), true) as $key => $customerSmartCartsRecipient) : ?>
+														<?php
+															$faCalass = "fa fa-envelope";
+															if(isset($customerSmartCartsRecipient['mailopened']) && $customerSmartCartsRecipient['mailopened'] == 1)
+																$faCalass = "fa fa-envelope-open";
+														?>
+														<p><i class="<?php echo $faCalass ?>" aria-hidden="true"></i><?php echo $customerSmartCartsRecipient['name']; ?>,</p>
+														<p><i class="<?php echo $faCalass ?>" aria-hidden="true"></i><?php echo $key; ?><br></p>
+													<?php endforeach; ?>
+												<?php else : ?>
+													<a href="javascript:void(0)" id="edit_cart_info" class="<?php echo $customerSmartCart->getId(); ?>">Add Recipients</a>
+												<?php endif; ?>
+											</td>
+											<td><?php echo $customerSmartCart->getEventName(); ?></td>
+											<td><?php echo $customerSmartCart->getEventDate() && $customerSmartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($customerSmartCart->getEventDate())) : '' ; ?></td>
+											<td>
+												<ul>
+													<li>
+														<a href="javascript:void(0)" class="send-mail" id="<?php echo $customerSmartCart->getId()?>" title="Share Smart Cart"><i class="fa fa-paper-plane" aria-hidden="true"></a></i>
+													</li>
+													<li>
+														<a href="<?php echo $block->getUrl('smartcart/cartindex/duplicatecart',array('_query'=>array('id'=>$customerSmartCart->getId()))); ?>" title="Duplicate Smart Cart"><i class="fa fa-clone" aria-hidden="true"></i></a>
+													</li>
+													<li>
+														<a class="add-more-pro" id="<?php echo $customerSmartCart->getId() ?>" href="javascript:void(0)" title="Start Adding Product"><i class="fa fa-plus" aria-hidden="true"></i></a>
+													</li>
+													<li>
+														<a class="sc_delete" href="<?php echo $block->getUrl('smartcart/cartindex/delete',array('_query'=>array('id'=>$customerSmartCart->getId(),'smartcart'=>'smartcart'))); ?>" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+													</li>
+												</ul>
+											</td>
+										</tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						<?php else: ?>
+							<div class="message info empty">
+					            <span><?php echo __('There are no smart carts yet.'); ?></span>
+					        </div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+			<?php if($block->getPagerHtml()): ?>
+				<div class="bottom-pager"><?php echo $block->getPagerHtml(); ?></div>
+			<?php endif; ?>
+		</div>
+
+		</section>
+	<?php else : ?>
+		<?php 	
+			$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+			$redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+			$redirect->setRedirect('/customer/account');
+			return $redirect;
+		?>
+	<?php endif; ?>
+<?php else : ?>
+  <?php $block->redirectIfNotLoggedIn(); ?>
+<?php endif; ?>

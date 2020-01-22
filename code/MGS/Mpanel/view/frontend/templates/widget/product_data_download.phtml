@@ -1,0 +1,99 @@
+<div class="product-data-download-custom-container">
+  <?php echo $this->getLayout()->createBlock("Godogi\Faq\Block\Faq")->setTemplate("Godogi_Faq::search_form.phtml")->toHtml();?>
+</div>
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+$jsonData = "";
+
+if ($this->hasData('product_data_download')) {
+  $jsonData = base64_decode($this->getData('product_data_download'));
+  $page_data = json_decode($jsonData);
+  $total = (array)$page_data;
+  $i = 1;
+  $usefulTools = json_decode($page_data->toolsJson);
+
+}
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baurl = $storeManager->getStore()->getBaseUrl();
+
+
+$cmsPage = $objectManager->get('\Magento\Cms\Model\Page');
+
+$page_handle =  $cmsPage->getIdentifier(); //Current CMS Page Identifier
+
+?>
+<div class="main-top-title pdp-data-download">
+  <div class="breadcrumbs width-5">
+    <div class="container">
+      <ul class="items">
+        <li class="item home">
+          <a href="<?php echo $baurl; ?>" title="Go to Home Page">Home</a>
+        </li>
+        <li class="item promostandards">
+          <a href="<?php echo $baurl; ?>tools-landing" title="PromoStandards">Tools</a>
+        </li>
+        <li style="color:#009ad7;" class="item video-library">Product Data Downloads</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="promo-standards-topic">
+    <h2 class="customer-name-title"><?php echo strtoupper($page_data->title) ?></h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <nav class="nav-sidebar">
+        <ul class="nav tabs" data-current-page="<?=$page_handle?>">
+          <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('helpcenter_left_nav')->toHtml(); ?>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-sm-9">
+     <div class="pdp-data-details">
+       <p>Click below to download our website product data which includes detailed product information:</p>
+     </div>
+     <div class="pdp-main-data-download">
+      <div class="row mockup-list">
+        <?php foreach ($usefulTools as $data): ?>
+          <div class="product_data_download">
+            <a href="<?php echo $data->drinkUrl ?>" download target="_blank">
+              <img class="download-data" src="<?php echo $data->drinkImage ?>">
+              <h3><?php echo $data->drinkTitle ?></h3>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  require([
+    'jquery',
+    ], function($){
+      $(document).ready(function() {
+          var curerntPage = '<?=$page_handle?>';
+          $('.nav.tabs li').removeClass('active');
+          $('.donloadall').addClass('active');
+
+          var customContainer = $('.product-data-download-custom-container .container-fluide').clone();
+          customContainer.addClass('injected');
+          var parent = jQuery("#maincontent .column.main > div > .container");
+          parent.before(customContainer);
+          $('.product-data-download-custom-container .container-fluide:not(.injected)').remove();          
+      });
+    });
+  </script>
+  <style type="text/css">
+    .main-top-title {
+      display: none;
+      position: relative;
+    }
+  </style>

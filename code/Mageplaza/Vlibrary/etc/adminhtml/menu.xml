@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Vlibrary
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_Vlibrary::vlibrary" title="Video Library" module="Mageplaza_Vlibrary" sortOrder="110" resource="Mageplaza_Vlibrary::vlibrary" parent="Magento_Backend::content"/>
+        <add id="Mageplaza_Vlibrary::post" title="Manage Video Library" module="Mageplaza_Vlibrary" sortOrder="10" action="mageplaza_vlibrary/post" resource="Mageplaza_Vlibrary::post" parent="Mageplaza_Vlibrary::vlibrary"/>
+       <!--  <add id="Mageplaza_Vlibrary::tag" title="Manage Tags" module="Mageplaza_Vlibrary" sortOrder="20" action="mageplaza_vlibrary/tag" resource="Mageplaza_Vlibrary::tag" parent="Mageplaza_Vlibrary::vlibrary"/> -->
+        <add id="Mageplaza_Vlibrary::topic" title="Manage Imprint Method" module="Mageplaza_Vlibrary" sortOrder="30" action="mageplaza_vlibrary/topic" resource="Mageplaza_Vlibrary::topic" parent="Mageplaza_Vlibrary::vlibrary"/>
+        <add id="Mageplaza_Vlibrary::category" title="Manage Categories" module="Mageplaza_Vlibrary" sortOrder="40" action="mageplaza_vlibrary/category" resource="Mageplaza_Vlibrary::category" parent="Mageplaza_Vlibrary::vlibrary"/>
+        <!-- <add id="Mageplaza_Vlibrary::author" title="Author Information" module="Mageplaza_Vlibrary" sortOrder="50" action="mageplaza_vlibrary/author/edit" resource="Mageplaza_Vlibrary::author" parent="Mageplaza_Vlibrary::vlibrary"/>
+        <add id="Mageplaza_Vlibrary::comment" title="Manage Comments" module="Mageplaza_Vlibrary" sortOrder="60" action="mageplaza_vlibrary/comment" resource="Mageplaza_Vlibrary::comment" parent="Mageplaza_Vlibrary::vlibrary"/>
+        <add id="Mageplaza_Vlibrary::import" title="Import" module="Mageplaza_Vlibrary" sortOrder="65" action="mageplaza_vlibrary/import/edit" resource="Mageplaza_Vlibrary::import" parent="Mageplaza_Vlibrary::vlibrary"/> -->
+        <add id="Mageplaza_Vlibrary::configuration" title="Configuration" module="Mageplaza_Vlibrary" sortOrder="1000" action="adminhtml/system_config/edit/section/vlibrary" resource="Mageplaza_Vlibrary::configuration" parent="Mageplaza_Vlibrary::vlibrary"/>
+    </menu>
+</config>

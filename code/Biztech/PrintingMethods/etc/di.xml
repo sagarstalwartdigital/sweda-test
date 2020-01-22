@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Store/etc/config.xsd">
+	<!-- FOR By area size -->
+    <virtualType name="BiztechByPrintingMethodGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Biztech\PrintingMethods\Model\Mysql4\Printingmethod\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Biztech\PrintingMethods\Model\Mysql4\Printingmethod\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">productdesigner_printing_method</argument>
+			<argument name="resourceModel" xsi:type="string">Biztech\PrintingMethods\Model\Mysql4\Printingmethod</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="printingmethod_listing_data_source" xsi:type="string">Biztech\PrintingMethods\Model\Mysql4\Printingmethod\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- FOR By Color Counter -->
+    <virtualType name="BiztechByColorCounterGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Biztech\PrintingMethods\Model\ResourceModel\Colors\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Biztech\PrintingMethods\Model\ResourceModel\Colors\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">productdesigner_colors</argument>
+			<argument name="resourceModel" xsi:type="string">Biztech\PrintingMethods\Model\ResourceModel\Colors</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="colorcounter_listing_data_source" xsi:type="string">Biztech\PrintingMethods\Model\ResourceModel\Colors\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- FOR By area size -->
+    <virtualType name="BiztechByAreaSizeGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<arguments>
+			<argument name="collection" xsi:type="object" shared="false">Biztech\PrintingMethods\Model\Mysql4\Areasize\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Biztech\PrintingMethods\Model\Mysql4\Areasize\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">productdesigner_areasize</argument>
+			<argument name="resourceModel" xsi:type="string">Biztech\PrintingMethods\Model\Mysql4\Areasize</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="areasize_listing_data_source" xsi:type="string">Biztech\PrintingMethods\Model\Mysql4\Areasize\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

@@ -1,0 +1,53 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+$page_data = [];
+
+if ($this->hasData('imprintview_faqs')) {
+    $jsonData = base64_decode($this->getData('imprintview_faqs'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $imprintdata = json_decode($page_data->toolsJson);
+}
+?>
+
+<div class="container">
+    <div class="panel-group faqs-section chisel-section" id="accordion">
+        <h2><?php echo $page_data->title ?></h2>
+
+        <?php $i = 0; ?>
+        <?php foreach ($imprintdata as $data): ?>
+
+            <?php $i++; ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle <?php echo ($i==1)?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#accordion" href="#collapseOne-<?php echo $i; ?>" aria-expanded="<?php echo ($i==1)?'true':'false'; ?>">
+                            <?php echo $data->impviewfaqQues ?>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne-<?php echo $i; ?>" class="panel-collapse collapse <?php echo ($i==1)?'show':''; ?>">
+                    <div class="panel-body">
+                        <?php echo $data->impviewfaqAnswe ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?> 
+
+        <div class="faq-bottom-section">
+            <div class="see-all-faq">
+                <?php
+                    $FaqsUrl = !empty($page_data->impfaq_seealllink) ? ($page_data->impfaq_seealllink) : 'javascript:;';
+                    if (filter_var($FaqsUrl, FILTER_VALIDATE_URL)) {
+                        echo '<a href="'.$FaqsUrl.'">';
+                    } else {
+                        echo '<a href='.$themeHelper->getCurrentBaseUrl().$FaqsUrl.'>';
+                    }
+                ?>
+               <?php echo $page_data->impfaq_seeall ?></a>
+            </div>
+        </div>
+    </div>
+</div>

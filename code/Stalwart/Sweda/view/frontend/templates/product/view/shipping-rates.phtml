@@ -1,0 +1,77 @@
+<?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+<div class="shipping_rate">
+    <table class="available-rate">
+        <tbody>
+            <tr>
+                <td colspan="2" class="text-left">
+                    <h2>Available Rates:</h2>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-left">*Approx. <?php echo ceil($block->getTotalPackageForShipping()) ?> package(s) with a total weight of <?php echo $block->getTotalWeightForShipping() ?> lbs.</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-left">
+                    <?php 
+                        if (!empty($block->getProductShippingData())) {
+                            $shippingData = $block->getProductShippingData();
+                            if (!empty($shippingData['carton_length'])) {
+                                $cartonLength = $shippingData['carton_length']." 'L x ";
+                            } else {
+                                $cartonLength = '';
+                            }
+                            if (!empty($shippingData['carton_width'])) {
+                                $cartonWidth = $shippingData['carton_width']." 'W x ";
+                            } else {
+                                $cartonWidth = '';
+                            }
+                            if (!empty($shippingData['carton_height'])) {
+                                $cartonHeight = $shippingData['carton_height']." 'H";
+                            } else {
+                                $cartonHeight = '';
+                            }
+                        }
+                    ?>
+                    (Shipping Carton Dimensions : <?php echo $cartonLength.$cartonWidth.$cartonHeight ?>)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-body inventory-table inventory-table-body table-responsive">
+        <tr>
+            <th>Shipping Service</th>
+            <th>Charge (US Dollars)</th>
+        </tr>
+        <tbody id="shipping-table-body">
+            <?php foreach ($block->getRates() as $shippingRates) : ?>
+                <tr>
+                    <?php foreach ($shippingRates as $shippingName => $shippingRate) : ?>
+                        <?php if ($shippingName == 'service') : ?>
+                            <td><?php echo $shippingRate; ?></td>
+                        <?php endif; ?>
+                        <?php if ($shippingName == 'amount') : ?>
+                            <td><?php echo $priceHelper->currency($shippingRate, true, false); ?></td>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="disclaimer">
+        <h3>Disclaimer:</h3>
+        <ul>
+            <li>All charges are estimates FOB City of Industry,CA 91744</li>
+            <li>Rates shown are for estimation purposes only. Actual rates will be calculated upon order approval.</li>
+            <li>3-Day Shipping at Ground offer and Ship Saver promotions cannot be combined.</li>
+            <li>Ship Saver promotion only applies to shipments to FedEx Zones 7& 8.</li>
+            <li>Please contact your customer service representative if you have additional questions or need additional information.</li>
+            <li>Freight for shipments with a large size-to-weight ratio will be calculated based on dimensional weight, not actual weight. To learn more about dimensional weight, please visit <a href="javascript:void(0)">www.fedex.com</a>.</li>
+        </ul>
+    </div>
+    <div class="shipping-estimator-note">
+        <span>Note: This is an estimate ONLY. Actual shipping costs may be higher or lower</span>
+    </div>
+</div>

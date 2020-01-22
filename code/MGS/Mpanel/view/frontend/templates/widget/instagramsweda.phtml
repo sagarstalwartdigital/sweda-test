@@ -1,0 +1,87 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+
+<?php
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('instagramsweda')) {
+    $jsonData = base64_decode($this->getData('instagramsweda'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$viewall = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('pricetable/general/viewallproduct');
+$pricetitle = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('pricetable/general/pricetitle');
+
+$Id = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('instagramsetting/general/userid');
+$Token = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('instagramsetting/general/accesstoken');
+?>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+        ], function ($) 
+        {
+            var total_image_limit=<?php echo $page_data->limit_images; ?>;
+            var fetchCounter=0;
+            var pagination_limit=2;
+            var phpTagString = "<?php echo $page_data->instagram_images_tags; ?>";
+            var search_tags = phpTagString.split(',');
+            console.log(search_tags);
+            var found_images = [];
+            var Image_HTMl='';
+            var userFeed = new Instafeed({
+                get: 'user',
+                userId:'<?php echo $Id; ?>',
+                accessToken:'<?php echo $Token; ?>',
+                mock:true,  
+                resolution: 'standard_resolution',
+                template: '<a href="{{link}}" target="_blank" id="{{id}}"><img src="{{image}}" /></a>',
+                sortBy: 'most-recent',
+                limit:100,
+                links: true,
+                img_len: 4,
+                success:function(res){
+                    fetchCounter = fetchCounter +1;
+
+                    res.data.forEach(function(ele) {
+                      var img_tag = ele.tags;
+
+                      img_tag.forEach(function(tag_ele){
+                        search_tags.forEach(function(find_tag) {
+                          if(find_tag.toLowerCase()==tag_ele){
+                            found_images.push(ele);                            
+                        }
+                    });
+                    });
+                  });
+                },
+                after:function(){
+                    if(fetchCounter<=pagination_limit){
+                        if(userFeed.hasNext()){
+                            userFeed.next();
+                        }
+                    }
+                    else{
+                      found_images.forEach(function(img,index){
+                        if(index<total_image_limit){
+                          var getDate =new Date (img.created_time * 1000).toLocaleDateString();
+                          Image_HTMl +='<div class="col-lg-3 col-md-4 col-xs-6 p-0 gets-inspired"> <a class="thumbnail" href="'+img.link+'" data-image-id="'+img.id+'" target="_blank" data-date="'+getDate+'" data-tags="'+img.tags.toString()+'" data-title="'+img.caption.text+'" data-image=""> <img src="'+img.images.standard_resolution.url+'" alt=""> <div class="img-hover-effact"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> </div></a> </div>';
+                      }
+                  })
+                      document.getElementById("instafeed").innerHTML = Image_HTMl;
+                  }
+              }
+          });
+            userFeed.run();
+        });
+    </script>
+
+    <div class="container-fluid">
+      <div class="gets-inspired-title">
+          <h2><?php echo strtoupper($page_data->title) ?></h2>
+          <?php echo html_entity_decode($page_data->description) ?>
+      </div>
+      <div class="row" id="instafeed"></div>
+  </div>

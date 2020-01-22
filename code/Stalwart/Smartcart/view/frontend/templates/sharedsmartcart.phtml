@@ -1,0 +1,157 @@
+<?php /** @var Stalwart\SmartCart\Block\SmartCartDetail $block */ ?>
+<?php $smartCart = $block->getSmartCart(); ?>
+<?php if($smartCart) : ?>
+<section id="maincontent" class="page-main container smart_cart_detail_item">
+  <div class="row">
+    <div class="column main col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="moxy-cart-title smt-cart">
+                <div class="moxy-smart-card-top-title">
+                   <h2><?php echo $smartCart->getTitle(); ?></h2>
+                   <p><?php echo $block->getSenderName() ?> has shared a smart cart with you!</p>
+                </div>
+                <?php if (!empty($smartCart->getEventName())) : ?>
+              		<p><strong>Event Name : </strong> <?php echo $smartCart->getEventName() ?></p>
+              	<?php endif; ?>
+              	<?php if ($smartCart->getEventDate() !== NULL) : ?>
+              		<p><strong>Event Date : </strong> <?php echo $smartCart->getEventDate() && $smartCart->getEventDate() !== NULL? date('m-d-Y',strtotime($smartCart->getEventDate())) : '' ; ?></p>
+              	<?php endif; ?>
+              <p><?php echo $smartCart->getDescription(); ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+      <?php if($smartCart->getItems() && $smartCart->getItems()->getSize()) : ?>
+        <?php
+          $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+          $productListObj = $objectManager->create('Magento\CatalogWidget\Block\Product\ProductsList');
+          $imageHelper = $objectManager->get('\Magento\Catalog\Helper\Image');
+        ?>
+        <?php foreach($smartCart->getItems() as $item) : ?>
+          <?php 
+            $smartcartsimplepro = json_decode($item->getOptions(), true);
+            $simple_product_id = $smartcartsimplepro['simple_product_id'];
+          ?>
+          <?php $_product = $block->getProductById($simple_product_id); ?>
+          <?php $_productconfigurable = $item->getProduct(); ?>
+
+            <div class="moxy-product-section smartcart-product-wrapper product-item smt-cart-main-box" id="<?php echo $_productconfigurable->getId() ?>">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="left-img-section">
+                    <?php
+                        $imageUrl = $imageHelper->init($_product, 'image')
+                          ->setImageFile($_product->getImage()) // image,small_image,thumbnail
+                          ->getUrl();
+                        $imageUrl = str_replace("/.jpg", "/image.jpg", $imageUrl);
+                    ?>
+                    <img src="<?php echo $imageUrl; ?>" class="smartcart-item-pimage" id="image-<?php echo $item->getId() ?>">
+                    <?php
+                      if(false)
+                      {
+                        echo $this->getLayout()->createBlock('MGS\ExtraGallery\Block\Product\View\Gallery')
+                            ->setProduct($_productconfigurable)
+                            ->setGalleryId($item->getId())
+                            ->setTemplate('MGS_ExtraGallery::gallery/gallery_4.phtml')
+                            ->toHtml();
+                      }
+                    ?>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="moxy-Products-title">
+                    <h2><?php echo $_productconfigurable->getName(); ?></h2>
+                    <!-- <?php //echo $productListObj->getProductPriceHtml($_productconfigurable); ?> -->
+                    <div class="pro-long-desc-moxy-cart"><p><?php echo $_product->getDescription(); ?></p></div>
+                  </div>
+                  <?php
+                      $eavModel = $objectManager->create('Magento\Catalog\Model\ResourceModel\Eav\Attribute');
+                      $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+
+                      foreach (json_decode($item->getOptions(), true) as $optionsLabel => $options) {
+                        if ($optionsLabel == 'simple_product_id') {
+                            $product = $objectManager->create('Magento\Catalog\Model\Product')->load($options);
+                        }
+                      }
+                      $paroductSku = $product->getSku();
+                  ?>
+                  <?php foreach (json_decode($item->getOptions(), true) as $optionsLabel => $options) : ?>
+                    <?php if ($optionsLabel == 'options') : ?>
+                      <?php foreach ($options as $key => $value) : ?>
+                        <?php 
+                          $swatchAttribs = $objectManager->get('Magento\Swatches\Helper\Data')->getSwatchesByOptionsId(array($value));
+                          $attr = $eavModel->load($key);
+                          $attrCode = $attr->getAttributeCode();
+                          $attribute_label = $product->getResource()->getAttribute($attrCode)->getFrontend()->getValue($product);
+
+                        ?>
+                        <div class="product-options-wrapper">
+                          <?php if ($attrCode == 'color') : ?>
+                            <div class="color-opt">
+                              <label class="label">
+                                <span>Color</span>
+                              </label>
+                              <div class="">
+                                <?php foreach ($swatchAttribs as $swatchesvalues) : ?>
+                                  <?php if(strpos($swatchesvalues['value'], '/') !== false) : ?>
+                                    <?php 
+                                      $imagePath=$objectManager->create('Magento\Swatches\Helper\Media')->getSwatchMediaUrl();
+                                    ?>
+                                    <span style="display: inline-block;width: 20px;height: 20px;background-image:url(<?php echo $imagePath.'/swatch_image/30x20'.$swatchesvalues['value'] ?>); background-repeat: no-repeat;  " class="color-swatch"></span>
+                                  <?php else : ?>
+                                    <span style="display: inline-block;width: 20px;height: 20px;background-color:<?php echo $swatchesvalues['value']; ?> " class="color-swatch"></span>
+                                  <?php endif; ?>
+                                  <?php echo $attribute_label.'-'.$paroductSku ?>
+                                <?php endforeach; ?>  
+                              </div>
+                            </div>
+                          <?php endif; ?>
+                          <?php if ($attrCode == 'size') : ?>
+                            <div class="color-opt">
+                              <label class="label">
+                                <span>Size</span>
+                              </label>
+                              <div class="">
+                                <?php echo $attribute_label ?>
+                              </div>
+                            </div>
+                          <?php endif; ?>
+                        </div>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                  <div class="product-add-form moxy-form-section">
+                    <div class="">
+                      <div class="comment-box">
+                        <form id="usecomments" method="post">
+                          <label>Comments / Notes</label>
+                          <p><?php echo $item->getUsercomments() && $item->getUsercomments() !== NULL ? trim($item->getUsercomments()) : '' ; ?></p>
+                        </form>
+                      </div>
+                      <div class="moxy-pdp-bottom-link">
+                        <a href="<?php echo $_productconfigurable->getProductUrl() ?>">View Product Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <?php endforeach; ?>
+        <?php else : ?>
+        <div class="message info empty">
+            <span><?php echo __('There are no products yet.'); ?></span>
+        </div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</section>
+<?php else : ?>
+  <div class="message info empty">
+      <span><?php echo __('Shared cart does not exist.'); ?></span>
+  </div>
+<?php endif; ?>
+

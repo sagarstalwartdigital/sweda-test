@@ -1,0 +1,146 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('imprint-methods')) {
+
+    $jsonData = base64_decode($this->getData('imprint-methods'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+    $i = 1;
+    $imprintMethods = json_decode($page_data->methodsJson);
+}
+$type= 'imprint-methods';
+?>
+
+
+<div class="desktop-only">
+    <div class="feacture-section">
+        <h2 class="main-title"><?php echo strtoupper($page_data->title) ?></h2>
+    </div>
+    <div class="row imprint-flex">
+        <?php $i = 0; ?>
+        <?php foreach ($imprintMethods as $method): ?>
+            <?php $i = $i + 1; ?>
+            <div class="col-sm-4">
+                <?php
+                    $ImprintUrl = !empty($method->backgroundItem) ? ($method->backgroundItem) : 'javascript:;';
+                    if (filter_var($ImprintUrl, FILTER_VALIDATE_URL)) {
+                        echo '<a href="'.$ImprintUrl.'">';
+                    } else {
+                        echo '<a href='.$themeHelper->getCurrentBaseUrl().$ImprintUrl.'>';
+                    }
+                ?>
+                    <div class="feacture-img">
+                        <?php
+                            $imprintImage = $themeHelper->getImageName($method->imprintImage);
+                            $imprintImageFinal = $themeHelper->getWysiwygMediaUrl($type,$imprintImage);
+                        ?>
+                        <img class="imprint-method-img-<?=$i?> my-paroller" data-orientation="up"  src="<?php echo $imprintImageFinal;  ?>"  data-paroller-factor="0.3" data-paroller-type="foreground" data-paroller-direction="horizontal">
+                    </div>
+                    <div class="feacture-text">
+                        <h3><?php echo strtoupper($method->imprintTitle) ?></h3>
+                        <p><?php echo $method->imprintDescription ?></p>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div class="feacture-view-all">
+    <?php
+     $linkFinal = !empty($page_data->linkUrl) ? ($page_data->linkUrl) : 'javascript:;';
+     if (filter_var($linkFinal, FILTER_VALIDATE_URL)) {
+         echo '<a href="'.$linkFinal.'">'.strtoupper($page_data->linkText).'</a>';
+     } else {
+         echo '<a href='.$themeHelper->getCurrentBaseUrl().$linkFinal.'>'.strtoupper($page_data->linkText).' </a>';
+     }
+    ?></div>
+</div>
+
+<!------ mobile-over-feacture-section --------->
+<div class="container">
+    <div class="mobile-only">
+        <div class="feacture-section">
+            <h2 class="main-title"><?php echo strtoupper($page_data->title) ?></h2>
+        </div>
+        <section class="feacture-part">            
+            <?php foreach ($imprintMethods as $method): ?>
+                <div class="slide1">
+                    <div class="col-sm-4 p-0 imprint-method">
+                        <?php
+                            $ImprintUrl = !empty($method->backgroundItem) ? ($method->backgroundItem) : 'javascript:;';
+                            if (filter_var($ImprintUrl, FILTER_VALIDATE_URL)) {
+                                echo '<a href="'.$ImprintUrl.'">';
+                            } else {
+                                echo '<a href='.$themeHelper->getCurrentBaseUrl().$ImprintUrl.'>';
+                            }
+                        ?>
+                        <?php
+                        $imprintImage = $themeHelper->getImageName($method->imprintImage);
+                        $imprintImageFinal = $themeHelper->getWysiwygMediaUrl($type,$imprintImage);
+                         ?>
+                            <div class="feacture-img">
+                                <img src="<?php echo $imprintImageFinal; ?>">
+                            </div>
+                            <div class="feacture-text">
+                                <h3><?php echo strtoupper($method->imprintTitle) ?></h3>
+                                <p><?php echo $method->imprintDescription ?></p>
+                            </div>
+                        </a>    
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </section>
+         <div class="feacture-view-all">
+            <?php
+                $AllUrl = !empty($page_data->linkUrl) ? ($page_data->linkUrl) : 'javascript:;';
+                if (filter_var($AllUrl, FILTER_VALIDATE_URL)) {
+                    echo '<a href="'.$AllUrl.'">';
+                } else {
+                    echo '<a href='.$themeHelper->getCurrentBaseUrl().$AllUrl.'>';
+                }
+            ?>          
+               <?php echo strtoupper($page_data->linkText) ?>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mustache',
+        'lodash',
+        'mgs/slick'
+    ], function ($, Mustache, _, slick) {
+
+        $(document).ready(function () {
+            // $('.feacture-part').slick({
+            $('.feacture-part').not('.slick-initialized').slick({    
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false,
+                dots: false,
+
+                initialSlide: 0,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }]
+            });
+        });
+    });
+
+</script>

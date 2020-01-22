@@ -1,0 +1,148 @@
+<install>
+	<static_block>
+		<item>
+			<title>Header Subscribe</title>
+			<identifier>header_subscribe</identifier>
+			<content><![CDATA[<div class="header_subscribe">
+<h6>GET 20% OFF</h6>
+<p>By subscribing to our newsletter</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_header.phtml"}}</div>]]></content>
+		</item>
+        <item>
+			<title>Contact Info</title>
+			<identifier>contact_info</identifier>
+			<content><![CDATA[<div  class="contact_info">
+<h3>No. 342 - London Oxford Street, 012 United Kingdom.</h3>
+<ul>
+<li><span>Email: </span><a href="mailto:contact@company.com">contact@company.com</a></li>
+<li><span>Phone: </span><a href="tel:+0012233456">+(034) 334 55634</a></li>
+</ul>
+</div>]]></content>
+		</item>	
+        <item>
+			<title>Contact Image</title>
+			<identifier>contact_image</identifier>
+			<content><![CDATA[<div class="contact_image">
+<div class="abs-title">
+                <span>Connect Width Us</span>
+                <strong class="h1">Contact Us</strong>
+            </div>
+<img src="{{media url="wysiwyg/contact.jpg"}}" alt="" width="775" height="980" />
+</div>]]></content>
+		</item>	
+        <item>
+			<title>Custom Tab</title>
+			<identifier>custom_tab</identifier>
+			<content><![CDATA[<div class="text-center"><img src="./pub/media/wysiwyg/care-icon.png" alt="" />
+<p class="margin-top20">LT01: 70% wool, 15% polyester, 10% polyamide, 5% acrylic 900 Grms/mt</p></div>]]></content>
+		</item>	
+        <item>
+			<title>Contact Us Image</title>
+			<identifier>contact-us-image</identifier>
+			<content><![CDATA[<p><img class="img-fluid" src="{{media url="wysiwyg/contact-image.jpg"}}" alt="" /></p>
+<div class="welcome-contact">
+<p>Connect with us</p>
+<p class="h1">Contact Us</p>
+</div>]]></content>
+		</item>
+        <item>
+			<title>Footer Links 2</title>
+			<identifier>footer_links_2</identifier>
+			<content><![CDATA[<ul class="list_block">
+<li><a href="#">About Us</a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Term &amp; Conditions</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>]]></content>
+		</item>		
+		<item>
+			<title>Footer Info</title>
+			<identifier>footer_info</identifier>
+			<content><![CDATA[<ul class="footer_info">
+<li>184 Main Rd E, St Albans <br>VIC 3021, Australia</li>
+<li><a href="mailto:contact@company.com">contact@company.com</a></li>
+<li><a href="tel:+0012233456">+001 2233 456</a></li>
+</ul>]]></content>
+		</item>
+		<item>
+			<title>Footer Subscribe</title>
+			<identifier>footer_subscribe</identifier>
+			<content><![CDATA[<div class="header_subscribe footer_subscribe">
+<h6>GET 20% OFF</h6>
+<p>By subscribing to our newsletter</p>
+{{block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="Magento_Newsletter::subscribe_footer.phtml"}}</div>]]></content>
+		</item>
+		<item>
+			<title>Footer Links</title>
+			<identifier>footer_links</identifier>
+			<content><![CDATA[<ul class="list_block">
+<li><a href="#">About Us</a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Term &amp; Conditions</a></li>
+<li><a href="#">Contact Us</a></li>
+<li><a href="#">Help</a></li>
+</ul>]]></content>
+		</item>
+        <item>
+			<title>Footer Follow</title>
+			<identifier>footer_follow</identifier>
+			<content><![CDATA[<div class="footer_follow"><strong>Follow Us On Social</strong>
+<ul class="social-links">
+<li><a href="#" target="_self"> <i class="fa fa-facebook"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-instagram"></i></a></li>
+<li><a href="#" target="_self"><i class="fa fa-google-plus"></i></a></li>
+</ul>
+</div>]]></content>
+		</item>
+		<item>
+			<title>Footer Logo</title>
+			<identifier>footer_logo</identifier>
+			<content><![CDATA[<p><img src="{{media url="wysiwyg/logo.png"}}" alt="" /></p>]]></content>
+		</item>
+		<item>
+			<title>Sticky Catalog</title>
+			<identifier>sticky_catalog</identifier>
+			<content><![CDATA[<div class="sticky_catalog">
+<h3>Catalog<span class="line"></span><span class="sticky-catalog-close ti-close"></span></h3>
+<ul class="row">
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon1.png"}}" alt="alt" /></span> <span>Sofas</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon5.png"}}" alt="alt" /></span> <span>Chairs</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon3.png"}}" alt="alt" /></span> <span>Beds</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon4.png"}}" alt="alt" /></span> <span>Tables</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon5.png"}}" alt="alt" /></span> <span>Bookshelf</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon6.png"}}" alt="alt" /></span> <span>Lamps</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon7.png"}}" alt="alt" /></span> <span>Bathrooms</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon8.png"}}" alt="alt" /></span> <span>Wardrobe</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon9.png"}}" alt="alt" /></span> <span>Accessories</span></a></li>
+<li class="col-6"><a href="#"> <span class="image"><img src="{{media url="wysiwyg/icon6.png"}}" alt="alt" /></span> <span>All catalog</span></a></li>
+</ul>
+</div>]]></content>
+		</item>
+		
+    </static_block>
+    
+	<theme_setting>
+		<general>
+			<width>width1200</width>
+			<layout>wide</layout>
+			<header>header_1</header>
+			<footer>footer_1</footer>
+			<sticky_menu>1</sticky_menu>
+			<back_to_top>1</back_to_top>
+		</general>
+		<fonts>
+			<default_font><![CDATA[Lato]]></default_font>
+			<h1><![CDATA[Montserrat]]></h1>
+			<h2><![CDATA[Montserrat]]></h2>
+			<h3><![CDATA[Montserrat]]></h3>
+			<h4><![CDATA[Montserrat]]></h4>
+			<h5><![CDATA[Montserrat]]></h5>
+			<h6><![CDATA[Montserrat]]></h6>
+			<price><![CDATA[Lato]]></price>
+			<menu><![CDATA[Lato]]></menu>
+			<menu_level0><![CDATA[Montserrat]]></menu_level0>
+			<btn><![CDATA[Montserrat]]></btn>
+		</fonts>
+	</theme_setting>
+</install>

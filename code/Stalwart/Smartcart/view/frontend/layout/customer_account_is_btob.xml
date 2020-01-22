@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="customer_account_navigation">
+			<block class="Magento\Framework\View\Element\Html\Link\Current" name="your-smart-carts" after="your-order-tracking">
+				<arguments>
+					<argument name="path" xsi:type="string">smartcart/cartindex/smartcartfront</argument>
+					<argument name="label" xsi:type="string">Your Smart Carts</argument>
+					<argument name="sortOrder" xsi:type="number">70</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+	</body>
+</page>

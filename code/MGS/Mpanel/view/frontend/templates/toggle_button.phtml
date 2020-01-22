@@ -1,0 +1,22 @@
+<h3 class="title-topabs visible-xs"><?php echo __('Sidebar'); ?><i class="pe-7s-close nav-close"></i></h3>
+<button class="visible-xs sidebar-reponsive-btn btn-left" type="button"><span class="icon pe-7s-edit"></span></button>
+
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function(jQuery){
+		(function($) {
+            $(document).ready(function() {
+               /* Merge 2 columns right and left to one sidebar */
+               $('.page-layout-3columns .sidebar-additional').clone().removeClass('col-lg-3 col-md-3 col-sm-3 col-xs-12').addClass('visible-xs').appendTo('.sidebar-main');
+               /* Toggle sidebar */
+               $('.sidebar-reponsive-btn').click(function(){
+                   $('body').addClass('enable-sidebar');
+               });
+               $('.title-topabs .nav-close').click(function(){
+                   $('body').removeClass('enable-sidebar');
+               });
+            });
+		})(jQuery);
+	});
+</script>

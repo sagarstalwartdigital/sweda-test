@@ -1,0 +1,315 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getRequest()->getParams() ?>
+<div class="edit-static-form">
+
+    <div class="row">
+        <div class="col-md-12 builder-title">
+            <h2><?php echo __('Select Block') ?></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bs-glyphicons">
+                <ul class="bs-glyphicons-list" id="list-item">
+                    <li id="static-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'static']) ?>')">
+                        <span class="fa fas fa-text-width"></span>
+                        <span class="glyphicon-class"><?php echo __('Text content & Images') ?></span>
+                    </li>
+
+                    <li id="owl-banner-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'owl_banner']) ?>')">
+                        <span class="fa fa-picture-o"></span>
+                        <span class="glyphicon-class"><?php echo __('OWL Carousel Slider') ?></span>
+                    </li>
+
+                    <li id="new-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'new_products']) ?>')">
+                        <span class="fa fa-fire"></span>
+                        <span class="glyphicon-class"><?php echo __('New Products') ?></span>
+                    </li>
+
+                    <li id="attribute-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'attribute_products']) ?>')">
+                        <span class="fa fas fa-flag"></span>
+                        <span class="glyphicon-class"><?php echo __('Products by Attribute') ?></span>
+                    </li>
+
+                    <li id="sale-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'sale']) ?>')">
+                        <span class="fa fas fa-certificate"></span>
+                        <span class="glyphicon-class"><?php echo __('Sale Products') ?></span>
+                    </li>
+
+                    <li id="rate-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'rate']) ?>')">
+                        <span class="fa fas fa-star"></span>
+                        <span class="glyphicon-class"><?php echo __('Top Rate Products') ?></span>
+                    </li>
+
+                    <li id="category-product"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'category_products']) ?>')">
+                        <span class="fa fas fa-align-center"></span>
+                        <span class="glyphicon-class"><?php echo __('Category Products') ?></span>
+                    </li>
+
+                    <li id="deals-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'deals']) ?>')">
+                        <span class="fa fas fa-tag"></span>
+                        <span class="glyphicon-class"><?php echo __('Deals') ?></span>
+                    </li>
+
+                    <li id="tabs-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'tabs']) ?>')">
+                        <span class="fa fas fa-tasks"></span>
+                        <span class="glyphicon-class"><?php echo __('Product Tabs') ?></span>
+                    </li>
+
+                    <li id="special_product"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'special_product']) ?>')">
+                        <span class="fa fas fa-qrcode"></span>
+                        <span class="glyphicon-class"><?php echo __('Single Product') ?></span>
+                    </li>
+
+                    <li id="brands-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'brands']) ?>')">
+                        <span class="fa fas fa-th"></span>
+                        <span class="glyphicon-class"><?php echo __('Featured Brands') ?></span>
+                    </li>
+
+                    <li id="megamenu-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'megamenu']) ?>')">
+                        <span class="fa fas fa-bars"></span>
+                        <span class="glyphicon-class"><?php echo __('Megamenu') ?></span>
+                    </li>
+
+                    <li id="banner-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'promo_banner']) ?>')">
+                        <span class="fa fa-picture-o"></span>
+                        <span class="glyphicon-class"><?php echo __('Promo Banner') ?></span>
+                    </li>
+
+                    <li id="post-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'latest_posts']) ?>')">
+                        <span class="fa fas fa-comment"></span>
+                        <span class="glyphicon-class"><?php echo __('Latest Post') ?></span>
+                    </li>
+
+                    <li id="testimonial-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'testimonial']) ?>')">
+                        <span class="fa fa-quote-right"></span>
+                        <span class="glyphicon-class"><?php echo __('Testimonial') ?></span>
+                    </li>
+
+
+                    <li id="portfolio"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'portfolio']) ?>')">
+                        <span class="fa fas fa-folder-open"></span>
+                        <span class="glyphicon-class"><?php echo __('Portfolio') ?></span>
+                    </li>
+
+                    <li id="facebook-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'facebook']) ?>')">
+                        <span class="fa fa-facebook-square"></span>
+                        <span class="glyphicon-class"><?php echo __('Facebook Like Box') ?></span>
+                    </li>
+
+                    <li id="twitter-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'twitter']) ?>')">
+                        <span class="fa fa-twitter-square"></span>
+                        <span class="glyphicon-class"><?php echo __('Twitter Feed') ?></span>
+                    </li>
+
+                    <!-- <li id="instagram-item"
+                        onclick="setLocation('<?php //echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'instagram']) ?>')">
+                        <span class="fa fa-instagram"></span>
+                        <span class="glyphicon-class"><?php //echo __('Instagram') ?></span>
+                    </li> -->
+
+                    <li id="lookbook-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'lookbook']) ?>')">
+                        <span class="fa fas fa-plus-circle"></span>
+                        <span class="glyphicon-class"><?php echo __('Lookbook') ?></span>
+                    </li>
+
+                    <li id="lookbook-slider-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'lookbook_slider']) ?>')">
+                        <span class="fa fa-picture-o"></span>
+                        <span class="glyphicon-class"><?php echo __('Lookbook Slider') ?></span>
+                    </li>
+
+                    <li id="snapppt-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'snapppt']) ?>')">
+                        <span class="fa fa-instagram"></span>
+                        <span class="glyphicon-class"><?php echo __('Snapppt Shop') ?></span>
+                    </li>
+
+                    <li id="start-project-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'start-project']) ?>')">
+                        <span class="fa fa-calendar"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Start Project') ?></span>
+                    </li>
+
+                    <li id="useful-tools-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'useful-tools']) ?>')">
+                        <span class="fa fa-cogs"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Useful Tools') ?></span>
+                    </li>
+
+                    <li id="imprint-methods-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprint-methods']) ?>')">
+                        <span class="fa fa-paint-brush"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods') ?></span>
+                    </li>
+
+                    <li id="ship-saver-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'ship-saver']) ?>')">
+                        <span class="fa fa-truck"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Ship Saver') ?></span>
+                    </li>
+
+                    <li id="newsletter-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'newsletter']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Newsletter Subscription') ?></span>
+                    </li>
+
+                    <li id="newsletter-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'aboutus']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - About Us') ?></span>
+                    </li>
+
+                    <li id="imprint_section_one-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprint_section_one']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Section Top') ?></span>
+                    </li>
+
+                    <li id="imprint_list-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprint_list']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods List') ?></span>
+                    </li>
+
+                    <li id="imprint_list-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprintlist_view']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods Details Section Top') ?></span>
+                    </li>
+
+                    <li id="imprint_list-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprintlist_view_tag']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods View Section Tag') ?></span>
+                    </li>
+
+                    <li id="imprintview_gallery-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprintview_gallery']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods View Section Gallery') ?></span>
+                    </li>
+                    <li id="imprintview_faqs -item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprintview_faqs']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Methods View Section Faq') ?></span>
+                    </li>
+
+                    <?php /* <li id="imprintview_faqs -item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'drinkware']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Drinkware') ?></span>
+                    </li> */ ?>
+
+                    <li id="drinkware -item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'edit_page_drinkware']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Drinkware') ?></span>
+                    </li>
+
+                    <li id="imprint_project -item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'imprint_project']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Imprint Project') ?></span>
+                    </li>
+                    <li id="customer_service -item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'customer_service']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Customer Service') ?></span>
+                    </li>
+                    <li id="yourtoolbox-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'yourtoolbox']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Your Tool Box') ?></span>
+                    </li>
+                    <li id="virtual_mock_up_tool-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'virtual_mock_up_tool']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Virtual Mock Up Tool') ?></span>
+                    </li>
+                    <li id="virtual_mock_up_useful_tools-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'virtual_mock_up_useful_tools']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Virtual Mock Up Useful Tools') ?></span>
+                    </li>
+                    <li id="privacy-policy-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'privacy-policy']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Content Page') ?></span>
+                    </li>
+                    <li id="price_table-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'price_table']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Price Table') ?></span>
+                    </li>
+                    <li id="price_table-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'product_data_download']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Product Data Download') ?></span>
+                    </li>
+                    <li id="pet_products_k9s_for_warriors-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'pet_products_k9s_for_warriors']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Pet Products + K9s For Warriors') ?></span>
+                    </li>
+                    <li id="basecamp_the_warrior_spirit_retreat-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'basecamp_the_warrior_spirit_retreat']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Basecamp® + The Warrior Spirit Retreat') ?></span>
+                    </li>
+                    <li id="pattern_gallery-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'pattern_gallery']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Pattern Gallery') ?></span>
+                    </li>
+                    <li id="document_library-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'document_library']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Document Library') ?></span>
+                    </li>
+                    <li id="pattern_gallery_landing_page-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'pattern_gallery_landing_page']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Pattern Gallery ') ?></span>
+                    </li>
+                    <li id="apparel_terms-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'apparel_terms']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Apparel Terms ') ?></span>
+                    </li>
+                    <li id="video_library-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'video_library']) ?>')">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="glyphicon-class"><?php echo __('SWEDA - Video Library ') ?></span>
+                    </li>
+                    <li id="instagram-item"
+                        onclick="setLocation('<?php echo $this->getUrl('mpanel/create/element', ['page_id' => $this->getRequest()->getParam('page_id'), 'block' => $params['name'], 'type' => 'instagramsweda']) ?>')">
+                        <span class="fa fa-instagram"></span>
+                        <span class="glyphicon-class"><?php echo __('Instagram') ?></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

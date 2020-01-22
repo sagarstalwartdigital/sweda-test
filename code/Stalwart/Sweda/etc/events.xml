@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after_data_object">
+        <observer name="Stalwart_Sweda_Customer_Save_After" instance="Stalwart\Sweda\Observer\Customersaveafter" />
+    </event>
+    <event name="admin_system_config_changed_section_hangtightmail">
+        <observer name="custom_admin_system_config_changed_section_hangtightscheduler" instance="Stalwart\Sweda\Observer\ConfigHangTightScheduler" />
+    </event>
+    <event name="customer_register_success">
+        <observer name="sendmail_toadmin" instance="Stalwart\Sweda\Observer\SendMailToAdmin"/>
+    </event>
+    <event name="layout_load_before">
+        <observer name="load_custom_handler" instance="Stalwart\Sweda\Observer\LayoutLoadBefore" />
+    </event>
+    <event name="customer_login">
+        <observer name="customer_login_observer" instance="Stalwart\Sweda\Observer\CustomerLogin" />
+    </event>
+</config>

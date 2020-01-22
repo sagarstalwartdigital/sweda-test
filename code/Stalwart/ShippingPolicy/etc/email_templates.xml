@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template area="frontend" file="returnemailform.html" id="returnemailform_general_customer_email_sender" label="returnemailform" module="Stalwart_ShippingPolicy" type="html"/>
+</config>

@@ -1,0 +1,65 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('basecamp_the_warrior_spirit_retreat')) {
+    $jsonData = base64_decode($this->getData('basecamp_the_warrior_spirit_retreat'));
+    $page_data = json_decode($jsonData);
+    $total = (array) $page_data;
+}
+
+$type = 'basecamp_the_warrior_spirit_retreat';
+$impbackground_Image = $themeHelper->getImageName($page_data->impbackgroundImage);
+$impbackgroundImage = $themeHelper->getWysiwygMediaUrl($type, $impbackground_Image);
+?>
+<div class="container">
+    <div class="about-basecamp-section-page">
+        <h2 class="main-title"><?php echo $page_data->imptitle_one ?></h2>
+        <?php echo html_entity_decode($page_data->impdesctiption_one) ?>
+        <div class="col-sm-6 about-second-page">
+        </div>
+    </div>
+    <div class="about-bottom-video-section">
+        <?php echo html_entity_decode($page_data->impdesctiption_two) ?>
+        <div class="abt-video-banner">
+            <?php echo html_entity_decode($page_data->video_iframe) ?>
+        </div>
+    </div>
+    <div class="about-bottom-img">
+        <img src="<?php echo $impbackgroundImage ?>">
+    </div>
+</div>
+
+
+
+<?php /*
+<script type="text/javascript">
+     require([
+     'jquery',
+     ], function($){
+        var btn = document.getElementById("myBtnimpvideo");
+        var span = document.getElementsByClassName("closeimp")[0];
+        jQuery(document).ready(function(){
+          $("#myBtnimpvideo").click(function(){
+            var modalimp = document.getElementById("myModalVideo");
+            modalimp.style.display = "block";
+          });
+          $(".closeimp").click(function(){
+                  $('.modalimp').hide();
+          });
+        })
+     });
+</script>
+*/ ?>
+
+
+<style>
+    .breadcrumbs {
+        display: none;
+    }
+    .page-title-wrapper {
+        display: none;
+    }
+</style>

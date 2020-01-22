@@ -1,0 +1,41 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$smartCartObject = $objectManager->create('Stalwart\SmartCart\Block\SmartCartDetail');
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$smartCart = $smartCartObject->getSmartCartFactory();
+?>
+
+<div class="pdp-smart-cart-button">
+	<?php if($customerSession->isLoggedIn()) : ?>
+		<?php 
+			$customer = $objectManager->get('\Magento\Customer\Api\CustomerRepositoryInterface')->getById($customerSession->getId()); 
+			$chekIsBtob = $customer->getCustomAttribute('is_btob')->getValue();
+		?>
+		<?php if($chekIsBtob == 0) : ?>
+			<button type="submit" title="Add To Cart" class="action primary tocart btn-tocart-pro-view mgs-quickview-notbtob">
+		        <?php if ($smartCart->getId() && !empty($smartCart->getId())) :  ?>
+		            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Active Cart</span>
+		        <?php else : ?>
+		            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Smart Cart</span>
+		        <?php endif; ?>
+		    </button>
+		<?php else : ?>
+		    <button type="submit" title="Add To Cart" class="action primary tocart btn-tocart-pro-view" id="product-addtocart-quickview-button">
+		        <?php if ($smartCart->getId() && !empty($smartCart->getId())) :  ?>
+		            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Active Cart</span>
+		        <?php else : ?>
+		            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Smart Cart</span>
+		        <?php endif; ?>
+		    </button>
+		<?php endif; ?>
+	<?php else : ?>
+		<button type="submit" title="Add To Cart" class="action primary tocart btn-tocart-pro-view customer-login-link">
+			<?php if ($smartCart->getId() && !empty($smartCart->getId())) :  ?>
+	            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Active Cart</span>
+	        <?php else : ?>
+	            <span class="text"><i class="fa fa-plus" aria-hidden="true"></i> Add To Smart Cart</span>
+	        <?php endif; ?>
+		</button>
+	<?php endif; ?>
+</div>
+<div class="change-cart-wrapper"></div>

@@ -1,0 +1,53 @@
+<?php
+$helper = $this->helper('MGS\Gallery\Helper\Data');
+$collection = $block->getCollection();
+$showThumbnail = $this->getConfig('general_settings/show_thumbnail');
+if ($this->getConfig('general_settings/thumbnail_width') != '') {
+    $width = $this->getConfig('general_settings/thumbnail_width');
+} else {
+    $width = 500;
+}
+if ($this->getConfig('general_settings/thumbnail_height') != '') {
+    $height = $this->getConfig('general_settings/thumbnail_height');
+} else {
+    $height = 300;
+}
+$categoryId = (int)$this->getRequest()->getParam('category_id', false);
+?>
+<?php if (!count($collection)): ?>
+    <div class="message empty">
+        <div><?php echo __('Have no Library.') ?></div>
+    </div>
+<?php else: ?>
+
+          <div class="catalog-right-part">
+             <div class="catalog-content">
+                <p>View and download our entire Sweda Catalogs below</p>
+             </div>
+          </div>
+          <div class="row">
+            <?php foreach ($collection as $post): ?>
+            <div class="col-md-4">
+
+              <?php if($post->getButtonLink()) { ?>
+                <a class="catalog-link" href="<?php echo $post->getButtonLink(); ?>" target="_blank">
+              <?php } else { ?>
+                <a class="catalog-link" href="<?php echo $helper->getImageThumbnailPost($post); ?>" target="_blank">
+              <?php } ?>  
+                <div class="catalog-img-part">
+                  <div class="catalogs-img-hidden">
+                    <img src="<?php echo $this->getUrl('pub/media'); ?><?php echo $post->getImage(); ?>">
+                  </div>
+                  <p><?php echo $post->getTitle(); ?></p>
+                  <!-- <p>Sweda <?php  //echo substr($post->getCreatedAt(),0, 4); //echo __('%1', $block->formatDate($post->getUpdatedAt(), \IntlDateFormatter::MEDIUM, false)); ?> Catalog</p> -->
+                  <?php if($post->getButtonLink()) { ?>
+                    <a href="<?php echo $post->getButtonLink(); ?>" target="_blank">view & Download</a>
+                  <?php } else { ?>
+                    <a href="<?php echo $helper->getImageThumbnailPost($post); ?>" target="_blank">view & Download</a>
+                  <?php } ?>  
+                </div>
+              </a>
+            </div>
+            <?php endforeach; ?> 
+          </div>          
+<?php endif; ?>

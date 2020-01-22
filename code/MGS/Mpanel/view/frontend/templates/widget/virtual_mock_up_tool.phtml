@@ -1,0 +1,45 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('virtual_mock_up_tool')) {
+    $jsonData = base64_decode($this->getData('virtual_mock_up_tool'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+$type = 'virtual_mock_up_tool';
+
+$BackgroundImages = $themeHelper->getImageName($page_data->BackgroundImages);
+$BackgroundImagesFinal = $themeHelper->getWysiwygMediaUrl($type,$BackgroundImages);
+
+?>
+
+<div class="container-fluide">
+  <div class="useful-banner-img">
+    <img src="<?php echo $BackgroundImagesFinal; ?>">
+  </div>
+  <div class="useful-section-page">
+    <div class="useful-banner-text">
+        <?php //echo $page_data->description_top; ?>
+        <?php echo html_entity_decode($page_data->description_top) ?>
+        <h2><?php echo $page_data->imptitle_one; ?></h2>
+        <?php echo html_entity_decode($page_data->description_bottom) ?>
+        <?php //echo $page_data->description_bottom; ?>
+        <?php if($page_data->button_title) { ?>
+          <?php
+          $VirtualUrl = !empty($page_data->button_link) ? ($page_data->button_link) : 'javascript:;';
+          if (filter_var($VirtualUrl, FILTER_VALIDATE_URL)) {
+              echo '<a href="'.$VirtualUrl.'">';
+          } else {
+              echo '<a href='.$themeHelper->getCurrentBaseUrl().$VirtualUrl.'>';
+          }
+          ?>   
+          <?php echo $page_data->button_title; ?></a>
+        <?php } ?>
+    </div>
+  </div>
+</div> 
+

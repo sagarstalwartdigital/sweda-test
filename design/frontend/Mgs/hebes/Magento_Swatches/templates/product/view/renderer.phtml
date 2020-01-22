@@ -1,0 +1,205 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+//"swatchRenderer": {
+?>
+<?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
+<?php $itemId = $block->getItemId() ? "-".$block->getItemId() : ""; ?>
+<?php 
+if($block->getItemId() && $block->getItemOptions())
+    $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+?>
+<?php if($itemId && !empty($itemId)) : ?>
+    <form data-mage-init='{"validation": {}}' method="post" id="product_addtosmartcart_form<?php echo $itemId ?>" class="product_addtosmartcart_form">
+        <input type="hidden" name="productdata" id="#productdata">
+        <div class="swatch-opt<?php echo $itemId ?> swatch-opt-custom"
+           data-role="swatch-option<?php echo $itemId ?>">
+           <?php if($block->getNeedPriceBox()) : ?>
+            <script>
+                require([
+                    'jquery',
+                    'priceBox'
+                    ], function($){
+                        var dataPriceBoxSelector = '[data-role=priceBox]',
+                        dataProductIdSelector = '[data-product-id=<?= $block->escapeHtml($block->getItemId()) ?>]',
+                        priceBoxes = $(dataPriceBoxSelector + dataProductIdSelector);
+
+                        priceBoxes = priceBoxes.filter(function(index, elem){
+                            return !$(elem).find('.price-from').length;
+                        });
+
+                        priceBoxes.priceBox({'priceConfig': <?= /* @escapeNotVerified */ $block->getJsonConfig() ?>});
+                    });
+                </script>
+            <?php endif; ?>
+        </form>
+        <?php else : ?>
+            <div class="swatch-opt<?php echo $itemId ?> swatch-opt-custom"
+               data-role="swatch-option<?php echo $itemId ?>">
+           <?php endif; ?>
+
+           <?php $configProduct = $block->getProduct(); ?>
+           <?php $isColorAttributeThere = false; ?>
+           <?php if($configProduct->getTypeId() == "configurable") : ?>
+            <?php
+            $simpleProductAndItsOptions = array();
+
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $_children = $configProduct->getTypeInstance()->getUsedProducts($configProduct);
+
+            $imageHelper = $objectManager->get('\Magento\Catalog\Helper\Image');
+
+            $productTypeInstance = $objectManager->get('Magento\ConfigurableProduct\Model\Product\Type\Configurable');
+            $productAttributeOptions = $productTypeInstance->getConfigurableAttributesAsArray($configProduct);
+            $colorAttributeId = '';
+            foreach($_children as $child)
+            {
+                foreach($productAttributeOptions as $attributeId => $productAttributeOptionsData)
+                {
+                    if($productAttributeOptionsData["attribute_code"] == "color")
+                    {
+                        $colorAttributeId = $attributeId;
+                        $isColorAttributeThere = true;
+                        foreach($productAttributeOptionsData["values"] as $colorData)
+                        {
+                            $simpleProductAndItsOptions[$productAttributeOptionsData["attribute_id"]][$colorData["value_index"]]["label"] = $configProduct->getSku()." - ".$colorData["label"];
+                            if($block->getItemId())
+                            {
+                                $imageUrl = $imageHelper->init($child, 'image')
+                              ->setImageFile($child->getImage()) // image,small_image,thumbnail
+                              ->resize(380)
+                              ->getUrl();
+
+                              if($imageUrl)
+                              {
+                                $imageUrl = str_replace("/.jpg", "/image.jpg", $imageUrl);
+                                if($child->getColor() == $colorData["value_index"])
+                                {
+                                    $simpleProductAndItsOptions[$productAttributeOptionsData["attribute_id"]][$colorData["value_index"]]["image"] = $imageUrl;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ?>
+ 
+        <?php if($isColorAttributeThere) : ?>
+            <!--  -->
+            <div class="swatch-attribute-color-sku variant_color_size">
+             <span class="swatch-attribute-label test">Color</span>
+             <div aria-activedescendant="" tabindex="0" aria-invalid="false" aria-required="true" role="listbox" class="swatch-attribute-options clearfix">
+              <select data-color-attr-id="<?php echo 'option-label-color-'.$colorAttributeId.'-item-'; ?>" class="swatch-select-customcolor swatch-select-customcolor<?php echo $itemId ?>" data-id="<?php echo $itemId ?>">
+                <option>Choose an Option...</option>
+                <?php 
+                $counter = 0;
+                foreach($simpleProductAndItsOptions as $attributeId => $associateOptions) : ?>
+                    <?php ksort($associateOptions); ?>
+                    <?php foreach($associateOptions as $optionId => $optionData) { 
+                        $counter =$counter + 1;
+                        ?>
+                        <?php
+                        $imgUrl = "";
+                        if(isset($optionData["image"]))
+                        {
+                            $imgUrl = $optionData["image"];
+                            unset($optionData["image"]);
+                        }
+                        ?>
+                        <option data-option-id="<?=$optionId;?>" value="<?php echo 'option-label-color-'.$attributeId.'-item-'.$optionId; ?>" data-image="<?php echo $imgUrl ?>"><?php echo $optionData['label']; ?></option>
+                    <?php } ?>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+<?php endif; ?>
+<?php endif; ?>
+</div>
+
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option<?php echo $itemId ?>]": {
+        "Magento_Swatches/js/swatch-renderer": {
+        "jsonConfig": <?= /* @escapeNotVerified */ $swatchOptions = $block->getJsonConfig() ?>,
+        "jsonSwatchConfig": <?php /* @escapeNotVerified */
+        echo $swatchOptions = $block->getJsonSwatchConfig(); ?>,
+        "mediaCallback": "<?= /* @escapeNotVerified */ $block->getMediaCallback() ?>",
+        "gallerySwitchStrategy": "<?php /* @escapeNotVerified */ echo $block->getVar('gallery_switch_strategy',
+        'Magento_ConfigurableProduct') ?: 'replace'; ?>",
+        "jsonSwatchImageSizeConfig": <?php /* @noEscape */ echo $block->getJsonSwatchSizeConfig() ?>
+    }
+},
+"*" : {
+"Magento_Swatches/js/catalog-add-to-cart": {}
+}
+}
+</script>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mage/mage'
+        ], function($){
+
+         var dataForm = $('#product_addtosmartcart_form<?php echo $itemId ?>');
+         dataForm.mage('validation', {});
+
+     });
+ </script>
+ <?php if($isColorAttributeThere) : ?>
+    <script type="text/javascript">
+        requirejs(['jquery','underscore'], function(jQuery,_){
+            jQuery(window).ready(function(){
+                <?php
+                if($itemId)
+                    $selecter = ".sci-".$block->getItemId()." select.swatch-select-customcolor";
+                else
+                    $selecter = "select.swatch-select-customcolor";
+                ?>
+                jQuery("<?php echo $selecter ?>").change(function(eve){
+                    var colorSelected = jQuery(this).val();
+                    console.log(colorSelected.indexOf('Choose an Option'))
+                    if(colorSelected.indexOf('Choose an Option') == -1){
+                        if(jQuery(this).parents(".smartcart-product-wrapper.product-item").length)
+                        {
+                            var simpleProductImage = jQuery('option:selected', this).attr("data-image");
+                            if(simpleProductImage)
+                                jQuery(this).parents(".smartcart-product-wrapper.product-item").find("img.smartcart-item-pimage").attr("src",simpleProductImage);
+                            if (eve.originalEvent !== undefined) {
+                                jQuery(this).parents(".smartcart-product-wrapper.product-item").find("#"+colorSelected).click();
+                            }
+                        }else{
+                            if (eve.originalEvent !== undefined) {
+                                // console.log(colorSelected)
+                                jQuery("#"+colorSelected).click();
+                            }
+                        }
+                    }
+                });
+            });
+            jQuery(document).on('swatch.initialized', function(eventt) {
+                <?php if($itemId && $block->getItemOptions()) : ?>
+                    <?php $smartcartsimplepro = json_decode($block->getItemOptions(), true); ?>
+                    <?php if(isset($smartcartsimplepro['options']) && !empty($smartcartsimplepro['options'])) : ?>
+                    <?php ksort($smartcartsimplepro['options']); ?>
+                    <?php foreach($smartcartsimplepro['options'] as $attributeId => $optionsId) : ?>
+                        <?php $attributeInfo = $objectManager->get(\Magento\Eav\Model\Entity\Attribute::class)->load($attributeId); ?>
+                        <?php if($attributeInfo->getAttributeCode() == "color") : ?>
+                            if(!(jQuery(".product-options-wrapper<?php echo $itemId ?> #option-label-color-<?php echo $attributeId ?>-item-<?php echo $optionsId ?>").hasClass('selected')))
+                                jQuery(".product-options-wrapper<?php echo $itemId ?> #option-label-color-<?php echo $attributeId ?>-item-<?php echo $optionsId ?>").click();
+                            jQuery(".product-options-wrapper<?php echo $itemId ?> select.swatch-select-customcolor<?php echo $itemId ?>").val("option-label-color-<?php echo $attributeId ?>-item-<?php echo $optionsId ?>").change();
+
+                            <?php elseif($attributeInfo->getAttributeCode() == "size") : ?>
+                                jQuery(".product-options-wrapper<?php echo $itemId ?> .swatch-select.size").val(<?php echo $optionsId ?>).change();
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            });
+        });
+    </script>
+    <?php endif; ?>

@@ -1,0 +1,337 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Vlibrary
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\Vlibrary\Block\Frontend $block */
+?>
+
+    <?php $postCollection = $block->getPostCollection(); ?>
+    <?php 
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $topicCollection = $objectManager->create('Mageplaza\Vlibrary\Model\PostTopic')->getCollection();
+        $cateCollection = $objectManager->create('Mageplaza\Vlibrary\Model\PostCategory')->getCollection();
+    ?>
+    
+    <?php if($block->getSearchQuery() && !empty($block->getSearchQuery()) || $block->getSortByFieldName() && !empty($block->getSortByFieldName())) : ?>
+        
+        <?php
+        $postCollection = $objectManager->create('Mageplaza\Vlibrary\Model\Post')->getCollection();
+
+        switch ($block->getSortByFieldName()) {
+            case "name-atoz":
+                $shortBy = 'name';
+                $shortAs = 'ASC';
+                break;
+            case "name-ztoa":
+                $shortBy = 'name';
+                $shortAs = 'DESC';
+                break;
+            case "date-early":
+                $shortBy = 'publish_date';
+                $shortAs = 'DESC';
+                break;
+            case "date-recent":
+                $shortBy = 'publish_date';
+                $shortAs = 'ASC';
+                break;
+            default:
+                $shortBy = 'name';
+                $shortAs = 'ASC';
+                break;
+        }
+
+        if($block->getSearchQuery() && $shortBy && $shortAs) {
+            $postCollection->addFieldToFilter('name', array(
+                array('like' => '%'.$block->getSearchQuery().'%'),
+                array('like' => '%'.$block->getSearchQuery()),
+                array('like' => $block->getSearchQuery().'%')
+            ));
+            $postCollection->getSelect()->order($shortBy." ".$shortAs);
+         } elseif ($block->getSearchQuery()) {
+            $postCollection->addFieldToFilter('name', array(
+                array('like' => '%'.$block->getSearchQuery().'%'),
+                array('like' => '%'.$block->getSearchQuery()),
+                array('like' => $block->getSearchQuery().'%')
+            ));
+         } elseif ($shortBy && $shortAs) {
+            $postCollection->getSelect()->order($shortBy." ".$shortAs);
+         }
+        ?>
+    <?php endif; ?>
+    <?php if ($block->getIsForFilter()) : ?>
+        <?php 
+                            
+            $filterByItemData = $block->getData();
+
+            if ($filterByItemData['data'] == 'ALL') {
+                $imprintDataArray = $topicCollection->getData();
+                $categoryDataArray = $cateCollection->getData();
+                $imprintAndCatemixedArray = array_merge($imprintDataArray,$categoryDataArray);
+                $tempArr = array_unique(array_column($imprintAndCatemixedArray, 'post_id'));
+                $postIduniqArray = array_intersect_key($imprintAndCatemixedArray, $tempArr);
+            } else {
+                $filterByImprintMethod = false;
+                $filterByCategory = false;
+
+                foreach ($filterByItemData['data'] as $filterBy => $filterbyvalue) {
+                    if ($filterBy == 'ii') {
+                        $filterByImprintMethod = true;
+                        $topicCollection->addFieldToFilter('topic_id', array('in' => $filterbyvalue));
+                    } elseif ($filterBy == 'ci') {
+                        $filterByCategory = true;
+                        $cateCollection->addFieldToFilter('category_id', array('in' => $filterbyvalue));
+                    }
+                }
+
+                
+
+                if ($filterByImprintMethod || $filterByCategory ) {
+                    if ($filterByImprintMethod){
+                        $imprintDataArray = $topicCollection->getData();
+                        $tempArr = array_unique(array_column($imprintDataArray, 'post_id'));
+                        $postIduniqArray = array_intersect_key($imprintDataArray, $tempArr);
+                    }
+                    if ($filterByCategory){
+                        $categoryDataArray = $cateCollection->getData();
+                        $tempArr = array_unique(array_column($categoryDataArray, 'post_id'));
+                        $postIduniqArray = array_intersect_key($categoryDataArray, $tempArr);
+                    }
+                    if ($filterByImprintMethod && $filterByCategory) {
+                        $imprintDataArray = $topicCollection->getData();
+                        $categoryDataArray = $cateCollection->getData();
+                        $postIduniqArray = array_uintersect($imprintDataArray, $categoryDataArray, array($block,'compareDeepValue'));
+                    }
+                }
+            }
+
+            $postCollection = $objectManager->create('Mageplaza\Vlibrary\Model\Post')->getCollection();
+
+            if ($postIduniqArray && !empty($postIduniqArray)) {
+
+                $postIdsArray = array();
+                foreach ($postIduniqArray as $postIds) {
+                    $postIdsArray[] = $postIds['post_id'];
+                }
+                $postCollection->addFieldToFilter('post_id',array('in' => $postIdsArray));
+
+            } else {
+                $postCollection = array();
+            }
+
+            // $dir = $objectManager->get('Magento\App\Dir');
+            // $mediaUrl = $dir->getDir(\Magento\App\Dir::MEDIA);
+            
+        ?>
+        <?php if ($postCollection && $postCollection->getSize()) : ?>
+            <div class="video-list-section">
+                <div class="row">
+                    <?php $i = 1 ?>
+                    <?php  $counter = 1; foreach ($postCollection as $post) : ?>
+                        <div class="col-sm-4">
+                            <?php $counter =  $counter +1; ?>
+                                <div class="video-section-content">
+                                   
+                                    <div class="video-images">
+                                        <a href="javascript:void(0);" id="myBtnimpvideo-<?=$counter?>">
+                                        <?php 
+                                        $path = $block->resizeImage($post->getImage()); 
+                                        $ext1 = pathinfo($path, PATHINFO_EXTENSION); 
+                                        if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                        <video class="thumb-video img-fluid"  src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4" controls="false" src="<?= $block->resizeImage($post->getImage()); ?>">
+                                            <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4" />
+                                        </video>
+                                        <?php } else { ?>
+                                        <img src="<?= $block->resizeImage($post->getImage()); ?>">
+                                        <?php } ?>
+
+                                        <?php if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                            <div class="video-library-play-button">
+                                                <img src="<?php echo $block->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                                            </div>
+                                        <?php } ?>
+                                        </a>
+                                    </div>
+                                    <div class="video-details">
+                                       <h3><?= $post->getName(); ?></h3>
+                                       <span><?= $block->getPostInfo($post); ?></span>
+                                       <?php //$block->maxShortDescription($post->getShortDescription()); ?>
+                                       <?php if($post->getShopNowTitle()) { ?>
+                                       <a href="<?php echo $post->getShopNowLink(); ?>"><?php echo $post->getShopNowTitle(); ?></a>
+                                      <?php } else { ?>
+                                       <a href="<?php echo $post->getShopNowLink(); ?>">Shop Now</a>
+                                      <?php } ?> 
+                                    </div>
+                                     <?php  if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                        <div id="myModalVideo-<?=$counter?>" class="modalimp">
+                                          <div class="modalimp-contentimp">
+                                            <span class="closeimp close" data-dismiss="modal">&times;</span>
+                                            <video id="#myVideoTag" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?= $block->resizeImage($post->getImage()); ?>">
+                                                <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4"> 
+                                                <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/webm">
+                                            </video>
+                                          </div>
+                                        </div>
+                                    <?php } ?>
+                                    <script>
+                                        require(['jquery'], function ($) {
+                                            var btn = document.getElementById("myBtnimpvideo-<?=$counter?>");
+                                            var span = document.getElementsByClassName("closeimp")[0];
+                                            jQuery(document).ready(function(){
+                                                $("#myBtnimpvideo-<?=$counter?>").click(function(){
+                                                    var modalimp = document.getElementById("myModalVideo-<?=$counter?>");
+                                                    modalimp.style.display = "block";
+                                                    jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':true})
+                                                });
+                                            })
+                                        });
+                                    </script>
+                                </div>
+                        </div>
+                <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="toolbar toolbar-products 222">   
+                <?= $block->getPagerHtml() ?>
+            </div>   
+            <?php else : ?>
+                <div class="message info empty">
+                  <span><?= __('There are no videos at this moment'); ?></span>
+                </div>
+            <?php endif; ?>
+    <?php else : ?>
+        <?php if ($postCollection && $postCollection->getSize()) : ?>
+                <div class="video-list-section">
+                    <div class="row">
+                        <?php $i = 1 ?>
+                        <?php  $counter = 1; foreach ($postCollection as $post) : ?>
+                            <div class="col-sm-4">
+                                <?php $counter =  $counter +1; ?>
+                                <div class="video-section-content">
+                                   
+                                    <div class="video-images">
+                                        <a href="javascript:void(0);" id="myBtnimpvideo-<?=$counter?>">
+                                        <?php 
+                                        $path = $block->resizeImage($post->getImage()); 
+                                        $ext1 = pathinfo($path, PATHINFO_EXTENSION); 
+                                        if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                        <video class="thumb-video img-fluid"  src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4" controls="false" src="<?= $block->resizeImage($post->getImage()); ?>">
+                                            <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4" />
+                                        </video>
+                                        <?php } else { ?>
+                                        <img src="<?= $block->resizeImage($post->getImage()); ?>">
+                                        <?php } ?>
+
+                                        <?php if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                            <div class="video-library-play-button">
+                                                <img src="<?php echo $block->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                                            </div>
+                                        <?php } ?>
+                                        </a>
+                                    </div>
+                                    <div class="video-details">
+                                       <h3><?= $post->getName(); ?></h3>
+                                       <span><?= $block->getPostInfo($post); ?></span>
+                                       <?php //$block->maxShortDescription($post->getShortDescription()); ?>
+                                       <?php if($post->getShopNowTitle()) { ?>
+                                       <a href="<?php echo $post->getShopNowLink(); ?>"><?php echo $post->getShopNowTitle(); ?></a>
+                                      <?php } else { ?>
+                                       <a href="<?php echo $post->getShopNowLink(); ?>">Shop Now</a>
+                                      <?php } ?> 
+                                    </div>
+                                     <?php  if($ext1=="ogv" || $ext1 == "wmv" || $ext1=="avi" || $ext1 == "mp4") { ?>
+                                        <div id="myModalVideo-<?=$counter?>" class="modalimp">
+                                          <div class="modalimp-contentimp">
+                                            <span class="closeimp close" data-dismiss="modal">&times;</span>
+                                            <video id="myVideoTag_popup" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls src="<?= $block->resizeImage($post->getImage()); ?>">
+                                                <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/mp4"> 
+                                                <source src="<?= $block->resizeImage($post->getImage()); ?>" type="video/webm">
+                                            </video>
+                                          </div>
+                                        </div>
+                                    <?php } ?>
+                                    <script>
+                                        require(['jquery'], function ($) {
+                                            var btn = document.getElementById("myBtnimpvideo-<?=$counter?>");
+                                            var span = document.getElementsByClassName("closeimp")[0];
+                                            jQuery(document).ready(function(){
+                                                $("#myBtnimpvideo-<?=$counter?>").click(function(){
+                                                    var modalimp = document.getElementById("myModalVideo-<?=$counter?>");
+                                                    modalimp.style.display = "block";
+                                                    jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':true})
+                                                });
+                                            })
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                    <?php if ($i++ % 2 == 0) : ?>
+                        <div class="mp-clear"></div>
+                    <?php endif; ?>
+
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+        <?php else : ?>
+            <div class="message info empty">
+              <span><?= __('There are no videos at this moment'); ?></span>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+    <div class="toolbar toolbar-products 111">   
+        <?= $block->getPagerHtml() ?>
+    </div>
+<script>
+    require(['jquery'], function ($) {
+
+        jQuery(document).ready(function(){
+            $(".closeimp").click(function(){
+                $('.modalimp').hide();
+                jQuery("#myVideoTag_popup").attr({'src':jQuery("#myVideoTag_popup").attr('src'),'autoplay':false})
+            });
+        })
+    });
+</script>
+
+<style>
+    video.thumb-video{
+        width: 100%;
+        height: auto;
+    }
+    video.thumb-video::-webkit-media-controls {
+        display: none;
+    }
+    /* Could Use thise as well for Individual Controls */
+    video.thumb-video::-webkit-media-controls-play-button {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-volume-slider {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-mute-button {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-timeline {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-current-time-display {
+        display: none;
+    }
+</style>
+

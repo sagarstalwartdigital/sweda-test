@@ -1,0 +1,491 @@
+<?php 
+	/* $block Stalwart/EditAdmin/Block/Adminhtml/Catalog/Product/Edit/Tab/SwedaSimplePricing */
+
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+	$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+
+	$regularPriceCollection = $block->getProductRegularPrices();
+
+	$productRegularPriceType = $block->getProductRegularPriceTypes();
+
+	$productImprintMethods = $block->getProductImprintMethod();
+
+	$imprintMethodWiseData = array();
+	$counter = 1;
+	foreach ($productImprintMethods as $productImprintMethod)
+	{
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['name'] = $productImprintMethod->getImprintMethodName();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['matrix'] = $productImprintMethod->getMatrix();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['full_color'] = $productImprintMethod->getFullColor();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['color_included_in_price'] = $productImprintMethod->getColorIncludedInPrice();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_color'] = $productImprintMethod->getMaximumColor();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['location_included_in_price'] = $productImprintMethod->getLocationIncludedInPrice();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['maximum_location'] = $productImprintMethod->getMaximumLocation();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['productiont_time'] = $productImprintMethod->getProductiontTime();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['production_unit'] = $productImprintMethod->getProductionUnit();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['rule'] = $productImprintMethod->getRule();
+
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['name'] = $productImprintMethod->getImprintChargeName();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_start'] = $productImprintMethod->getQtyStart();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['qty_end'] = $productImprintMethod->getQtyEnd();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['price'] = $productImprintMethod->getPrice();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['charges'][$productImprintMethod->getDisplayType()][$productImprintMethod->getImprintChargeName()][$counter]['code'] = $productImprintMethod->getCode();
+
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['name'] = $productImprintMethod->getImprintPostionName();
+		$imprintMethodWiseData[$productImprintMethod->getImprintMethodId()]['postion']['area'] = $productImprintMethod->getImprintPostionArea();
+
+		$counter++;
+	}
+
+?>
+<form method="post" id="invisimplepricing" action="<?php echo $this->getUrl('catalog/product/save'); ?>">
+<div class="panel panel-default add-product-wrapper " id="block_pricing">
+   <div id="collapse_pricing" class="panel-collapse collapse in">
+      <div class="panel-body">
+         <div class="row" id="js-price-radio">
+            <div class="col-md-12">
+               <div class="row">
+                  <div class="col-lg-3 col-md-3 ">
+                     <div class="radio-box"><label><input type="radio" class="ace ring pricing-type-radio" id="Regularid" name="PricingType" value="regular" attr-radio-index="0" <?php if ($productRegularPriceType->getPriceType() == 'regular'){echo 'checked="checked"';}else{echo '';} ?> ><span class="lbl">Regular</span></label></div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 ">
+                     <div class="radio-box"><label><input type="radio" class="ace ring pricing-type-radio" id="piecepricingid" name="PricingType" value="piece_wise" attr-radio-index="1" <?php if ($productRegularPriceType->getPriceType() == 'piece_wise'){echo 'checked="checked"';}else{echo '';} ?>><span class="lbl">Piece pricing</span></label></div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 ">
+                     <div class="radio-box"><label><input type="radio" class="ace ring pricing-type-radio" id="callforpriceid" name="PricingType" value="call_for_price" attr-radio-index="2" <?php if ($productRegularPriceType->getPriceType() == 'call_for_price'){echo 'checked="checked"';}else{echo '';} ?>><span class="lbl">Call for price</span></label></div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 ">
+                     <div class="radio-box"><label><input type="radio" class="ace ring pricing-type-radio" id="variations" name="PricingType" value="variation" attr-radio-index="3" disabled="dStalwart/EditAdmin/Block/Adminhtml/Catalog/Product/Edit/Tab/SwedaSimplePricingisabled" <?php if ($productRegularPriceType->getPriceType() == 'variation'){echo 'checked="checked"';}else{echo '';} ?>><span class="lbl">Variations</span></label></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row" id="js-price-unit">
+         	<br>
+            <div class="col-lg-1 col-md-1 "><label>Price Unit</label></div>
+            <div class="col-lg-11 col-md-11 ">
+               <select class="js-price_unit_select" name="Pricing[price_unit]">
+                  <option value="">Select Price Unit</option>
+                  <option value="box">Box</option>
+                  <option value="dozen">Dozen</option>
+                  <option value="each">Each</option>
+                  <option value="pack">Pack</option>
+                  <option value="pair">Pair</option>
+                  <option value="set">Set</option>
+               </select>
+            </div>
+            <br>
+         </div>
+  		
+        <div class="row">
+			<div class="col-lg-12 col-md-12  js-pricing js-pricing-country_us-Regularid" style="display: block;">
+			   	<div class="invi_simple_price_table <?php if($productRegularPriceType->getPriceType() == 'regular'){echo 'active';}else{echo '';} ?>" id="regular">
+					<div class="ui-panel-col ui-table-col-2">
+					  <div class="language-col">USA</div>
+					  <div class="clearfix"></div>
+					  <div class="output-description">
+					     <div id="pricing_Regularid_country_us" class="ui-table-col">
+					        <ul class="price-col price-head">
+					           <li class="head">Quantity</li>
+					           <li class="head">Decorative</li>
+					           <li class="head">Blank</li>
+					           <li class="head">Special</li>
+					           <li class="hide"></li>
+					        </ul>
+					        <ul class="price-col">
+					           <li class="head">Start</li>
+					           <li class="head">End</li>
+					           <li class="head">Price USD ($)</li>
+					           <li class="head">Code</li>
+					           <li class="head">Price USD ($)</li>
+					           <li class="head">Code</li>
+					           <li class="head">Price USD ($)</li>
+					           <li class="head">Code</li>
+					        </ul>
+					        <div id="invi-simple-price-column">
+					        	<?php if ($productRegularPriceType->getPriceType() == 'regular') : ?>
+					            	<?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+							            <ul class="price-col js-price-col" id="price-colu" data-created-price-range-index="0">
+							            	
+						            		<?php if (!empty($regularPriceData->getQtyStart())) : ?>
+					                            <?php $startQty = $regularPriceData->getQtyStart() ?>
+					                        <?php endif; ?>
+
+					                        <?php if (!empty($regularPriceData->getQtyEnd())) : ?>
+					                            <?php $endQty = $regularPriceData->getQtyEnd() ?>
+					                        <?php else : ?>
+					                            <?php $endQty = '' ?>
+					                        <?php endif; ?>
+
+					                        <?php 
+					                            if ($regularPriceData->getDecorativePriceCode() && !empty($regularPriceData->getDecorativePriceCode())) {
+					                                $decoPriceCode = $regularPriceData->getDecorativePriceCode();
+					                            } else {
+					                            	$decoPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getDecorativePrice() && !empty($regularPriceData->getDecorativePrice())) {
+					                                $decoPrice = $regularPriceData->getDecorativePrice();
+					                            } else {
+					                            	$decoPrice = '';
+					                            }
+
+					                            if ($regularPriceData->getBlankPriceCode() && !empty($regularPriceData->getBlankPriceCode())) {
+					                                $blankPriceCode = $regularPriceData->getBlankPriceCode();
+					                            } else {
+					                            	$blankPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getBlankPrice() && !empty($regularPriceData->getBlankPrice())) {
+					                                $blankPrice = $regularPriceData->getBlankPrice();
+					                            } else {
+					                            	$blankPrice = '';
+					                            }
+
+					                            if ($regularPriceData->getSpecialPriceCode() && !empty($regularPriceData->getSpecialPriceCode())) {
+					                                $specialPriceCode = $regularPriceData->getSpecialPriceCode();
+					                            } else {
+					                            	$specialPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getSpecialPrice() && !empty($regularPriceData->getSpecialPrice())) {
+					                                $specialPrice = $regularPriceData->getSpecialPrice();
+					                            } else {
+					                            	$specialPrice = '';
+					                            }
+
+					                        ?>
+							            	
+							               	<li>
+							               		<input type="text" class="js-onlynumber-start js-validate-pricing_Regularid_country_us-start" name="Pricing[regular][country_us][0][start]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][start]" value=" <?php echo $startQty; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-end js-validate-pricing_Regularid_country_us-end" name="Pricing[regular][country_us][0][end]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][end]" value=" <?php echo $endQty; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-price js-validate-pricing_Regularid_country_us-price" name="Pricing[regular][country_us][0][price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][price]" value="<?php echo $decoPrice; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-code js-validate-pricing_Regularid_country_us-code" name="Pricing[regular][country_us][0][code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][code]" value="<?php echo $decoPriceCode; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-blank_price js-validate-pricing_Regularid_country_us-blank_price" name="Pricing[regular][country_us][0][blank_price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][blank_price]" value="<?php echo $blankPrice; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-blank_code js-validate-pricing_Regularid_country_us-blank_code" name="Pricing[regular][country_us][0][blank_code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][blank_code]" value="<?php echo $blankPriceCode; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-special_price js-validate-pricing_Regularid_country_us-special_price" name="Pricing[regular][country_us][0][special_price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][special_price]" value="<?php echo $specialPrice; ?>">
+							               	</li>
+							               	<li>
+							               		<input type="text" class="js-onlynumber-special_code js-validate-pricing_Regularid_country_us-special_code" name="Pricing[regular][country_us][0][special_code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][special_code]" value="<?php echo $specialPriceCode; ?>">
+							               	</li>
+							               	<li class="button">
+							               		<a href="javascript:void(0);" onclick="duplicate()" class="dft-but js-price-box-add">
+							               			<i class="fa fa-plus"></i>
+							               		</a>
+							               		<a href="javascript:void(0);" onclick="delete_row(this)" class="dft-but js-price-box-trash">
+							               			<i class="fa fa-trash-o"></i>
+							               		</a>
+							               	</li>
+							            </ul>
+							        <?php endforeach; ?>
+							    <?php else : ?>
+							    	<ul class="price-col js-price-col" id="price-colu" data-created-price-range-index="0">
+								    	<li>
+						               		<input type="text" class="js-onlynumber-start js-validate-pricing_Regularid_country_us-start" name="Pricing[regular][country_us][0][start]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][start]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-end js-validate-pricing_Regularid_country_us-end" name="Pricing[regular][country_us][0][end]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][end]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-price js-validate-pricing_Regularid_country_us-price" name="Pricing[regular][country_us][0][price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][price]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-code js-validate-pricing_Regularid_country_us-code" name="Pricing[regular][country_us][0][code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][code]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-blank_price js-validate-pricing_Regularid_country_us-blank_price" name="Pricing[regular][country_us][0][blank_price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][blank_price]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-blank_code js-validate-pricing_Regularid_country_us-blank_code" name="Pricing[regular][country_us][0][blank_code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][blank_code]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-special_price js-validate-pricing_Regularid_country_us-special_price" name="Pricing[regular][country_us][0][special_price]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][special_price]">
+						               	</li>
+						               	<li>
+						               		<input type="text" class="js-onlynumber-special_code js-validate-pricing_Regularid_country_us-special_code" name="Pricing[regular][country_us][0][special_code]" data-field-name="Pricing[regular][country_us][PRICE_RANGE_INDEX][special_code]">
+						               	</li>
+						               	<li class="button">
+						               		<a href="javascript:void(0);" onclick="duplicate()" class="dft-but js-price-box-add">
+						               			<i class="fa fa-plus"></i>
+						               		</a>
+						               		<a href="javascript:void(0);" onclick="delete_row(this)" class="dft-but js-price-box-trash">
+						               			<i class="fa fa-trash-o"></i>
+						               		</a>
+						               	</li>
+						            </ul>
+							    <?php endif; ?>
+					        </div>
+					     </div>
+					  </div>
+					</div>
+				</div>
+				<div class="invi_simple_price_table <?php if($productRegularPriceType->getPriceType() == 'call_for_price'){echo 'active';}else{echo '';} ?>" id="call_for_price">
+					<div class="ui-panel-col ui-table-col-2">
+					  <div class="language-col">USA</div>
+					  <div class="clearfix"></div>
+					  <div class="output-description">
+					  	<?php if ($productRegularPriceType->getPriceType() == 'call_for_price') : ?>
+						    <table class="pricing-table-block" cellpadding="10" border="0">
+								<tbody>
+									<?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+										
+										<?php if (!empty($regularPriceData->getQtyStart())) : ?>
+								            <?php $startQty = $regularPriceData->getQtyStart() ?>
+								        <?php else : ?>
+								            <?php $startQty = '' ?>
+								        <?php endif; ?>	
+
+								        <?php 
+								            
+								            if ($regularPriceData->getDecorativePrice() && !empty($regularPriceData->getDecorativePrice())) {
+								                $decoPrice = $startQty;
+								            } else {
+								            	$decoPrice = '';
+								            }
+
+								            if ($regularPriceData->getBlankPrice() && !empty($regularPriceData->getBlankPrice())) {
+								                $blankPrice = $startQty;
+								            } else {
+								            	$blankPrice = '';
+								            }
+
+								            if ($regularPriceData->getSpecialPrice() && !empty($regularPriceData->getSpecialPrice())) {
+								                $specialPrice = $startQty;
+								            } else {
+								            	$specialPrice = '';
+								            }
+								        ?>
+									    <tr>
+									        <td colspan="2" class="price-head">Minimum Quantity</td>
+									    </tr>
+									    <tr>
+									        <td class="price-head">Decorative</td>
+									        <td class="border-1">
+									            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_decoration_country_us-start" name="Pricing[call_for_price][country_us][0][start]" value="<?php echo $decoPrice; ?>">
+									        </td>
+									    </tr>
+									    <tr>
+									        <td class="price-head">Blank</td>
+									        <td class="border-1">
+									            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_blank_country_us-start" name="Pricing[call_for_price][country_us][0][blank_start]" value="<?php echo $blankPrice; ?>">
+									        </td>
+									    </tr>
+									    <tr>
+									        <td class="price-head">Special</td>
+									        <td class="border-1">
+									            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_special_country_us-start" name="Pricing[call_for_price][country_us][0][special_start]" value="<?php echo $specialPrice; ?>">
+									        </td>
+									    </tr>
+									<?php endforeach; ?>
+								</tbody>
+							</table>
+						<?php else : ?>
+							<table class="pricing-table-block" cellpadding="10" border="0">
+								<tbody>
+								    <tr>
+								        <td colspan="2" class="price-head">Minimum Quantity</td>
+								    </tr>
+								    <tr>
+								        <td class="price-head">Decorative</td>
+								        <td class="border-1">
+								            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_decoration_country_us-start" name="Pricing[call_for_price][country_us][0][start]" >
+								        </td>
+								    </tr>
+								    <tr>
+								        <td class="price-head">Blank</td>
+								        <td class="border-1">
+								            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_blank_country_us-start" name="Pricing[call_for_price][country_us][0][blank_start]" >
+								        </td>
+								    </tr>
+								    <tr>
+								        <td class="price-head">Special</td>
+								        <td class="border-1">
+								            <input type="text" class="js-onlynumber-start js-validate-pricing_callforpriceid_special_country_us-start" name="Pricing[call_for_price][country_us][0][special_start]" >
+								        </td>
+								    </tr>
+								</tbody>
+							</table>
+						<?php endif; ?>
+					  </div>
+					</div>
+				</div>
+				<div class="invi_simple_price_table <?php if($productRegularPriceType->getPriceType() == 'piece_wise'){echo 'active';}else{echo '';} ?>" id="piece_wise">
+					<div class="ui-panel-col ui-table-col-2">
+					  <div class="language-col">USA</div>
+					  <div class="clearfix"></div>
+					  <div class="output-description">
+					     <div id="pricing_Regularid_country_us" class="ui-table-col">
+					        <ul class="price-col price-head">
+					        	<li class="head first-col">Minimum Quantity</li>
+					        	<li class="head">Decorative</li>
+					        	<li class="head">Blank</li>
+					        	<li class="head">Special</li>
+					        	<li class="hide"></li>
+					       	</ul>
+					        <ul class="price-col">
+					        	<li class="head"></li>
+					        	<li class="head">Price USD ($)</li>
+					        	<li class="head">Code</li>
+					        	<li class="head">Price USD ($)</li>
+					        	<li class="head">Code</li>
+					        	<li class="head">Price USD ($)</li>
+					        	<li class="head">Code</li>
+					        </ul>
+					        <div id="invi-simple-price-column">
+					        	<?php if ($productRegularPriceType->getPriceType() == 'piece_wise') : ?>
+					            	<?php foreach ($regularPriceCollection as $regularPriceData) : ?>
+							            <ul class="price-col js-price-col" id="price-colu" data-created-price-range-index="0">
+							            	
+						            		<?php if (!empty($regularPriceData->getQtyStart())) : ?>
+					                            <?php $startQty = $regularPriceData->getQtyStart() ?>
+					                        <?php endif; ?>
+
+					                        <?php 
+					                            if ($regularPriceData->getDecorativePriceCode() && !empty($regularPriceData->getDecorativePriceCode())) {
+					                                $decoPriceCode = $regularPriceData->getDecorativePriceCode();
+					                            } else {
+					                            	$decoPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getDecorativePrice() && !empty($regularPriceData->getDecorativePrice())) {
+					                                $decoPrice = $regularPriceData->getDecorativePrice();
+					                            } else {
+					                            	$decoPrice = '';
+					                            }
+
+					                            if ($regularPriceData->getBlankPriceCode() && !empty($regularPriceData->getBlankPriceCode())) {
+					                                $blankPriceCode = $regularPriceData->getBlankPriceCode();
+					                            } else {
+					                            	$blankPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getBlankPrice() && !empty($regularPriceData->getBlankPrice())) {
+					                                $blankPrice = $regularPriceData->getBlankPrice();
+					                            } else {
+					                            	$blankPrice = '';
+					                            }
+
+					                            if ($regularPriceData->getSpecialPriceCode() && !empty($regularPriceData->getSpecialPriceCode())) {
+					                                $specialPriceCode = $regularPriceData->getSpecialPriceCode();
+					                            } else {
+					                            	$specialPriceCode = '';
+					                            }
+
+					                            if ($regularPriceData->getSpecialPrice() && !empty($regularPriceData->getSpecialPrice())) {
+					                                $specialPrice = $regularPriceData->getSpecialPrice();
+					                            } else {
+					                            	$specialPrice = '';
+					                            }
+
+					                        ?>
+
+					                        <li>
+										        <input type="text" class="js-onlynumber-start js-validate-pricing_piecepricingid_country_us-start" name="Pricing[piece_wise][country_us][0][start]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][start]" value="<?php echo $decoPrice; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-price js-validate-pricing_piecepricingid_country_us-price" name="Pricing[piece_wise][country_us][0][price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][price]" value="<?php echo $decoPrice; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-code js-validate-pricing_piecepricingid_country_us-code" name="Pricing[piece_wise][country_us][0][code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][code]" value="<?php echo $decoPriceCode; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-blank_price js-validate-pricing_piecepricingid_country_us-blank_price" name="Pricing[piece_wise][country_us][0][blank_price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][blank_price]" value="<?php echo $blankPrice; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-blank_code js-validate-pricing_piecepricingid_country_us-blank_code" name="Pricing[piece_wise][country_us][0][blank_code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][blank_code]" value="<?php echo $blankPriceCode; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-special_price js-validate-pricing_piecepricingid_country_us-special_price" name="Pricing[piece_wise][country_us][0][special_price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][special_price]" value="<?php echo $specialPrice; ?>">
+										    </li>
+										    <li>
+										        <input type="text" class="js-onlynumber-special_code js-validate-pricing_piecepricingid_country_us-special_code" name="Pricing[piece_wise][country_us][0][special_code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][special_code]" value="<?php echo $specialPriceCode; ?>">
+										    </li>
+							            </ul>
+							        <?php endforeach; ?>
+							    <?php else : ?>
+							    	<ul class="price-col js-price-col" data-created-price-range-index="0">
+									    <li>
+									        <input type="text" class="js-onlynumber-start js-validate-pricing_piecepricingid_country_us-start" name="Pricing[piece_wise][country_us][0][start]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][start]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-price js-validate-pricing_piecepricingid_country_us-price" name="Pricing[piece_wise][country_us][0][price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][price]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-code js-validate-pricing_piecepricingid_country_us-code" name="Pricing[piece_wise][country_us][0][code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][code]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-blank_price js-validate-pricing_piecepricingid_country_us-blank_price" name="Pricing[piece_wise][country_us][0][blank_price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][blank_price]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-blank_code js-validate-pricing_piecepricingid_country_us-blank_code" name="Pricing[piece_wise][country_us][0][blank_code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][blank_code]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-special_price js-validate-pricing_piecepricingid_country_us-special_price" name="Pricing[piece_wise][country_us][0][special_price]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][special_price]">
+									    </li>
+									    <li>
+									        <input type="text" class="js-onlynumber-special_code js-validate-pricing_piecepricingid_country_us-special_code" name="Pricing[piece_wise][country_us][0][special_code]" data-field-name="Pricing[piece_wise][country_us][PRICE_RANGE_INDEX][special_code]">
+									    </li>
+									</ul>
+							    <?php endif; ?>
+					        </div>
+					     </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+         </div>
+      </div>
+   </div>
+</form>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+    	$(document).ready(function(){
+			$("#invi-simple-price-column ul#price-colu .js-price-box-add").hide();
+			$("#invi-simple-price-column ul#price-colu:last .js-price-box-add").show();
+    	});
+
+    	$('input[name="PricingType"]').on('change', function(){
+    		$(".invi_simple_price_table").removeClass("active");
+		    $("#"+$(this).val()).addClass("active");
+		});
+    });
+
+    function duplicate() {
+	    require(['jquery'], function ($) {
+	    	$("#invi-simple-price-column ul#price-colu:last").clone().appendTo("#invi-simple-price-column");
+	    	$("#invi-simple-price-column ul#price-colu .js-price-box-add").hide();
+	    	$("#invi-simple-price-column ul#price-colu:last input").val('');
+	    	$("#invi-simple-price-column ul#price-colu:last .js-price-box-add").show();
+	    	$("#invi-simple-price-column ul#price-colu .js-price-box-trash").show();
+	    });
+	}
+	
+	function delete_row(e)
+	{
+	    require(['jquery'], function ($) {
+	    	$(e).parents("ul#price-colu").remove();
+		    $("#invi-simple-price-column ul#price-colu .js-price-box-add").hide();
+		    $("#invi-simple-price-column ul#price-colu:last .js-price-box-add").show();
+	    	if($("#invi-simple-price-column ul#price-colu").length == 1)
+	    	{
+		    	$("#invi-simple-price-column ul#price-colu:last .js-price-box-trash").hide();
+
+	    	}
+	    });
+	}
+</script>

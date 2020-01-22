@@ -1,0 +1,120 @@
+<?php $helper = $this->getHelper() ?>
+<?php $themeHelper = $this->helper('MGS\Mpanel\Helper\Data'); ?>
+<?php
+
+$page_data = [];
+$jsonData = "";
+if ($this->hasData('pet_products_k9s_for_warriors')) {
+    $jsonData = base64_decode($this->getData('pet_products_k9s_for_warriors'));
+    $page_data = json_decode($jsonData);
+    $total = (array)$page_data;
+}
+
+?>
+
+
+<div class="container">
+        <div class="about-basecamp-third-page">
+            <h2 class="main-title"><?php echo $page_data->imptitle_one ?></h2>
+            <div class="about-warriose-section">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="warriose-bottom-top">
+                    <img src="<?php echo $page_data->impbackgroundImage ?>">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php echo html_entity_decode($page_data->impdesctiption_one) ?>
+
+            <?php /*
+            <div class="col-sm-6 about-third-page">
+            <div class="video-images about-basecamp-video">
+                <a href="javascript:void(0);" id="myBtnimpvideo">
+                    <video class="thumb-video img-fluid"  src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4" controls="false">
+                        <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4" />
+                    </video>
+                    <div class="video-library-play-button about-basecamp-play-btn">
+                      <img src="<?php echo $block->getViewFileUrl('images/sweda/video-icon.png'); ?>">
+                  </div>
+              </a>
+            </div>
+
+            <div id="myModalVideo" class="modalimp">
+              <div class="modalimp-contentimp">
+                <span class="closeimp close" data-dismiss="modal">&times;</span>
+                <video id="#myVideoTag" class="img-fluid" width="100%" loop="true" playsinline="" webkit-playsinline="" muted="true" autoplay="autoplay" poster="" controls>
+                    <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/mp4"> 
+                    <source src="<?php echo $page_data->impbackgroundImagevideo ?>" type="video/webm">
+                </video>
+              </div>
+            </div>
+          </div>
+          */ ?>
+
+          <div class="about-warriose-section bottom">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="warriose-bottom-banner">
+                      <img src="<?php echo $page_data->logobackgroundImage ?>">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+<?php /*
+<script type="text/javascript">
+     require([
+     'jquery',
+     ], function($){
+        var btn = document.getElementById("myBtnimpvideo");
+        var span = document.getElementsByClassName("closeimp")[0];
+        jQuery(document).ready(function(){
+          $("#myBtnimpvideo").click(function(){
+            var modalimp = document.getElementById("myModalVideo");
+            modalimp.style.display = "block";
+          });
+          $(".closeimp").click(function(){
+                  $('.modalimp').hide();
+          });
+        })
+     });
+</script>
+
+*/ ?>
+
+
+<style>
+    /*video.thumb-video{
+        width: 100%;
+        height: auto;
+    }
+    video.thumb-video::-webkit-media-controls {
+        display: none;
+    }
+    /* Could Use thise as well for Individual Controls */
+    /*video.thumb-video::-webkit-media-controls-play-button {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-volume-slider {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-mute-button {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-timeline {
+        display: none;
+    }
+    video.thumb-video::-webkit-media-controls-current-time-display {
+        display: none;
+    }*/
+    .breadcrumbs {
+    display: none;
+    }
+    .page-title-wrapper {
+        display: none;
+    }
+</style>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2017-2018 AppJetty. All rights reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+   
+   <argument name="data" xsi:type="array">
+    <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add Fonts</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">advancedfonts/fonts/edit</item>
+            </item>
+        </item>
+   </argument>
+   
+    <columns name="productdesigner_fonts_listing_columns">
+        <actionsColumn name="actions" class="Biztech\AdvancedFonts\Ui\Component\Listing\Column\FontsActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">fonts_id</item>
+                    <item name="urlEntityParamName" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <head>
+        <css src="Stalwart_EditAdmin::css/stalwart.css"/>
+        <css src="Stalwart_EditAdmin::css/admin-bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" media="all" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" src_type="url" />
+   </head>
+</page>

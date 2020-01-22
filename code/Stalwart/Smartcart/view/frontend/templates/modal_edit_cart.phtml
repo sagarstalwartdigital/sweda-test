@@ -1,0 +1,164 @@
+<?php
+/**
+ * @category    Stalwart
+ * @package     Stalwart_SmartCart
+ */
+?>
+<?php /** @var Stalwart\SmartCart\Block\ModalCart $block */ ?>
+<?php $customerSmartCarts = $block->getSmartCartToEdit()->getData(); ?>
+<div id="smartcart-popup-modal" class="smartcart-form">
+    <form id="edit-smartcart-form" data-mage-init='{"validation": {}}' action="<?php echo $this->getUrl('smartcart/cartindex/editcart'); ?>" method="post" autocomplete="off" >
+        <?php foreach ($customerSmartCarts as $customerSmartCart) : ?>
+          <?php if($customerSmartCart['id'] == $block->getResponse()) : ?>
+            <?php 
+              $title = $recidata = $evename = $evedate = $disc = $reciDataName = $reciDataEmail = "";
+
+              if (isset($customerSmartCart['title']) && !empty($customerSmartCart['title'])) {
+                $title = $customerSmartCart['title'];
+              }
+
+              if (isset($customerSmartCart['event_name']) && !empty($customerSmartCart['event_name'])) {
+                $evename = $customerSmartCart['event_name'];
+              }
+
+              if (isset($customerSmartCart['event_date']) && !empty($customerSmartCart['event_date'])) {
+                $evedate = $customerSmartCart['event_date'];
+              }
+
+              if (isset($customerSmartCart['description']) && !empty($customerSmartCart['description'])) {
+                $disc = $customerSmartCart['description'];
+              }
+
+              if (isset($customerSmartCart['recepient_data']) && !empty($customerSmartCart['recepient_data'])) {
+                $recidata = json_decode($customerSmartCart['recepient_data'], true);
+              }
+
+            ?>
+          <div class="open_addnew_form">
+            <input type="hidden" name="productdata" id="productdata" />
+            <input type="hidden" name="productid" id="productid" />
+            <input type="hidden" name="editcart" value="yes" />
+            <input type="hidden" name="editcartid" value="<?php echo $block->getResponse(); ?>" />
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cart-md-form">
+                  <label for="subject" class="">Title</label>
+                  <input class="input-text required-entry" data-validate="{required:true}" name="title" type="text" value="<?php echo $title ?>">
+                </div>
+              </div>
+            </div>
+            <div class="recipentdata">
+              <?php if(!empty($recidata)) : ?>
+                <?php 
+                    foreach ($recidata as $recipientsEmail => $recipientsName) {
+                      $recipientDataArray[][$recipientsEmail] = $recipientsName;
+                    }
+                ?>
+                <?php foreach ($recipientDataArray as $reciDataKey => $reciDataData) : ?>
+                  <?php if($reciDataKey == "0") : ?>
+                    <?php foreach ($reciDataData as $reciDataEmail => $reciDataName) : ?>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="cart-md-form">
+                            <label for="name" class="">Recipient Name</label>
+                            <input class="input-text" name="recipientname[]" type="text" value="<?php echo $reciDataName['name'] ?>">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="cart-md-form">
+                            <label for="email" class="">Recipient Email</label>
+                            <input  class="input-text" name="recipientemail[]" type="email" value="<?php echo $reciDataEmail ?>">
+                          </div>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <?php foreach ($reciDataData as $reciDataEmail => $reciDataName) : ?>
+                        <div class="row apended">
+                          <div class="col-md-12">
+                            <div class="row">
+                              <div class="col-md"> 
+                                <div class="cart-md-form">  
+                                  <label for="name" class="">Recipient Name</label> 
+                                  <input class="input-text" name="recipientname[]" type="text" value="<?php echo $reciDataName['name'] ?>"> 
+                                </div>
+                              </div>
+                              <div class="col-md"> 
+                                <div class="cart-md-form"> 
+                                  <label for="email" class="">Recipient Email</label> 
+                                  <input class="input-text" name="recipientemail[]" type="email" value="<?php echo $reciDataEmail ?>"> 
+                                </div>
+                              </div>
+                              <div class="col-md-1"> 
+                                <div class="cart-md-form"> 
+                                  <label for="" class="">&nbsp;</label> 
+                                  <a href="javascript:void(0)" class="reciepentdata_delete"></a> 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+              <?php else : ?>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="cart-md-form">
+                      <label for="name" class="">Recipient Name</label>
+                      <input class="input-text" name="recipientname[]" type="text" value="<?php echo $reciDataName ?>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="cart-md-form">
+                      <label for="email" class="">Recipient Email</label>
+                      <input  class="input-text" name="recipientemail[]" type="email" value="<?php echo $reciDataEmail ?>">
+                    </div>
+                  </div>
+                </div>
+              <?php endif; ?>
+            </div>
+            <div class="row">
+                <div class="col-md-12"><a href="javascript:void(0);" id="add-more-recipients"><i class="fa fa-plus" aria-hidden="true"></i> Add Recipient</a></div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="cart-md-form">
+                  <label for="name" class="">Event Name</label>
+                  <input  class="input-text" name="event_name" type="text" value="<?php echo $evename ?>">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="cart-md-form">
+                  <label for="email" class="">Event Date</label>
+                  <input class="input-text" name="event_date" type="text" placeholder="mm/dd/yyyy" value="<?php echo date('m/d/Y',strtotime($evedate)); ?>">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cart-md-form">
+                  <label for="message">Description</label>
+                  <textarea  class="input-text" name="description" rows="2" ><?php echo $disc ?></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12"><input type="submit" value="save smart cart" class="submit"></div>
+          </div>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </form>
+</div>
+<script type="text/javascript">
+require([
+    'jquery',
+    'mage/mage'
+], function($){
+
+   var dataForm = $('#edit-smartcart-form');
+   dataForm.mage('validation', {});
+
+});

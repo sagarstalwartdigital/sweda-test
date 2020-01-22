@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login\Info $block */
+?>
+<?php if ($block->getRegistration()->isAllowed()): ?>
+<div class="block block-new-customer">
+
+   <div class="account-heading request-account-heading">
+      <h3>Don’t have an account?</h3>
+      <div class="request-account">
+             <a href="<?= $block->escapeUrl($block->getCreateAccountUrl()) ?>"><?= $block->escapeHtml(__('REQUEST ACCESS')) ?></a>
+      </div>
+      <p>Your Sweda website account provides exclusive access to:</p>
+    </div>
+    <div class="return-right-section">
+        <a href="#">
+           <div class="smart-cart-icon-text">
+             <img src="<?php echo $this->getViewFileUrl('images/sweda/smart-cart-icon.png'); ?>">
+             <p><strong>Smart Carts</strong>  Organize projects & share products.</p>
+           </div>
+        </a>
+        <a href="#"> 
+           <div class="smart-cart-icon-text">
+              <img src="<?php echo $this->getViewFileUrl('images/sweda/add-your-logo-icon.png'); ?>">
+              <p><strong>Virtual Tool</strong>  Create virtual previews for your project.</p>
+           </div>
+        </a>
+        <a href="#">
+           <div class="smart-cart-icon-text">
+              <img src="<?php echo $this->getViewFileUrl('images/sweda/shiping-icon.png'); ?>">
+              <p><strong>Order & Invoice History</strong>  and approve your artwork in real time!</p>
+           </div>
+        </a>
+    </div>
+</div>
+<?php endif; ?>
+
+

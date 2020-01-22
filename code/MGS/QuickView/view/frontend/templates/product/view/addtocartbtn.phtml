@@ -1,0 +1,19 @@
+<?php /** @var Magento\Catalog\Block\Product\View $block */ ?>
+<?php 
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $smartCartObject = $objectManager->create('Stalwart\SmartCart\Block\SmartCartDetail');
+    $smartCart = $smartCartObject->getSmartCartFactory();
+?>
+<div class="pdp-smart-cart-button">
+    <span class="view_product_details">
+    	<a href="javascript:void(0)" onclick="window.top.location.href='<?php echo $block->getProduct()->getProductUrl() ?>';">VIEW PRODUCT DETAILS</a>
+    </span>
+    <button type="submit" title="Add To Cart" class="action primary tocart" id="product-addtocart-quickview-button">
+    	<?php if ($smartCart->getId() && !empty($smartCart->getId())) :  ?>
+        	<span class="text">Add To Active Cart</span>
+        <?php else : ?>
+        	<span class="text">Add To Smart Cart</span>
+        <?php endif; ?>
+    </button>
+</div>
+<div class="change-cart-wrapper"></div>

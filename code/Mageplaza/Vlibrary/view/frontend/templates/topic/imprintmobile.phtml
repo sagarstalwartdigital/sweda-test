@@ -1,0 +1,43 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Vlibrary
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+$topics = $block->getTopicList();
+if ($topics && $topics->getSize()) :
+    ?>
+        <div class="row">
+            <div class="video-categories-text imprint-method-video imprint-mobile">
+                 <h4><?= __('Imprint Method') ?></h4>
+                 <ul>
+                    <?php foreach ($topics as $topic) : ?>
+                    <li class="video-categories-text">
+                        <div class="form_chkbx"> 
+                            <a class="list-categories" href="<?= $block->getTopicUrl($topic).'?ii='.$topic->getID() ?>">
+                                    <?= ucfirst($topic->getName()) ?>
+                            </a>
+                           <?php /*  <input type="checkbox" data-url="<?= //$block->getTopicUrl($topic) ?>" id="ContactFormchkbx5" class="filter-category"> 
+                            <label for="ContactFormchkbx5"><?= //ucfirst($topic->getName()) ?></label> */ ?>
+                        </div> 
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+<?php endif; ?>
